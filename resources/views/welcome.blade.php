@@ -80,7 +80,7 @@
                 <h3>Get in</h3>
                 <div class="links">
                     <a href="/auth/github">Github</a>
-                    <a href="#">Twitter</a>
+                    <a href="/auth/twitter">Twitter</a>
                     <a href="#">Google</a>
                 </div>
             </div>

@@ -71,21 +71,57 @@ class LoginController extends Controller
         return view( 'welcome', compact($authUser) );
     }
 
+    /**
+     * Obtain the user information from Twitter.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function handleTwitterCallback()
+    {
+        try {
+            $user = Socialite::driver('twitter')->user();
+        } catch (Exception $e) {
+            return redirect('auth/twitter');
+        }
+        
+        $authUser = $this->findOrCreateUser($user, 'twitter');
+
+        Auth::login($authUser, true);
+
+        return view( 'welcome', compact($authUser) );
+    }
+
     public function findOrCreateUser($user, $channel)
     {
         if($authUser = User::where('email', $user->email)->first()) {
             return $authUser;
         }
 
-        return User::create([
-            'auth_id' => $channel . '-' . $user->id,
-            'name' => $user->name,
-            'email' => $user->email,
-            'avatar' => $user->avatar,
-            'company' => $user->user['company'],
-            'website' => $user->user['blog'],
-            'bio' => $user->user['bio'],
-        ]);
+        if ( "github" === $channel ) {
+            return User::create([
+                'auth_id' => $channel . '-' . $user->id,
+                'name' => $user->name,
+                'email' => $user->email,
+                'avatar' => $user->avatar,
+                'company' => $user->user['company'],
+                'location' => $user->user['location'],
+                'website' => $user->user['blog'],
+                'bio' => $user->user['bio'],
+            ]);
+        }
+
+        if ( "twitter" === $channel ) {
+            return User::create([
+                'auth_id' => $channel . '-' . $user->id,
+                'name' => $user->name,
+                'email' => $user->email,
+                'avatar' => $user->avatar_original,
+                'location' => $user->user['location'],
+                'website' => $user->user['url'],
+                'bio' => $user->user['description'],
+            ]);
+        }
+        
     }
 
     public function logout(Request $request)
