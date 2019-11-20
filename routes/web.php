@@ -21,9 +21,11 @@ Route::get('/home', function () {
 
 Route::get('/auth/{channel}', 'Auth\LoginController@redirectToProvider');
 
-# Github
-Route::get('auth/github/callback', 'Auth\LoginController@handleGithubCallback');
+# Google
+Route::get('auth/google/callback', 'Auth\LoginController@handleGoogleCallback');
 # Twitter
 Route::get('auth/twitter/callback', 'Auth\LoginController@handleTwitterCallback');
+# Github
+Route::get('auth/github/callback', 'Auth\LoginController@handleGithubCallback');
 
 Route::get('/logout', 'Auth\LoginController@logout');

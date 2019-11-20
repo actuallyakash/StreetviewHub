@@ -3,7 +3,8 @@
     <head>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-
+        {{-- env('GOOGLE_ID') --}}
+        <meta name="google-signin-client_id" content="962729632216-407dsmg76fhpt93g5e26qkm8m626csac.apps.googleusercontent.com">
         <title>Laravel</title>
 
         <!-- Fonts -->
@@ -79,11 +80,13 @@
                 </div>
                 <h3>Get in</h3>
                 <div class="links">
-                    <a href="/auth/github">Github</a>
+                    <a href="/auth/google">Google</a>
                     <a href="/auth/twitter">Twitter</a>
-                    <a href="#">Google</a>
+                    <a href="/auth/github">Github</a>
                 </div>
             </div>
         </div>
+
+        <script src="https://apis.google.com/js/platform.js" async defer></script>
     </body>
 </html>

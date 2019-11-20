@@ -52,6 +52,28 @@ class LoginController extends Controller
     }
 
     /**
+     * Obtain the user information from Twitter.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function handleGoogleCallback()
+    {
+        try {
+            $user = Socialite::driver('google')->user();
+        } catch (Exception $e) {
+            return redirect('auth/google');
+        }
+
+        dd($user);
+        
+        $authUser = $this->findOrCreateUser($user, 'google');
+
+        Auth::login($authUser, true);
+
+        return view( 'welcome', compact($authUser) );
+    }
+
+    /**
      * Obtain the user information from GitHub.
      *
      * @return \Illuminate\Http\Response
@@ -95,6 +117,19 @@ class LoginController extends Controller
     {
         if($authUser = User::where('email', $user->email)->first()) {
             return $authUser;
+        }
+
+        if ( "google" === $channel ) {
+            return User::create([
+                'auth_id' => $channel . '-' . $user->id,
+                'name' => $user->name,
+                'email' => $user->email,
+                'avatar' => $user->avatar,
+                'company' => $user->user['company'],
+                'location' => $user->user['location'],
+                'website' => $user->user['blog'],
+                'bio' => $user->user['bio'],
+            ]);
         }
 
         if ( "github" === $channel ) {
