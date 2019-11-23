@@ -67,5 +67,6 @@
     
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
     <script src="{{ asset('js/index.js') }}" async defer></script>
+    <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBD52XR31rIk-MaE6AKlj_pLYlKxeJGUBQ&callback=initMap"></script>
 </body>
 </html>

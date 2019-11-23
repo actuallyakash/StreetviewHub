@@ -1,5 +1,5 @@
 @if ( !Auth::user() )
-<div class="modal" id="loginSignupTv" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle"
+<div class="modal" id="loginSignupTv" tabindex="-1" role="dialog" aria-labelledby="startExploringModal"
     aria-hidden="true">
     <div class="modal-dialog modal-xl" role="document">
         <div class="modal-content">
@@ -8,7 +8,7 @@
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
-                <h5 class="modal-title" id="exampleModalLongTitle">Welcome to StreetView</h5>
+                <h5 class="modal-title" id="startExploringModal">Welcome to StreetView</h5>
                 <p class="font-weight-light"> Sign in below to explore new places and share it with the community. </p>
                 <div class="row mt-4">
                     <div class="col">
