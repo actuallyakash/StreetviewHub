@@ -42,9 +42,12 @@
                         </div>
                     </li>
                 </ul>
-                
-                <button class="btn btn-outline-success my-sm-0 mx-1" type="submit" data-toggle="modal" data-target="#loginSignupTv">Login</button>
-                <button class="btn btn-outline-success my-sm-0 mx-1" type="submit" data-toggle="modal" data-target="#loginSignupTv">Signup</button>
+
+                @auth
+                <a class="btn btn-outline-danger" href="{{ url('/logout') }}">Logout</a>
+                @else
+                <button class="btn btn-outline-success" type="submit" data-toggle="modal" data-target="#loginSignupTv">Start Exploring</button>
+                @endauth
             </div>
         </nav>
 
