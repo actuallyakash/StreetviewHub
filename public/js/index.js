@@ -30,13 +30,13 @@ function initMap() {
   var sv = new google.maps.StreetViewService();
 
   // Set up the map.
-  map = new google.maps.Map(document.getElementById('map'), {
+  map = new google.maps.Map(document.getElementById('sv-map'), {
     center: loc,
     zoom: 16,
   });
 
   panorama = new google.maps.StreetViewPanorama(
-    document.getElementById('pano'), {
+    document.getElementById('sv-pano'), {
       position: location,
       pov: {
         heading: 80,

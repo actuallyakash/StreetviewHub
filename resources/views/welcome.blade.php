@@ -1,7 +1,8 @@
 @extends('layouts.app')
 @section('content')
-    <div class="hp-page">
-        <div id="map" style="width: 30%;"></div>
-        <div id="pano" style="width: 70%;"></div>
+<div class="map-box my-5 mx-4">    
+    <div id="sv-pano">
+        <div id="sv-map"></div>
     </div>
+</div>
 @endsection

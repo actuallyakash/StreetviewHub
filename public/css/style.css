@@ -1,10 +1,29 @@
-.hp-page {
+/* html,
+body,
+.content,
+.sv-app {
   height: 100%;
-  margin: 0;
-  padding: 0;
+} */
+
+.map-box {
+  height: 500px;
+  margin:0;
+  padding:0;
 }
 
-#map,
-#pano {
+#sv-pano {
   height: 100%;
+  width: 100%;
+}
+
+#sv-map {
+  z-index: 9;
+  background: transparent;
+  opacity: 0.6;
+  width: 30%;
+  height: 40%;
+}
+
+#sv-map:hover {
+  opacity: 0.9;
 }
