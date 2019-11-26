@@ -28,4 +28,6 @@ Route::get('auth/twitter/callback', 'Auth\LoginController@handleTwitterCallback'
 # Github
 Route::get('auth/github/callback', 'Auth\LoginController@handleGithubCallback');
 
+Route::get('/location/{panoId}/status/', 'LocationController@hasLikedLocation');
+
 Route::get('/logout', 'Auth\LoginController@logout');

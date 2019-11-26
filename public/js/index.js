@@ -60,12 +60,21 @@
         });
 
         panorama.addListener('pano_changed', function() {
-            // console.log(panorama.getPano());         // Pano_id
-            // console.log(panorama.getPov().heading);  // Heading
-            // console.log(panorama.getPov().pitch);    // Pitch
+            $('#sv-pano .favourite-street-view').attr('data-id', 'fav-'+panorama.getPano());
+            var panoId = panorama.getPano();
+            console.log(panoId);
+            $.ajax({
+                type: 'GET',
+                url: '/location/'+panoId+'/status',
+                success: function(data) {
+                    if( data == 1 ) {
+                        console.log('yes - favourited')
+                    } else {
+                        console.log('no - unfavourited');
+                    }
+                }
+            });
         });
-
-
 
     }
 
@@ -115,6 +124,7 @@
         // map.center.lng();                    // Longitude
         // map.streetView.location.description; // Location Name
     }
+
 
     //
     // Inits & Event Listeners
