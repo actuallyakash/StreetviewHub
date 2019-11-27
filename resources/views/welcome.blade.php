@@ -6,8 +6,8 @@
         <div class="action-buttons">
             @auth
                 <button class="randomize-street-view btn btn-link" data-tooltip="tooltip" data-placement="left" title="Randomizer"><i class="fas fa-random"></i></button>
-
-                <button class="favourite-street-view btn btn-link" data-tooltip="tooltip" data-placement="top" title="Favourite">
+                {{-- Dont' use classes starting from 'fav-', a fix is done in js --}}
+                <button class="unfavourite-sv btn btn-link cta-street-view" data-tooltip="tooltip" data-placement="top" title="Favourite">
                     <i class="far fa-heart"></i>
                 </button>
 

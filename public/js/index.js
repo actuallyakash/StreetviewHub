@@ -60,22 +60,33 @@
         });
 
         panorama.addListener('pano_changed', function() {
-            $('#sv-pano .favourite-street-view').attr('data-id', 'fav-'+panorama.getPano());
             var panoId = panorama.getPano();
-            console.log(panoId);
+            var element = $('#sv-pano .cta-street-view');
+            element.attr('data-id', 'fav-'+panoId);
+            // Hotfix for removing old panoId
+            var oldPano = "";
+            if ( oldPano = element.attr("class").match(/fav-\S+/g) ) {
+                element.removeClass(oldPano);
+            }
+            element.addClass('fav-'+panoId);
             $.ajax({
                 type: 'GET',
                 url: '/location/'+panoId+'/status',
                 success: function(data) {
                     if( data == 1 ) {
-                        console.log('yes - favourited')
+                        element.attr('title', 'Unfavourite');
+                        element.attr('data-original-title', 'Unfavourite');
+                        element.removeClass('unfavourite-sv').addClass('favourite-sv');
+                        element.children('i').removeClass('far').addClass('fas');
                     } else {
-                        console.log('no - unfavourited');
+                        element.attr('title', 'Favourite');
+                        element.attr('data-original-title', 'Favourite');
+                        element.removeClass('favourite-sv').addClass('unfavourite-sv');
+                        element.children('i').removeClass('fas').addClass('far');
                     }
                 }
             });
         });
-
     }
 
     var processSVData = function(data, status) {
@@ -115,14 +126,60 @@
             'lng': xp + x0
         };
     }
-
-    var favouriteView = function() {
+    
+    // Fav/Unfav Ops
+    var favouriteOps = function(panoId, ops, element) {
         // panorama.getPano()                   // pano_id
         // panorama.getPov().heading;           // Heading
         // panorama.getPov().pitch;             // Pitch
         // map.center.lat();                    // Latitude
         // map.center.lng();                    // Longitude
         // map.streetView.location.description; // Location Name
+        var locationName = map.streetView.location.description;
+        var latitude = map.center.lat();
+        var longitude = map.center.lng();
+        var panoHeading = panorama.getPov().heading;
+        var panoPitch = panorama.getPov().pitch;
+        
+        switch(ops) {
+            case 'favourite':
+                $.ajax({
+                    type: 'GET',
+                    url: '/location/favourite/'+locationName+'/'+latitude+'/'+longitude+'/'+panoId+'/'+panoHeading+'/'+panoPitch,
+                    success: function(data) {
+                        if(data == 1) {
+                            element.attr('title', 'Unfavourite');
+                            element.attr('data-original-title', 'Unfavourite');
+                            element.removeClass('unfavourite-sv').addClass('favourite-sv');
+                            element.children('i').removeClass('far').addClass('fas');
+                        } else {
+                            console.log('#12 Something went wrong! Can\'t favourite location.');
+                        }
+                    }
+                });
+            break;
+
+            case 'unfavourite':
+                $.ajax({
+                    type: 'DELETE',
+                    url: '/location/'+panoId+'/unfavourite/',
+                    headers: {
+                        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                    },
+                    success:function(data) {
+                        if(data == 1) {
+                            console.log('in unfavourite');
+                            element.attr('title', 'Favourite');
+                            element.attr('data-original-title', 'Favourite');
+                            element.removeClass('favourite-sv').addClass('unfavourite-sv');
+                            element.children('i').removeClass('fas').addClass('far');
+                        } else {
+                            console.log('#13 Something went wrong! Can\'t unfavourite location.');
+                        }
+                    }
+                });
+            break;
+        }
     }
 
 
@@ -133,8 +190,16 @@
       initMap();
     });
 
-    $("#favourite-street-view").on('click', function() {
-        favouriteView();
+    // Favourite/Unfavourite ops
+    $("div#sv-pano").on('click', 'button.unfavourite-sv', function() {
+        var panoId = $(this).attr('data-id').replace('fav-', '');
+        var element = $('button.fav-'+panoId);
+        favouriteOps(panoId, 'favourite', element);
+    });
+    $("div#sv-pano").on('click', 'button.favourite-sv', function() {
+        var panoId = $(this).attr('data-id').replace('fav-', '');
+        var element = $('button.fav-'+panoId);
+        favouriteOps(panoId, 'unfavourite', element);
     });
 
 })(jQuery);
