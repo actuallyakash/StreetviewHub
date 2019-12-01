@@ -29,7 +29,7 @@ Route::get('auth/twitter/callback', 'Auth\LoginController@handleTwitterCallback'
 Route::get('auth/github/callback', 'Auth\LoginController@handleGithubCallback');
 
 Route::get('/location/{panoId}/status/', 'LocationController@hasLikedLocation');
-Route::get('/location/favourite/{locationName}/{latitude}/{longitude}/{panoId}/{panoHeading}/{panoPitch}', 'LocationController@storeFavourite');
+Route::get('/location/favourite/{locationName}/{latitude}/{longitude}/{panoId}/{panoHeading}/{panoPitch}/{panoZoom}', 'LocationController@storeFavourite');
 Route::delete('/location/{panoId}/unfavourite/', 'LocationController@deleteFavourite');
 
 Route::get('/logout', 'Auth\LoginController@logout');

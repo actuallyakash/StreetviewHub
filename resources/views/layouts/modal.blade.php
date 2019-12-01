@@ -26,3 +26,27 @@
     </div>
 </div>
 @endif
+
+@auth
+<div class="modal" id="favouriteBox" tabindex="-1" role="dialog" aria-labelledby="favouriteModal"
+    aria-hidden="true">
+    <div class="modal-dialog modal-xl" role="document">
+        <div class="modal-content">
+            
+            <div class="modal-body text-center">
+                <h5 class="location-title">Great find</h5>
+                <p class="font-weight-light">Add more info so other users can see it too</p>
+                <div class="container">
+                    <div class="form-group">
+                        <textarea class="form-control m-3" placeholder="Why favourite?" rows="3"></textarea>
+                    
+                        <input type="text" class="form-control m-3" placeholder="Tags">
+
+                        <button type="submit" class="btn btn-success m-3 btn-fav-info">Done</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+@endauth

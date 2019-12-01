@@ -16,12 +16,15 @@ class CreateLocationsTable extends Migration
         Schema::create('locations', function (Blueprint $table) {
             $table->increments('id');
             $table->unsignedInteger('user_id');
+            $table->string('status')->nullable();
+            $table->string('tags')->nullable();
             $table->string('location_name')->nullable();
             $table->string('latitude');
             $table->string('longitude');
             $table->string('pano_id')->nullable();
             $table->string('pano_heading')->nullable();
             $table->string('pano_pitch')->nullable();
+            $table->string('pano_zoom')->nullable();
             $table->timestamps();
             $table->foreign('user_id')
                     ->references('id')->on('users')

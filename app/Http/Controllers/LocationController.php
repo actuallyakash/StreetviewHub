@@ -20,7 +20,7 @@ class LocationController extends Controller
         return $liked ? 1 : 0;
     }
 
-    public function storeFavourite($locationName, $latitude, $longitude, $panoId, $panoHeading, $panoPitch)
+    public function storeFavourite($locationName, $latitude, $longitude, $panoId, $panoHeading, $panoPitch, $panoZoom)
     {
         $favourite = Location::checkUserFavouriteExist($panoId);
 
@@ -33,6 +33,7 @@ class LocationController extends Controller
                 'pano_id' => $panoId,
                 'pano_heading' => $panoHeading,
                 'pano_pitch' => $panoPitch,
+                'pano_zoom' => $panoZoom,
             ]);
         }
         return 1;

@@ -74,8 +74,8 @@
                 url: '/location/'+panoId+'/status',
                 success: function(data) {
                     if( data == 1 ) {
-                        element.attr('title', 'Unfavourite');
-                        element.attr('data-original-title', 'Unfavourite');
+                        element.attr('title', 'Unlike');
+                        element.attr('data-original-title', 'Unlike');
                         element.removeClass('unfavourite-sv').addClass('favourite-sv');
                         element.children('i').removeClass('far').addClass('fas');
                     } else {
@@ -140,16 +140,17 @@
         var longitude = map.center.lng();
         var panoHeading = panorama.getPov().heading;
         var panoPitch = panorama.getPov().pitch;
+        var panoZoom = panorama.zoom;
         
         switch(ops) {
             case 'favourite':
                 $.ajax({
                     type: 'GET',
-                    url: '/location/favourite/'+locationName+'/'+latitude+'/'+longitude+'/'+panoId+'/'+panoHeading+'/'+panoPitch,
+                    url: '/location/favourite/'+locationName+'/'+latitude+'/'+longitude+'/'+panoId+'/'+panoHeading+'/'+panoPitch+'/'+panoZoom,
                     success: function(data) {
                         if(data == 1) {
-                            element.attr('title', 'Unfavourite');
-                            element.attr('data-original-title', 'Unfavourite');
+                            element.attr('title', 'Unlike');
+                            element.attr('data-original-title', 'Unlike');
                             element.removeClass('unfavourite-sv').addClass('favourite-sv');
                             element.children('i').removeClass('far').addClass('fas');
                         } else {
@@ -168,9 +169,8 @@
                     },
                     success:function(data) {
                         if(data == 1) {
-                            console.log('in unfavourite');
-                            element.attr('title', 'Favourite');
-                            element.attr('data-original-title', 'Favourite');
+                            element.attr('title', 'Like');
+                            element.attr('data-original-title', 'Like');
                             element.removeClass('favourite-sv').addClass('unfavourite-sv');
                             element.children('i').removeClass('fas').addClass('far');
                         } else {
@@ -182,6 +182,10 @@
         }
     }
 
+    // Save fav info
+    var saveFavouriteInfo = function() {
+
+    }
 
     //
     // Inits & Event Listeners
@@ -194,12 +198,20 @@
     $("div#sv-pano").on('click', 'button.unfavourite-sv', function() {
         var panoId = $(this).attr('data-id').replace('fav-', '');
         var element = $('button.fav-'+panoId);
+        $('#favouriteBox').modal();
         favouriteOps(panoId, 'favourite', element);
     });
     $("div#sv-pano").on('click', 'button.favourite-sv', function() {
         var panoId = $(this).attr('data-id').replace('fav-', '');
         var element = $('button.fav-'+panoId);
         favouriteOps(panoId, 'unfavourite', element);
+    });
+
+    // favourite view details
+    $("div#favouriteBox").on('click', 'button.btn-fav-info', function() {
+        var panoId = $("div#sv-pano button.unfavourite-sv").attr('data-id').replace('fav-', '');
+        alert(panoId);
+        // saveFavouriteInfo();
     });
 
 })(jQuery);
