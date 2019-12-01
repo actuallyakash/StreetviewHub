@@ -37,13 +37,17 @@
                 <h5 class="location-title">Great find</h5>
                 <p class="font-weight-light">Add more info so other users can see it too</p>
                 <div class="container">
-                    <div class="form-group">
-                        <textarea class="form-control m-3" placeholder="Why favourite?" rows="3"></textarea>
-                    
-                        <input type="text" class="form-control m-3" placeholder="Tags">
-
-                        <button type="submit" class="btn btn-success m-3 btn-fav-info">Done</button>
-                    </div>
+                    <form id="favLocation">
+                        <div class="form-group">
+                            <textarea name="status" class="form-control status" placeholder="Why favourite? (Optional)" rows="3"></textarea>
+                        </div>
+                        <div class="form-group">
+                            <input name="tags" type="text" class="form-control" placeholder="Tags (Optional)">
+                        </div>
+                        <div class="form-group">
+                            <button type="submit" class="btn btn-success btn-fav-info">Done</button>
+                        </div>
+                    </form>
                 </div>
             </div>
         </div>

@@ -47,4 +47,19 @@ class LocationController extends Controller
 
         return 1;
     }
+
+    public function favouriteDetails(Request $request)
+    {
+        $response = array(
+            'panoId' => $request->panoId,
+            'status' => $request->status,
+            'tags' => $request->tags,
+        );
+        
+        Location::where('pano_id', $response['panoId'])
+            ->where('user_id', auth()->id())
+            ->update(['status' => $response['status'], 'tags' => $response['tags']]);
+        
+        return 1;
+    }
 }

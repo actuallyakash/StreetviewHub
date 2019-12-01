@@ -183,8 +183,22 @@
     }
 
     // Save fav info
-    var saveFavouriteInfo = function() {
-
+    var saveFavouriteInfo = function( panoId, status, tags ) {
+        $.ajax({
+            type: 'POST',
+            url: '/favourite/details',
+            data:{panoId:panoId, status:status, tags:tags},
+            headers: {
+                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+            },
+            success: function(data) {
+                if(data == 1) {
+                    $('#favouriteBox').modal('dispose');
+                } else {
+                    console.log('#212 Something went wrong! Can\'t save details.');
+                }
+            }
+        });
     }
 
     //
@@ -208,10 +222,13 @@
     });
 
     // favourite view details
-    $("div#favouriteBox").on('click', 'button.btn-fav-info', function() {
-        var panoId = $("div#sv-pano button.unfavourite-sv").attr('data-id').replace('fav-', '');
-        alert(panoId);
-        // saveFavouriteInfo();
+    $("div#favouriteBox").on('click', 'button.btn-fav-info', function(e) {
+        e.preventDefault();
+
+        var panoId = $("div#sv-pano button.cta-street-view").attr('data-id').replace('fav-', '');
+        var status = $('textarea.status').val();
+        var tags = $("input[name=tags]").val();
+        saveFavouriteInfo(panoId, status, tags);
     });
 
 })(jQuery);
