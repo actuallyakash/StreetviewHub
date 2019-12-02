@@ -193,7 +193,11 @@
             },
             success: function(data) {
                 if(data == 1) {
-                    $('#favouriteBox').modal('dispose');
+                    $('#favouriteBox').modal('hide');
+                    $('#favouriteBox textarea.status').val('');
+                    $("#favouriteBox input[name=tags]").val('');
+                    $('.toast').toast({delay: 2000});
+                    $('.toast').toast('show');
                 } else {
                     console.log('#212 Something went wrong! Can\'t save details.');
                 }
