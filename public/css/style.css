@@ -48,3 +48,15 @@ body,
   color: white;
   margin: 0 10px;
 }
+
+.toast {
+  z-index: 99;
+  position: absolute;
+  top: 20px;
+  right: 0;
+}
+
+.toast.toast-success {
+  background-color: #d5ffc9;
+  border-top: 4px solid #61bd61;
+}
