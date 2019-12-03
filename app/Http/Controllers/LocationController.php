@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Auth;
 use App\Location;
 use App\User;
+use Helper;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
@@ -53,7 +54,7 @@ class LocationController extends Controller
         $response = array(
             'panoId' => $request->panoId,
             'status' => $request->status,
-            'tags' => $request->tags,
+            'tags' => Helper::tagSerialize($request->tags),
         );
         
         Location::where('pano_id', $response['panoId'])
