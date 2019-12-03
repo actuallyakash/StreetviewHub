@@ -60,3 +60,8 @@ body,
   background-color: #d5ffc9;
   border-top: 4px solid #61bd61;
 }
+
+.toast.toast-danger {
+  background-color: #c97c59;
+  border-top: 4px solid #bb4b0a;
+}

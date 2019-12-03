@@ -101,6 +101,8 @@
 
         } else {
             console.error('Street View data not found for this location.');
+            $('.sv-not-found').toast({delay: 2000});
+            $('.sv-not-found').toast('show');
         }
     }
 
@@ -196,8 +198,8 @@
                     $('#favouriteBox').modal('hide');
                     $('#favouriteBox textarea.status').val('');
                     $("#favouriteBox input[name=tags]").val('');
-                    $('.toast').toast({delay: 2000});
-                    $('.toast').toast('show');
+                    $('.toast-location-share').toast({delay: 2000});
+                    $('.toast-location-share').toast('show');
                 } else {
                     console.log('#212 Something went wrong! Can\'t save details.');
                 }
@@ -234,5 +236,9 @@
         var tags = $("input[name=tags]").val();
         saveFavouriteInfo(panoId, status, tags);
     });
+
+    // Tagify
+    var input = document.querySelector('input[name="tags"]'),
+    tagify = new Tagify(input);
 
 })(jQuery);

@@ -41,7 +41,7 @@
                             <textarea name="status" class="form-control status" placeholder="Why favourite? (Optional)" rows="3"></textarea>
                         </div>
                         <div class="form-group">
-                            <input name="tags" type="text" class="form-control" placeholder="Tags (Optional)">
+                            <input name="tags" type="text" placeholder="Tags (Optional)">
                         </div>
                         <div class="form-group">
                             <button type="submit" class="btn btn-success btn-fav-info">Done</button>
@@ -53,12 +53,21 @@
     </div>
 </div>
 
-<div class="toast toast-success">
+<div class="toast toast-location-share toast-success">
     <div class="toast-body">
         <button type="button" class="close" data-dismiss="toast" aria-label="Close">
             <span aria-hidden="true">&times;</span>
         </button>
         😍 Awesome. Thankyou for sharing with the community.
+    </div>
+</div>
+
+<div class="toast sv-not-found toast-danger">
+    <div class="toast-body">
+        <button type="button" class="close" data-dismiss="toast" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+        </button>
+        🚧 No view found
     </div>
 </div>
 @endauth
