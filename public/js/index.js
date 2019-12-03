@@ -197,7 +197,7 @@
                 if(data == 1) {
                     $('#favouriteBox').modal('hide');
                     $('#favouriteBox textarea.status').val('');
-                    $("#favouriteBox input[name=tags]").val('');
+                    tagify.removeAllTags();
                     $('.toast-location-share').toast({delay: 2000});
                     $('.toast-location-share').toast('show');
                 } else {
