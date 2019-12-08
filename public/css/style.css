@@ -79,11 +79,21 @@ body {
 }
 
 .eyeshot {
-  padding: 10px;
+  width: 100%;
+  border: 0;
+  border-radius: 6px;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+  word-wrap: break-word;
+  background-color: #fff;
+  background-clip: border-box;
 }
 
 .eyeshot-image img {
-  max-width: 100%;
+  width: 100%;
+  border-radius: 6px 6px 0 0;
 }
 
 .eyeshot .eyeshot-avatar {
@@ -100,34 +110,8 @@ body {
   margin-bottom: 0.75rem;
 }
 
-.eyeshot .card-body {
-  padding: 0.50rem;
-}
-
 .eyeshot .eyeshot-details {
-  height: 0;
-  box-sizing: border-box;
-  display: flex;
-    -ms-flex-pack: end;
-    justify-content: flex-end;
-    width: 100%;
-    position: absolute;
-    left: 0;
-    bottom: 0;
-    padding: 10px 10px 0 10px;
-    background: #fff;
-    z-index: 2;
-    will-change: transition;
-    -webkit-transform: translate3d(0, 0, 0);
-    transform: translate3d(0, 0, 0);
-    -webkit-transition: height 0.2s ease;
-    transition: height 0.2s ease;
+  padding: 1rem;
+  flex: 1 1 auto;
 }
 
-@media screen and (max-width: 767px) {
-  .eyeshot {
-      width: 100%;
-      margin-left: 0;
-      margin-right: 0;
-  }
-}

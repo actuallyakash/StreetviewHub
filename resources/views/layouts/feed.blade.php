@@ -8,7 +8,7 @@
 
             @foreach ( $eyeshots as $shot )
             <div class="col-md-4 col-sm-6">
-                <div class="eyeshot card mb-4 shadow-sm">
+                <div class="eyeshot mb-4 shadow-sm">
 
                     <div class="eyeshot-image">
                         <a class="eyeshot-link" href="#">
@@ -20,7 +20,7 @@
                         </a>
                     </div>
                     
-                    <div class="card-body eyeshot-details">
+                    <div class="eyeshot-details slide-up">
                         <p class="card-text eyeshot-location">{{ $shot->location_name }}</p>
                         <div class="d-flex justify-content-between align-items-center">
                             <div class="d-flex align-items-center">
