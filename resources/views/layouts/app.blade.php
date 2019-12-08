@@ -55,7 +55,7 @@
         </header>
         
         <main class="sv-app">
-            <div class="content">
+            <div id="content">
                 @yield('content')
             </div>
         </main>
