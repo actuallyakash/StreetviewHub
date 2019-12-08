@@ -33,4 +33,7 @@ Route::get('/location/favourite/{locationName}/{latitude}/{longitude}/{panoId}/{
 Route::delete('/location/{panoId}/unfavourite/', 'LocationController@deleteFavourite');
 Route::post('/favourite/details', 'LocationController@favouriteDetails');
 
+#Pages
+Route::get('/feed', 'PagesController@feed');
+
 Route::get('/logout', 'Auth\LoginController@logout');

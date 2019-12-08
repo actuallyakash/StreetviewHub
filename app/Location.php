@@ -15,4 +15,9 @@ class Location extends Model
         return $query->where('pano_id', $panoId)
                     ->where('user_id', auth()->id());
     }
+
+    public function owner()
+    {
+        return $this->hasOne(User::class, 'id', 'user_id');
+    }
 }

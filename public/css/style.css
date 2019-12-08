@@ -5,6 +5,10 @@ body,
   height: 100%;
 } */
 
+body {
+  background-color: #f4f4f4;
+}
+
 .map-box {
   height: 500px;
   margin:0;
@@ -64,4 +68,66 @@ body,
 .toast.toast-danger {
   background-color: #c97c59;
   border-top: 4px solid #bb4b0a;
+}
+
+#content {
+  background: #f4f4f4;
+  margin: 0;
+  padding: 0;
+  font-size: 100%;
+  vertical-align: baseline;
+}
+
+.eyeshot {
+  padding: 10px;
+}
+
+.eyeshot-image img {
+  max-width: 100%;
+}
+
+.eyeshot .eyeshot-avatar {
+  height: 50px;
+  width: 50px;
+  border-radius: 50%;
+}
+
+.eyeshot .eyeshot-username {
+  margin: 10px;
+}
+
+.eyeshot .eyeshot-location {
+  margin-bottom: 0.75rem;
+}
+
+.eyeshot .card-body {
+  padding: 0.50rem;
+}
+
+.eyeshot .eyeshot-details {
+  height: 0;
+  box-sizing: border-box;
+  display: flex;
+    -ms-flex-pack: end;
+    justify-content: flex-end;
+    width: 100%;
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    padding: 10px 10px 0 10px;
+    background: #fff;
+    z-index: 2;
+    will-change: transition;
+    -webkit-transform: translate3d(0, 0, 0);
+    transform: translate3d(0, 0, 0);
+    -webkit-transition: height 0.2s ease;
+    transition: height 0.2s ease;
+}
+
+@media screen and (max-width: 767px) {
+  .eyeshot {
+      width: 100%;
+      margin-left: 0;
+      margin-right: 0;
+  }
 }
