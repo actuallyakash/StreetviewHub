@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class Location extends Model
 {
     protected $fillable = [
-        'user_id', 'location_name', 'latitude', 'longitude', 'pano_id', 'pano_heading', 'pano_pitch', 'pano_zoom'
+        'user_id', 'location_name', 'latitude', 'longitude', 'pano_id', 'pano_heading', 'pano_pitch', 'pano_zoom', 'media'
     ];
 
     public function scopeCheckUserFavouriteExist($query, $panoId)

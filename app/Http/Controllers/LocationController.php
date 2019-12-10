@@ -39,10 +39,9 @@ class LocationController extends Controller
 
             // Downloading Image
             $filepath = 'https://maps.googleapis.com/maps/api/streetview?size=400x300&pano='. $panoId .'&fov='. $zoomLevel .'&heading='. $panoHeading .'&pitch='. $panoPitch .'&key=AIzaSyBD52XR31rIk-MaE6AKlj_pLYlKxeJGUBQ';
-
-            // Saving the location image
             $eyeshotName = Str::random(20) . '.jpg';
             $contents = file_get_contents($filepath);
+            // Saving the location image
             Storage::disk('public')->put($eyeshotName, $contents);
             
             Location::create([
