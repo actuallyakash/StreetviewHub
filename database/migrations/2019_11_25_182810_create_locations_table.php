@@ -25,6 +25,7 @@ class CreateLocationsTable extends Migration
             $table->string('pano_heading')->nullable();
             $table->string('pano_pitch')->nullable();
             $table->string('pano_zoom')->nullable();
+            $table->string('media')->nullable();
             $table->timestamps();
             $table->foreign('user_id')
                     ->references('id')->on('users')

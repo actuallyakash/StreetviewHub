@@ -15,7 +15,7 @@ class PagesController extends Controller
 
     public function feed()
     {
-        $eyeshots = Location::latest('created_at')->paginate(10);
+        $eyeshots = Location::latest('created_at')->paginate(9);
         
         return view('layouts/feed', compact('eyeshots'));
     }
