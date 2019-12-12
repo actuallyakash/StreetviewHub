@@ -61,9 +61,15 @@ class LocationController extends Controller
 
     public function deleteFavourite($panoId)
     {
+        $eyeshot = Location::where('pano_id', $panoId)->where('user_id', auth()->id())->first();
+
         Location::where('pano_id', $panoId)
             ->where('user_id', auth()->id())
             ->delete();
+
+        if ($eyeshot->media) {
+            Storage::disk('public')->delete($eyeshot->media);
+        }
 
         return 1;
     }
