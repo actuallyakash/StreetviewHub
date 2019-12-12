@@ -26,6 +26,10 @@ class LocationController extends Controller
     public function storeFavourite($locationName, $latitude, $longitude, $panoId, $panoHeading, $panoPitch, $panoZoom)
     {
         $favourite = Location::checkUserFavouriteExist($panoId);
+
+        # Already discovered?
+        $discovered = Location::where('pano_id', $panoId)->first();
+
         # algo for calculating zoom level (based on POV) (https://developers.google.com/maps/documentation/streetview/intro#optional-parameters)
         if ( $panoZoom < 1 ) {
             $zoomLevel = 90;
@@ -44,7 +48,7 @@ class LocationController extends Controller
             // Saving the location image
             Storage::disk('public')->put($eyeshotName, $contents);
             
-            Location::create([
+            $attributes = [
                 'user_id' => auth()->id(),
                 'location_name' => $locationName,
                 'latitude' => $latitude,
@@ -54,8 +58,16 @@ class LocationController extends Controller
                 'pano_pitch' => $panoPitch,
                 'pano_zoom' => $panoZoom,
                 'media' => $eyeshotName,
-            ]);
+            ];
+
+            // For pioneers
+            if ( ! $discovered ) {
+                $attributes['pioneer'] = auth()->id();
+            }
+
+            Location::create($attributes);
         }
+
         return 1;
     }
 

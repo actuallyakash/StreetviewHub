@@ -26,6 +26,7 @@ class CreateLocationsTable extends Migration
             $table->string('pano_pitch')->nullable();
             $table->string('pano_zoom')->nullable();
             $table->string('media')->nullable();
+            $table->unsignedInteger('pioneer')->nullable();
             $table->timestamps();
             $table->foreign('user_id')
                     ->references('id')->on('users')
