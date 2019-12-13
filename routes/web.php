@@ -32,8 +32,12 @@ Route::get('/location/{panoId}/status/', 'LocationController@hasLikedLocation');
 Route::get('/location/favourite/{locationName}/{latitude}/{longitude}/{panoId}/{panoHeading}/{panoPitch}/{panoZoom}', 'LocationController@storeFavourite');
 Route::delete('/location/{panoId}/unfavourite/', 'LocationController@deleteFavourite');
 Route::post('/favourite/details', 'LocationController@favouriteDetails');
+#Pioneer
+Route::get('/get/{panoId}/pioneer', 'LocationController@pioneer');
 
 #Pages
 Route::get('/feed', 'PagesController@feed');
+
+
 
 Route::get('/logout', 'Auth\LoginController@logout');

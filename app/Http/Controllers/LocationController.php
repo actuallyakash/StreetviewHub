@@ -100,4 +100,17 @@ class LocationController extends Controller
         
         return 1;
     }
+
+    public function pioneer($panoId)
+    {
+        $isPioneer = Location::where('pano_id', $panoId)->whereNotNull('pioneer')->first();
+        
+        if ( $isPioneer ) {
+            $pioneer = User::find($isPioneer->pioneer);
+
+            return $pioneer ? $pioneer : 0;
+        } else {
+            return 0;
+        }
+    }
 }

@@ -60,6 +60,8 @@
         });
 
         panorama.addListener('pano_changed', function() {
+            
+
             var panoId = panorama.getPano();
             var element = $('#sv-pano .cta-street-view');
             element.attr('data-id', 'fav-'+panoId);
@@ -69,6 +71,7 @@
                 element.removeClass(oldPano);
             }
             element.addClass('fav-'+panoId);
+            // Checking likes
             $.ajax({
                 type: 'GET',
                 url: '/location/'+panoId+'/status',
@@ -86,6 +89,20 @@
                     }
                 }
             });
+
+            // Checking pioneer
+            $.ajax({
+                type: 'GET',
+                url: '/get/'+panoId+'/pioneer',
+                success: function( data ) {
+                    if( data != 0 ) {
+                        $("#content .first-explorer").show();
+                        $("#content span.pioneer").text(data.name);
+                    } else {
+                        $("#content .first-explorer").hide();
+                    }
+                }
+            })
         });
     }
 
@@ -131,12 +148,7 @@
     
     // Fav/Unfav Ops
     var favouriteOps = function(panoId, ops, element) {
-        // panorama.getPano()                   // pano_id
-        // panorama.getPov().heading;           // Heading
-        // panorama.getPov().pitch;             // Pitch
-        // map.center.lat();                    // Latitude
-        // map.center.lng();                    // Longitude
-        // map.streetView.location.description; // Location Name
+
         var locationName = map.streetView.location.description;
         var latitude = map.center.lat();
         var longitude = map.center.lng();

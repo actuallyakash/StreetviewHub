@@ -18,4 +18,5 @@
         </div>
     </div>
 </div>
+<p class="first-explorer">Discovered by: <span class="pioneer"></span></p>
 @endsection
