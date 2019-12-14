@@ -9,14 +9,9 @@
     </div>
     <div class="eyeshots-tags">
         Shots on 🔥 :
-        <a class="tag" href="#">one</a>
-        <a class="tag" href="#">two</a>
-        <a class="tag" href="#">three</a>
-        <a class="tag" href="#">four</a>
-        <a class="tag" href="#">five</a>
-        <a class="tag" href="#">six</a>
-        <a class="tag" href="#">seven</a>
-        <a class="tag" href="#">eight</a>
+        @foreach ( Helper::trendingTags() as $tag )
+          <a class="tag" href="/search?q={{ $tag->tags }}">{{ ucwords($tag->tags) }}</a>
+        @endforeach
     </div>
   </nav>
 </div>

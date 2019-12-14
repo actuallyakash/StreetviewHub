@@ -17,4 +17,13 @@ class Helper
         }
     }
     
+    public static function trendingTags() 
+    {
+        $tags = DB::table('tags')
+            ->orderBy('total', 'desc')
+            ->limit(10)
+            ->get();
+
+        return $tags;
+    }
 }
