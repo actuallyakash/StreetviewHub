@@ -93,6 +93,26 @@ class LocationController extends Controller
             'status' => $request->status,
             'tags' => Helper::tagSerialize($request->tags),
         );
+
+        if ($response['tags'] == null) {
+            $response['tags'] = 'eyeshot';
+        }
+
+        $tags = explode(',', $response['tags']);
+        foreach($tags as $tag)
+        {
+            if( DB::table('tags')->where('tags', '=', $tag)->first() ) {
+                DB::table('tags')->where('tags', '=', $tag)->increment('total', 1);
+            } else {
+                $details = [
+                    'tags' => $tag,
+                    'total' => 1,
+                    'created_at' => now(),
+                    'updated_at' => now(),
+                ];
+                DB::table('tags')->insert($details);
+            }
+        }
         
         Location::where('pano_id', $response['panoId'])
             ->where('user_id', auth()->id())

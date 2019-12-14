@@ -1,6 +1,9 @@
 @extends('layouts.app')
 
 @section('content')
+
+@include('feed/topbar')
+
 <div class="container-fluid">
     <div class="eyeshot-feed text-center py-4">
         

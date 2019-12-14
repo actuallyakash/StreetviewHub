@@ -58,6 +58,7 @@ body {
   position: absolute;
   top: 20px;
   right: 0;
+  display: none;
 }
 
 .toast.toast-success {
@@ -115,3 +116,25 @@ body {
   flex: 1 1 auto;
 }
 
+.top-bar .topbar-action {
+  position: relative;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: wrap;
+  flex-wrap: wrap;
+  -ms-flex-align: center;
+  align-items: center;
+  -ms-flex-pack: justify;
+  justify-content: space-between;
+  padding: .5rem 1rem;
+  background-color: #f8f9fa;
+}
+
+.top-bar .topbar-action .tag {
+  margin: 0 5px;
+  background: lightcyan;
+  padding: 5px 10px;
+  border-radius: 6px;
+  text-decoration: none;
+  color: #636363;
+}
