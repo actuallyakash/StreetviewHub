@@ -138,3 +138,19 @@ body {
   text-decoration: none;
   color: #636363;
 }
+
+.explorer-profile .user-profile-card {
+  align-items: center;
+  text-align: center;
+}
+
+.explorer-profile .explorer-cover {
+  background-color: #e9ecef;
+  width: 100%;
+  height: 200px;
+  border-radius: .3rem;
+}
+
+.explorer-profile .explorer-cover img {
+  width: 100%;
+}

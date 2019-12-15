@@ -41,3 +41,6 @@ Route::get('/feed', 'PagesController@feed');
 
 
 Route::get('/logout', 'Auth\LoginController@logout');
+
+#Profile
+Route::get('/{username}', 'ProfileController@index');
