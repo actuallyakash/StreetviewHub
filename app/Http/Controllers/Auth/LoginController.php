@@ -113,16 +113,35 @@ class LoginController extends Controller
         return view( 'welcome', compact($authUser) );
     }
 
+    public function randomUsername( $username )
+    {
+        $newname = $username.mt_rand(0,10000);
+
+        if ( User::where('nickname', $newname)->first() ) {
+            randomUsername($username);
+        } else {
+            return $newname;
+        }
+    }
+
     public function findOrCreateUser($user, $channel)
     {
-        if($authUser = User::where('email', $user->email)->first()) {
+
+        if( $authUser = User::where('email', $user->email)->first() ) {
             return $authUser;
         }
 
+        if ( User::where('nickname', $user->nickname)->first() ) {
+            $nickname = $this->randomUsername($user->nickname);
+        } else {
+            $nickname = $user->nickname;
+        }
+        
         if ( "google" === $channel ) {
             return User::create([
                 'auth_id' => $channel . '-' . $user->id,
                 'name' => $user->name,
+                'nickname' => $nickname,
                 'email' => $user->email,
                 'avatar' => $user->avatar,
                 'company' => $user->user['company'],
@@ -136,6 +155,7 @@ class LoginController extends Controller
             return User::create([
                 'auth_id' => $channel . '-' . $user->id,
                 'name' => $user->name,
+                'nickname' => $nickname,
                 'email' => $user->email,
                 'avatar' => $user->avatar,
                 'company' => $user->user['company'],
@@ -149,6 +169,7 @@ class LoginController extends Controller
             return User::create([
                 'auth_id' => $channel . '-' . $user->id,
                 'name' => $user->name,
+                'nickname' => $nickname,
                 'email' => $user->email,
                 'avatar' => $user->avatar_original,
                 'location' => $user->user['location'],
