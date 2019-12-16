@@ -154,3 +154,70 @@ body {
 .explorer-profile .explorer-cover img {
   width: 100%;
 }
+
+/* Explorer Masonry */
+.eyeshots-mason {
+  max-width: 100%;
+}
+
+.masonry {
+  columns: 1;
+  column-gap: 10px;
+}
+
+.eyeshot-mason {
+  display: inline-block;
+  vertical-align: top;
+  margin-bottom: 10px;
+}
+
+@media only screen and (max-width: 1023px) and (min-width: 768px) {
+  .masonry {
+      columns: 2;
+  }
+}
+
+@media only screen and (min-width: 1024px) {
+  .masonry {
+      columns: 3;
+  }
+}
+
+.eyeshot-mason,
+.eyeshot-media {
+  border-radius: 4px;
+  overflow: hidden;
+}
+
+.eyeshot-mason {
+  filter: drop-shadow(0px 2px 2px rgba(0, 0, 0, .3));
+  transition: filter .25s ease-in-out;
+}
+
+.eyeshot-mason img {
+  width: 100%;
+}
+
+.eyeshot-mason:hover {
+  filter: drop-shadow(0px 5px 5px rgba(0, 0, 0, .3));
+}
+
+.masonry-footer {
+  font-size: .75em;
+  opacity: .25;
+  text-align: center;
+  padding-top: 3em;
+  padding-bottom: 3em;
+  margin-bottom: -1.5em;
+  transition: opacity 1s ease-in-out;
+}
+
+.masonry-footer a {
+  color: currentColor;
+}
+
+.masonry-footer:hover,
+.masonry-footer:active,
+.masonry-footer:focus {
+  opacity: .75;
+}

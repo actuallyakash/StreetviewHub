@@ -10,6 +10,8 @@
 
    @include('profile/user-card')
 
+   @include('profile/eyeshot-masonary')
+
 </div>
 
 @endsection
