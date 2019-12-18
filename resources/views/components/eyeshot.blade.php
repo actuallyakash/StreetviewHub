@@ -1,4 +1,4 @@
-<div class="eyeshot mb-4 shadow-sm eyeshot-{{ $eyeshot->id }}">
+<div class="eyeshot mb-4 shadow-sm eyeshot-{{ Helper::encode_id($eyeshot->id) }}">
     <div class="eyeshot-image">
         <a class="eyeshot-link" href="#">
             @if ( $eyeshot->user_id == $eyeshot->pioneer)

@@ -1,9 +1,24 @@
 <?php
 
 use Illuminate\Support\Facades\DB;
+use Vinkla\Hashids\Facades\Hashids;
 
 class Helper
 {
+    public static function encode_id($id)
+    {
+        $hashId = Hashids::encode($id);
+        
+        return $hashId;
+    }
+
+    public static function decode_id($hashId)
+    {
+        $rehash = Hashids::decode($hashId);
+        
+        return $rehash[0];
+    }
+
     public static function tagSerialize($tagsString = null)
     {
         if (isset($tagsString) && $tagsString != '') {
