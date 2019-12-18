@@ -4,7 +4,7 @@
             
             @foreach ($user->eyeshots as $eyeshot)
             <div class="eyeshot-mason">
-                <img src="{{ asset("storage/eyeshots/$eyeshot->media") }}" alt="{{ $eyeshot->location_name }}" class="eyeshot-media">
+                @include('components/eyeshot')
             </div>
             @endforeach
             
