@@ -1,6 +1,6 @@
-<div class="eyeshot mb-4 shadow-sm eyeshot-{{ Helper::encode_id($eyeshot->id) }}">
+<div class="eyeshot mb-4 shadow-sm">
     <div class="eyeshot-image">
-        <a class="eyeshot-link" href="#">
+        <div class="eyeshot-media" data-eyeshot="eyeshot-{{ Helper::encode_id($eyeshot->id) }}">
             @if ( $eyeshot->user_id == $eyeshot->pioneer)
             <span class="pioneer"><i class="fas fa-medal"></i></span>
             @endif
@@ -11,7 +11,7 @@
                 <img class="img-fluid" alt="{{ $eyeshot->location_name }}"
                     src="{{ asset("storage/eyeshots/$eyeshot->media") }}">
             </picture>
-        </a>
+        </div>
     </div>
     <div class="eyeshot-details slide-up">
         <p class="card-text eyeshot-location">{{ $eyeshot->location_name }}</p>

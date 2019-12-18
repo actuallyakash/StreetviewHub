@@ -60,7 +60,6 @@
         });
 
         panorama.addListener('pano_changed', function() {
-            
 
             var panoId = panorama.getPano();
             var element = $('#sv-pano .cta-street-view');
@@ -239,7 +238,7 @@
         favouriteOps(panoId, 'unfavourite', element);
     });
 
-    // favourite view details
+    // favourite eyeshot details
     $("div#favouriteBox").on('click', 'button.btn-fav-info', function(e) {
         e.preventDefault();
 
@@ -252,5 +251,24 @@
     // Tagify
     var input = document.querySelector('input[name="tags"]'),
     tagify = new Tagify(input);
+
+    // View Eyeshot
+    $("div.eyeshot").on('click', '.eyeshot-media', function() {
+        var eyeshot = $(this).data('eyeshot').replace('eyeshot-','');
+        
+        $.ajax({
+            type: 'GET',
+            url: '/get/'+eyeshot+'/details',
+            success: function( data ) {
+                if( data != 0 ) {
+                    $('#viewEyeshot').modal('show');
+                } else {
+                    console.log('No eyeshot found!');
+                }
+            }
+        });
+
+
+    });
 
 })(jQuery);

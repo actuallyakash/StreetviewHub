@@ -70,4 +70,12 @@
         🚧 No view found
     </div>
 </div>
+
+<div class="modal" id="viewEyeshot" tabindex="-1" role="dialog" aria-labelledby="view-eyeshot" aria-hidden="true">
+  <div class="modal-dialog modal-xl" role="document">
+    <div class="modal-content">
+      <h1>this is the modal to show eyeshot</h1>
+    </div>
+  </div>
+</div>
 @endauth

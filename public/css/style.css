@@ -90,6 +90,7 @@ body {
   word-wrap: break-word;
   background-color: #fff;
   background-clip: border-box;
+  cursor: pointer;
 }
 
 .eyeshot-image img {

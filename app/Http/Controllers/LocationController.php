@@ -133,4 +133,16 @@ class LocationController extends Controller
             return 0;
         }
     }
+
+    // Returns eyeshot details for modal
+    public function eyeshot( $eyeshotId )
+    {
+        $eyeshot = Location::find(Helper::decode_id($eyeshotId));
+        
+        if ( $eyeshot ) {
+            return $eyeshot;
+        } else {
+            return 0;
+        }
+    }
 }
