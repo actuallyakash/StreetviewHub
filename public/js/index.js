@@ -14,10 +14,11 @@
         $('[data-tooltip="tooltip"]').tooltip()
     });
 
-    var initMap = function() {
+    var initMap = function(latitude, longitude, pano, heading, pitch, pano_zoom, panoSelector, mapSelector) {
+        
         var loc = {
-            lat: 37.869085,
-            lng: -122.254775
+            lat: latitude,
+            lng: longitude
             // lat: takeMeSomewhereIDontBelong(-180, 180, 5),
             // lng: takeMeSomewhereIDontBelong(-180, 180, 5)
         };
@@ -25,13 +26,14 @@
         var sv = new google.maps.StreetViewService();
 
         // Set up the map.
-        map = new google.maps.Map(document.getElementById('sv-map'), {
+        map = new google.maps.Map(document.getElementById('sv-map'), { // Map selector
             center: loc,
             zoom: 16,
         });
 
         panorama = new google.maps.StreetViewPanorama(
-          document.getElementById('sv-pano'), {
+            document.getElementById('sv-pano'), // Pano Selector
+            {
                 position: location,
                 panControl: true,
                 fullscreenControl: true,
@@ -39,7 +41,8 @@
                 zoomControl: false,
                 addressControl: false,
                 enableCloseButton: false
-        });
+            }
+        );
         
         map.setStreetView(panorama);
 
@@ -47,7 +50,7 @@
         sv.getPanorama({
             location: loc,
             radius: 50
-        }, processSVData);
+        }, processEyeshotData(pano, heading, pitch));
 
         // Look for a nearby Street View panorama when the map is clicked.
         // getPanorama will return the nearest pano when the given
@@ -56,7 +59,7 @@
             sv.getPanorama({
                 location: event.latLng,
                 radius: 100
-            }, processSVData);
+            }, processEyeshotData(pano, heading, pitch));
         });
 
         panorama.addListener('pano_changed', function() {
@@ -105,18 +108,19 @@
         });
     }
 
-    var processSVData = function(data, status) {
-        if (status === 'OK') {
-
-            panorama.setPano(data.location.pano);
+    var processEyeshotData = function(panoId, panoHeading, panoPitch) {
+        
+        if ( panoId ) {
+            
+            panorama.setPano(panoId); // panoId
             panorama.setPov({
-                heading: 270, // here comes the POV details
-                pitch: -1
+                heading: panoHeading, // here comes the POV details
+                pitch: panoPitch
             });
             panorama.setVisible(true);
 
         } else {
-            console.error('Street View data not found for this location.');
+            console.error('Eyeshot not found for this location.');
             $('.sv-not-found').toast({delay: 2000});
             $('.sv-not-found').toast('show');
         }
@@ -261,7 +265,16 @@
             url: '/get/'+eyeshot+'/details',
             success: function( data ) {
                 if( data != 0 ) {
+                    
+                    var panoSelector = '#viewEyeshot #sv-pano';
+                    var mapSelector = '#viewEyeshot #sv-pano #sv-map';
+                    var latitude = Number(data.latitude);
+                    var longitude = Number(data.longitude);
+                    
+                    initMap(latitude, longitude, data.pano_id, data.pano_heading, data.pano_pitch, data.pano_zoom, panoSelector, mapSelector);
+
                     $('#viewEyeshot').modal('show');
+                    console.log(data);
                 } else {
                     console.log('No eyeshot found!');
                 }

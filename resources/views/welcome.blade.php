@@ -1,5 +1,6 @@
 @extends('layouts.app')
 @section('content')
+@php $page = "welcome"; @endphp
 <div class="map-box">
     <div id="sv-pano">
         <div id="sv-map"></div>

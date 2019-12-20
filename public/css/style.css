@@ -222,3 +222,8 @@ body {
 .masonry-footer:focus {
   opacity: .75;
 }
+
+/* Modal */
+#viewEyeshot .modal-content {
+  height: 500px;
+}

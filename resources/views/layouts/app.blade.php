@@ -71,6 +71,13 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
     <script src="{{ asset('js/tagify.min.js') }}"></script>
     <script src="{{ asset('js/index.js') }}" async defer></script>
-    <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBD52XR31rIk-MaE6AKlj_pLYlKxeJGUBQ&callback=initMap"></script>
+    @if( isset($page) && $page == "welcome" )
+    <script>
+    $(document).ready(function() {
+        initMap();
+    });
+    </script>
+    @endif
+    <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBD52XR31rIk-MaE6AKlj_pLYlKxeJGUBQ"></script>
 </body>
 </html>
