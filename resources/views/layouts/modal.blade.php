@@ -72,9 +72,12 @@
 </div>
 
 <div class="modal" id="viewEyeshot" tabindex="-1" role="dialog" aria-labelledby="view-eyeshot" aria-hidden="true">
+    <button type="button" class="close close-eyeshot-viewer" data-dismiss="modal" aria-label="Close">
+        <span aria-hidden="true">&times;</span>
+    </button>
     <div class="modal-dialog modal-xl" role="document">
         <div class="modal-content text-center">
-            <h5>this is the modal to show eyeshot</h5>
+            <h5 class="eyeshot-location"></h5>
             <div style="display:none;" class="loader text-center m-5"><span class="eyeshot-loader">🌏</span></div>
             <div style="display:none;" id="sv-pano">
                 <div id="sv-map"></div>
@@ -92,6 +95,8 @@
                     
                 </div>
             </div>
+            <div class="eyeshot-status"></div>
+            <div class="eyeshot-tags"></div>
         </div>
     </div>
 </div>

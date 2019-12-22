@@ -265,3 +265,9 @@ body {
   height: 1rem;
   border-width: 0.2em;
 }
+
+#viewEyeshot .close-eyeshot-viewer {
+  color: white;
+  font-size: 50px;
+  opacity: 1;
+}
