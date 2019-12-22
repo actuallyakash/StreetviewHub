@@ -259,7 +259,11 @@
     // View Eyeshot
     $("div.eyeshot").on('click', '.eyeshot-media', function() {
         var eyeshot = $(this).data('eyeshot').replace('eyeshot-','');
-        
+        $('#viewEyeshot').modal('show');
+
+        $('#viewEyeshot .loader').css('display', 'block');
+        $('#viewEyeshot #sv-pano').css('display', 'none');
+
         $.ajax({
             type: 'GET',
             url: '/get/'+eyeshot+'/details',
@@ -270,11 +274,11 @@
                     var mapSelector = '#viewEyeshot #sv-pano #sv-map';
                     var latitude = Number(data.latitude);
                     var longitude = Number(data.longitude);
-                    
+
                     initMap(latitude, longitude, data.pano_id, data.pano_heading, data.pano_pitch, data.pano_zoom, panoSelector, mapSelector);
 
-                    $('#viewEyeshot').modal('show');
-                    console.log(data);
+                    $('#viewEyeshot .loader').css('display', 'none');
+                    $('#viewEyeshot #sv-pano').css('display', 'block');
                 } else {
                     console.log('No eyeshot found!');
                 }

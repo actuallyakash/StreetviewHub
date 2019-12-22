@@ -75,7 +75,8 @@
     <div class="modal-dialog modal-xl" role="document">
         <div class="modal-content text-center">
             <h5>this is the modal to show eyeshot</h5>
-            <div id="sv-pano">
+            <div style="display:none;" class="loader text-center m-5"><span class="eyeshot-loader">🌏</span></div>
+            <div style="display:none;" id="sv-pano">
                 <div id="sv-map"></div>
                 <div class="action-buttons">
                     @auth
