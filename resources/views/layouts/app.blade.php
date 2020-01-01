@@ -48,6 +48,13 @@
                         </li>
                     </ul>
 
+                    <form class="form-search" action="/search" method="get">
+                        <input type="text" class="search-input" name="q" placeholder="Search for Eyeshot or Location">
+                        <span class="search-icon">
+                            <button class="button-icon">🔍</button>
+                        </span>
+                    </form>
+
                     @auth
                     <a class="btn btn-outline-danger" href="{{ url('/logout') }}">Logout</a>
                     @else
@@ -71,13 +78,13 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
     <script src="{{ asset('js/tagify.min.js') }}"></script>
     <script src="{{ asset('js/index.js') }}" async defer></script>
-    @if( isset($page) && $page == "welcome" )
+    {{-- @if( isset($page) && $page == "welcome" )
     <script>
     $(document).ready(function() {
         initMap();
     });
     </script>
-    @endif
+    @endif --}}
     <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBD52XR31rIk-MaE6AKlj_pLYlKxeJGUBQ"></script>
 </body>
 </html>

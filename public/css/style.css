@@ -271,3 +271,66 @@ body {
   font-size: 50px;
   opacity: 1;
 }
+
+#viewEyeshot .modal-dialog {
+    max-width: 100%;
+    margin: 1.75rem 1.75rem;
+}
+
+/* Search */
+/* search form */
+.form-search {
+  float: left;
+  height: 33px;
+  margin: 7px 15px 0 0;
+  font-size: 12px;
+  width: 221px;
+  position: relative;
+}
+
+.form-search .search-input {
+  background-color: #f5f8fa;
+  border-radius: 21px;
+  border: 1px solid #e6ecf0;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+  color: #14171a;
+  display: block;
+  font-size: 12px;
+  height: 32px;
+  line-height: 16px;
+  padding: 8px 32px 8px 12px;
+  transition: all .2s ease-in-out;
+  width: 100%;
+}
+
+.form-search .search-input:focus {
+  border: 2px solid var(--primary-color);
+}
+
+.form-search input:focus,
+button:focus {
+  outline: none;
+}
+
+.form-search .search-icon {
+  cursor: pointer;
+  display: block;
+  position: absolute;
+  right: 7px;
+  top: 3px;
+}
+
+.form-search .button-icon {
+  background: transparent;
+  display: inline-block;
+  color: #66757f;
+  font-size: 14px;
+  height: auto;
+  width: auto;
+  border: none;
+  font-style: normal;
+  cursor: pointer;
+  vertical-align: baseline;
+  position: relative;
+}
