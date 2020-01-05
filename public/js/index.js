@@ -232,6 +232,8 @@
             console.error('Street View data not found for this location.');
             $('.sv-not-found').toast({delay: 2000});
             $('.sv-not-found').toast('show');
+            // Keep searching, you'll surely end up somewhere!
+            takeMeSomewhereIDontBelong();
         }
     }
     
@@ -259,7 +261,21 @@
     }
 
     function takeMeSomewhereIDontBelong() {
-        var randomGeoPoints = generateRandomPoint({'lat':37.869085, 'lng':-122.254775}, 1000);
+        // TODO: Add more NOICE radials
+        var radialPoints = [
+            [43.077769, -79.076075],
+            [37.869085, -122.254775],
+            [51.5286416, -0.1015987],
+            [47.3721915, 8.5425051],
+            [48.8863054, 2.3433567],
+            [45.8810642, -6.9345638],
+            [53.3057307, -12.7050537],
+            [64.6323424, 17.0829139],
+            [31.7127264, 120.2551228]
+        ];
+        
+        var radial = radialPoints[Math.floor((Math.random() * (radialPoints.length-1)) + 1)];
+        var randomGeoPoints = generateRandomPoint({'lat':radial[0], 'lng':radial[1]}, 2000);
         
         var latitude = Number(randomGeoPoints['lat']);
         var longitude = Number(randomGeoPoints['lng']);
