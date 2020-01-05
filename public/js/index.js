@@ -14,13 +14,11 @@
         $('[data-tooltip="tooltip"]').tooltip()
     });
 
-    var initMap = function(latitude, longitude, pano, heading, pitch, pano_zoom, panoSelector, mapSelector) {
+    var initMap = function(latitude, longitude, pano, heading, pitch, pano_zoom) {
         
         var loc = {
             lat: latitude,
             lng: longitude
-            // lat: takeMeSomewhereIDontBelong(-180, 180, 5),
-            // lng: takeMeSomewhereIDontBelong(-180, 180, 5)
         };
         
         var sv = new google.maps.StreetViewService();
@@ -109,12 +107,14 @@
     }
 
     var processEyeshotData = function(panoId, panoHeading, panoPitch) {
-        
+        console.log(panoId);
+        console.log(panoHeading);
+        console.log(panoPitch);
         if ( panoId ) {
             
-            panorama.setPano(panoId); // panoId
+            panorama.setPano(panoId);
             panorama.setPov({
-                heading: panoHeading, // here comes the POV details
+                heading: panoHeading,
                 pitch: panoPitch
             });
             panorama.setVisible(true);
@@ -126,7 +126,117 @@
         }
     }
 
-    var takeMeSomewhereIDontBelong = function(center, radius) {
+    var randomLoc = function( latitude, longitude ) {
+        
+        var loc = {
+            lat: latitude,
+            lng: longitude
+        };
+        
+        var sv = new google.maps.StreetViewService();
+
+        // Set up the map.
+        map = new google.maps.Map(document.getElementById('sv-map'), { // Map selector
+            center: loc,
+            zoom: 16,
+        });
+
+        panorama = new google.maps.StreetViewPanorama(
+            document.getElementById('sv-pano'), // Pano Selector
+            {
+                position: location,
+                panControl: true,
+                fullscreenControl: true,
+                linksControl: false,
+                zoomControl: false,
+                addressControl: false,
+                enableCloseButton: false
+            }
+        );
+        
+        map.setStreetView(panorama);
+
+        // Set the initial Street View camera to the center of the map
+        sv.getPanorama({
+            location: loc,
+            radius: 50
+        }, processRandomEyeshot);
+
+        // Look for a nearby Street View panorama when the map is clicked.
+        // getPanorama will return the nearest pano when the given
+        // radius is 100 meters or less.
+        map.addListener('click', function (event) {
+            sv.getPanorama({
+                location: event.latLng,
+                radius: 100
+            }, processRandomEyeshot);
+        });
+
+        panorama.addListener('pano_changed', function() {
+            
+            var panoId = panorama.getPano();
+            var element = $('#sv-pano .cta-street-view');
+            element.attr('data-id', 'fav-'+panoId);
+            // Hotfix for removing old panoId
+            var oldPano = "";
+            if ( oldPano = element.attr("class").match(/fav-\S+/g) ) {
+                element.removeClass(oldPano);
+            }
+            element.addClass('fav-'+panoId);
+            // Checking likes
+            $.ajax({
+                type: 'GET',
+                url: '/location/'+panoId+'/status',
+                success: function(data) {
+                    if( data == 1 ) {
+                        element.attr('title', 'Unlike');
+                        element.attr('data-original-title', 'Unlike');
+                        element.removeClass('unfavourite-sv').addClass('favourite-sv');
+                        element.children('i').removeClass('far').addClass('fas');
+                    } else {
+                        element.attr('title', 'Favourite');
+                        element.attr('data-original-title', 'Favourite');
+                        element.removeClass('favourite-sv').addClass('unfavourite-sv');
+                        element.children('i').removeClass('fas').addClass('far');
+                    }
+                }
+            });
+
+            // Checking pioneer
+            $.ajax({
+                type: 'GET',
+                url: '/get/'+panoId+'/pioneer',
+                success: function( data ) {
+                    if( data != 0 ) {
+                        $("#content .first-explorer").show();
+                        $("#content span.pioneer").text(data.name);
+                    } else {
+                        $("#content .first-explorer").hide();
+                    }
+                }
+            })
+        });
+    }
+
+    function processRandomEyeshot(data, status) {
+        if (status === 'OK') {
+      
+            panorama.setPano(data.location.pano);
+            panorama.setPov({
+                heading: 270,
+                pitch: 0
+            });
+            panorama.setVisible(true);
+      
+        } else {
+            console.error('Street View data not found for this location.');
+            $('.sv-not-found').toast({delay: 2000});
+            $('.sv-not-found').toast('show');
+        }
+    }
+    
+    function generateRandomPoint(center, radius) {
+        // https://stackoverflow.com/questions/31192451/generate-random-geo-coordinates-within-specific-radius-from-seed-point
         var x0 = center.lng;
         var y0 = center.lat;
         // Convert Radius from meters to degrees.
@@ -142,11 +252,19 @@
 
         var xp = x / Math.cos(y0);
 
-        // Resulting point.
         return {
             'lat': y + y0,
             'lng': xp + x0
         };
+    }
+
+    function takeMeSomewhereIDontBelong() {
+        var randomGeoPoints = generateRandomPoint({'lat':37.869085, 'lng':-122.254775}, 1000);
+        
+        var latitude = Number(randomGeoPoints['lat']);
+        var longitude = Number(randomGeoPoints['lng']);
+
+        randomLoc( latitude, longitude );
     }
     
     // Fav/Unfav Ops
@@ -226,7 +344,9 @@
     // Inits & Event Listeners
     //
     $(document).ready(function() {
-      initMap();
+
+        takeMeSomewhereIDontBelong();
+        
     });
 
     // Favourite/Unfavourite ops
@@ -273,8 +393,6 @@
             success: function( data ) {
                 if( data != 0 ) {
                     
-                    var panoSelector = '#viewEyeshot #sv-pano';
-                    var mapSelector = '#viewEyeshot #sv-pano #sv-map';
                     var latitude = Number(data.latitude);
                     var longitude = Number(data.longitude);
 
@@ -282,19 +400,20 @@
                     $("#viewEyeshot .eyeshot-status").text(data.status);
                     $("#viewEyeshot .eyeshot-tags").text(data.tags);
 
-                    initMap(latitude, longitude, data.pano_id, data.pano_heading, data.pano_pitch, data.pano_zoom, panoSelector, mapSelector);
+                    initMap( latitude, longitude, data.pano_id, data.pano_heading, data.pano_pitch, data.pano_zoom );
 
                     $('#viewEyeshot .loader').css('display', 'none');
                     $('#viewEyeshot #sv-pano').css('display', 'block');
 
-                    console.log(data);
                 } else {
                     console.log('No eyeshot found!');
                 }
             }
         });
+    });
 
-
+    $("div#sv-pano").on('click', 'button.randomize-street-view', function() {
+        takeMeSomewhereIDontBelong();
     });
 
 })(jQuery);

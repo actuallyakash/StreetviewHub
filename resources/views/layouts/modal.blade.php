@@ -71,6 +71,8 @@
     </div>
 </div>
 
+@endauth
+
 <div class="modal" id="viewEyeshot" tabindex="-1" role="dialog" aria-labelledby="view-eyeshot" aria-hidden="true">
     <button type="button" class="close close-eyeshot-viewer" data-dismiss="modal" aria-label="Close">
         <span aria-hidden="true">&times;</span>
@@ -83,14 +85,14 @@
                 <div id="sv-map"></div>
                 <div class="action-buttons">
                     @auth
-                        <button class="randomize-street-view btn btn-link" data-tooltip="tooltip" data-placement="left" title="Randomizer"><i class="fas fa-random"></i></button>
                         {{-- Dont' use classes starting from 'fav-', a fix is done in js --}}
                         <button class="unfavourite-sv btn btn-link cta-street-view" data-tooltip="tooltip" data-placement="top" title="Like">
                             <i class="far fa-heart"></i>
                         </button>
+                        <button data-tooltip="tooltip" data-placement="top" title="Share" class="btn btn-link"><i class="fas fa-share-alt"></i></button>
                     @else
-                        <button data-toggle="modal" data-target="#loginSignupTv" data-tooltip="tooltip" data-placement="left" title="Randomizer" class="btn btn-link"><i class="fas fa-random"></i></button>
                         <button data-toggle="modal" data-target="#loginSignupTv" data-tooltip="tooltip" data-placement="top" title="Favourite" class="btn btn-link"><i class="far fa-heart"></i></button>
+                        <button data-tooltip="tooltip" data-placement="top" title="Share" class="btn btn-link"><i class="fas fa-share-alt"></i></button>
                     @endauth
                     
                 </div>
@@ -100,4 +102,3 @@
         </div>
     </div>
 </div>
-@endauth
