@@ -74,7 +74,7 @@
 @endauth
 
 <div class="modal" id="viewEyeshot" tabindex="-1" role="dialog" aria-labelledby="view-eyeshot" aria-hidden="true">
-    <button type="button" class="close close-eyeshot-viewer" data-dismiss="modal" aria-label="Close">
+    <button type="button" class="close close-eyeshot-icon" data-dismiss="modal" aria-label="Close">
         <span aria-hidden="true">&times;</span>
     </button>
     <div class="modal-dialog modal-xl" role="document">
@@ -99,6 +99,33 @@
             </div>
             <div class="eyeshot-status"></div>
             <div class="eyeshot-tags"></div>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="shareEyeshot" tabindex="-1" role="dialog" aria-labelledby="share-eyeshot" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Share</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body text-center">
+                <a class="share-facebook" href="#">
+                    <i class="fab fa-facebook-f"></i>
+                </a>
+                <a class="share-twitter" href="#">
+                    <i class="fab fa-twitter"></i>
+                </a>
+
+                <div class="share-url mt-4">
+                    <input onclick="this.select();" type="text" value="http://eyeshot.xyz/fkajdfkjd" class="form-control" placeholder="URL" readonly>
+                    
+                    <button class="btn btn-link"><i class="far fa-copy"></i></button>
+                </div>
+            </div>
         </div>
     </div>
 </div>

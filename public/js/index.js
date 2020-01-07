@@ -299,7 +299,7 @@
                     type: 'GET',
                     url: '/location/favourite/'+locationName+'/'+latitude+'/'+longitude+'/'+panoId+'/'+panoHeading+'/'+panoPitch+'/'+panoZoom,
                     success: function(data) {
-                        if(data == 1) {
+                        if( data == 1 ) {
                             element.attr('title', 'Unlike');
                             element.attr('data-original-title', 'Unlike');
                             element.removeClass('unfavourite-sv').addClass('favourite-sv');
@@ -428,7 +428,7 @@
         });
     });
 
-    $("div#sv-pano").on('click', 'button.randomize-street-view', function() {
+    $("div#sv-pano").on('click', 'button.randomize-eyeshot', function() {
         takeMeSomewhereIDontBelong();
     });
 

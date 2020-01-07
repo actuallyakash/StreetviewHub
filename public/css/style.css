@@ -45,6 +45,7 @@ body {
   border-radius: 40px;
   padding: 8px;
   background: rgba(0, 0, 0, 0.6);
+  user-select: none;
 }
 
 #sv-pano .action-buttons button i {
@@ -266,10 +267,14 @@ body {
   border-width: 0.2em;
 }
 
-#viewEyeshot .close-eyeshot-viewer {
+.modal .close-eyeshot-icon {
   color: white;
   font-size: 50px;
   opacity: 1;
+}
+
+.modal .close-eyeshot-icon:hover {
+  color: white;
 }
 
 #viewEyeshot .modal-dialog {
@@ -333,4 +338,57 @@ button:focus {
   cursor: pointer;
   vertical-align: baseline;
   position: relative;
+}
+
+#shareEyeshot .modal-header {
+  border-bottom: 0;
+}
+
+#shareEyeshot .modal-body i,
+#shareEyeshot .modal-body i {
+  color: white;
+  font-size: 25px;
+}
+
+#shareEyeshot .modal-body .share-facebook i,
+#shareEyeshot .modal-body .share-twitter i {
+  width: 60px;
+  height: 60px;
+  line-height: 60px;
+  border-radius: 50%;
+  text-align: center;
+  vertical-align: middle;
+}
+
+#shareEyeshot .modal-body .share-facebook i {
+  background: #3b5998;
+}
+
+#shareEyeshot .modal-body .share-twitter i {
+  background: #1da1f2;
+}
+
+#shareEyeshot .modal-body.text-center a {
+  margin: 0 25px;
+}
+
+#shareEyeshot .share-url {
+  display: flex;
+  justify-content: center;
+  background: #e9ecef;
+  padding: 6px;
+  border-radius: 5px;
+  margin: 0 20px;
+}
+
+#shareEyeshot .share-url input {
+  border: 0;
+}
+
+#shareEyeshot .share-url input:focus {
+  box-shadow: none;
+}
+
+#shareEyeshot .share-url i {
+  color: black;
 }
