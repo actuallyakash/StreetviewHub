@@ -121,9 +121,9 @@
                 </a>
 
                 <div class="share-url mt-4">
-                    <input onclick="this.select();" type="text" value="http://eyeshot.xyz/fkajdfkjd" class="form-control" placeholder="URL" readonly>
+                    <input onclick="this.select();" type="text" value="http://eyeshot.xyz/hahaha" class="form-control eyeshot-url" placeholder="URL" readonly>
                     
-                    <button class="btn btn-link"><i class="far fa-copy"></i></button>
+                    <button class="btn btn-link copy-eyeshot-url"><i class="far fa-copy"></i></button>
                 </div>
             </div>
         </div>

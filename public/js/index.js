@@ -428,8 +428,15 @@
         });
     });
 
+    // Randomizer
     $("div#sv-pano").on('click', 'button.randomize-eyeshot', function() {
         takeMeSomewhereIDontBelong();
+    });
+
+    // Copying Sharing url in clipboard
+    $("#shareEyeshot .copy-eyeshot-url").on('click', function() {
+        $("#shareEyeshot .eyeshot-url").select();
+        document.execCommand("copy");
     });
 
 })(jQuery);
