@@ -368,8 +368,9 @@ button:focus {
   background: #1da1f2;
 }
 
-#shareEyeshot .modal-body.text-center a {
+#shareEyeshot .modal-body a {
   margin: 0 25px;
+  text-decoration: none;
 }
 
 #shareEyeshot .share-url {

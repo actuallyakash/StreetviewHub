@@ -437,6 +437,7 @@
     $("#shareEyeshot .copy-eyeshot-url").on('click', function() {
         $("#shareEyeshot .eyeshot-url").select();
         document.execCommand("copy");
+        alert('Copied!');
     });
 
 })(jQuery);

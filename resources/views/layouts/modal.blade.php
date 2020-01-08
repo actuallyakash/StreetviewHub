@@ -113,10 +113,10 @@
                 </button>
             </div>
             <div class="modal-body text-center">
-                <a class="share-facebook" href="#">
+                <a target="_blank" class="share-facebook" href="https://www.facebook.com/sharer/sharer.php?u=http://eyeshot.xyz/eyeshot/hahaha">
                     <i class="fab fa-facebook-f"></i>
                 </a>
-                <a class="share-twitter" href="#">
+                <a target="_blank" class="share-twitter" href="https://twitter.com/share?url=http://eyeshot.xyz/eyeshot/hahaha&via=eyeshot.xyz&text=roamingAtUnknownPlace">
                     <i class="fab fa-twitter"></i>
                 </a>
 
