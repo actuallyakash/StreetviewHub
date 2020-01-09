@@ -389,7 +389,7 @@
     });
 
     // Tagify
-    var input = document.querySelector('input[name="tags"]'),
+    var input = document.querySelector('#favouriteBox input[name="tags"]'),
     tagify = new Tagify(input);
 
     // View Eyeshot

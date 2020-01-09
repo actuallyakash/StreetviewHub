@@ -24,12 +24,17 @@ body {
   z-index: 2;
   background: transparent;
   opacity: 0.6;
-  width: 30%;
+  width: 20%;
   height: 40%;
+  border: 3px solid black;
+  transition: width 0.3s, height 0.3s;
+  margin: 10px;
 }
 
 #sv-map:hover {
   opacity: 0.9;
+  width: 30%;
+  height: 50%;
 }
 
 .map-box {
@@ -392,4 +397,131 @@ button:focus {
 
 #shareEyeshot .share-url i {
   color: black;
+}
+
+/* Favourite Modal */
+.fav-shot {
+  border-radius: 0;
+  background-color: #ffffff;
+  border: 1px solid #ddd;
+  padding: 0;
+}
+
+.fav-shot .list-inline {
+  border-bottom: 1px solid #ddd;
+  padding: 10px;
+}
+
+.fav-shot .list-inline li {
+  position: relative;
+}
+
+.fav-shot .list-inline li.active::after {
+  position: absolute;
+  display: block;
+  width: 0;
+  height: 0;
+  content: "";
+  top: 30px;
+  left: 50%;
+  left: -webkit-calc(50% - 5px);
+  left: -moz-calc(50%-5px);
+  left: calc(50% - 5px);
+  border-left: 5px solid transparent;
+  border-right: 5px solid transparent;
+  border-top: 5px solid #dddddd;
+}
+
+.fav-shot .list-inline li.active a {
+  color: #222222;
+  font-weight: bold;
+}
+
+#favouriteBox .fav-shot .form-control {
+  width: 100%;
+  border: none;
+  border-radius: 0;
+  box-shadow: none;
+}
+
+.fav-shot .list-inline li+li {
+  margin-left: 10px;
+}
+
+.tags-container {
+  margin-bottom: 8px;
+}
+
+.descriptionInput {
+  resize: none;
+  border-bottom-width: 15px;
+  box-shadow: 0 30px 40px rgba(0, 0, 0, .1);
+}
+
+.divider {
+  margin: 10px 0;
+  height: 2px;
+  background: -webkit-gradient(linear, 0 0, 100% 0, from(white), to(white), color-stop(50%, #4DC0B5));
+  background: #4DC0B5;
+}
+
+#favouriteBox .btn-mini {
+  padding: 4px 12px;
+  font-size: 12px;
+}
+
+#favouriteBox .modal-header {
+  border: 0;
+  margin-bottom: 0;
+  padding: 10px;
+}
+
+#favouriteBox .modal-header .close {
+  padding: 0;
+  margin: 0;
+}
+
+#favouriteBox .modal-content {
+  border-radius: 10px;
+}
+
+#favouriteBox .fav-shot {
+  border-radius: 10px;
+}
+
+@media (min-width: 576px) {
+  .modal-es-size {
+      max-width: 650px !important;
+  }
+}
+
+#favouriteBox .eyeshot-section {
+  padding: 0px;
+}
+
+#favouriteBox .eyeshot-avatar {
+  margin: 0px -14px 0px -14px;
+}
+
+#favouriteBox .eyeshot-avatar img {
+  height: 60px;
+  width: 60px;
+  border-radius: 50%;
+}
+
+#favouriteBox .eyeshot-avatar .user-nickname {
+  word-break: break-all;
+}
+
+#favouriteBox .post-eyeshot {
+  padding: 10px;
+  background-color: #f6f7f8;
+}
+
+#favouriteBox ul li {
+  padding: 2px;
+}
+
+#favouriteBox ul li a {
+  text-decoration: underline;
 }

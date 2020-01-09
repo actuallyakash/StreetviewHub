@@ -28,27 +28,43 @@
 @endif
 
 @auth
-<div class="modal" id="favouriteBox" tabindex="-1" role="dialog" aria-labelledby="favouriteModal" aria-hidden="true">
-    <div class="modal-dialog modal-xl" role="document">
-        <div class="modal-content">
-            <div class="modal-body text-center">
-                <h5 class="location-title">Great find</h5>
-                <p class="font-weight-light">Add more info so other users can see it too</p>
-                <div class="container">
-                    <form id="favLocation">
-                        <div class="form-group">
-                            <textarea name="status" class="form-control status" placeholder="Why favourite? (Optional)"
-                                rows="3"></textarea>
-                        </div>
-                        <div class="form-group">
-                            <input name="tags" type="text" placeholder="Tags (Optional)">
-                        </div>
-                        <div class="form-group">
-                            <button type="submit" class="btn btn-success btn-fav-info">Done</button>
-                        </div>
-                    </form>
+
+<div class="modal fade" id="favouriteBox">
+    <div class="modal-dialog modal-dialog-centered modal-es-size">
+        <div class="modal-content">            
+            <form class="fav-shot" id="favLocation">
+                <div class="modal-header">
+                    <h3 class="text-center mx-auto">Great Find</h3>
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
                 </div>
-            </div>
+                <div class="modal-body">
+                    <div class="row">
+                        <div class="col-md-2 text-center eyeshot-avatar">
+                            <img src="{{ Auth::user()->avatar }}">
+                            <h6 class="user-nickname">{{ Auth::user()->nickname }}</h6>
+                        </div>
+                        <div class="col-md-10 eyeshot-section">
+                            <textarea name="status" class="form-control status descriptionInput" placeholder="Wanna describe? (Optional)" rows="5" autofocus></textarea>
+                            <div class="divider"></div>
+                            <input name="tags" type="text" placeholder="Tags (Optional)">
+                            <div class="d-flex post-eyeshot">
+                                <button type="submit" class="btn btn-primary btn-mini ml-auto btn-fav-info">
+                                    Post
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="text-center">
+                    <ul class="list-unstyled">
+                        <li>Go ahead & describe what's happening 📋</li>
+                        <li>Use tags for efficient categorization 🏷</li>
+                        <li>Keep exploring 🗺</li>
+                        <li>You never know where you'll end up 😍</li>
+                        <li class="mt-3"><strong>'Cause you take me places I've never been - <a target="_blank" rel="nofollow" href="https://www.youtube.com/watch?v=2dufPBL-pLU">Mark Wills</a></strong></li>
+                    </ul>
+                </div>
+            </form>
         </div>
     </div>
 </div>
@@ -103,7 +119,7 @@
     </div>
 </div>
 
-<div class="modal fade" id="shareEyeshot" tabindex="-1" role="dialog" aria-labelledby="share-eyeshot" aria-hidden="true">
+<div class="modal" id="shareEyeshot" tabindex="-1" role="dialog" aria-labelledby="share-eyeshot" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered" role="document">
         <div class="modal-content">
             <div class="modal-header">
