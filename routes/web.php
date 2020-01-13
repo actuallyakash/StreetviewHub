@@ -40,6 +40,7 @@ Route::get('/get/{eyeshotId}/details', 'LocationController@eyeshot');
 #Pages
 Route::get('/feed', 'PagesController@feed');
 Route::get('/search', 'PagesController@search');
+Route::get('/categories', 'PagesController@categories');
 
 
 

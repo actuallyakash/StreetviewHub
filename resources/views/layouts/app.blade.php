@@ -20,7 +20,7 @@
         <header>
             {{-- Desktop Navbar --}}
             <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-                <a class="navbar-brand" href="#">Street View</a>
+                <a class="navbar-brand" href="/">Street View</a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#openXsNav"
                     aria-controls="openXsNav" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
@@ -33,6 +33,9 @@
                         </li>
                         <li class="nav-item active">
                             <a class="nav-link" href="/feed">Feed</a>
+                        </li>
+                        <li class="nav-item active">
+                            <a class="nav-link" href="/categories">Categories</a>
                         </li>
                         <li class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
