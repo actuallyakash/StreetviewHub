@@ -440,4 +440,27 @@
         alert('Copied!');
     });
 
+    $("#sv-pano .share-eyeshot").on('click', function() {
+        $("#shareEyeshot").modal('show');
+        
+        var latitude = panorama.getPosition().lat(),
+            longitude = panorama.getPosition().lng(),
+            panoId = panorama.getPano(),
+            heading = panorama.getPov().heading,
+            pitch = panorama.getPov().pitch,
+            zoom = panorama.getPov().zoom;
+
+        var encode = btoa(latitude +":"+ longitude +":"+ panoId +":"+ heading +":"+ pitch +":"+ zoom);
+        var decode = atob(encode);
+
+        var details = decode.split(':');
+        var url = "http://eyeshot.xyz?s="+encode;
+        var facebook = "https://www.facebook.com/sharer/sharer.php?u="+url;
+        var twitter = "https://twitter.com/share?url="+url+"&via=eyeshot.xyz&text=roamingAtUnknownPlace";
+
+        $("#shareEyeshot .share-url input").val(url);
+        $("#shareEyeshot a.share-facebook").attr('href', facebook);
+        $("#shareEyeshot a.share-twitter").attr('href', twitter);
+    });
+
 })(jQuery);
