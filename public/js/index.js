@@ -107,9 +107,6 @@
     }
 
     var processEyeshotData = function(panoId, panoHeading, panoPitch) {
-        console.log(panoId);
-        console.log(panoHeading);
-        console.log(panoPitch);
         if ( panoId ) {
             
             panorama.setPano(panoId);
@@ -365,11 +362,10 @@
         }
         
         if($( "#shared-pano" ).length) {
-            var url = new URL(window.location.href);
-            var params = url.searchParams.get('s');
-            var decode = atob(params);
-            var details = decode.split(':');
-            initMap( details[0], details[1], details[2], details[3], details[4], details[5] );
+            var params = (new URL(window.location.href)).searchParams.get('s'),
+                decode = atob(params),
+                details = decode.split(':');
+            initMap( Number(details[0]), Number(details[1]), details[2], Number(details[3]), Number(details[4]), Number(details[5]) );
         }
     });
 
