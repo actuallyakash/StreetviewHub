@@ -360,9 +360,17 @@
     // Inits & Event Listeners
     //
     $(document).ready(function() {
-
-        takeMeSomewhereIDontBelong();
+        if($( "#landing-pano" ).length) {
+            takeMeSomewhereIDontBelong();
+        }
         
+        if($( "#shared-pano" ).length) {
+            var url = new URL(window.location.href);
+            var params = url.searchParams.get('s');
+            var decode = atob(params);
+            var details = decode.split(':');
+            initMap( details[0], details[1], details[2], details[3], details[4], details[5] );
+        }
     });
 
     // Favourite/Unfavourite ops
@@ -451,9 +459,7 @@
             zoom = panorama.getPov().zoom;
 
         var encode = btoa(latitude +":"+ longitude +":"+ panoId +":"+ heading +":"+ pitch +":"+ zoom);
-        var decode = atob(encode);
 
-        var details = decode.split(':');
         var url = "http://eyeshot.xyz?s="+encode;
         var facebook = "https://www.facebook.com/sharer/sharer.php?u="+url;
         var twitter = "https://twitter.com/share?url="+url+"&via=eyeshot.xyz&text=roamingAtUnknownPlace";
