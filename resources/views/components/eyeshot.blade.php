@@ -8,13 +8,14 @@
                 <source srcset="{{ asset("storage/eyeshots/$eyeshot->media") }}"
                     media="(-webkit-min-device-pixel-ratio: 1.5), (min--moz-device-pixel-ratio: 1.5), (-o-min-device-pixel-ratio: 3/2), (min-device-pixel-ratio: 1.5), (min-resolution: 1.5dppx)">
                 <source srcset="{{ asset("storage/eyeshots/$eyeshot->media") }}">
-                <img class="img-fluid" alt="{{ $eyeshot->location_name }}"
-                    src="{{ asset("storage/eyeshots/$eyeshot->media") }}">
+                <img class="img-fluid" alt="{{ $eyeshot->location_name }}" src="{{ asset("storage/eyeshots/$eyeshot->media") }}">
             </picture>
         </div>
     </div>
     <div class="eyeshot-details slide-up">
-        <p class="card-text eyeshot-location">{{ $eyeshot->location_name }}</p>
+        @if($eyeshot->status)
+        <p title="{{ $eyeshot->status }}" class="card-text eyeshot-status">{{ $eyeshot->status }}</p>
+        @endif
         <div class="d-flex justify-content-between align-items-center">
             <div class="d-flex align-items-center">
                 <img class="eyeshot-avatar" src="{{ $eyeshot->owner->avatar }}">
