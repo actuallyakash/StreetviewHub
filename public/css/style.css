@@ -115,11 +115,29 @@ body {
   margin: 10px;
 }
 
+.eyeshot .eyeshot-meta {
+  text-align: left;
+}
+
 .eyeshot .eyeshot-status {
   overflow: hidden;
   white-space: nowrap;
   text-overflow: ellipsis;
   margin-bottom: 0.75rem;
+  font-size: 13px;
+  line-height: 1.3em;
+  color: #333;
+  margin: 0 0 2px 0;
+  max-width: 100%;
+  font-weight: 500;
+}
+
+.eyeshot .eyeshot-published {
+  font-size: 12px;
+  color: #999;
+  line-height: 1em;
+  margin-bottom: 0;
+  float: left;
 }
 
 .eyeshot .eyeshot-details {
@@ -133,7 +151,13 @@ body {
 }
 
 .eyeshot:hover .eyeshot-details {
-  top: calc(75%);
+  top: calc(80%);
+}
+
+@media screen and (min-width: 530px) {
+  .eyeshot:hover .eyeshot-details {
+    top: calc(80%);
+  }
 }
 
 .top-bar .topbar-action {
@@ -514,7 +538,7 @@ button:focus {
 
 @media (min-width: 576px) {
   .modal-es-size {
-      max-width: 650px !important;
+    max-width: 650px !important;
   }
 }
 

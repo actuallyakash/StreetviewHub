@@ -13,15 +13,16 @@
         </div>
     </div>
     <div class="eyeshot-details slide-up">
-        @if($eyeshot->status)
-        <p title="{{ $eyeshot->status }}" class="card-text eyeshot-status">{{ $eyeshot->status }}</p>
-        @endif
         <div class="d-flex justify-content-between align-items-center">
-            <div class="d-flex align-items-center">
-                <img class="eyeshot-avatar" src="{{ $eyeshot->owner->avatar }}">
-                <p class="eyeshot-username">{{ $eyeshot->owner->name }}</p>
+            <div class="eyeshot-meta">
+                @if($eyeshot->status)
+                <p title="{{ $eyeshot->status }}" class="eyeshot-status">{{ $eyeshot->status }}</p>
+                @else
+                <p title="Eyeshot by {{ $eyeshot->owner->name }}" class="card-text eyeshot-status">Eyeshot by <b>{{ $eyeshot->owner->name }}</b></p>
+                @endif
+                <p class="eyeshot-published">{{ $eyeshot->created_at->diffForHumans() }}</p>
             </div>
-            <small class="text-muted">{{ $eyeshot->created_at->diffForHumans() }}</small>
+            <button class="btn btn-outline-primary btn-sm"><i class="fas fa-heart"></i> Like</button>
         </div>
     </div>
 </div>
