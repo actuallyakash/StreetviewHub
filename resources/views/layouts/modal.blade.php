@@ -96,21 +96,23 @@
     <button type="button" class="close close-eyeshot-icon" data-dismiss="modal" aria-label="Close">
         <span aria-hidden="true">&times;</span>
     </button>
-    <div class="modal-dialog modal-xl" role="document">
-        <div class="modal-content">
+    <div class="modal-dialog modal-xl modal-dialog-centered" role="document">
+        
+        <div style="display:none;" class="loader text-center m-5"><span class="eyeshot-loader">🌏</span></div>
+
+        <div style="display:none;" class="modal-content">
             {{-- <h5 class="eyeshot-location"></h5> --}}
-            <div class="d-flex align-items-center view-header">
+            <div class="d-flex align-items-center eyeshot-header">
                 <div class="eyeshot-avatar">
                     <img src="{{ $eyeshot->owner->avatar }}">
                 </div>
-                <div class="eyeshot-meta">
+                <div class="eyeshot-user">
                     <p class="eyeshot-title">{{ $eyeshot->title }}</p>
                     <p class="eyeshot-username">by <a href="/{{ $eyeshot->owner->nickname }}">{{ $eyeshot->owner->name }}</a></p>
                 </div>
             </div>
 
-            <div style="display:none;" class="loader text-center m-5"><span class="eyeshot-loader">🌏</span></div>
-            <div style="display:none;" id="sv-pano">
+            <div id="sv-pano">
                 <div id="sv-map"></div>
                 <div class="action-buttons">
                     @auth
@@ -124,14 +126,27 @@
                     <button class="share-eyeshot btn btn-link" data-tooltip="tooltip" data-placement="right" title="Share"><i class="fas fa-share-alt"></i></button>                    
                 </div>
             </div>
+            
             <div class="row eyeshot-details container">
                 <div class="col-md-7">
                     <div class="eyeshot-status"></div>
                 </div>
-                <div class="col-md-5">
-                    <div class="d-flex justify-content-betwen">
+                <div class="col-md-5 eyeshot-meta">
+                    <div class="d-flex">
                         <i class="m-2 fas fa-tag"></i>
                         <div class="eyeshot-tags"></div>
+                    </div>
+                    <div class="d-flex">
+                        <i class="m-2 fas fa-map-marker-alt"></i>
+                        <div class="eyeshot-location mt-1 ml-2"></div>
+                    </div>
+                    <div class="d-flex">
+                        <i class="m-2 fas fa-calendar"></i>
+                        <div class="eyeshot-published mt-1 ml-2"></div>
+                    </div>
+                    <div class="d-flex">
+                        <i class="m-2 fas fa-folder-plus"></i>
+                        <div class="eyeshot-saves mt-1 ml-2"></div>
                     </div>
                 </div>
             </div>

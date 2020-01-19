@@ -10,6 +10,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Str;
+use Carbon\Carbon;
 
 class LocationController extends Controller
 {
@@ -138,8 +139,11 @@ class LocationController extends Controller
     // Returns eyeshot details for modal
     public function eyeshot( $eyeshotId )
     {
-        $eyeshot = Location::find(Helper::decode_id($eyeshotId));
-        
+        $eyeshot = Location::find(Helper::decode_id($eyeshotId))->toArray();
+        $totalEyeshots = Location::where('pano_id', $eyeshot['pano_id'])->count();
+        $eyeshot['created_at'] = Carbon::parse($eyeshot['created_at'])->diffForHumans();
+        $eyeshot['eyeshot_saves'] = $totalEyeshots;
+
         if ( $eyeshot ) {
             return $eyeshot;
         } else {

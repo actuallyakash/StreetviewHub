@@ -407,7 +407,7 @@
         $("#viewEyeshot .eyeshot-status").text('');
         $("#viewEyeshot .eyeshot-tags").text('');
         $('#viewEyeshot .loader').css('display', 'block');
-        $('#viewEyeshot #sv-pano').css('display', 'none');
+        $('#viewEyeshot .modal-content').css('display', 'none');
 
         $.ajax({
             type: 'GET',
@@ -423,11 +423,14 @@
                     $("#viewEyeshot .eyeshot-status").text(data.status);
                     var tags = data.tags.split(",");
                     tags.map(tag => $("#viewEyeshot .eyeshot-tags").append("<a href='/search?q="+tag+"' class='eyeshot-tag badge'>"+tag+"</a>"));
+                    $("#viewEyeshot .eyeshot-location").text(data.location_name);
+                    $("#viewEyeshot .eyeshot-published").text(data.created_at);
+                    $("#viewEyeshot .eyeshot-saves").text(data.eyeshot_saves+" saves");
 
                     initMap( latitude, longitude, data.pano_id, data.pano_heading, data.pano_pitch, data.pano_zoom );
 
                     $('#viewEyeshot .loader').css('display', 'none');
-                    $('#viewEyeshot #sv-pano').css('display', 'block');
+                    $('#viewEyeshot .modal-content').css('display', 'block');
 
                 } else {
                     console.log('No eyeshot found!');

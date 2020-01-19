@@ -273,7 +273,11 @@ body {
   border-radius: 50%;
 }
 
-#viewEyeshot .eyeshot-meta {
+#viewEyeshot .modal-content {
+  background: #f4f4f4;
+}
+
+#viewEyeshot .eyeshot-user {
   text-align: left;
 }
 
@@ -296,7 +300,7 @@ body {
   font-weight: 500;
 }
 
-#viewEyeshot .view-header {
+#viewEyeshot .eyeshot-header {
   padding: 15px;
 }
 
@@ -311,10 +315,6 @@ body {
 #viewEyeshot .eyeshot-status {
   padding: 0 0 0 30px;
   text-align: justify;
-}
-
-#viewEyeshot .eyeshot-tags {
-  
 }
 
 #viewEyeshot .eyeshot-tags .eyeshot-tag {
@@ -333,10 +333,21 @@ body {
   transition: opacity 0.5s;
 }
 
+#viewEyeshot .eyeshot-details .eyeshot-meta i {
+  color: #948787
+}
+
+.loader {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%,-50%);
+}
+
 .eyeshot-loader {
-  font-size: 38px;
+  font-size: 40px;
   display: inline-block;
-  animation: spin-cir 3.5s linear infinite;
+  animation: spin-cir 1.6s linear infinite;
 }
 
 @-webkit-keyframes spin-cir {
