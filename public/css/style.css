@@ -105,16 +105,6 @@ body {
   border-radius: 6px 6px 0 0;
 }
 
-.eyeshot .eyeshot-avatar {
-  height: 50px;
-  width: 50px;
-  border-radius: 50%;
-}
-
-.eyeshot .eyeshot-username {
-  margin: 10px;
-}
-
 .eyeshot .eyeshot-meta {
   text-align: left;
 }
@@ -277,8 +267,70 @@ body {
 }
 
 /* Modal */
-#viewEyeshot .modal-content {
-  height: 500px;
+#viewEyeshot .eyeshot-avatar img {
+  height: 65px;
+  width: 65px;
+  border-radius: 50%;
+}
+
+#viewEyeshot .eyeshot-meta {
+  text-align: left;
+}
+
+#viewEyeshot .eyeshot-title,
+#viewEyeshot .eyeshot-username {
+  margin: 0px;
+}
+
+#viewEyeshot .eyeshot-title {
+  font-size: 18px;
+  line-height: 1em;
+  color: #333;
+  margin: 7px 0 2px 9px;
+  font-weight: 600;
+}
+
+#viewEyeshot .eyeshot-username {
+  color: #696464;
+  margin: 0 0 5px 10px;
+  font-weight: 500;
+}
+
+#viewEyeshot .view-header {
+  padding: 15px;
+}
+
+#viewEyeshot #sv-pano {
+  height: 70vh;
+}
+
+#viewEyeshot .eyeshot-details {
+  padding: 25px 0 10px 0;
+}
+
+#viewEyeshot .eyeshot-status {
+  padding: 0 0 0 30px;
+  text-align: justify;
+}
+
+#viewEyeshot .eyeshot-tags {
+  
+}
+
+#viewEyeshot .eyeshot-tags .eyeshot-tag {
+  background-color: #90ee90;
+  color: black;
+  font-weight: 500;
+  text-decoration: none;
+  padding: 5px;
+  font-size: 14px;
+  margin: 5px;
+}
+
+#viewEyeshot .eyeshot-tags .eyeshot-tag:focus,
+#viewEyeshot .eyeshot-tags .eyeshot-tag:hover {
+  opacity: 0.7;
+  transition: opacity 0.5s;
 }
 
 .eyeshot-loader {
@@ -330,8 +382,8 @@ body {
 }
 
 #viewEyeshot .modal-dialog {
-    max-width: 100%;
-    margin: 1.75rem 1.75rem;
+  max-width: 100%;
+  margin: 1.75rem 1.75rem;
 }
 
 /* Search */

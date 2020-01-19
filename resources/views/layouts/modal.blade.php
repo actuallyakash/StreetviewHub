@@ -97,18 +97,17 @@
         <span aria-hidden="true">&times;</span>
     </button>
     <div class="modal-dialog modal-xl" role="document">
-        <div class="modal-content text-center">
+        <div class="modal-content">
             {{-- <h5 class="eyeshot-location"></h5> --}}
             <div class="d-flex align-items-center view-header">
                 <div class="eyeshot-avatar">
                     <img src="{{ $eyeshot->owner->avatar }}">
                 </div>
                 <div class="eyeshot-meta">
-                    <p class="eyeshot-status">{{ $eyeshot->status }}</p>
+                    <p class="eyeshot-title">{{ $eyeshot->title }}</p>
                     <p class="eyeshot-username">by <a href="/{{ $eyeshot->owner->nickname }}">{{ $eyeshot->owner->name }}</a></p>
                 </div>
             </div>
-
 
             <div style="display:none;" class="loader text-center m-5"><span class="eyeshot-loader">🌏</span></div>
             <div style="display:none;" id="sv-pano">
@@ -125,8 +124,17 @@
                     <button class="share-eyeshot btn btn-link" data-tooltip="tooltip" data-placement="right" title="Share"><i class="fas fa-share-alt"></i></button>                    
                 </div>
             </div>
-            <div class="eyeshot-status"></div>
-            <div class="eyeshot-tags"></div>
+            <div class="row eyeshot-details container">
+                <div class="col-md-7">
+                    <div class="eyeshot-status"></div>
+                </div>
+                <div class="col-md-5">
+                    <div class="d-flex justify-content-betwen">
+                        <i class="m-2 fas fa-tag"></i>
+                        <div class="eyeshot-tags"></div>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
 </div>

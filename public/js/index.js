@@ -419,8 +419,10 @@
                     var longitude = Number(data.longitude);
 
                     $("#viewEyeshot .eyeshot-location").text(data.location_name);
+                    $("#viewEyeshot .eyeshot-title").text(data.title);
                     $("#viewEyeshot .eyeshot-status").text(data.status);
-                    $("#viewEyeshot .eyeshot-tags").text(data.tags);
+                    var tags = data.tags.split(",");
+                    tags.map(tag => $("#viewEyeshot .eyeshot-tags").append("<a href='/search?q="+tag+"' class='eyeshot-tag badge'>"+tag+"</a>"));
 
                     initMap( latitude, longitude, data.pano_id, data.pano_heading, data.pano_pitch, data.pano_zoom );
 

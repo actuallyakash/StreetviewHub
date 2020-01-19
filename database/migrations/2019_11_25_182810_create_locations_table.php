@@ -17,7 +17,7 @@ class CreateLocationsTable extends Migration
             $table->increments('id');
             $table->unsignedInteger('user_id');
             $table->string('title')->nullable();
-            $table->string('status')->nullable();
+            $table->longText('status')->nullable();
             $table->string('tags')->nullable();
             $table->string('location_name')->nullable();
             $table->string('latitude');
