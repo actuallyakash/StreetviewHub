@@ -289,6 +289,7 @@
         var panoHeading = panorama.getPov().heading;
         var panoPitch = panorama.getPov().pitch;
         var panoZoom = panorama.zoom;
+        $("#favouriteBox .eyeshot-title").attr('value', locationName);
         
         switch(ops) {
             case 'favourite':
@@ -331,11 +332,11 @@
     }
 
     // Save fav info
-    var saveFavouriteInfo = function( panoId, status, tags ) {
+    var saveFavouriteInfo = function( panoId, title, status, tags ) {
         $.ajax({
             type: 'POST',
             url: '/favourite/details',
-            data:{panoId:panoId, status:status, tags:tags},
+            data:{panoId:panoId, title:title, status:status, tags:tags},
             headers: {
                 'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
             },
@@ -387,9 +388,10 @@
         e.preventDefault();
 
         var panoId = $("div#sv-pano button.cta-street-view").attr('data-id').replace('fav-', '');
+        var title = $("input[name=title]").val();
         var status = $('textarea.status').val();
         var tags = $("input[name=tags]").val();
-        saveFavouriteInfo(panoId, status, tags);
+        saveFavouriteInfo(panoId, title, status, tags);
     });
 
     // Tagify

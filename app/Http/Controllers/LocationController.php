@@ -90,6 +90,7 @@ class LocationController extends Controller
     {
         $response = array(
             'panoId' => $request->panoId,
+            'title' => $request->title,
             'status' => $request->status,
             'tags' => Helper::tagSerialize($request->tags),
         );
@@ -116,7 +117,7 @@ class LocationController extends Controller
         
         Location::where('pano_id', $response['panoId'])
             ->where('user_id', auth()->id())
-            ->update(['status' => $response['status'], 'tags' => $response['tags']]);
+            ->update(['title' => $response['title'], 'status' => $response['status'], 'tags' => $response['tags']]);
         
         return 1;
     }

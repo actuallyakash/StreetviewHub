@@ -44,6 +44,8 @@
                             <h6 class="user-nickname">{{ Auth::user()->nickname }}</h6>
                         </div>
                         <div class="col-md-10 eyeshot-section">
+                            <input class="form-control eyeshot-title" name="title" type="text" placeholder="Eyeshot Title">
+                            <div class="divider"></div>
                             <textarea name="status" class="form-control status descriptionInput" placeholder="Wanna describe? (Optional)" rows="5" autofocus></textarea>
                             <div class="divider"></div>
                             <input name="tags" type="text" placeholder="Tags (Optional)">
@@ -89,13 +91,25 @@
 
 @endauth
 
+@isset($eyeshot)
 <div class="modal" id="viewEyeshot" tabindex="-1" role="dialog" aria-labelledby="view-eyeshot" aria-hidden="true">
     <button type="button" class="close close-eyeshot-icon" data-dismiss="modal" aria-label="Close">
         <span aria-hidden="true">&times;</span>
     </button>
     <div class="modal-dialog modal-xl" role="document">
         <div class="modal-content text-center">
-            <h5 class="eyeshot-location"></h5>
+            {{-- <h5 class="eyeshot-location"></h5> --}}
+            <div class="d-flex align-items-center view-header">
+                <div class="eyeshot-avatar">
+                    <img src="{{ $eyeshot->owner->avatar }}">
+                </div>
+                <div class="eyeshot-meta">
+                    <p class="eyeshot-status">{{ $eyeshot->status }}</p>
+                    <p class="eyeshot-username">by <a href="/{{ $eyeshot->owner->nickname }}">{{ $eyeshot->owner->name }}</a></p>
+                </div>
+            </div>
+
+
             <div style="display:none;" class="loader text-center m-5"><span class="eyeshot-loader">🌏</span></div>
             <div style="display:none;" id="sv-pano">
                 <div id="sv-map"></div>
@@ -105,12 +119,10 @@
                         <button class="unfavourite-sv btn btn-link cta-street-view" data-tooltip="tooltip" data-placement="top" title="Like">
                             <i class="far fa-heart"></i>
                         </button>
-                        <button data-tooltip="tooltip" data-placement="top" title="Share" class="btn btn-link"><i class="fas fa-share-alt"></i></button>
                     @else
                         <button data-toggle="modal" data-target="#loginSignupTv" data-tooltip="tooltip" data-placement="top" title="Favourite" class="btn btn-link"><i class="far fa-heart"></i></button>
-                        <button data-tooltip="tooltip" data-placement="top" title="Share" class="btn btn-link"><i class="fas fa-share-alt"></i></button>
                     @endauth
-                    
+                    <button class="share-eyeshot btn btn-link" data-tooltip="tooltip" data-placement="right" title="Share"><i class="fas fa-share-alt"></i></button>                    
                 </div>
             </div>
             <div class="eyeshot-status"></div>
@@ -118,6 +130,7 @@
         </div>
     </div>
 </div>
+@endisset
 
 <div class="modal" id="shareEyeshot" tabindex="-1" role="dialog" aria-labelledby="share-eyeshot" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered" role="document">

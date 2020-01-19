@@ -15,14 +15,14 @@
     <div class="eyeshot-details slide-up">
         <div class="d-flex justify-content-between align-items-center">
             <div class="eyeshot-meta">
-                @if($eyeshot->status)
-                <p title="{{ $eyeshot->status }}" class="eyeshot-status">{{ $eyeshot->status }}</p>
+                @if($eyeshot->title)
+                <p title="{{ $eyeshot->title }}" class="eyeshot-status">{{ $eyeshot->title }}</p>
                 @else
                 <p title="Eyeshot by {{ $eyeshot->owner->name }}" class="card-text eyeshot-status">Eyeshot by <b>{{ $eyeshot->owner->name }}</b></p>
                 @endif
                 <p class="eyeshot-published">{{ $eyeshot->created_at->diffForHumans() }}</p>
             </div>
-            <button class="btn btn-outline-primary btn-sm"><i class="fas fa-heart"></i> Like</button>
+            {{-- <button class="btn btn-outline-primary btn-sm"><i class="fas fa-heart"></i> Like</button> --}}
         </div>
     </div>
 </div>
