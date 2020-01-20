@@ -8,7 +8,7 @@
     {{-- env('GOOGLE_ID') --}}
     <meta name="google-signin-client_id" content="962729632216-407dsmg76fhpt93g5e26qkm8m626csac.apps.googleusercontent.com">
     
-    <title>@yield('title', 'Street View')</title>
+    <title>@yield('title', 'Eyeshot')</title>
 
     <link href="{{ asset('css/style.css') }}" rel="stylesheet"/>
     <link href="{{ asset('css/tagify.css') }}" rel="stylesheet"/>
@@ -20,7 +20,7 @@
         <header>
             {{-- Desktop Navbar --}}
             <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-                <a class="navbar-brand" href="/">Street View</a>
+                <a class="navbar-brand" href="/">Eyeshot</a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#openXsNav"
                     aria-controls="openXsNav" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>

@@ -10,9 +10,11 @@
         <div class="row">
 
             @foreach ( $eyeshots as $eyeshot )
+            @if ( !$eyeshot == null )
             <div class="col-md-4 col-sm-6">
                 @include('components/eyeshot')
             </div>
+            @endif
             @endforeach
 
             

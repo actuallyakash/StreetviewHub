@@ -21,6 +21,24 @@ class PagesController extends Controller
         return view('layouts/feed', compact('eyeshots'));
     }
 
+    public function popular()
+    {
+        // Reference: https://stackoverflow.com/questions/12235595/find-most-frequent-value-in-sql-column#answer-12235631
+        $popularEyeshots = DB::table('locations')
+            ->selectRaw('pano_id, count(pano_id) as pano_saves')
+            ->groupBy('pano_id')
+            ->orderByRaw('`pano_saves` DESC')
+            ->get();
+        
+        $eyeshots = $popularEyeshots->map(function ($pano) {
+            if( $pano->pano_saves > 1 ) {
+                return Location::where('pano_id', $pano->pano_id)->get();
+            }
+        })->flatten();
+        
+        return view('layouts/feed', compact('eyeshots'));
+    }
+
     public function search()
     {
         $searchTerm = $_GET['q'];
