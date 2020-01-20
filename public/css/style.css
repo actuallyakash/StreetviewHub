@@ -160,17 +160,14 @@ body {
   align-items: center;
   -ms-flex-pack: justify;
   justify-content: space-between;
-  padding: .5rem 1rem;
+  padding: 15px 10px;
   background-color: #f8f9fa;
 }
 
-.top-bar .topbar-action .tag {
-  margin: 0 5px;
-  background: lightcyan;
-  padding: 5px 10px;
-  border-radius: 6px;
-  text-decoration: none;
-  color: #636363;
+@media screen and (max-width: 950px) {
+  .top-bar .topbar-action .sort-eyeshots {
+    margin-bottom: 10px;
+  }
 }
 
 .explorer-profile .user-profile-card {
@@ -309,15 +306,23 @@ body {
 }
 
 #viewEyeshot .eyeshot-details {
-  padding: 25px 0 10px 0;
+  margin: 20px 0;
 }
 
 #viewEyeshot .eyeshot-status {
-  padding: 0 0 0 30px;
+  white-space: pre-line;
   text-align: justify;
 }
 
-#viewEyeshot .eyeshot-tags .eyeshot-tag {
+@media screen and (max-width: 750px) {
+  #viewEyeshot .eyeshot-status {
+    border-bottom: 1px solid #d3e2e2;
+    padding-bottom: 10px;
+    margin-bottom: 10px;
+  }
+}
+
+.eyeshot-tags .eyeshot-tag {
   background-color: #90ee90;
   color: black;
   font-weight: 500;
@@ -327,14 +332,34 @@ body {
   margin: 5px;
 }
 
-#viewEyeshot .eyeshot-tags .eyeshot-tag:focus,
-#viewEyeshot .eyeshot-tags .eyeshot-tag:hover {
+.eyeshot-tags .eyeshot-tag:focus,
+.eyeshot-tags .eyeshot-tag:hover {
   opacity: 0.7;
   transition: opacity 0.5s;
 }
 
 #viewEyeshot .eyeshot-details .eyeshot-meta i {
   color: #948787
+}
+
+#viewEyeshot .eyeshot-details .eyeshot-meta .social-share a {
+  width: 100%;
+  margin: 10px 5px;
+}
+
+#viewEyeshot .btn-outline-facebook {
+  color: #3b5998;
+  border-color: #3b5998;
+}
+
+#viewEyeshot .btn-outline-twitter {
+  color: #1da1f2;
+  border-color: #1da1f2;
+}
+
+#viewEyeshot .btn-outline-pinterest {
+  color: #e3001c;
+  border-color: #e3001c;
 }
 
 .loader {

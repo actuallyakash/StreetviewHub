@@ -7,11 +7,12 @@
             <option><a href="/saved">Most Saved</a></option>
         </select>
     </div>
-    <div class="eyeshots-tags">
-        Shots on 🔥 :
+    <div class="eyeshot-tags">
+        <span title="Trending Tags">🔥</span>
         @foreach ( Helper::trendingTags() as $tag )
-          <a class="tag" href="/search?q={{ $tag->tags }}">{{ ucwords($tag->tags) }}</a>
+          <a class="eyeshot-tag badge" href="/search?q={{ $tag->tags }}">{{ ucwords($tag->tags) }}</a>
         @endforeach
+        <span title="Trending Tags">🔥</span>
     </div>
   </nav>
 </div>
