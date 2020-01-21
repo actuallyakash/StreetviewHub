@@ -14,6 +14,49 @@
         $('[data-tooltip="tooltip"]').tooltip()
     });
 
+    var initPanoId = function( panoId ) {
+        var element = $('#sv-pano .cta-street-view');
+        element.attr('data-id', 'fav-'+panoId);
+        // Hotfix for removing old panoId
+        var oldPano = "";
+        if ( oldPano = element.attr("class").match(/fav-\S+/g) ) {
+            element.removeClass(oldPano);
+        }
+        element.addClass('fav-'+panoId);
+        // Checking likes
+        $.ajax({
+            type: 'GET',
+            url: '/location/'+panoId+'/status',
+            success: function(data) {
+                if( data == 1 ) {
+                    element.attr('title', 'Unlike');
+                    element.attr('data-original-title', 'Unlike');
+                    element.removeClass('unfavourite-sv').addClass('favourite-sv');
+                    element.children('i').removeClass('far').addClass('fas');
+                } else {
+                    element.attr('title', 'Favourite');
+                    element.attr('data-original-title', 'Favourite');
+                    element.removeClass('favourite-sv').addClass('unfavourite-sv');
+                    element.children('i').removeClass('fas').addClass('far');
+                }
+            }
+        });
+
+        // Checking pioneer
+        $.ajax({
+            type: 'GET',
+            url: '/get/'+panoId+'/pioneer',
+            success: function( data ) {
+                if( data != 0 ) {
+                    $("#content .first-explorer").show();
+                    $("#content span.pioneer").text(data.name);
+                } else {
+                    $("#content .first-explorer").hide();
+                }
+            }
+        });
+    }
+
     var initMap = function(latitude, longitude, pano, heading, pitch, pano_zoom) {
         
         var loc = {
@@ -63,46 +106,7 @@
         panorama.addListener('pano_changed', function() {
 
             var panoId = panorama.getPano();
-            var element = $('#sv-pano .cta-street-view');
-            element.attr('data-id', 'fav-'+panoId);
-            // Hotfix for removing old panoId
-            var oldPano = "";
-            if ( oldPano = element.attr("class").match(/fav-\S+/g) ) {
-                element.removeClass(oldPano);
-            }
-            element.addClass('fav-'+panoId);
-            // Checking likes
-            $.ajax({
-                type: 'GET',
-                url: '/location/'+panoId+'/status',
-                success: function(data) {
-                    if( data == 1 ) {
-                        element.attr('title', 'Unlike');
-                        element.attr('data-original-title', 'Unlike');
-                        element.removeClass('unfavourite-sv').addClass('favourite-sv');
-                        element.children('i').removeClass('far').addClass('fas');
-                    } else {
-                        element.attr('title', 'Favourite');
-                        element.attr('data-original-title', 'Favourite');
-                        element.removeClass('favourite-sv').addClass('unfavourite-sv');
-                        element.children('i').removeClass('fas').addClass('far');
-                    }
-                }
-            });
-
-            // Checking pioneer
-            $.ajax({
-                type: 'GET',
-                url: '/get/'+panoId+'/pioneer',
-                success: function( data ) {
-                    if( data != 0 ) {
-                        $("#content .first-explorer").show();
-                        $("#content span.pioneer").text(data.name);
-                    } else {
-                        $("#content .first-explorer").hide();
-                    }
-                }
-            })
+            initPanoId(panoId);
         });
     }
 
@@ -170,48 +174,8 @@
         });
 
         panorama.addListener('pano_changed', function() {
-            
             var panoId = panorama.getPano();
-            var element = $('#sv-pano .cta-street-view');
-            element.attr('data-id', 'fav-'+panoId);
-            // Hotfix for removing old panoId
-            var oldPano = "";
-            if ( oldPano = element.attr("class").match(/fav-\S+/g) ) {
-                element.removeClass(oldPano);
-            }
-            element.addClass('fav-'+panoId);
-            // Checking likes
-            $.ajax({
-                type: 'GET',
-                url: '/location/'+panoId+'/status',
-                success: function(data) {
-                    if( data == 1 ) {
-                        element.attr('title', 'Unlike');
-                        element.attr('data-original-title', 'Unlike');
-                        element.removeClass('unfavourite-sv').addClass('favourite-sv');
-                        element.children('i').removeClass('far').addClass('fas');
-                    } else {
-                        element.attr('title', 'Favourite');
-                        element.attr('data-original-title', 'Favourite');
-                        element.removeClass('favourite-sv').addClass('unfavourite-sv');
-                        element.children('i').removeClass('fas').addClass('far');
-                    }
-                }
-            });
-
-            // Checking pioneer
-            $.ajax({
-                type: 'GET',
-                url: '/get/'+panoId+'/pioneer',
-                success: function( data ) {
-                    if( data != 0 ) {
-                        $("#content .first-explorer").show();
-                        $("#content span.pioneer").text(data.name);
-                    } else {
-                        $("#content .first-explorer").hide();
-                    }
-                }
-            })
+            initPanoId(panoId);
         });
     }
 
@@ -366,6 +330,7 @@
             var params = (new URL(window.location.href)).searchParams.get('s'),
                 decode = atob(params),
                 details = decode.split(':');
+            initPanoId(details[2]);
             initMap( Number(details[0]), Number(details[1]), details[2], Number(details[3]), Number(details[4]), Number(details[5]) );
         }
     });
@@ -421,12 +386,15 @@
                     $("#viewEyeshot .eyeshot-location").text(data.location_name);
                     $("#viewEyeshot .eyeshot-title").text(data.title);
                     $("#viewEyeshot .eyeshot-status").text(data.status);
-                    var tags = data.tags.split(",");
-                    tags.map(tag => $("#viewEyeshot .eyeshot-tags").append("<a href='/search?q="+tag+"' class='eyeshot-tag badge'>"+tag+"</a>"));
+                    if ( data.tags !== null ) {
+                        var tags = data.tags.split(",");
+                        tags.map(tag => $("#viewEyeshot .eyeshot-tags").append("<a href='/search?q="+tag+"' class='eyeshot-tag badge'>"+tag+"</a>"));
+                    }
                     $("#viewEyeshot .eyeshot-location").text(data.location_name);
                     $("#viewEyeshot .eyeshot-published").text(data.created_at);
                     $("#viewEyeshot .eyeshot-saves").text(data.eyeshot_saves+" saves");
 
+                    initPanoId(data.pano_id);
                     initMap( latitude, longitude, data.pano_id, data.pano_heading, data.pano_pitch, data.pano_zoom );
 
                     $('#viewEyeshot .loader').css('display', 'none');
