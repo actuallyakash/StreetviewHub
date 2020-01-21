@@ -22,7 +22,7 @@
         };
         
         var sv = new google.maps.StreetViewService();
-
+        
         // Set up the map.
         map = new google.maps.Map(document.getElementById('sv-map'), { // Map selector
             center: loc,
@@ -470,6 +470,10 @@
         $("#shareEyeshot .share-url input").val(url);
         $("#shareEyeshot a.share-facebook").attr('href', facebook);
         $("#shareEyeshot a.share-twitter").attr('href', twitter);
+    });
+
+    $(".sort-eyeshots select").on('change', function() {
+        window.location = "/"+$(this).val();        
     });
 
 })(jQuery);

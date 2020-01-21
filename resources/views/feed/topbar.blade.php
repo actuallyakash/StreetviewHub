@@ -2,9 +2,8 @@
   <nav class="topbar-action">
     <div class="sort-eyeshots">
         <select class="form-control">
-            <option><a href="/recent">Recent</a></option>
-            <option><a href="/popular">Popular</a></option>
-            <option><a href="/saved">Most Saved</a></option>
+            <option value="feed"{{ Request::url() == url('/feed') || Request::url() == url('/recent') ? ' selected' : '' }}><a href="/feed">Recent</a></option>
+            <option value="popular"{{ Request::url() == url('/popular') ? ' selected' : '' }}><a href="/popular">Popular</a></option>
         </select>
     </div>
     <div class="eyeshot-tags">
