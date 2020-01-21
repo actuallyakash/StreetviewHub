@@ -35,6 +35,12 @@ class PagesController extends Controller
                 return Location::where('pano_id', $pano->pano_id)->get();
             }
         })->flatten();
+
+        // Removing Null values
+        $eyeshots = $eyeshots->filter(function( $eyeshot ) {
+            if ( $eyeshot !== null )
+                return $eyeshot;
+        });
         
         return view('layouts/feed', compact('eyeshots'));
     }
