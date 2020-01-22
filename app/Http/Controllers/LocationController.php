@@ -140,9 +140,14 @@ class LocationController extends Controller
     public function eyeshot( $eyeshotId )
     {
         $eyeshot = Location::find(Helper::decode_id($eyeshotId))->toArray();
+        $user = User::find($eyeshot['user_id']);
         $totalEyeshots = Location::where('pano_id', $eyeshot['pano_id'])->count();
+        
         $eyeshot['created_at'] = Carbon::parse($eyeshot['created_at'])->diffForHumans();
         $eyeshot['eyeshot_saves'] = $totalEyeshots;
+        $eyeshot['user_avatar'] = $user->avatar;
+        $eyeshot['eyeshot_by'] = $user->name;
+        $eyeshot['user_nickname'] = $user->nickname;
 
         if ( $eyeshot ) {
             return $eyeshot;

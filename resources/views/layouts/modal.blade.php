@@ -29,7 +29,7 @@
 
 @auth
 
-<div class="modal fade" id="favouriteBox">
+<div class="modal" id="favouriteBox" tabindex="-1" role="dialog" aria-labelledby="favourite-eyeshot" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered modal-es-size">
         <div class="modal-content">            
             <form class="fav-shot" id="favLocation">
@@ -101,13 +101,13 @@
         <div style="display:none;" class="loader text-center m-5"><span class="eyeshot-loader">🌏</span></div>
 
         <div style="display:none;" class="modal-content">
-            {{-- <h5 class="eyeshot-location"></h5> --}}
+
             <div class="d-flex align-items-center eyeshot-header">
                 <div class="eyeshot-avatar">
-                    <img src="{{ $eyeshot->owner->avatar }}">
+                    <img src="">
                 </div>
                 <div class="eyeshot-user">
-                    <p class="eyeshot-title">{{ $eyeshot->title }}</p>
+                    <p class="eyeshot-title"></p>
                     <p class="eyeshot-username">by <a href="/{{ $eyeshot->owner->nickname }}">{{ $eyeshot->owner->name }}</a></p>
                 </div>
             </div>

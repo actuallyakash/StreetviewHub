@@ -383,12 +383,20 @@
                     var latitude = Number(data.latitude);
                     var longitude = Number(data.longitude);
 
+                    $("#viewEyeshot .eyeshot-avatar img").attr('src', data.user_avatar);
+                    $("#viewEyeshot .eyeshot-user .eyeshot-username").html("by <a href='"+data.user_nickname+"'>"+data.eyeshot_by+"</a>");
                     $("#viewEyeshot .eyeshot-location").text(data.location_name);
-                    $("#viewEyeshot .eyeshot-title").text(data.title);
+                    if ( data.tags !== null ) {
+                        $("#viewEyeshot .eyeshot-title").text(data.title);
+                    } else {
+                        $("#viewEyeshot .eyeshot-title").text("Eyeshot by "+data.eyeshot_by);
+                    }
                     $("#viewEyeshot .eyeshot-status").text(data.status);
                     if ( data.tags !== null ) {
                         var tags = data.tags.split(",");
                         tags.map(tag => $("#viewEyeshot .eyeshot-tags").append("<a href='/search?q="+tag+"' class='eyeshot-tag badge'>"+tag+"</a>"));
+                    } else {
+                        $("#viewEyeshot .eyeshot-tags").append("<a href='/search?q=eyeshot' class='eyeshot-tag badge'>Eyeshot</a>")
                     }
                     $("#viewEyeshot .eyeshot-location").text(data.location_name);
                     $("#viewEyeshot .eyeshot-published").text(data.created_at);
