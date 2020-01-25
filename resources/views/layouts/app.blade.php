@@ -17,55 +17,7 @@
 
 </head>
     <body>
-        <header>
-            {{-- Desktop Navbar --}}
-            <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-                <a class="navbar-brand" href="/">Eyeshot</a>
-                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#openXsNav"
-                    aria-controls="openXsNav" aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-
-                <div class="collapse navbar-collapse" id="openXsNav">
-                    <ul class="navbar-nav mr-auto">
-                        <li class="nav-item active">
-                            <a class="nav-link" href="/">Home <span class="sr-only">(current)</span></a>
-                        </li>
-                        <li class="nav-item active">
-                            <a class="nav-link" href="/feed">Feed</a>
-                        </li>
-                        <li class="nav-item active">
-                            <a class="nav-link" href="/categories">Categories</a>
-                        </li>
-                        <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
-                                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                Dropdown
-                            </a>
-                            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                <a class="dropdown-item" href="#">Action</a>
-                                <a class="dropdown-item" href="#">Another action</a>
-                                <div class="dropdown-divider"></div>
-                                <a class="dropdown-item" href="#">Something else here</a>
-                            </div>
-                        </li>
-                    </ul>
-
-                    <form class="form-search" action="/search" method="get">
-                        <input type="text" class="search-input" name="q" placeholder="Search for Eyeshot or Location">
-                        <span class="search-icon">
-                            <button class="button-icon">🔍</button>
-                        </span>
-                    </form>
-
-                    @auth
-                    <a class="btn btn-outline-danger" href="{{ url('/logout') }}">Logout</a>
-                    @else
-                    <button class="btn btn-outline-success" type="submit" data-toggle="modal" data-target="#loginSignupTv">Start Exploring</button>
-                    @endauth
-                </div>
-            </nav>
-        </header>
+        @include('layouts.navbar')
         
         <main class="sv-app">
             <div id="content">

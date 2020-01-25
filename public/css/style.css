@@ -696,3 +696,11 @@ button:focus {
 }
 
 /* Navbar */
+.navbar {
+  font-family: var(--font-secondary-semi-bold);
+  font-size: 16px;
+}
+
+.navbar-nav .nav-item:not(:last-child) {
+  margin: 0 8px;
+}
