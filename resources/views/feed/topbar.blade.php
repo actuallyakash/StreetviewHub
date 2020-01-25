@@ -1,4 +1,4 @@
-<div class="top-bar">
+<div class="top-bar shadow-sm">
   <nav class="topbar-action">
     <div class="sort-eyeshots">
         <select class="form-control">

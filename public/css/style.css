@@ -1,12 +1,47 @@
-/* html,
-body,
-.content,
-.sv-app {
-  height: 100%;
-} */
+@font-face {
+	font-family: Karla;
+	src:
+    url('/fonts/Karla/karla-regular.woff2') format('woff2'),
+    url('/fonts/Karla/karla-regular.woff') format('woff');
+}
 
-body {
-  background-color: #f4f4f4;
+@font-face {
+	font-family: Rubik;
+	src:
+    url('/fonts/Rubik/rubik-light-webfont.woff2') format('woff2'),
+    url('/fonts/Rubik/rubik-light-webfont.woff') format('woff');
+}
+
+@font-face {
+	font-family: Rubik-Bold;
+	src:
+    url('/fonts/Rubik/rubik-bold-webfont.woff2') format('woff2'),
+    url('/fonts/Rubik/rubik-bold-webfont.woff') format('woff');
+}
+
+@font-face {
+    font-family: 'Nunito';
+    src: url('/fonts/nunito/Nunito-SemiBold.woff2') format('woff2'),
+        url('/fonts/nunito/Nunito-SemiBold.woff') format('woff');
+    font-weight: 600;
+    font-style: normal;
+}
+
+:root {
+    --primary-color: #5544c9;
+    --body-color: #EFF0F3;
+    --font-primary-regular: Rubik, sans-serif;
+    --font-primary-bold: Rubik-Bold, sans-serif;
+    --font-secondary-semi-bold: Nunito, sans-serif;
+}
+
+html > body {
+  font-family: var(--font-primary-regular);
+  background: var(--body-color);
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-secondary-semi-bold);
 }
 
 .map-box {
@@ -78,7 +113,6 @@ body {
 }
 
 #content {
-  background: #f4f4f4;
   margin: 0;
   padding: 0;
   font-size: 100%;
@@ -131,23 +165,23 @@ body {
 }
 
 .eyeshot .eyeshot-details {
-  padding: 1rem;
-  flex: 1 1 auto;
-  position: absolute;
-  top: calc(100%);
+  visibility: hidden;
+  box-sizing: border-box;
+  height: 0;
+  display: flex;
   width: 100%;
-  background-color: #ffffff;
-  transition: top 0.35s ease;
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  padding: 10px;
+  background: #fff;
+  transform: translate(0, 100%, 0);
+  transition: height 0.3s ease;
 }
 
 .eyeshot:hover .eyeshot-details {
-  top: calc(80%);
-}
-
-@media screen and (min-width: 530px) {
-  .eyeshot:hover .eyeshot-details {
-    top: calc(80%);
-  }
+  visibility: visible;
+  height: 60px;
 }
 
 .top-bar .topbar-action {
@@ -660,3 +694,5 @@ button:focus {
 #favouriteBox ul li a {
   text-decoration: underline;
 }
+
+/* Navbar */
