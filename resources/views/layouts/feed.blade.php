@@ -4,7 +4,7 @@
 
 @include('feed/topbar')
 
-<div class="container-fluid">
+<div class="eyeshot-container-fluid">
     <div class="eyeshot-feed text-center py-4">
         <div class="row">
             @foreach ( $eyeshots as $eyeshot )

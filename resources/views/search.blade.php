@@ -8,9 +8,9 @@
 
 @include('feed/topbar')
 
-<div class="container-fluid">
+<div class="eyeshot-container-fluid">
     <div class="eyeshot-feed text-center py-4">
-        <h3>{{ count($eyeshots) }} result{{ count($eyeshots) == 1 ? '' : 's' }} for {{ $searchTerm }}</h3>
+        <h3 class="mb-4 text-muted">{{ count($eyeshots) }} result{{ count($eyeshots) == 1 ? '' : 's' }} for <strong class="text-dark">{{ $searchTerm }}</strong></h3>
         <div class="row">
 
             @foreach ( $eyeshots as $eyeshot )

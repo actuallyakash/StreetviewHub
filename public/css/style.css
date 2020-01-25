@@ -59,8 +59,9 @@ h1, h2, h3, h4, h5, h6 {
   z-index: 2;
   background: transparent;
   opacity: 0.6;
-  width: 20%;
-  height: 40%;
+  width: 15%;
+  height: 35%;
+  border-radius: .3rem;
   border: 3px solid black;
   transition: width 0.3s, height 0.3s;
   margin: 10px;
@@ -68,7 +69,7 @@ h1, h2, h3, h4, h5, h6 {
 
 #sv-map:hover {
   opacity: 0.9;
-  width: 30%;
+  width: 25%;
   height: 50%;
 }
 
@@ -194,7 +195,7 @@ h1, h2, h3, h4, h5, h6 {
   align-items: center;
   -ms-flex-pack: justify;
   justify-content: space-between;
-  padding: 15px 10px;
+  padding: 15px 20px;
   background-color: #f8f9fa;
 }
 
@@ -703,4 +704,12 @@ button:focus {
 
 .navbar-nav .nav-item:not(:last-child) {
   margin: 0 8px;
+}
+
+/* Container */
+.eyeshot-container-fluid {
+  width: 100%;
+  padding: 20px 30px 40px 30px;
+  margin-right: auto;
+  margin-left: auto;
 }

@@ -5,7 +5,7 @@
 
 @include('feed/topbar')
 
-<div class="container">
+<div class="container p-5">
     <div class="row">
         @foreach ($filteredCats as $key => $category)
             <div class="col-md-4 col-sm-6 col-6">
