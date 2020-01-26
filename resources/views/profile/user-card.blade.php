@@ -1,5 +1,5 @@
-<div class="user-card d-flex justify-content-center">
-    <div class="mb-3" style="max-width: 540px;">
+<div class="user-card d-flex justify-content-center mt-4">
+    <div style="max-width: 540px;">
         <div class="row">
             <div class="col-md-4">
                 <img src="{{ $user->avatar }}" class="card-img rounded-circle" alt="...">
@@ -11,5 +11,13 @@
                 </div>
             </div>
         </div>
+        <ul class="list-inline text-center profile-nav">
+            <a class="active" href="#">
+                <li class="list-inline-item">
+                    {{ count($user->eyeshots) }}<br>
+                    <span class="text-muted">Eyeshots</span>                     
+                </li>
+            </a>
+        </ul>
     </div>
 </div>

@@ -10,7 +10,17 @@
 
    @include('profile/user-card')
 
-   @include('profile/eyeshot-masonary')
+   <div class="eyeshot-container-fluid">
+      <div class="eyeshot-feed text-center">
+         <div class="row">
+            @foreach ( $user->eyeshots as $eyeshot )
+            <div class="col-md-4 col-sm-6">
+               @include('components/eyeshot')
+            </div>
+            @endforeach
+         </div>
+      </div>
+   </div>
 
 </div>
 

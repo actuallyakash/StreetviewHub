@@ -43,14 +43,16 @@
                         <a class="dropdown-item text-danger" href="{{ url('/logout') }}">Logout</a>
                     </div>
                     @else
-                    <button class="btn btn-outline-success" type="submit" data-toggle="modal" data-target="#loginSignupTv">Start
+                    <button class="btn btn-success mt-1" type="submit" data-toggle="modal" data-target="#loginSignupTv">Start
                         Exploring</button>
                     @endauth
                 </li>
-
+                
+                @auth
                 <li class="nav-item">
                     <a href="/" class="btn btn-primary mt-1">Explore</a>
                 </li>
+                @endauth
             </ul>
         </div>
     </nav>

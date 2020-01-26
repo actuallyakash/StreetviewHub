@@ -7,9 +7,7 @@
     <meta name="csrf-token" content="{{ csrf_token() }}">
     {{-- env('GOOGLE_ID') --}}
     <meta name="google-signin-client_id" content="962729632216-407dsmg76fhpt93g5e26qkm8m626csac.apps.googleusercontent.com">
-    
-    <title>@yield('title', 'Eyeshot - Discover the World\'s Top Destinations & Beautiful Places')</title>
-
+    <title>@yield('title', 'Eyeshot - Discover the World\'s Top Destinations & Cool Places')</title>
     <link href="{{ asset('css/style.css') }}" rel="stylesheet"/>
     <link href="{{ asset('css/tagify.css') }}" rel="stylesheet"/>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">

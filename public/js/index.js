@@ -70,6 +70,9 @@
         map = new google.maps.Map(document.getElementById('sv-map'), { // Map selector
             center: loc,
             zoom: 16,
+            zoomControl: false,
+            mapTypeControl: false,
+            streetViewControl: true,
         });
 
         panorama = new google.maps.StreetViewPanorama(
@@ -140,6 +143,9 @@
         map = new google.maps.Map(document.getElementById('sv-map'), { // Map selector
             center: loc,
             zoom: 16,
+            zoomControl: false,
+            mapTypeControl: false,
+            streetViewControl: true,
         });
 
         panorama = new google.maps.StreetViewPanorama(

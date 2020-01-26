@@ -1,7 +1,7 @@
 @if ( !Auth::user() )
 <div class="modal" id="loginSignupTv" tabindex="-1" role="dialog" aria-labelledby="startExploringModal"
     aria-hidden="true">
-    <div class="modal-dialog modal-xl" role="document">
+    <div class="modal-dialog modal-md modal-dialog-centered" role="document">
         <div class="modal-content">
 
             <div class="modal-body text-center">
@@ -9,16 +9,23 @@
                     <span aria-hidden="true">&times;</span>
                 </button>
                 <h5 class="modal-title" id="startExploringModal">Welcome to StreetView</h5>
-                <p class="font-weight-light"> Sign in below to explore new places and share it with the community. </p>
+                <p class="font-weight-light"> Discover the world’s top Destinations & Cities </p>
+                <h3>Sign in with</h3>
                 <div class="row mt-4">
                     <div class="col">
-                        <a class="btn btn-lg btn-outline-success" href="/auth/google/">Google</a>
+                        <a class="btn btn-lg btn-outline-dark" href="/auth/google/">
+                            <i class="fab fa-google mr-2"></i> Google
+                        </a>
                     </div>
                     <div class="col">
-                        <a class="btn btn-lg btn-outline-primary" href="/auth/twitter/">Twitter</a>
+                        <a class="btn btn-lg btn-outline-twitter" href="/auth/twitter/">
+                            <i class="fab fa-twitter mr-2"></i> Twitter
+                        </a>
                     </div>
                     <div class="col">
-                        <a class="btn btn-lg btn-outline-dark" href="/auth/github/">GitHub</a>
+                        <a class="btn btn-lg btn-outline-dark" href="/auth/github/">
+                            <i class="fab fa-github mr-2"></i> GitHub
+                        </a>
                     </div>
                 </div>
             </div>
