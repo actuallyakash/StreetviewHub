@@ -29,7 +29,7 @@
 
 :root {
     --primary-color: #5544c9;
-    --body-color: #EFF0F3;
+    --body-color: #F4F4F4;
     --font-primary-regular: Rubik, sans-serif;
     --font-primary-bold: Rubik-Bold, sans-serif;
     --font-secondary-semi-bold: Nunito, sans-serif;
@@ -196,7 +196,16 @@ h1, h2, h3, h4, h5, h6 {
   -ms-flex-pack: justify;
   justify-content: space-between;
   padding: 15px 20px;
-  background-color: #f8f9fa;
+  background-color: #fff;
+}
+
+.top-bar .topbar-action .sort-eyeshots select:focus {
+  box-shadow: none;
+  border-color: #ced4da;
+}
+
+.top-bar .topbar-action .sort-eyeshots select {
+  font-size: 15px;
 }
 
 @media screen and (max-width: 950px) {
@@ -255,7 +264,7 @@ h1, h2, h3, h4, h5, h6 {
   overflow: hidden;
 }
 
-.eyeshot .pioneer {
+.eyeshot .pioneer-tag {
   font-size: 16px;
   position: absolute;
   top: 10px;
@@ -410,6 +419,12 @@ h1, h2, h3, h4, h5, h6 {
   animation: spin-cir 1.6s linear infinite;
 }
 
+.navbar-brand .logo-globe {
+  font-size: 15px;
+  display: inline-block;
+  animation: spin-cir 2.6s linear infinite;
+}
+
 @-webkit-keyframes spin-cir {
   to {
     -webkit-transform: rotate(360deg);
@@ -422,24 +437,6 @@ h1, h2, h3, h4, h5, h6 {
     -webkit-transform: rotate(360deg);
     transform: rotate(360deg);
   }
-}
-
-.spin-cir {
-  display: inline-block;
-  width: 2rem;
-  height: 2rem;
-  vertical-align: text-bottom;
-  border: 0.25em solid currentColor;
-  border-right-color: transparent;
-  border-radius: 50%;
-  -webkit-animation: spin-cir .75s linear infinite;
-  animation: spin-cir .75s linear infinite;
-}
-
-.spin-cir-sm {
-  width: 1rem;
-  height: 1rem;
-  border-width: 0.2em;
 }
 
 .modal .close-eyeshot-icon {
@@ -458,11 +455,10 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 /* Search */
-/* search form */
 .form-search {
   float: left;
   height: 33px;
-  margin: 7px 15px 0 0;
+  margin: 7px 0 0 0;
   font-size: 12px;
   width: 221px;
   position: relative;
@@ -702,8 +698,30 @@ button:focus {
   font-size: 16px;
 }
 
-.navbar-nav .nav-item:not(:last-child) {
+.navbar-nav .nav-item {
   margin: 0 8px;
+}
+
+.navbar-nav .nav-item #navbarDropdown i {
+  font-size: 12px;
+}
+
+header .navbar .navbar-brand {
+  font-size: 22px;
+}
+
+header .navbar-dark {
+  background-color: #333333;
+}
+
+header .navbar .eyeshot-user img {
+  border-radius: 50%;
+  height: 30px;
+  width: 30px;
+}
+
+header .navbar .eyeshot-user:hover .dropdown-menu {
+  display: block;
 }
 
 /* Container */

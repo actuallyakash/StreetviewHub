@@ -8,7 +8,7 @@
     {{-- env('GOOGLE_ID') --}}
     <meta name="google-signin-client_id" content="962729632216-407dsmg76fhpt93g5e26qkm8m626csac.apps.googleusercontent.com">
     
-    <title>@yield('title', 'Eyeshot')</title>
+    <title>@yield('title', 'Eyeshot - Discover the World\'s Top Destinations & Beautiful Places')</title>
 
     <link href="{{ asset('css/style.css') }}" rel="stylesheet"/>
     <link href="{{ asset('css/tagify.css') }}" rel="stylesheet"/>

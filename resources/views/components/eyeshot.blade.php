@@ -2,7 +2,7 @@
     <div class="eyeshot-image">
         <div class="eyeshot-media" data-eyeshot="eyeshot-{{ Helper::encode_id($eyeshot->id) }}">
             @if ( $eyeshot->user_id == $eyeshot->pioneer)
-            <span class="pioneer"><i class="fas fa-medal"></i></span>
+            <span class="pioneer-tag"><i class="fas fa-medal"></i></span>
             @endif
             <picture>
                 <source srcset="{{ asset("storage/eyeshots/$eyeshot->media") }}" media="(-webkit-min-device-pixel-ratio: 1.5), (min--moz-device-pixel-ratio: 1.5), (-o-min-device-pixel-ratio: 3/2), (min-device-pixel-ratio: 1.5), (min-resolution: 1.5dppx)">
