@@ -187,6 +187,9 @@
 
     function processRandomEyeshot(data, status) {
         if (status === 'OK') {
+
+            $('#landing-pano .loader').css('display', 'none');
+            $('#landing-pano #sv-pano').css('display', 'block');
       
             panorama.setPano(data.location.pano);
             panorama.setPov({
@@ -196,9 +199,8 @@
             panorama.setVisible(true);
       
         } else {
-            console.error('Street View data not found for this location.');
-            $('.sv-not-found').toast({delay: 2000});
-            $('.sv-not-found').toast('show');
+            // $('.sv-not-found').toast({delay: 2000});
+            // $('.sv-not-found').toast('show');
             // Keep searching, you'll surely end up somewhere!
             takeMeSomewhereIDontBelong();
         }
@@ -228,6 +230,10 @@
     }
 
     function takeMeSomewhereIDontBelong() {
+
+        $('#landing-pano .loader').css('display', 'block');
+        $('#landing-pano #sv-pano').css('display', 'none');
+
         // TODO: Add more NOICE radials
         var radialPoints = [
             [43.077769, -79.076075],
