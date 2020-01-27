@@ -415,7 +415,7 @@
                     $("#viewEyeshot .eyeshot-saves").text(data.eyeshot_saves+" saves");
 
                     initPanoId(data.pano_id);
-                    initMap( latitude, longitude, data.pano_id, data.pano_heading, data.pano_pitch, data.pano_zoom );
+                    initMap( latitude, longitude, data.pano_id, Number(data.pano_heading), Number(data.pano_pitch), data.pano_zoom );
 
                     $('#viewEyeshot .loader').css('display', 'none');
                     $('#viewEyeshot .modal-content').css('display', 'block');
