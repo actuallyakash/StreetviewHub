@@ -183,6 +183,12 @@
             var panoId = panorama.getPano();
             initPanoId(panoId);
         });
+
+        $("#landing-pano").on('click', function() {
+            $('html, body').animate({
+                scrollTop: ($("#landing-pano").offset().top - 20)
+            }, 'fast');
+        });
     }
 
     function processRandomEyeshot(data, status) {
