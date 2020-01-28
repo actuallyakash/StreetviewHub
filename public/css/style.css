@@ -74,7 +74,7 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .map-box {
-  margin: 60px 100px;
+  margin: 30px 0;
 }
 
 #sv-pano .action-buttons {
@@ -706,4 +706,30 @@ header .navbar .eyeshot-user img {
 
 .profile-nav a.active li {
   box-shadow: 0 .5rem 1rem rgba(0, 0, 0, .15); 
+}
+
+/* Landing */
+.wtf-eyeshot {
+  box-sizing: content-box;
+  margin: 0 auto;
+  max-width: 568px;
+  padding: 0 16px;
+  width: auto;
+}
+
+@media (min-width: 600px) {
+  .wtf-eyeshot {
+    max-width: 1280px;
+    padding: 0 32px;
+  }
+}
+
+@media (min-width: 600px) {
+  .wtf-eyeshot .description {
+    padding: 0 15%;
+  }
+}
+
+.wtf-eyeshot h1 {
+  font-size: 44px;
 }
