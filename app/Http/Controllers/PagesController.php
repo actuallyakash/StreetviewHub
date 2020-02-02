@@ -11,7 +11,7 @@ class PagesController extends Controller
 
     public function __construct()
     {
-        $this->middleware('auth', ['except' => ['feed']]);
+        // $this->middleware('auth', ['except' => ['feed']]);
     }
 
     public function feed()

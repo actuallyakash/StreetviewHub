@@ -14,21 +14,59 @@
         </div>
     </div>
 </div>
-<p class="first-explorer">Discovered by: <span class="pioneer"></span></p>
+{{-- <span class="first-explorer">Discovered by: <span class="pioneer"></span></span> --}}
 
 <div class="text-center wtf-eyeshot">
     <h1>What is Eyeshot?</h1>
     <div class="d-flex justify-content-around align-items-center description">
-        <div class="globe-eyeshot display-2 mr-3">🌏</div>
+        <div class="globe-eyeshot display-3 mr-3">🌏</div>
         <div class="explain-eyeshot text-justify">Eyeshot is a visual discovery of our surroundings, explored by people like you. Eyeshot's content comes from two sources - Google and explorers (you). Contribute to Eyeshot by exploring places you never been before.</div>
     </div>
 
-    <div class="eyeshot-testimonial mt-5">
-        <h2>Testimonial</h2>
-        <blockquote class="mt-3"><strong>'Cause you take me places that I've never been - <a target="_blank" rel="nofollow" href="https://www.youtube.com/watch?v=2dufPBL-pLU">Mark Wills</a></strong></blockquote>
-    </div>
-
     <div class="random-eyeshots mt-5">
-        <h3>Some Random Eyeshots</h3>
+        <h2 class="mb-4">Some Random Eyeshots</h2>
+        @php $randomEyeshots = App\Location::inRandomOrder()->take(3)->get(); @endphp
+        <div class="row">
+            @foreach( $randomEyeshots as $eyeshot )
+            <div class="col-md-4 col-sm-6">
+            @include('components/eyeshot')
+            </div>
+            @endforeach
+        </div>
+        <big><a class="text-decoration-none font-weight-bold" href="/feed"> See More <i class="fas fa-arrow-circle-right"></i></a></big>
     </div>
 </div>
+
+{{-- <div class="text-center p-4 mt-4 banner-lower">    
+    <div class="text-center mb-4">
+        <button data-toggle="modal" data-target="#loginSignupTv" class="btn button-es btn-lg shadow mr-1">Start Exploring</button>
+    </div>
+</div> --}}
+
+<footer class="home-footer py-4">
+    <div class="row justify-content-between align-items-center footer-content">
+        {{-- <div class="col-12 col-md-4 text-center order-1">
+            <ul class="es-social-icons list-inline text-center m-4">
+                <li class="list-inline-item">
+                    <a target="_blank" rel="noopener" href="https://twitter.com/eyeshot"><i class="fab fa-twitter" aria-hidden="true"></i></a>
+                </li>
+                <li class="list-inline-item">
+                    <a target="_blank" rel="noopener" href="https://instagram.com/eyeshot"><i class="fab fa-instagram" aria-hidden="true"></i></a>
+                </li>
+            </ul>
+        </div> --}}
+        <div class="text-center order-1">
+            <a class="footer-brand" href="/">Eyesh<span class="logo-globe">🌍</span>t</a>
+            <small class="d-block mb-3 text-muted">© 2020</small>
+        </div>
+        <div class="text-center order-3 order-sm-2">
+            <h5>See inside</h5>
+            <ul class="list-unstyled text-small">
+                <li><a class="text-muted" href="/feed">Feed 📜</a></li>
+                <li><a class="text-muted" href="/popular">On fire 🔥</a></li>
+                <li><a class="text-muted" href="/privacy">Privacy 🔏</a></li>
+                <li><a class="text-muted" href="mailto:akash_gupta@hotmail.com">Contact 👋</a></li>
+            </ul>
+        </div>
+    </div>
+</footer>

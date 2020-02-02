@@ -43,8 +43,7 @@
                         <a class="dropdown-item text-danger" href="{{ url('/logout') }}">Logout</a>
                     </div>
                     @else
-                    <button class="btn btn-success mt-1" type="submit" data-toggle="modal" data-target="#loginSignupTv">Start
-                        Exploring</button>
+                    <button class="btn btn-success mt-1" type="submit" data-toggle="modal" data-target="#loginSignupTv">Start Exploring</button>
                     @endauth
                 </li>
                 

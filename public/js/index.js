@@ -43,18 +43,18 @@
         });
 
         // Checking pioneer
-        $.ajax({
-            type: 'GET',
-            url: '/get/'+panoId+'/pioneer',
-            success: function( data ) {
-                if( data != 0 ) {
-                    $("#content .first-explorer").show();
-                    $("#content span.pioneer").text(data.name);
-                } else {
-                    $("#content .first-explorer").hide();
-                }
-            }
-        });
+        // $.ajax({
+        //     type: 'GET',
+        //     url: '/get/'+panoId+'/pioneer',
+        //     success: function( data ) {
+        //         if( data != 0 ) {
+        //             $("#content .first-explorer").show();
+        //             $("#content span.pioneer").text(data.name);
+        //         } else {
+        //             $("#content .first-explorer").hide();
+        //         }
+        //     }
+        // });
     }
 
     var initMap = function(latitude, longitude, pano, heading, pitch, pano_zoom) {
