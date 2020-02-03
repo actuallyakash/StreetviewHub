@@ -16,49 +16,73 @@
 
     var initPanoId = function( panoId ) {
         var element = $('#sv-pano .cta-street-view');
-        element.attr('data-id', 'fav-'+panoId);
-        // Hotfix for removing old panoId
-        var oldPano = "";
-        if ( oldPano = element.attr("class").match(/fav-\S+/g) ) {
-            element.removeClass(oldPano);
-        }
-        element.addClass('fav-'+panoId);
-        // Checking likes
-        $.ajax({
-            type: 'GET',
-            url: '/location/'+panoId+'/status',
-            success: function(data) {
-                if( data == 1 ) {
-                    element.attr('title', 'Unlike');
-                    element.attr('data-original-title', 'Unlike');
-                    element.removeClass('unfavourite-sv').addClass('favourite-sv');
-                    element.children('i').removeClass('far').addClass('fas');
-                } else {
-                    element.attr('title', 'Favourite');
-                    element.attr('data-original-title', 'Favourite');
-                    element.removeClass('favourite-sv').addClass('unfavourite-sv');
-                    element.children('i').removeClass('fas').addClass('far');
-                }
+        
+        if ( element.length ) {
+            element.attr('data-id', 'fav-'+panoId);
+            // Hotfix for removing old panoId
+            var oldPano = "";
+            if ( oldPano = element.attr("class").match(/fav-\S+/g) ) {
+                element.removeClass(oldPano);
             }
-        });
+            element.addClass('fav-'+panoId);
+            // Checking likes
+            $.ajax({
+                type: 'GET',
+                url: '/location/'+panoId+'/status',
+                success: function(data) {
+                    if( data == 1 ) {
+                        element.attr('title', 'Unlike');
+                        element.attr('data-original-title', 'Unlike');
+                        element.removeClass('unfavourite-sv').addClass('favourite-sv');
+                        element.children('i').removeClass('far').addClass('fas');
+                    } else {
+                        element.attr('title', 'Favourite');
+                        element.attr('data-original-title', 'Favourite');
+                        element.removeClass('favourite-sv').addClass('unfavourite-sv');
+                        element.children('i').removeClass('fas').addClass('far');
+                    }
+                }
+            });
 
-        // Checking pioneer
-        // $.ajax({
-        //     type: 'GET',
-        //     url: '/get/'+panoId+'/pioneer',
-        //     success: function( data ) {
-        //         if( data != 0 ) {
-        //             $("#content .first-explorer").show();
-        //             $("#content span.pioneer").text(data.name);
-        //         } else {
-        //             $("#content .first-explorer").hide();
-        //         }
-        //     }
-        // });
+            // Checking pioneer
+            // $.ajax({
+            //     type: 'GET',
+            //     url: '/get/'+panoId+'/pioneer',
+            //     success: function( data ) {
+            //         if( data != 0 ) {
+            //             $("#content .first-explorer").show();
+            //             $("#content span.pioneer").text(data.name);
+            //         } else {
+            //             $("#content .first-explorer").hide();
+            //         }
+            //     }
+            // });
+        }
+    }
+
+    var processEyeshot = function(data, status) {
+        
+        if (status === 'OK') {
+
+            $('#landing-pano .loader').css('display', 'none');
+            $('#landing-pano #sv-pano').css('display', 'block');
+      
+            panorama.setPano(data.location.pano);
+            panorama.setPov({
+                heading: 270,
+                pitch: 0
+            });
+            panorama.setVisible(true);
+      
+        } else {
+            // $('.sv-not-found').toast({delay: 2000});
+            // $('.sv-not-found').toast('show');
+            // Keep searching, you'll surely end up somewhere!
+            takeMeSomewhereIDontBelong();
+        }
     }
 
     var initMap = function(latitude, longitude, pano, heading, pitch, pano_zoom) {
-        
         var loc = {
             lat: latitude,
             lng: longitude
@@ -78,7 +102,7 @@
         panorama = new google.maps.StreetViewPanorama(
             document.getElementById('sv-pano'), // Pano Selector
             {
-                position: location,
+                position: loc,
                 panControl: true,
                 fullscreenControl: true,
                 linksControl: false,
@@ -94,7 +118,7 @@
         sv.getPanorama({
             location: loc,
             radius: 50
-        }, processEyeshotData(pano, heading, pitch));
+        }, processEyeshot);
 
         // Look for a nearby Street View panorama when the map is clicked.
         // getPanorama will return the nearest pano when the given
@@ -103,31 +127,13 @@
             sv.getPanorama({
                 location: event.latLng,
                 radius: 100
-            }, processEyeshotData(pano, heading, pitch));
+            }, processEyeshot);
         });
 
         panorama.addListener('pano_changed', function() {
-
             var panoId = panorama.getPano();
             initPanoId(panoId);
         });
-    }
-
-    var processEyeshotData = function(panoId, panoHeading, panoPitch) {
-        if ( panoId ) {
-            
-            panorama.setPano(panoId);
-            panorama.setPov({
-                heading: panoHeading,
-                pitch: panoPitch
-            });
-            panorama.setVisible(true);
-
-        } else {
-            console.error('Eyeshot not found for this location.');
-            $('.sv-not-found').toast({delay: 2000});
-            $('.sv-not-found').toast('show');
-        }
     }
 
     var randomLoc = function( latitude, longitude ) {
@@ -151,7 +157,7 @@
         panorama = new google.maps.StreetViewPanorama(
             document.getElementById('sv-pano'), // Pano Selector
             {
-                position: location,
+                position: loc,
                 panControl: true,
                 fullscreenControl: true,
                 linksControl: false,
@@ -167,7 +173,7 @@
         sv.getPanorama({
             location: loc,
             radius: 50
-        }, processRandomEyeshot);
+        }, processEyeshot);
 
         // Look for a nearby Street View panorama when the map is clicked.
         // getPanorama will return the nearest pano when the given
@@ -176,7 +182,7 @@
             sv.getPanorama({
                 location: event.latLng,
                 radius: 100
-            }, processRandomEyeshot);
+            }, processEyeshot);
         });
 
         panorama.addListener('pano_changed', function() {
@@ -189,27 +195,6 @@
                 scrollTop: ($("#landing-pano").offset().top - 20)
             }, 'fast');
         });
-    }
-
-    function processRandomEyeshot(data, status) {
-        if (status === 'OK') {
-
-            $('#landing-pano .loader').css('display', 'none');
-            $('#landing-pano #sv-pano').css('display', 'block');
-      
-            panorama.setPano(data.location.pano);
-            panorama.setPov({
-                heading: 270,
-                pitch: 0
-            });
-            panorama.setVisible(true);
-      
-        } else {
-            // $('.sv-not-found').toast({delay: 2000});
-            // $('.sv-not-found').toast('show');
-            // Keep searching, you'll surely end up somewhere!
-            takeMeSomewhereIDontBelong();
-        }
     }
     
     function generateRandomPoint(center, radius) {
@@ -378,8 +363,9 @@
     });
 
     // Tagify
-    var input = document.querySelector('#favouriteBox input[name="tags"]'),
-    tagify = new Tagify(input);
+    var input = document.querySelector('#favouriteBox input[name="tags"]');
+    (input !== null) ? tagify = new Tagify(input) : '';
+    
 
     // View Eyeshot
     $("div.eyeshot").on('click', '.eyeshot-media', function() {
