@@ -28,7 +28,7 @@
 }
 
 :root {
-    --primary-color: #5544c9;
+    --primary-color: #6697FE;
     --body-color: #F4F4F4;
     --font-primary-regular: Rubik, sans-serif;
     --font-primary-bold: Rubik-Bold, sans-serif;
@@ -74,7 +74,7 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .map-box {
-  margin: 30px 0;
+  margin: 0 0 30px 0;
 }
 
 #sv-pano .action-buttons {
@@ -304,8 +304,8 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .eyeshot-tags .eyeshot-tag {
-  background-color: #90ee90;
-  color: black;
+  background-color: rgb(104, 144, 230);
+  color: white;
   font-weight: 500;
   text-decoration: none;
   padding: 5px;
@@ -762,21 +762,20 @@ header .navbar .eyeshot-user img {
   color: black;
 }
 
-/* Footer */
-footer.home-footer {
-  background: white;
-  margin-top: 15px;
+.banner-lower .funny-street-views img {
+  width: 250px;
+  height: 250px;
+  border-radius: 6px;
+  object-fit: cover;
+  margin: 5px;
 }
 
+/* Footer */
 footer.home-footer .footer-brand {
   font-size: 22px;
   color: black;
   text-decoration: none;
   font-weight: 800;
-}
-
-footer.home-footer .footer-content {
-  margin: 0 30px;
 }
 
 .home-footer .footer-brand .logo-globe {
@@ -791,16 +790,17 @@ footer.home-footer .footer-content {
 /* Button */
 .button-es {
   transition: transform .1s linear;
-  color: #fff;
-  background-color: #5544c9;
-  border-color: #4e3eb6;
+  color: #fff !important;
+  letter-spacing: 1.25px;
+  background-color: #6697FE !important;
+  border-color: #99B9FE;
 }
 
 .button-es:hover {
   -webkit-transform: scale(1.0333);
       -ms-transform: scale(1.0333);
       transform: scale(1.0333);
-  color: #fff!important;
+  color: black;
 }
 
 .themeGreen {

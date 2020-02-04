@@ -192,7 +192,7 @@
 
         $("#landing-pano").on('click', function() {
             $('html, body').animate({
-                scrollTop: ($("#landing-pano").offset().top - 20)
+                scrollTop: ($("#landing-pano").offset().top)
             }, 'fast');
         });
     }
@@ -337,8 +337,8 @@
             initMap( Number(details[0]), Number(details[1]), details[2], Number(details[3]), Number(details[4]), Number(details[5]) );
         }
 
-        console.log("%c🌏", "font-size:16px;");
-        console.log("%cHaving fun using Eyeshot? Wanna contribute or maybe give a star 😁. Join us:\nhttp://github.com/actuallyakash/eyeshot", "color: lightgreen; font-size: 12px;");
+        console.log("%c🌏", "font-size:20px;");
+        console.log("%cHaving fun using Eyeshot? Wanna contribute or maybe give a star 😁. Join us:\nhttp://github.com/actuallyakash/eyeshot", "color: #6697FE; font-size: 12px;");
     });
 
     // Favourite/Unfavourite ops

@@ -37,13 +37,20 @@
     </div>
 </div>
 
-{{-- <div class="text-center p-4 mt-4 banner-lower">    
-    <div class="text-center mb-4">
-        <button data-toggle="modal" data-target="#loginSignupTv" class="btn button-es btn-lg shadow mr-1">Start Exploring</button>
+<div class="text-center p-4 mt-4 banner-lower">
+    <h2 class="m-2">Things you can find on Eyeshot 😃</h2>
+    <div class="funny-street-views">
+        <img src="{{ asset('images/f/a.jpg') }}" alt="wearing pigeon costume">
+        <img src="{{ asset('images/f/b.jpg') }}" alt="caught red handed">
+        <img src="{{ asset('images/f/c.jpg') }}" alt="two samurais chilling">
+        <img src="{{ asset('images/f/e.jpg') }}" alt="shit happens">
     </div>
-</div> --}}
+    <div class="text-center mb-4">
+        <button data-toggle="modal" data-target="#loginSignupTv" class="btn button-es btn-lg shadow m-2 font-weight-bold">Start Exploring</button>
+    </div>
+</div>
 
-<footer class="home-footer py-4">
+<footer class="home-footer container py-4">
     <div class="row justify-content-between align-items-center footer-content">
         {{-- <div class="col-12 col-md-4 text-center order-1">
             <ul class="es-social-icons list-inline text-center m-4">

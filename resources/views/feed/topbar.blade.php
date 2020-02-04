@@ -7,11 +7,10 @@
         </select>
     </div>
     <div class="eyeshot-tags">
-        <span title="Trending Tags">🔥</span>
+        <span title="Trending Tags">Trending 🔥</span>
         @foreach ( Helper::trendingTags() as $tag )
           <a class="eyeshot-tag badge" href="/search?q={{ $tag->tags }}">{{ ucwords($tag->tags) }}</a>
         @endforeach
-        <span title="Trending Tags">🔥</span>
     </div>
   </nav>
 </div>

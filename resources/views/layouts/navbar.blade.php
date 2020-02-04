@@ -49,7 +49,7 @@
                 
                 @auth
                 <li class="nav-item">
-                    <a href="/" class="btn btn-primary mt-1">Explore</a>
+                    <a href="/" class="btn button-es mt-1">Explore</a>
                 </li>
                 @endauth
             </ul>
