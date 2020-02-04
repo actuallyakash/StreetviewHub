@@ -47,7 +47,7 @@ class LocationController extends Controller
             $eyeshotName = Str::random(20) . '.jpg';
             $contents = file_get_contents($filepath);
             // Saving the location image
-            Storage::disk('public')->put($eyeshotName, $contents);
+            Storage::disk('s3')->put($eyeshotName, $contents);
             
             $attributes = [
                 'user_id' => auth()->id(),
@@ -81,7 +81,7 @@ class LocationController extends Controller
             ->delete();
 
         if ($eyeshot->media) {
-            Storage::disk('public')->delete($eyeshot->media);
+            Storage::disk('s3')->delete($eyeshot->media);
         }
 
         return 1;

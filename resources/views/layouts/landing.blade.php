@@ -23,9 +23,9 @@
         <div class="explain-eyeshot text-justify">Eyeshot is a visual discovery of our surroundings, explored by people like you. Eyeshot's content comes from two sources - Google and explorers (you). Contribute to Eyeshot by exploring places you never been before.</div>
     </div>
 
+    @if ( $randomEyeshots = App\Location::inRandomOrder()->take(3)->get() )
     <div class="random-eyeshots mt-5">
         <h2 class="mb-4">Some Random Eyeshots</h2>
-        @php $randomEyeshots = App\Location::inRandomOrder()->take(3)->get(); @endphp
         <div class="row">
             @foreach( $randomEyeshots as $eyeshot )
             <div class="col-md-4 col-sm-6">
@@ -35,6 +35,7 @@
         </div>
         <big><a class="text-decoration-none font-weight-bold" href="/feed"> See More <i class="fas fa-arrow-circle-right"></i></a></big>
     </div>
+    @endif
 </div>
 
 <div class="text-center p-4 mt-4 banner-lower">

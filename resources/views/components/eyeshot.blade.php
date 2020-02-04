@@ -5,9 +5,9 @@
             <span class="pioneer-tag"><i class="fas fa-medal"></i></span>
             @endif
             <picture>
-                <source srcset="{{ asset("storage/eyeshots/$eyeshot->media") }}" media="(-webkit-min-device-pixel-ratio: 1.5), (min--moz-device-pixel-ratio: 1.5), (-o-min-device-pixel-ratio: 3/2), (min-device-pixel-ratio: 1.5), (min-resolution: 1.5dppx)">
-                <source srcset="{{ asset("storage/eyeshots/$eyeshot->media") }}">
-                <img class="img-fluid" alt="{{ $eyeshot->location_name }}" src="{{ asset("storage/eyeshots/$eyeshot->media") }}">
+                <source srcset="{{ Storage::disk('s3')->url($eyeshot->media) }}" media="(-webkit-min-device-pixel-ratio: 1.5), (min--moz-device-pixel-ratio: 1.5), (-o-min-device-pixel-ratio: 3/2), (min-device-pixel-ratio: 1.5), (min-resolution: 1.5dppx)">
+                <source srcset="{{ Storage::disk('s3')->url($eyeshot->media) }}">
+                <img class="img-fluid" alt="{{ $eyeshot->location_name }}" src="{{ Storage::disk('s3')->url($eyeshot->media) }}">
             </picture>
         </div>
     </div>
