@@ -63,8 +63,6 @@ class LoginController extends Controller
         } catch (Exception $e) {
             return redirect('auth/google');
         }
-
-        dd($user);
         
         $authUser = $this->findOrCreateUser($user, 'google');
 
@@ -131,7 +129,7 @@ class LoginController extends Controller
             return $authUser;
         }
 
-        if ( User::where('nickname', $user->nickname)->first() ) {
+        if ( $user->nickname === null || User::where('nickname', $user->nickname)->first() ) {
             $nickname = $this->randomUsername($user->nickname);
         } else {
             $nickname = $user->nickname;
@@ -143,11 +141,7 @@ class LoginController extends Controller
                 'name' => $user->name,
                 'nickname' => $nickname,
                 'email' => $user->email,
-                'avatar' => $user->avatar,
-                'company' => $user->user['company'],
-                'location' => $user->user['location'],
-                'website' => $user->user['blog'],
-                'bio' => $user->user['bio'],
+                'avatar' => $user->avatar
             ]);
         }
 
