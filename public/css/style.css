@@ -45,9 +45,10 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .map-box {
-  height: 500px;
+  height: 80vh;
   margin:0;
   padding:0;
+  margin: 0 0 30px 0;
 }
 
 #sv-pano {
@@ -73,11 +74,8 @@ h1, h2, h3, h4, h5, h6 {
   height: 50%;
 }
 
-.map-box {
-  margin: 0 0 30px 0;
-}
-
 #sv-pano .action-buttons {
+  display: flex;
   z-index: 2;
   position: absolute;
   bottom: 20px;
@@ -823,4 +821,29 @@ footer.home-footer .footer-brand {
 
 .btn.focus, .btn:focus {
   box-shadow: none;
+}
+
+/* For mobile */
+@media screen and (max-width: 600px) {
+  #loginSignupTv .social-login {
+    display: flex;
+    flex-flow: column;
+  }
+
+  #loginSignupTv .social-login .auth-social {
+    margin-bottom: 15px;
+  }
+
+  #sv-map {
+    width: 30%;
+    height: 30%;
+  }
+
+  #sv-pano .action-buttons {
+    padding: 2px;
+  }
+
+  #sv-pano .action-buttons button i {
+    font-size: 22px;
+  }
 }
