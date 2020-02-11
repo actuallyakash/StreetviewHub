@@ -846,4 +846,8 @@ footer.home-footer .footer-brand {
   #sv-pano .action-buttons button i {
     font-size: 22px;
   }
+
+  header .navbar .eyeshot-user {
+    margin-top: 8px;
+  }
 }

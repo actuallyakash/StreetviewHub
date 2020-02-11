@@ -71,4 +71,9 @@ class PagesController extends Controller
 
         return view('categories', compact('filteredCats'));
     }
+
+    public function privacy()
+    {
+        return view('privacy');
+    }
 }

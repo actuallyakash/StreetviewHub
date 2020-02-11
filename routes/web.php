@@ -43,6 +43,7 @@ Route::get('/recent', 'PagesController@feed');
 Route::get('/popular', 'PagesController@popular');
 Route::get('/search', 'PagesController@search');
 Route::get('/categories', 'PagesController@categories');
+Route::get('/privacy', 'PagesController@privacy');
 
 
 

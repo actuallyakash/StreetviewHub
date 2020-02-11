@@ -38,6 +38,7 @@
     @endif
 </div>
 
+@guest
 <div class="text-center p-4 mt-4 banner-lower">
     <h2 class="m-2">Things you can find on Eyeshot 😃</h2>
     <div class="funny-street-views">
@@ -50,6 +51,7 @@
         <button data-toggle="modal" data-target="#loginSignupTv" class="btn button-es btn-lg shadow m-2 font-weight-bold">Start Exploring</button>
     </div>
 </div>
+@endguest
 
 <footer class="home-footer container py-4">
     <div class="row justify-content-between align-items-center footer-content">
@@ -73,7 +75,8 @@
                 <li><a class="text-muted" href="/feed">Feed 📜</a></li>
                 <li><a class="text-muted" href="/popular">On fire 🔥</a></li>
                 <li><a class="text-muted" href="/privacy">Privacy 🔏</a></li>
-                <li><a class="text-muted" href="mailto:akash_gupta@hotmail.com">Contact 👋</a></li>
+                {{-- Can't afford business email right now, in future maybe 🤷‍♂️ --}}
+                <li><a class="text-muted" href="mailto:eyeshot.xyz@gmail.com">Contact 👋</a></li>
             </ul>
         </div>
     </div>
