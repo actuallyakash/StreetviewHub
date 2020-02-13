@@ -37,7 +37,7 @@
     <script src="https://unpkg.com/popper.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
     <script src="{{ asset('js/tagify.min.js') }}"></script>
-    <script src="{{ asset('js/index.js') }}" async defer></script>
+    <script src="{{ asset('js/index.min.js') }}" async defer></script>
     <script async defer src="https://maps.googleapis.com/maps/api/js?key={{ env('GMAPS_KEY') }}"></script>
 </body>
 </html>

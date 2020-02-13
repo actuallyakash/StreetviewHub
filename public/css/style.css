@@ -858,4 +858,8 @@ footer.home-footer .footer-brand {
   .eyeshot-container-fluid {
     padding: 0;
   }
+
+  div.tooltip {
+    display: none;
+  }
 }
