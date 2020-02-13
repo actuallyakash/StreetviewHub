@@ -130,7 +130,7 @@ class LoginController extends Controller
         }
 
         if ( $user->nickname === null || User::where('nickname', $user->nickname)->first() ) {
-            $nickname = $this->randomUsername($user->nickname);
+            $nickname = $this->randomUsername(strtolower(explode(' ', $user->name)[0]));
         } else {
             $nickname = $user->nickname;
         }
