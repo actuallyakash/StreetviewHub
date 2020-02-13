@@ -13,4 +13,4 @@
         </div>
     </div>
 </div>
-<p class="first-explorer">Discovered by: <span class="pioneer"></span></p>
+{{-- <span class="first-explorer">Discovered by: <span class="pioneer"></span></span> --}}

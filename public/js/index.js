@@ -335,6 +335,7 @@
                 details = decode.split(':');
             initPanoId(details[2]);
             initMap( Number(details[0]), Number(details[1]), details[2], Number(details[3]), Number(details[4]), Number(details[5]) );
+            setTimeout(function(){ $('#shared-pano').after('<div class="details text-center"><h3 class="eyeshot-info"> <span class="text-muted">Location: </span>' + map.streetView.location.description + '</h3></div>'); }, 2000);
         }
 
         console.log("%c🌏", "font-size:20px;");
