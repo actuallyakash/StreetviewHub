@@ -26,11 +26,9 @@
     @if ( $randomEyeshots = App\Location::inRandomOrder()->take(3)->get() )
     <div class="random-eyeshots mt-5">
         <h2 class="mb-4">Some Random Eyeshots</h2>
-        <div class="row">
+        <div class="row justify-content-center">
             @foreach( $randomEyeshots as $eyeshot )
-            <div class="col-md-4 col-sm-6">
-            @include('components/eyeshot')
-            </div>
+                @include('components/eyeshot')
             @endforeach
         </div>
         <big><a class="text-decoration-none font-weight-bold" href="/feed"> See More <i class="fas fa-arrow-circle-right"></i></a></big>

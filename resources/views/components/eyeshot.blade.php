@@ -17,7 +17,7 @@
                 @if($eyeshot->title)
                 <p title="{{ $eyeshot->title }}" class="eyeshot-status">{{ $eyeshot->title }}</p>
                 @else
-                <p title="Eyeshot by {{ $eyeshot->owner->name }}" class="card-text eyeshot-status">Eyeshot by <b>{{ $eyeshot->owner->name }}</b></p>
+                <p title="Eyeshot by {{ ucfirst($eyeshot->owner->name) }}" class="card-text eyeshot-status">Eyeshot by <b>{{ ucfirst(explode(' ', $eyeshot->owner->name)[0]) }}</b></p>
                 @endif
                 <p class="eyeshot-published">{{ $eyeshot->created_at->diffForHumans() }}</p>
             </div>

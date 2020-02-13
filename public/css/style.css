@@ -120,7 +120,8 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .eyeshot {
-  width: 100%;
+  max-width: 50%;
+  margin: 0 10px;
   border: 0;
   border-radius: 6px;
   position: relative;
@@ -835,8 +836,7 @@ footer.home-footer .footer-brand {
   }
 
   #sv-map {
-    width: 30%;
-    height: 30%;
+    display: none;
   }
 
   #sv-pano .action-buttons {
@@ -849,5 +849,13 @@ footer.home-footer .footer-brand {
 
   header .navbar .eyeshot-user {
     margin-top: 8px;
+  }
+
+  .eyeshot {
+    max-width: 70%;
+  }
+  
+  .eyeshot-container-fluid {
+    padding: 0;
   }
 }

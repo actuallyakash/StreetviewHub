@@ -11,17 +11,11 @@
 <div class="eyeshot-container-fluid">
     <div class="eyeshot-feed text-center">
         <h3 class="mb-4 text-muted">{{ count($eyeshots) }} result{{ count($eyeshots) == 1 ? '' : 's' }} for <strong class="text-dark">{{ $searchTerm }}</strong></h3>
-        <div class="row">
-
+        <div class="row justify-content-center">
             @foreach ( $eyeshots as $eyeshot )
-                <div class="col-md-4 col-sm-6">
-                    @include('components/eyeshot')
-                </div>
-            @endforeach
-
-            
+                @include('components/eyeshot')
+            @endforeach            
         </div>
-
     </div>
 </div>
 @endsection
