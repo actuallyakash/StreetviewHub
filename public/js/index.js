@@ -423,8 +423,10 @@
     });
 
     // Randomizer
+    var randomClick = 0;
     $("div#sv-pano").on('click', 'button.randomize-eyeshot', function() {
         takeMeSomewhereIDontBelong();
+        ( randomClick++ === 5) ? $("#loginSignupModal").modal('show') : '';
     });
 
     // Copying Sharing url in clipboard
