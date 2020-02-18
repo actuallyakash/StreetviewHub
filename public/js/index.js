@@ -462,4 +462,18 @@
         window.location = "/"+$(this).val();        
     });
 
+     /* Pagination || Infinite Scroll */
+     $(function() {
+        $('.eyeshot-feed').jscroll({
+            autoTrigger: true,
+            loadingHtml: '<div class="text-center"><span class="eyeshot-loader">🌏</span></div>',
+            nextSelector: 'ul.pagination li.active + li a', 
+            contentSelector: 'div.eyeshot-feed',
+            pagingSelector: 'ul.pagination',
+            callback: function() {
+                $('ul.pagination:visible:first').hide();
+            }
+        });
+    });
+
 })(jQuery);

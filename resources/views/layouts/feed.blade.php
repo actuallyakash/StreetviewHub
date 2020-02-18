@@ -10,6 +10,7 @@
             @foreach ( $eyeshots as $eyeshot )
                 @include('components/eyeshot')
             @endforeach
+            {{ $eyeshots->links() }}
         </div>
     </div>
 </div>
