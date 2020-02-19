@@ -335,7 +335,11 @@
                 details = decode.split(':');
             initPanoId(details[2]);
             initMap( Number(details[0]), Number(details[1]), details[2], Number(details[3]), Number(details[4]), Number(details[5]) );
-            setTimeout(function(){ $('#shared-pano').after('<div class="details text-center"><h3 class="eyeshot-info"> <span class="text-muted">Location: </span>' + map.streetView.location.description + '</h3></div>'); }, 2000);
+            setTimeout(function(){ $('#shared-pano').after('<div class="details text-center"><h3 class="eyeshot-info"> <span class="text-muted">Location: </span>' + map.streetView.location.description + '</h3></div>');
+            $('meta.meta-title').attr('content', map.streetView.location.description+" | Eyeshot");
+            $('meta.meta-keywords').attr('content', map.streetView.location.description);
+            $('meta.meta-image').attr('content', "https://maps.googleapis.com/maps/api/streetview?size=600x400&pano="+ details[2] +"&heading="+ details[3] +"&pitch="+ details[4] +"&key=AIzaSyDTJbCnWZ2ZpG9ZAkf66SNfvLb9sUchknw");
+            }, 2000);
         }
 
         console.log("%c🌏", "font-size:20px;");
