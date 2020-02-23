@@ -376,7 +376,7 @@
     
 
     // View Eyeshot
-    $("div.eyeshot").on('click', '.eyeshot-media', function() {
+    $("div.eyeshot-feed").on('click', '.eyeshot .eyeshot-media', function() {
         var eyeshot = $(this).data('eyeshot').replace('eyeshot-','');
         $('#viewEyeshot').modal('show');
 
@@ -472,7 +472,7 @@
             autoTrigger: true,
             loadingHtml: '<div class="text-center"><span class="eyeshot-loader">🌏</span></div>',
             nextSelector: 'ul.pagination li.active + li a', 
-            contentSelector: 'div.eyeshot-feed',
+            contentSelector: 'div.eyeshot',
             pagingSelector: 'ul.pagination',
             callback: function() {
                 $('ul.pagination:visible:first').hide();
