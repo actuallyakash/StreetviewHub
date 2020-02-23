@@ -41,8 +41,11 @@ class PagesController extends Controller
             if ( $eyeshot !== null )
                 return $eyeshot;
         });
+
+        // Popular doen't need pagination, for now
+        $noPaginate = true;
         
-        return view('layouts/feed', compact('eyeshots'));
+        return view('layouts/feed', compact('eyeshots', 'noPaginate'));
     }
 
     public function search()
