@@ -227,15 +227,15 @@
 
         // TODO: Add more NOICE radials
         var radialPoints = [
-            [43.077769, -79.076075],
-            [37.869085, -122.254775],
-            [51.5286416, -0.1015987],
-            [47.3721915, 8.5425051],
-            [48.8863054, 2.3433567],
-            [45.8810642, -6.9345638],
-            [53.3057307, -12.7050537],
-            [64.6323424, 17.0829139],
-            [31.7127264, 120.2551228]
+            [43.0822473, -79.0635906], // Niagara Falls, New York
+            [37.869085, -122.254775], // Berkeley, California
+            [51.5286416, -0.1015987], // London, England
+            [47.3721915, 8.5425051], // Zürich, Zurich
+            [46.7972162, 9.8334775], // Davos, Switzerland
+            [55.6993533, 12.5423634], // Superkilen Park
+            [38.470495, -78.7748714], // Shenandoah National Park, Virginia
+            [37.42197, -122.084373], // GooglePlex
+            [-4.3538688,55.8300366] // La Digue Island, Seychelles 
         ];
         
         var radial = radialPoints[Math.floor((Math.random() * (radialPoints.length-1)) + 1)];
