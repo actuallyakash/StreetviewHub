@@ -20,7 +20,7 @@
     <h1>What is Eyeshot?</h1>
     <div class="d-flex justify-content-around align-items-center description">
         <div class="globe-eyeshot display-3 mr-3">🌏</div>
-        <div class="explain-eyeshot text-justify">Eyeshot is a visual discovery of our surroundings, explored by people like you. Eyeshot's content comes from two sources - Google and explorers (you). Contribute to Eyeshot by exploring places you never been before.</div>
+        <div class="explain-eyeshot text-justify">Eyeshot is a visual discovery of the world around us, explored by people like you. Eyeshot's content comes from two sources - Google and explorers (you). Contribute to Eyeshot by exploring places you never been before.</div>
     </div>
 
     @if ( $randomEyeshots = App\Location::inRandomOrder()->take(3)->get() )
