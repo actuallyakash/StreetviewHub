@@ -127,7 +127,7 @@
 
 @endauth
 
-@isset($eyeshot)
+@isset($eyeshots)
 <div class="modal" id="viewEyeshot" tabindex="-1" role="dialog" aria-labelledby="view-eyeshot" aria-hidden="true">
     <button type="button" class="close close-eyeshot-icon" data-dismiss="modal" aria-label="Close">
         <span aria-hidden="true">&times;</span>
@@ -144,7 +144,7 @@
                 </div>
                 <div class="eyeshot-user">
                     <p class="eyeshot-title"></p>
-                    <p class="eyeshot-username">by <a href="/{{ $eyeshot->owner->nickname }}">{{ $eyeshot->owner->name }}</a></p>
+                    <p class="eyeshot-username"></p>
                 </div>
             </div>
 

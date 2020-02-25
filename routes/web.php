@@ -11,14 +11,6 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
-
-Route::get('/home', function () {
-    return view('welcome');
-});
-
 Route::get('/auth/{channel}', 'Auth\LoginController@redirectToProvider');
 
 # Google
@@ -38,13 +30,14 @@ Route::get('/get/{panoId}/pioneer', 'LocationController@pioneer');
 Route::get('/get/{eyeshotId}/details', 'LocationController@eyeshot');
 
 #Pages
+Route::get('/', 'PagesController@welcome');
+Route::get('/home', 'PagesController@welcome');
 Route::get('/feed', 'PagesController@feed');
 Route::get('/recent', 'PagesController@feed');
 Route::get('/popular', 'PagesController@popular');
 Route::get('/search', 'PagesController@search');
 Route::get('/categories', 'PagesController@categories');
 Route::get('/privacy', 'PagesController@privacy');
-
 
 
 Route::get('/logout', 'Auth\LoginController@logout');

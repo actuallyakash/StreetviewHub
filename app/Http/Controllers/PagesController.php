@@ -14,6 +14,13 @@ class PagesController extends Controller
         // $this->middleware('auth', ['except' => ['feed']]);
     }
 
+    public function welcome()
+    {
+        $eyeshots = Location::latest('created_at')->paginate(6);
+        
+        return view('welcome', compact('eyeshots'));
+    }
+
     public function feed()
     {
         $eyeshots = Location::latest('created_at')->paginate(9);

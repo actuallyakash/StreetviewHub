@@ -22,34 +22,9 @@
         <div class="globe-eyeshot display-3 mr-3">🌏</div>
         <div class="explain-eyeshot text-justify">Eyeshot is a visual discovery of the world around us, explored by people like you. Eyeshot's content comes from two sources - Google and explorers (you). Contribute to Eyeshot by exploring places you never been before.</div>
     </div>
-
-    @if ( $randomEyeshots = App\Location::inRandomOrder()->take(3)->get() )
-    <div class="random-eyeshots mt-5">
-        <h2 class="mb-4">Some Random Eyeshots</h2>
-        <div class="row justify-content-center">
-            @foreach( $randomEyeshots as $eyeshot )
-                @include('components/eyeshot')
-            @endforeach
-        </div>
-        <big><a class="text-decoration-none font-weight-bold" href="/feed"> See More <i class="fas fa-arrow-circle-right"></i></a></big>
-    </div>
-    @endif
 </div>
 
-@guest
-<div class="text-center p-4 mt-4 banner-lower">
-    <h2 class="m-2">Things you can find on Eyeshot 😃</h2>
-    <div class="funny-street-views">
-        <img src="{{ asset('images/f/a.jpg') }}" alt="wearing pigeon costume">
-        <img src="{{ asset('images/f/b.jpg') }}" alt="caught red handed">
-        <img src="{{ asset('images/f/c.jpg') }}" alt="two samurais chilling">
-        <img src="{{ asset('images/f/e.jpg') }}" alt="shit happens">
-    </div>
-    <div class="text-center mb-4">
-        <button data-toggle="modal" data-target="#loginSignupTv" class="btn button-es btn-lg shadow m-2 font-weight-bold">Start Exploring</button>
-    </div>
-</div>
-@endguest
+@include('feed/latest-shots')
 
 <footer class="home-footer container py-4">
     <div class="row justify-content-between align-items-center footer-content">
@@ -75,6 +50,7 @@
                 <li><a class="text-muted" href="/privacy">Privacy 🔏</a></li>
                 {{-- Can't afford business email right now, in future maybe 🤷‍♂️ --}}
                 <li><a class="text-muted" href="mailto:eyeshot.xyz@gmail.com">Contact 👋</a></li>
+                <li><a class="text-muted" href="https://github.com/actuallyakash/eyeshot">Github 👨‍💻</a></li>
             </ul>
         </div>
     </div>
