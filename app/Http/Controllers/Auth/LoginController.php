@@ -68,7 +68,7 @@ class LoginController extends Controller
 
         Auth::login($authUser, true);
 
-        return view( 'welcome', compact($authUser) );
+        return redirect('/');
     }
 
     /**
@@ -88,7 +88,7 @@ class LoginController extends Controller
 
         Auth::login($authUser, true);
 
-        return view( 'welcome', compact($authUser) );
+        return redirect('/');
     }
 
     /**
@@ -108,7 +108,7 @@ class LoginController extends Controller
 
         Auth::login($authUser, true);
 
-        return view( 'welcome', compact($authUser) );
+        return redirect('/');
     }
 
     public function randomUsername( $username )
