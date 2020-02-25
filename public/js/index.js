@@ -82,7 +82,7 @@
         }
     }
 
-    var initMap = function(latitude, longitude, pano, heading, pitch, pano_zoom) {
+    var initMap = function(latitude, longitude, pano, heading, pitch, pano_zoom, map_selector, pano_selector) {
         var loc = {
             lat: latitude,
             lng: longitude
@@ -91,7 +91,7 @@
         var sv = new google.maps.StreetViewService();
         
         // Set up the map.
-        map = new google.maps.Map(document.getElementById('sv-map'), { // Map selector
+        map = new google.maps.Map(map_selector, { // Map selector
             center: loc,
             zoom: 16,
             zoomControl: false,
@@ -100,7 +100,7 @@
         });
 
         panorama = new google.maps.StreetViewPanorama(
-            document.getElementById('sv-pano'), // Pano Selector
+            pano_selector, // Pano Selector
             {
                 position: loc,
                 panControl: true,
@@ -332,9 +332,12 @@
         if($( "#shared-pano" ).length) {
             var params = (new URL(window.location.href)).searchParams.get('s'),
                 decode = atob(params),
-                details = decode.split(':');
+                details = decode.split(':'),
+                mapSelector = document.querySelector('#shared-pano #sv-map'),
+                panoSelector = document.querySelector('#shared-pano #sv-pano');
             initPanoId(details[2]);
-            initMap( Number(details[0]), Number(details[1]), details[2], Number(details[3]), Number(details[4]), Number(details[5]) );
+
+            initMap( Number(details[0]), Number(details[1]), details[2], Number(details[3]), Number(details[4]), Number(details[5]), mapSelector, panoSelector );
             setTimeout(function(){ $('#shared-pano').after('<div class="details text-center"><h3 class="eyeshot-info"> <span class="text-muted">Location: </span>' + map.streetView.location.description + '</h3></div>');
             $('meta.meta-title').attr('content', map.streetView.location.description+" | Eyeshot");
             $('meta.meta-keywords').attr('content', map.streetView.location.description);
@@ -415,7 +418,9 @@
                     $("#viewEyeshot .eyeshot-saves").text(data.eyeshot_saves+" saves");
 
                     initPanoId(data.pano_id);
-                    initMap( latitude, longitude, data.pano_id, Number(data.pano_heading), Number(data.pano_pitch), data.pano_zoom );
+                    let mapSelector = document.querySelector('#viewEyeshot #sv-map'),
+                        panoSelector = document.querySelector('#viewEyeshot #sv-pano');
+                    initMap( latitude, longitude, data.pano_id, Number(data.pano_heading), Number(data.pano_pitch), data.pano_zoom, mapSelector, panoSelector );
 
                     $('#viewEyeshot .loader').css('display', 'none');
                     $('#viewEyeshot .modal-content').css('display', 'block');
