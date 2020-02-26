@@ -84,6 +84,6 @@
     <script src="{{ asset('js/tagify.min.js') }}"></script>
     <script src="{{ asset('js/index.min.js') }}" async defer></script>
     <script src="{{ asset('js/jscroll.min.js') }}"></script>
-    <script async defer src="https://maps.googleapis.com/maps/api/js?key={{ env('GMAPS_KEY') }}"></script>
+    <script src="https://maps.googleapis.com/maps/api/js?key={{ env('GMAPS_KEY') }}"></script>
 </body>
 </html>

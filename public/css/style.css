@@ -867,7 +867,7 @@ footer.home-footer .footer-brand {
   }
 }
 
-.eyeshot-paginate {
+.eyeshot-feed {
   display: -ms-flexbox;
   display: flex;
   -ms-flex-wrap: wrap;
@@ -875,4 +875,5 @@ footer.home-footer .footer-brand {
   margin-right: -15px;
   margin-left: -15px;
   justify-content: center;
+  text-align: center;
 }

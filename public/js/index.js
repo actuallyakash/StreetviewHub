@@ -473,11 +473,11 @@
 
      /* Pagination || Infinite Scroll */
      $(function() {
-        $('.eyeshot-feed').jscroll({
+        $('.eyeshot-container-fluid').jscroll({
             autoTrigger: true,
             loadingHtml: '<div class="text-center"><span class="eyeshot-loader">🌏</span></div>',
-            nextSelector: 'ul.pagination li.active + li a', 
-            contentSelector: 'div.eyeshot',
+            nextSelector: 'ul.pagination li.active + li a',
+            contentSelector: 'div.eyeshot-feed',
             pagingSelector: 'ul.pagination',
             callback: function() {
                 $('ul.pagination:visible:first').hide();
