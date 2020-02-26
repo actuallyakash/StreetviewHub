@@ -782,7 +782,14 @@ footer.home-footer .footer-brand {
 
 .home-footer .footer-brand .logo-globe {
   font-size: 13px;
+  position: relative;
+  top: -1.8px;
 }
+
+.home-footer .nav-list li:not(:last-child) {
+  margin-right: 15px;
+}
+
 .es-social-icons li a {
   color: black;
   font-size: 23px;

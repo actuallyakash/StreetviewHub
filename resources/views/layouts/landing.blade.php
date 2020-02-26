@@ -26,32 +26,15 @@
 
 @include('feed/latest-shots')
 
-<footer class="home-footer container py-4">
-    <div class="row justify-content-between align-items-center footer-content">
-        {{-- <div class="col-12 col-md-4 text-center order-1">
-            <ul class="es-social-icons list-inline text-center m-4">
-                <li class="list-inline-item">
-                    <a target="_blank" rel="noopener" href="https://twitter.com/eyeshot"><i class="fab fa-twitter" aria-hidden="true"></i></a>
-                </li>
-                <li class="list-inline-item">
-                    <a target="_blank" rel="noopener" href="https://instagram.com/eyeshot"><i class="fab fa-instagram" aria-hidden="true"></i></a>
-                </li>
-            </ul>
-        </div> --}}
-        <div class="text-center order-1">
-            <a class="footer-brand" href="/">Eyesh<span class="logo-globe">🌍</span>t</a>
-            <small class="d-block mb-3 text-muted">© 2020</small>
-        </div>
-        <div class="text-center order-3 order-sm-2">
-            <h5>See inside</h5>
-            <ul class="list-unstyled text-small">
-                <li><a class="text-muted" href="/feed">Feed 📜</a></li>
-                <li><a class="text-muted" href="/popular">On fire 🔥</a></li>
-                <li><a class="text-muted" href="/privacy">Privacy 🔏</a></li>
-                {{-- Can't afford business email right now, in future maybe 🤷‍♂️ --}}
-                <li><a class="text-muted" href="mailto:eyeshot.xyz@gmail.com">Contact 👋</a></li>
-                <li><a class="text-muted" href="https://github.com/actuallyakash/eyeshot">Github 👨‍💻</a></li>
-            </ul>
-        </div>
-    </div>
+<footer class="home-footer mt-3 bg-white text-center p-3">
+    <a class="footer-brand" href="http://eyeshot.xyz">Eyesh<span class="logo-globe">🌍</span>t</a>
+    <ul class="list-inline nav-list mt-1">
+        <li class="list-inline-item"><a class="text-muted" href="/feed">📜 Feed</a></li>
+        <li class="list-inline-item"><a class="text-muted" href="/popular">🔥 On fire</a></li>
+        <li class="list-inline-item"><a class="text-muted" href="/privacy">🔏 Privacy</a></li>
+        {{-- Can't afford business email right now, in future maybe 🤷‍♂️ --}}
+        <li class="list-inline-item"><a class="text-muted" href="mailto:eyeshot.xyz@gmail.com">👋 Contact</a></li>
+    </ul>
+
+    <small class="text-muted">👨‍💻 Eyeshot is Open Source @ <a target="_blank" href="https://github.com/actuallyakash/eyeshot">GitHub</a></small>
 </footer>
