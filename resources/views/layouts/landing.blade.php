@@ -24,6 +24,24 @@
     </div>
 </div>
 
+<div class="row eyeshot-controls text-center mt-3 bg-white shadow-sm p-3 px-5">
+    <div class="col-sm control-box">
+        <i class="fas fa-random"></i>
+        <h4>Randomizer</h4>
+        <p class="text-muted">Explore some place randomly and let your curious brain wander.</p>
+    </div>
+    <div class="col-sm control-box">
+        <i class="far fa-heart"></i>
+        <h4>Favourite</h4>
+        <p class="text-muted">Found something awesome? Don't loose the place, favourite it and it'll be shared with the community.</p>
+    </div>
+    <div class="col-sm control-box">
+        <i class="fas fa-share-alt"></i>
+        <h4>Share</h4>
+        <p class="text-muted">Share directly with your friends in a click of a button.</p>
+    </div>
+</div>
+
 @include('feed/latest-shots')
 
 <footer class="home-footer mt-3 bg-white text-center p-3">

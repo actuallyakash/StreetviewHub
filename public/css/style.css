@@ -754,6 +754,14 @@ header .navbar .eyeshot-user img {
   transition: margin-left 0.2s ease;
 }
 
+.eyeshot-controls i {
+  padding: 20px;
+  border-radius: 50%;
+  color: black;
+  font-size: 40px;
+  color: #63D95D;
+}
+
 .bg-es-primary {
   background-color: var(--primary-color);
   color: white;
@@ -883,4 +891,8 @@ footer.home-footer .footer-brand {
   margin-left: -15px;
   justify-content: center;
   text-align: center;
+}
+
+nav ul.pagination {
+  display: none;
 }
