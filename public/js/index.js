@@ -193,7 +193,7 @@
         $("#landing-pano").on('click', function() {
             $('html, body').animate({
                 scrollTop: ($("#landing-pano").offset().top)
-            }, 'fast');
+            }, 100);
         });
     }
     
@@ -243,6 +243,8 @@
         
         var latitude = Number(randomGeoPoints['lat']);
         var longitude = Number(randomGeoPoints['lng']);
+
+        $('#landing-pano #sv-pano .gm-style').remove(); // Clean old pano's instance
 
         randomLoc( latitude, longitude );
     }
