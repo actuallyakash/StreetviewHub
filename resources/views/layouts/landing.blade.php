@@ -24,7 +24,7 @@
     </div>
 </div>
 
-<div class="row eyeshot-controls text-center mt-3 bg-white shadow-sm p-3 px-5">
+<div class="row eyeshot-controls text-center bg-white p-3 px-5">
     <div class="col-sm control-box">
         <i class="fas fa-random"></i>
         <h4>Randomizer</h4>

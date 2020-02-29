@@ -24,4 +24,8 @@
             {{-- <button class="btn btn-outline-primary btn-sm"><i class="fas fa-heart"></i> Like</button> --}}
         </div>
     </div>
+    
+    @if( method_exists($eyeshots, 'links') )
+        {{ $eyeshots->links() }}
+    @endif
 </div>

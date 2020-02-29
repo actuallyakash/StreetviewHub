@@ -9,9 +9,6 @@
         @foreach ( $eyeshots as $eyeshot )
             @include('components/eyeshot')
         @endforeach
-        @if( !isset($noPaginate) )
-        {{ $eyeshots->links() }}
-        @endif
     </div>
     @endif
 </div>

@@ -381,8 +381,9 @@
     
 
     // View Eyeshot
-    $("div.eyeshot-feed").on('click', '.eyeshot .eyeshot-media', function() {
+    $("div.eyeshot-container-fluid").on('click', '.eyeshot .eyeshot-media', function() {
         var eyeshot = $(this).data('eyeshot').replace('eyeshot-','');
+        $('#viewEyeshot #sv-pano .gm-style').remove(); // Clean old pano's instance
         $('#viewEyeshot').modal('show');
 
         $("#viewEyeshot .eyeshot-location").text('');
@@ -479,7 +480,7 @@
             autoTrigger: true,
             loadingHtml: '<div class="text-center"><span class="eyeshot-loader">🌏</span></div>',
             nextSelector: 'ul.pagination li.active + li a',
-            contentSelector: 'div.eyeshot-feed',
+            contentSelector: 'div.eyeshot',
             pagingSelector: 'ul.pagination',
             callback: function() {
                 $('ul.pagination:visible:first').hide();
