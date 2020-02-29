@@ -1,0 +1,22 @@
+{
+    "short_name": "Eyeshot",
+    "name": "Eyeshot: Explore place you never been before!",
+    "description": "Eyeshot is a visual discovery of the world around us, explored by people like you. Explore place you never been before. Who knows where you'll end up next 🤩",
+    "icons": [
+      {
+        "src": "https://eyeshot.s3.amazonaws.com/icon-192x192.png",
+        "type": "image/png",
+        "sizes": "192x192"
+      },
+      {
+        "src": "https://eyeshot.s3.amazonaws.com/icon-512x512.png",
+        "type": "image/png",
+        "sizes": "512x512"
+      }
+    ],
+    "start_url": "https://eyeshot.xyz",
+    "background_color": "#ffffff",
+    "display": "minimal-ui",
+    "scope": "/",
+    "theme_color": "#6697FE"
+  }

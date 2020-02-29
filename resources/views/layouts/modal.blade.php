@@ -76,7 +76,7 @@
                 <div class="modal-body">
                     <div class="row">
                         <div class="col-md-2 text-center eyeshot-avatar">
-                            <img src="{{ Auth::user()->avatar }}">
+                            <img src="{{ str_ireplace("http", "https", Auth::user()->avatar) }}">
                             <h6 class="user-nickname">{{ Auth::user()->nickname }}</h6>
                         </div>
                         <div class="col-md-10 eyeshot-section">

@@ -8,6 +8,13 @@
 
     {{-- For SEO --}}
     <link rel="canonical" href="{{ Request::url() }}" />
+    {{-- For PWA --}}
+    <link href="{{ asset('manifest.json') }}" rel="manifest"/>
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="msapplication-starturl" content="/">
+    <meta name="theme-color" content="#6697FE">
+
     <meta property="og:site_name" content="Eyeshot" />
 @if ( \Request::input('s') )
     <meta name="description" content="Eyeshot is a visual discovery of our surroundings, explored by people like you. Discover the World's Top Destinations and Cool Places.">
@@ -82,7 +89,7 @@
     <script src="https://unpkg.com/popper.js@1.16.1/dist/umd/popper.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
     <script src="{{ asset('js/tagify.min.js') }}"></script>
-    <script src="{{ asset('js/index.min.js') }}" async defer></script>
+    <script src="{{ asset('js/index.js') }}" async defer></script>
     <script src="{{ asset('js/jscroll.min.js') }}"></script>
     <script src="https://maps.googleapis.com/maps/api/js?key={{ env('GMAPS_KEY') }}"></script>
 </body>

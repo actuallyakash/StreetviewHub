@@ -401,7 +401,7 @@
                     var latitude = Number(data.latitude);
                     var longitude = Number(data.longitude);
 
-                    $("#viewEyeshot .eyeshot-avatar img").attr('src', data.user_avatar);
+                    $("#viewEyeshot .eyeshot-avatar img").attr('src', data.user_avatar.replace('http', 'https'));
                     $("#viewEyeshot .eyeshot-user .eyeshot-username").html("by <a href='"+data.user_nickname+"'>"+data.eyeshot_by+"</a>");
                     $("#viewEyeshot .eyeshot-location").text(data.location_name);
                     if ( data.tags !== null ) {
@@ -487,5 +487,23 @@
             }
         });
     });
+
+    /* PWA */
+    if ('serviceWorker' in navigator) {
+        window.addEventListener('load', function () {
+            navigator.serviceWorker.register('/sw.js').then(function (registration) {
+                console.log('ServiceWorker registration :', registration.scope);
+            }).catch(function (error) {
+                console.log('ServiceWorker registration failed:', error);
+            });
+        });
+    }
+
+    window.addEventListener('beforeinstallprompt', saveBeforeInstallPromptEvent);
+
+    function saveBeforeInstallPromptEvent(evt) {
+        deferredInstallPrompt = evt;
+        deferredInstallPrompt.prompt();
+    }
 
 })(jQuery);
