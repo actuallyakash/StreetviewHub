@@ -909,3 +909,69 @@ footer.home-footer .footer-brand {
 nav ul.pagination {
   display: none;
 }
+
+/* PWA */
+#pwa-snackbar {
+  display: none;
+  position: fixed;
+  bottom: 0px;
+  width: 100%;
+}
+
+#pwa-snackbar.show {
+  display: block;
+  -webkit-animation: fadein 0.5s;
+  animation: fadein 0.5s;
+  z-index: 99;
+}
+
+@-webkit-keyframes fadein {
+  from {bottom: 0; opacity: 0;} 
+  to {bottom: 0px; opacity: 1;}
+}
+
+@keyframes fadein {
+  from {bottom: 0; opacity: 0;}
+  to {bottom: 0px; opacity: 1;}
+}
+
+.pwa-notif {
+  background-color: #3c366b;
+  text-align: center;
+  cursor: pointer
+}
+
+.pwa-notif .pwa-body {
+  background-color: #434190;
+  align-items: center;
+  color: #ebf4ff;
+  line-height: 1;
+  border-radius: 9999px;
+  display: inline-flex;
+}
+
+.pwa-notif .pwa-body .pwa-tag {
+  display: flex;
+  border-radius: 9999px;
+  background-color: #667eea;
+  font-size: .75rem;
+  font-weight: bold;
+}
+
+.pwa-notif .pwa-body .pwa-msg {
+  font-weight: 600;
+  flex: 1 1 auto;
+}
+
+.pwa-notif .close {
+  color: white;
+  margin: 10px;
+  position: absolute;
+  right: 0;
+  top: 0;
+  opacity: 1;
+}
+
+.pwa-notif .close:hover {
+  color: white;
+}

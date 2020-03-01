@@ -223,3 +223,14 @@
         </div>
     </div>
 </div>
+
+{{-- PWA --}}
+<div id="pwa-snackbar" class="pwa-notif py-4">
+    <button type="button" class="close" data-dismiss="pwa-notif" aria-label="Close">
+        <span aria-hidden="true">&times;</span>
+    </button>
+    <div class="pwa-body p-2" role="alert">
+        <span class="pwa-tag flex px-2 py-1 mr-3">INSTALL ( < 1 MB )</span>
+        <span class="pwa-msg mr-2">Get the app and find coolest locations 🌍 </span>
+    </div>
+</div>

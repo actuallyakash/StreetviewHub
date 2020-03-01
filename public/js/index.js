@@ -347,6 +347,16 @@
             }, 2000);
         }
 
+        // PWA
+        var pwaNotif = $("#pwa-snackbar");        
+        setTimeout(function () {
+            pwaNotif.addClass('show');
+        }, 3000);
+
+        $(pwaNotif).on('click', '.close', function() {
+            pwaNotif.removeClass('show');
+        });
+
         console.log("%c🌏", "font-size:20px;");
         console.log("%cHaving fun using Eyeshot? Wanna contribute or maybe give a star 😁. Join us:\nhttp://github.com/actuallyakash/eyeshot", "color: #6697FE; font-size: 12px;");
     });
