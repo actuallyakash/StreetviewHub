@@ -231,6 +231,6 @@
     </button>
     <div class="pwa-body p-2" role="alert">
         <span class="pwa-tag flex px-2 py-1 mr-3">INSTALL ( < 1 MB )</span>
-        <span class="pwa-msg mr-2">Get the app and find coolest locations 🌍 </span>
+        <span class="pwa-msg mr-2">Get the app and explore coolest locations 🌍 </span>
     </div>
 </div>

@@ -489,20 +489,21 @@
     });
 
     /* PWA */
-    if ('serviceWorker' in navigator) {
-        window.addEventListener('load', function () {
-            navigator.serviceWorker.register('/sw.js');
-        });
-    }
+    // if ('serviceWorker' in navigator) {
+    //     window.addEventListener('load', function () {
+    //         navigator.serviceWorker.register('/sw.js');
+    //     });
+    // }
     
     let deferredPrompt,
-    pwaNotif = $("#pwa-snackbar");
+        alerted,
+        pwaNotif = $("#pwa-snackbar");
 
     window.addEventListener('beforeinstallprompt', (e) => {
         deferredPrompt = e;
     });
 
-    var alerted = sessionStorage.getItem('eyeshot-pwa-notif') || '';
+    alerted = sessionStorage.getItem('eyeshot-pwa-notif') || '';
     if (alerted != 'yes') {
         setTimeout(function () {
             pwaNotif.addClass('show');
