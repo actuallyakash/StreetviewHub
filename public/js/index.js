@@ -347,16 +347,6 @@
             }, 2000);
         }
 
-        // PWA
-        var pwaNotif = $("#pwa-snackbar");        
-        setTimeout(function () {
-            pwaNotif.addClass('show');
-        }, 3000);
-
-        $(pwaNotif).on('click', '.close', function() {
-            pwaNotif.removeClass('show');
-        });
-
         console.log("%c🌏", "font-size:20px;");
         console.log("%cHaving fun using Eyeshot? Wanna contribute or maybe give a star 😁. Join us:\nhttp://github.com/actuallyakash/eyeshot", "color: #6697FE; font-size: 12px;");
     });
@@ -508,12 +498,30 @@
             });
         });
     }
+    
+    let deferredPrompt,
+    pwaNotif = $("#pwa-snackbar");
 
-    window.addEventListener('beforeinstallprompt', saveBeforeInstallPromptEvent);
+    window.addEventListener('beforeinstallprompt', (e) => {
+        deferredPrompt = e;
+    });
 
-    function saveBeforeInstallPromptEvent(evt) {
-        deferredInstallPrompt = evt;
-        deferredInstallPrompt.prompt();
+    var alerted = sessionStorage.getItem('eyeshot-pwa-notif') || '';
+    if (alerted != 'yes') {
+        setTimeout(function () {
+            pwaNotif.addClass('show');
+        }, 60000);
+        sessionStorage.setItem('eyeshot-pwa-notif', 'yes');
     }
 
+    $(pwaNotif).on('click', '.close', function(e) {
+        e.stopImmediatePropagation();
+        pwaNotif.removeClass('show');
+    });
+
+    $('#pwa-snackbar').on('click', '.pwa-body', function() {
+        deferredPrompt.prompt();
+        pwaNotif.removeClass('show');
+    });
+        
 })(jQuery);

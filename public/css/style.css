@@ -850,51 +850,6 @@ footer.home-footer .footer-brand {
   box-shadow: none;
 }
 
-/* For mobile */
-@media screen and (max-width: 600px) {
-  #loginSignupTv .social-login {
-    display: flex;
-    flex-flow: column;
-  }
-
-  #loginSignupTv .social-login .auth-social {
-    margin-bottom: 15px;
-  }
-
-  #sv-map {
-    display: none;
-  }
-
-  #sv-pano .action-buttons {
-    padding: 2px;
-  }
-
-  #sv-pano .action-buttons button i {
-    font-size: 22px;
-  }
-
-  header .navbar .eyeshot-user {
-    margin-top: 8px;
-  }
-
-  .eyeshot {
-    max-width: 70%;
-  }
-  
-  .eyeshot-container-fluid {
-    margin-top: 15px;
-    padding: 0;
-  }
-
-  div.tooltip {
-    display: none;
-  }
-
-  .modal .close-eyeshot-icon {
-    color: #000;
-  }
-}
-
 .eyeshot-feed {
   display: -ms-flexbox;
   display: flex;
@@ -974,4 +929,59 @@ nav ul.pagination {
 
 .pwa-notif .close:hover {
   color: white;
+}
+
+@media all and (display-mode: minimal-ui) {
+  #pwa-snackbar {
+    display: none;
+  }
+}
+
+/* For mobile */
+@media screen and (max-width: 600px) {
+  #loginSignupTv .social-login {
+    display: flex;
+    flex-flow: column;
+  }
+
+  #loginSignupTv .social-login .auth-social {
+    margin-bottom: 15px;
+  }
+
+  #sv-map {
+    display: none;
+  }
+
+  #sv-pano .action-buttons {
+    padding: 2px;
+  }
+
+  #sv-pano .action-buttons button i {
+    font-size: 22px;
+  }
+
+  header .navbar .eyeshot-user {
+    margin-top: 8px;
+  }
+
+  .eyeshot {
+    max-width: 70%;
+  }
+  
+  .eyeshot-container-fluid {
+    margin-top: 15px;
+    padding: 0;
+  }
+
+  div.tooltip {
+    display: none;
+  }
+
+  .modal .close-eyeshot-icon {
+    color: #000;
+  }
+
+  #pwa-snackbar {
+    display: none !important;
+  }
 }
