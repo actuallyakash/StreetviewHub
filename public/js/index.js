@@ -489,11 +489,11 @@
     });
 
     /* PWA */
-    // if ('serviceWorker' in navigator) {
-    //     window.addEventListener('load', function () {
-    //         navigator.serviceWorker.register('/sw.js');
-    //     });
-    // }
+    if ('serviceWorker' in navigator) {
+        window.addEventListener('load', function () {
+            navigator.serviceWorker.register('/sw.js');
+        });
+    }
     
     let deferredPrompt,
         alerted,
@@ -512,7 +512,6 @@
     }
 
     $(pwaNotif).on('click', '.close', function(e) {
-        e.stopImmediatePropagation();
         pwaNotif.removeClass('show');
     });
 

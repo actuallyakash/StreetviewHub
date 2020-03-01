@@ -670,6 +670,7 @@ header .navbar .eyeshot-user img {
   padding: 20px 30px 40px 30px;
   margin-right: auto;
   margin-left: auto;
+  overflow-x: hidden;
 }
 
 /* Button */
@@ -934,6 +935,10 @@ nav ul.pagination {
 @media all and (display-mode: standalone) {
   #pwa-snackbar {
     display: none !important;
+  }
+
+  .eyeshot-controls {
+    display: none;
   }
 }
 
