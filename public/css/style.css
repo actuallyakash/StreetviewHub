@@ -931,9 +931,9 @@ nav ul.pagination {
   color: white;
 }
 
-@media all and (display-mode: minimal-ui) {
+@media all and (display-mode: standalone) {
   #pwa-snackbar {
-    display: none;
+    display: none !important;
   }
 }
 
@@ -981,7 +981,13 @@ nav ul.pagination {
     color: #000;
   }
 
-  #pwa-snackbar {
-    display: none !important;
+  #pwa-snackbar .pwa-body {
+    margin: 0 15px;
+    line-height: 1.4;
+  }
+
+  #pwa-snackbar .close {
+    margin: 2px 10px;
+    font-size: 30px;
   }
 }
