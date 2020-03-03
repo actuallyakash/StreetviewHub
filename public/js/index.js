@@ -483,7 +483,8 @@
             contentSelector: 'div.eyeshot',
             pagingSelector: 'ul.pagination',
             callback: function() {
-                $('ul.pagination:visible:first').hide();
+                $(this).prev().append($(this).children('.eyeshot'));
+                $(this).remove();
             }
         });
     });
