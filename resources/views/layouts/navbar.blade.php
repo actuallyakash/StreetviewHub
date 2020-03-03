@@ -35,7 +35,7 @@
                     </a> --}}
 
                     <a id="navbarDropdown" class="nav-link" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
-                        <img class="eyeshot-user" src="{{ str_ireplace("http", "https", Auth::user()->avatar) }}" alt="{{ Auth::user()->name }}">
+                        <img class="eyeshot-user" src="{{ str_replace(["https://", "http://"], "https://", Auth::user()->avatar ) }}" alt="{{ Auth::user()->name }}">
                     </a>
         
                     <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
