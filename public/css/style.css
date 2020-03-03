@@ -670,7 +670,6 @@ header .navbar .eyeshot-user img {
   padding: 20px 30px 40px 30px;
   margin-right: auto;
   margin-left: auto;
-  overflow-x: hidden;
 }
 
 /* Button */
@@ -856,8 +855,6 @@ footer.home-footer .footer-brand {
   display: flex;
   -ms-flex-wrap: wrap;
   flex-wrap: wrap;
-  margin-right: -15px;
-  margin-left: -15px;
   justify-content: center;
   text-align: center;
 }
