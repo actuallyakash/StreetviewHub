@@ -64,8 +64,8 @@
         
         if (status === 'OK') {
 
-            $('#landing-pano .loader').css('display', 'none');
-            $('#landing-pano #sv-pano').css('display', 'block');
+            $('.loader').css('display', 'none');
+            $('#sv-pano').css('display', 'block');
       
             panorama.setPano(data.location.pano);
             panorama.setPov({
@@ -222,8 +222,8 @@
 
     function takeMeSomewhereIDontBelong() {
 
-        $('#landing-pano .loader').css('display', 'block');
-        $('#landing-pano #sv-pano').css('display', 'none');
+        $('.loader').css('display', 'block');
+        $('#sv-pano').css('display', 'none');
 
         // TODO: Add more NOICE radials
         var radialPoints = [
@@ -463,7 +463,7 @@
 
         var url = "http://eyeshot.xyz?s="+encode;
         var facebook = "https://www.facebook.com/sharer/sharer.php?u="+url;
-        var twitter = "https://twitter.com/share?url="+url+"&via=eyeshot.xyz&text=roamingAtUnknownPlace";
+        var twitter = "https://twitter.com/share?url="+url+"&via=eyeshotHQ&text=Exploring%20Random%20Place";
 
         $("#shareEyeshot .share-url input").val(url);
         $("#shareEyeshot a.share-facebook").attr('href', facebook);

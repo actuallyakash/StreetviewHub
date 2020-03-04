@@ -1,5 +1,6 @@
 <div id="shared-pano" class="map-box">
-    <div id="sv-pano">
+    <div style="display:none;" class="loader text-center"><span class="eyeshot-loader">🌏</span></div>
+    <div style="display:none;" id="sv-pano">
         <div id="sv-map"></div>
         <div class="action-buttons">
             <button class="randomize-eyeshot btn btn-link" data-tooltip="tooltip" data-placement="left" title="Randomizer"><i class="fas fa-random"></i></button>
