@@ -70,10 +70,13 @@
         <div class="modal-content">            
             <form class="fav-shot" id="favLocation">
                 <div class="modal-header">
-                    <h3 class="text-center mx-auto">Great Find</h3>
+                    <h3 class="text-center mx-auto">Added to Favourites</h3>
                     <button type="button" class="close" data-dismiss="modal">&times;</button>
                 </div>
                 <div class="modal-body">
+                    <div class="text-center mb-2">
+                        <small class="text-muted location-name"></small>
+                    </div>
                     <div class="row">
                         <div class="col-md-2 text-center eyeshot-avatar">
                             <img src="{{ str_replace(["https://", "http://"], "https://", Auth::user()->avatar ) }}">

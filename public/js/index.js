@@ -59,30 +59,28 @@
         }
     }
 
-    var processEyeshot = function(data, status) {
-        
-        if (status === 'OK') {
-
-            $('.loader').css('display', 'none');
-            $('#sv-pano').css('display', 'block');
-      
-            panorama.setPano(data.location.pano);
-            panorama.setPov({
-                heading: 270,
-                pitch: 0,
-                zoom: 0
-            });
-            panorama.setVisible(true);
-      
-        } else {
-            // $('.sv-not-found').toast({delay: 2000});
-            // $('.sv-not-found').toast('show');
-            // Keep searching, you'll surely end up somewhere!
-            takeMeSomewhereIDontBelong();
-        }
-    }
-
     var initMap = function(latitude, longitude, pano, heading, pitch, pano_zoom, map_selector, pano_selector) {
+        
+        var processSharedEyeshot = function(data, status) {
+
+            if ( pano !== '' || typeof pano !== 'undefined' ) {
+    
+                $('.loader').css('display', 'none');
+                $('#sv-pano').css('display', 'block');
+          
+                panorama.setPano(pano);
+                panorama.setPov({
+                    heading: heading,
+                    pitch: pitch,
+                    zoom: pano_zoom
+                });
+                panorama.setVisible(true);
+          
+            } else {
+                takeMeSomewhereIDontBelong();
+            }
+        }
+
         var loc = {
             lat: latitude,
             lng: longitude
@@ -118,7 +116,7 @@
         sv.getPanorama({
             location: loc,
             radius: 50
-        }, processEyeshot);
+        }, processSharedEyeshot);
 
         // Look for a nearby Street View panorama when the map is clicked.
         // getPanorama will return the nearest pano when the given
@@ -127,7 +125,7 @@
             sv.getPanorama({
                 location: event.latLng,
                 radius: 100
-            }, processEyeshot);
+            }, processSharedEyeshot);
         });
 
         panorama.addListener('pano_changed', function() {
@@ -137,6 +135,27 @@
     }
 
     var randomLoc = function( latitude, longitude ) {
+
+        var processEyeshot = function(data, status) {
+
+            if (status === 'OK') {
+    
+                $('.loader').css('display', 'none');
+                $('#sv-pano').css('display', 'block');
+          
+                panorama.setPano(data.location.pano);
+                panorama.setPov({
+                    heading: 270,
+                    pitch: 0,
+                    zoom: 0
+                });
+                panorama.setVisible(true);
+          
+            } else {
+                // Keep searching, you'll surely end up somewhere!
+                takeMeSomewhereIDontBelong();
+            }
+        }
         
         var loc = {
             lat: latitude,
@@ -270,7 +289,9 @@
         var panoHeading = panorama.getPov().heading;
         var panoPitch = panorama.getPov().pitch;
         var panoZoom = panorama.zoom;
-        $("#favouriteBox .eyeshot-title").attr('value', locationName);
+        if( typeof locationName !== 'undefined' || locationName == "") {
+            $("#favouriteBox .location-name").html('Exploring: <b>' + locationName + '</b>');
+        }
         
         switch(ops) {
             case 'favourite':
@@ -412,8 +433,8 @@
             success: function( data ) {
                 if( data != 0 ) {
                     
-                    var latitude = Number(data.latitude);
-                    var longitude = Number(data.longitude);
+                    var latitude = data.latitude,
+                        longitude = data.longitude;
 
                     $("#viewEyeshot .eyeshot-avatar img").attr('src', data.user_avatar.replace('http', 'https'));
                     $("#viewEyeshot .eyeshot-user .eyeshot-username").html("by <a href='"+data.user_nickname+"'>"+data.eyeshot_by+"</a>");
@@ -437,7 +458,8 @@
                     initPanoId(data.pano_id);
                     let mapSelector = document.querySelector('#viewEyeshot #sv-map'),
                         panoSelector = document.querySelector('#viewEyeshot #sv-pano');
-                    initMap( latitude, longitude, data.pano_id, Number(data.pano_heading), Number(data.pano_pitch), data.pano_zoom, mapSelector, panoSelector );
+
+                    initMap( Number(latitude), Number(longitude), data.pano_id, Number(data.pano_heading), Number(data.pano_pitch), Number(data.pano_zoom), mapSelector, panoSelector );
 
                     $('#viewEyeshot .loader').css('display', 'none');
                     $('#viewEyeshot .modal-content').css('display', 'block');
