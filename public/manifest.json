@@ -16,7 +16,7 @@
     ],
     "start_url": "https://eyeshot.xyz",
     "background_color": "#ffffff",
-    "display": "minimal-ui",
+    "display": "standalone",
     "scope": "/",
-    "theme_color": "#6697FE"
+    "theme_color": "#3367D6"
   }

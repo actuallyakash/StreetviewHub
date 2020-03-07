@@ -814,7 +814,7 @@ footer.home-footer .footer-brand {
 
 /* Button */
 .button-es {
-  transition: transform .1s linear;
+  transition: transform .15s linear !important;
   color: #fff !important;
   letter-spacing: 1.25px;
   background-color: #6697FE !important;
@@ -822,9 +822,9 @@ footer.home-footer .footer-brand {
 }
 
 .button-es:hover {
-  -webkit-transform: scale(1.0333);
-      -ms-transform: scale(1.0333);
-      transform: scale(1.0333);
+  -webkit-transform: scale(1.035);
+      -ms-transform: scale(1.035);
+      transform: scale(1.035);
   color: black;
 }
 
@@ -935,6 +935,10 @@ nav ul.pagination {
   }
 
   .eyeshot-controls {
+    display: none;
+  }
+
+  #app-install {
     display: none;
   }
 }

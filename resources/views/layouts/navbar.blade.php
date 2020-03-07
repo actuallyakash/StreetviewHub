@@ -48,8 +48,12 @@
                 </li>
                 
                 @auth
-                <li class="nav-item">
-                    <a href="/" class="btn button-es mt-1">Explore Now</a>
+                <li class="nav-item" id="app-install">
+                @if ( Request::is('/') )
+                    <button class="button-es btn mt-1 pwa-install"><i class="fas fa-plus"></i> Get the App</button>
+                @else
+                    <a href="/" class="button-es btn mt-1">Explore Now</a>
+                @endif
                 </li>
                 @endauth
             </ul>
