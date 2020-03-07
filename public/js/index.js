@@ -5,7 +5,6 @@
     var map;
     var panorama;
 
-
     //
     // Methods
     //
@@ -70,7 +69,8 @@
             panorama.setPano(data.location.pano);
             panorama.setPov({
                 heading: 270,
-                pitch: 0
+                pitch: 0,
+                zoom: 0
             });
             panorama.setVisible(true);
       
@@ -235,7 +235,19 @@
             [55.6993533, 12.5423634], // Superkilen Park
             [38.470495, -78.7748714], // Shenandoah National Park, Virginia
             [37.42197, -122.084373], // GooglePlex
-            [-4.3538688,55.8300366] // La Digue Island, Seychelles 
+            [-4.3538688, 55.8300366], // La Digue Island, Seychelles 
+            [18.7939203, 98.9564772], // Chiang Mai, Thailand
+            [22.1086481, -159.3970979], // Makaleha Stream
+            [64.056076, -19.8672619], // Iceland
+            [36.0612757, -112.0867052], // Grand Canyon
+            [25.1972018, 55.2721877], // Burj Khalifa, Dubai
+            [32.628183, 129.7385157], // Hashima Islands
+            [44.132559, 9.7011111], // CINQUE TERRE, Italy
+            [45.4328051, 12.3405832], // Venice, Italy
+            [51.394989, 0.526075], // HMS Cavalier (submarine)
+            [-20.916647, 165.0628549], // New Caledonia
+            [40.7579787, -73.9877313], // Times Square
+            [46.4096518, 10.0222048], // Lago Bianco, Switzerland
         ];
         
         var radial = radialPoints[Math.floor((Math.random() * (radialPoints.length-1)) + 1)];
@@ -338,12 +350,14 @@
                 mapSelector = document.querySelector('#shared-pano #sv-map'),
                 panoSelector = document.querySelector('#shared-pano #sv-pano');
             initPanoId(details[2]);
-
             initMap( Number(details[0]), Number(details[1]), details[2], Number(details[3]), Number(details[4]), Number(details[5]), mapSelector, panoSelector );
-            setTimeout(function(){ $('#shared-pano').after('<div class="details text-center"><h3 class="eyeshot-info"> <span class="text-muted">Location: </span>' + map.streetView.location.description + '</h3></div>');
-            $('meta.meta-title').attr('content', map.streetView.location.description+" | Eyeshot");
-            $('meta.meta-keywords').attr('content', map.streetView.location.description);
-            $('meta.meta-image').attr('content', "https://maps.googleapis.com/maps/api/streetview?size=600x400&pano="+ details[2] +"&heading="+ details[3] +"&pitch="+ details[4] +"&key=AIzaSyDTJbCnWZ2ZpG9ZAkf66SNfvLb9sUchknw");
+            setTimeout(function () {
+                if ( typeof map.streetView.location.description !== 'undefined' ) {
+                    $('#shared-pano').after('<div class="details text-center"><h3 class="eyeshot-info"> <span class="text-muted">Location: </span>' + map.streetView.location.description + '</h3></div>');
+                    $('meta.meta-title').attr('content', map.streetView.location.description + " | Eyeshot");
+                    $('meta.meta-keywords').attr('content', map.streetView.location.description);
+                    $('meta.meta-image').attr('content', "https://maps.googleapis.com/maps/api/streetview?size=600x400&pano=" + details[2] + "&heading=" + details[3] + "&pitch=" + details[4] + "&key=AIzaSyDTJbCnWZ2ZpG9ZAkf66SNfvLb9sUchknw");
+                }
             }, 2000);
         }
 
