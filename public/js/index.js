@@ -496,29 +496,34 @@
         });
     }
     
-    let deferredPrompt,
-        alerted,
-        pwaNotif = $("#pwa-snackbar");
+    if (! window.matchMedia('(display-mode: standalone)').matches) {
+        let deferredPrompt,
+            alerted,
+            pwaNotif = $("#pwa-snackbar");
 
-    window.addEventListener('beforeinstallprompt', (e) => {
-        deferredPrompt = e;
-    });
+        window.addEventListener('beforeinstallprompt', (e) => {
+            deferredPrompt = e;
+        });
 
-    alerted = sessionStorage.getItem('eyeshot-pwa-notif') || '';
-    if (alerted != 'yes') {
-        setTimeout(function () {
-            pwaNotif.addClass('show');
-        }, 60000);
-        sessionStorage.setItem('eyeshot-pwa-notif', 'yes');
+        alerted = sessionStorage.getItem('eyeshot-pwa-notif') || '';
+        if (alerted != 'yes') {
+            setTimeout(function () {
+                pwaNotif.addClass('show');
+            }, 60000);
+            sessionStorage.setItem('eyeshot-pwa-notif', 'yes');
+        }
+
+        $(pwaNotif).on('click', '.close', function(e) {
+            pwaNotif.removeClass('show');
+        });
+
+        $('#pwa-snackbar').on('click', '.pwa-body', function() {
+            deferredPrompt.prompt();
+            pwaNotif.removeClass('show');
+        });
+        $('#app-install .pwa-install').on('click', function() {
+            deferredPrompt.prompt();
+        });
     }
-
-    $(pwaNotif).on('click', '.close', function(e) {
-        pwaNotif.removeClass('show');
-    });
-
-    $('#pwa-snackbar').on('click', '.pwa-body', function() {
-        deferredPrompt.prompt();
-        pwaNotif.removeClass('show');
-    });
         
 })(jQuery);
