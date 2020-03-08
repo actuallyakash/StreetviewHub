@@ -2,7 +2,7 @@
     <div style="max-width: 540px;">
         <div class="row">
             <div class="col-md-4">
-                <img src="{{ $user->avatar }}" class="card-img rounded-circle" alt="...">
+                <img src="{{ str_replace(["https://", "http://"], "https://", $user->avatar ) }}" class="card-img rounded-circle" alt="{{ $user->nickname }}">
             </div>
             <div class="col-md-8 d-flex align-items-center">
                 <div class="card-body">

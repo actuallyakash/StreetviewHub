@@ -2,7 +2,7 @@
   <br>
   <img alt="eyeshot" src="https://eyeshot.s3.amazonaws.com/98sdNXBexqJnt0HqEuAP.png" width="400px">
   
-  <strong>Discover the World's Top Destinations & Cool Places 😎</strong>
+  <strong>Discover random places from Google Street View. 👀</strong>
 </div>
 <br>
 <p align="center">
@@ -23,9 +23,16 @@ Welcome to the [eyeshot.xyz](https://eyeshot.xyz) codebase. Here lies all the co
 
 Explore place you never been before. Who knows where you'll end up next 🤩
 
+## Why?
+
+[eyeshot.xyz](https://eyeshot.xyz) is based on Google Street View. I am forever grateful for the gift it is to the web.
+
+The thing is, it helps you in TELEPORTING, not physically but virtually at any random place. It's super fun to explore places where we are not able to go. Through Eyeshot, I just added the randomness and community to it. Now, stop reading and start [exploring](https://eyeshot.xyz).
+
 ## Table of Contents
 
 - [What is eyeshot.xyz?](#what-is-eyeshot)
+- [Why?](#why?)
 - [Table of Contents](#table-of-contents)
 - [Contributing](#contributing)
 - [Tech Stack](#tech-stack)

@@ -283,14 +283,18 @@
     // Fav/Unfav Ops
     var favouriteOps = function(panoId, ops, element) {
 
+        $("#favouriteBox .eyeshot-title").val('');
         var locationName = map.streetView.location.description;
         var latitude = map.center.lat();
         var longitude = map.center.lng();
         var panoHeading = panorama.getPov().heading;
         var panoPitch = panorama.getPov().pitch;
         var panoZoom = panorama.zoom;
-        if( typeof locationName !== 'undefined' || locationName == "") {
+
+        if( typeof locationName !== 'undefined' || locationName !== "") {
             $("#favouriteBox .location-name").html('Exploring: <b>' + locationName + '</b>');
+        } else {
+            locationName = null;
         }
         
         switch(ops) {

@@ -13,7 +13,8 @@
    <div class="eyeshot-container-fluid">
       <div class="eyeshot-feed text-center">
          <div class="row justify-content-center">
-            @foreach ( $user->eyeshots as $eyeshot )
+            @php $eyeshots = $user->eyeshots; @endphp
+            @foreach ( $eyeshots as $eyeshot )
                @include('components/eyeshot')
             @endforeach
          </div>
