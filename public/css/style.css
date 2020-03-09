@@ -108,6 +108,7 @@ h1, h2, h3, h4, h5, h6 {
 .toast.toast-success {
   background-color: #d5ffc9;
   border-top: 4px solid #61bd61;
+  z-index: 99999;
 }
 
 .toast.toast-danger {
@@ -540,6 +541,10 @@ button:focus {
 .fav-shot .list-inline li.active a {
   color: #222222;
   font-weight: bold;
+}
+
+#favouriteBox {
+  z-index: 9999;
 }
 
 #favouriteBox .fav-shot .form-control {

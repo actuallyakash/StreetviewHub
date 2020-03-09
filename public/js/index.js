@@ -440,7 +440,7 @@
                     var latitude = data.latitude,
                         longitude = data.longitude;
 
-                    $("#viewEyeshot .eyeshot-avatar img").attr('src', data.user_avatar.replace('http', 'https'));
+                    $("#viewEyeshot .eyeshot-avatar img").attr('src', data.user_avatar.replace('http://', 'https://'));
                     $("#viewEyeshot .eyeshot-user .eyeshot-username").html("by <a href='"+data.user_nickname+"'>"+data.eyeshot_by+"</a>");
                     $("#viewEyeshot .eyeshot-location").text(data.location_name);
                     if ( data.tags !== null ) {

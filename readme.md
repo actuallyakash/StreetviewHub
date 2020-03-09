@@ -32,7 +32,7 @@ The thing is, it helps you in TELEPORTING, not physically but virtually at any r
 ## Table of Contents
 
 - [What is eyeshot.xyz?](#what-is-eyeshot)
-- [Why?](#why?)
+- [Why?](#why)
 - [Table of Contents](#table-of-contents)
 - [Contributing](#contributing)
 - [Tech Stack](#tech-stack)

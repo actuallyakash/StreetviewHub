@@ -1,1 +1,9 @@
-"use strict";var cacheVersion=1,currentCache={offline:"eyeshot-pwa-v"+cacheVersion};const offlineUrl="/offline.html";this.addEventListener("install",e=>{e.waitUntil(caches.open(currentCache.offline).then(function(e){return e.addAll([offlineUrl])}))}),this.addEventListener("fetch",e=>{"navigate"===e.request.mode||"GET"===e.request.method&&e.request.headers.get("accept").includes("text/html")?e.respondWith(fetch(e.request.url).catch(e=>caches.match(offlineUrl))):e.respondWith(caches.match(e.request).then(function(t){return t||fetch(e.request)}))});
+var CACHE_NAME = 'eyeshot-pwa-v1';
+self.addEventListener('install', async function () {
+    const cache = await caches.open(CACHE_NAME);
+    cache.addAll([
+        '/offline.html',
+    ])
+});
+
+self.addEventListener('fetch', function (event) {});
