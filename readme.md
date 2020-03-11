@@ -21,7 +21,7 @@ Welcome to the [eyeshot.xyz](https://eyeshot.xyz) codebase. Here lies all the co
 
 [eyeshot.xyz](https://eyeshot.xyz) is a visual discovery of the world around us, explored by people like you. Eyeshot's content comes from two sources - Google and explorers (you).
 
-Explore place you never been before. Who knows where you'll end up next 🤩
+Explore places you never been before. Who knows where you'll end up next 🤩
 
 ## Why?
 

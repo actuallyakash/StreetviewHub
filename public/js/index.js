@@ -208,12 +208,6 @@
             var panoId = panorama.getPano();
             initPanoId(panoId);
         });
-
-        $("#landing-pano").on('click', function() {
-            $('html, body').animate({
-                scrollTop: ($("#landing-pano").offset().top)
-            }, 100);
-        });
     }
     
     function generateRandomPoint(center, radius) {
@@ -385,6 +379,13 @@
                 }
             }, 2000);
         }
+        
+        $("#landing-pano").on('click', function() {
+            console.log('click');
+            $('html, body').animate({
+                scrollTop: ($("#landing-pano").offset().top)
+            }, 100);
+        });
 
         console.log("%c🌏", "font-size:20px;");
         console.log("%cHaving fun using Eyeshot? Wanna contribute or maybe give a star 😁. Join us:\nhttp://github.com/actuallyakash/eyeshot", "color: #6697FE; font-size: 12px;");
