@@ -51,7 +51,7 @@ class LocationController extends Controller
             
             $attributes = [
                 'user_id' => auth()->id(),
-                'location_name' => $locationName,
+                'location_name' => $locationName == "null" ? NULL : $locationName,
                 'latitude' => $latitude,
                 'longitude' => $longitude,
                 'pano_id' => $panoId,

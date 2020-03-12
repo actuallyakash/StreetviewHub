@@ -284,8 +284,7 @@
         var panoHeading = panorama.getPov().heading;
         var panoPitch = panorama.getPov().pitch;
         var panoZoom = panorama.zoom;
-
-        if( typeof locationName !== 'undefined' || locationName !== "") {
+        if( typeof locationName !== 'undefined' && locationName !== "") {
             $("#favouriteBox .location-name").html('Exploring: <b>' + locationName + '</b>');
         } else {
             locationName = null;
@@ -381,7 +380,6 @@
         }
         
         $("#landing-pano").on('click', function() {
-            console.log('click');
             $('html, body').animate({
                 scrollTop: ($("#landing-pano").offset().top)
             }, 100);
