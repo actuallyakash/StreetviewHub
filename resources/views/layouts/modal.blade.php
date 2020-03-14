@@ -71,7 +71,6 @@
             <form class="fav-shot" id="favLocation">
                 <div class="modal-header">
                     <h3 class="text-center mx-auto">Added to Favourites</h3>
-                    <button type="button" class="close" data-dismiss="modal">&times;</button>
                 </div>
                 <div class="modal-body">
                     <div class="text-center mb-2">
@@ -83,7 +82,7 @@
                             <h6 class="user-nickname">{{ Auth::user()->nickname }}</h6>
                         </div>
                         <div class="col-md-10 eyeshot-section">
-                            <input class="form-control eyeshot-title" name="title" type="text" placeholder="Eyeshot Title">
+                            <input class="form-control eyeshot-title" name="title" type="text" placeholder="Eyeshot Title (Optional)">
                             <div class="divider"></div>
                             <textarea name="status" class="form-control status descriptionInput" placeholder="Wanna describe? (Optional)" rows="5" autofocus></textarea>
                             <div class="divider"></div>
