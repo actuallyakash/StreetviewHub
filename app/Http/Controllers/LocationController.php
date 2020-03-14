@@ -121,7 +121,7 @@ class LocationController extends Controller
         $location->update(['title' => $response['title'], 'status' => $response['status'], 'tags' => $response['tags']]);
 
         // Queueing Job
-        TweetEyeshot::dispatch( $location->first() )->delay(now()->addMinutes(2));
+        TweetEyeshot::dispatch( $location->first() )->delay(now()->addMinutes(10));
         
         return 1;
     }
