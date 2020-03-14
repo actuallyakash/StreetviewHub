@@ -2,9 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Location;
-use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Helper;
+use App\User;
+use App\Location;
 
 class PagesController extends Controller
 {
@@ -82,5 +83,16 @@ class PagesController extends Controller
     public function privacy()
     {
         return view('privacy');
+    }
+
+    public function show($username, $eyeshotId)
+    {
+        $eyeshot = Location::findOrFail(Helper::decode_id($eyeshotId));
+
+        $user = User::where('id', $eyeshot->user_id)
+                    ->where('nickname', $username)
+                    ->first();
+
+        return view('user-eyeshot', compact('user', 'eyeshot'));
     }
 }

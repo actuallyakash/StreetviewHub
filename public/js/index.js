@@ -362,21 +362,41 @@
         }
         
         if($( "#shared-pano" ).length) {
-            var params = (new URL(window.location.href)).searchParams.get('s'),
-                decode = atob(params),
-                details = decode.split(':'),
-                mapSelector = document.querySelector('#shared-pano #sv-map'),
+
+            var mapSelector = document.querySelector('#shared-pano #sv-map'),
                 panoSelector = document.querySelector('#shared-pano #sv-pano');
-            initPanoId(details[2]);
-            initMap( Number(details[0]), Number(details[1]), details[2], Number(details[3]), Number(details[4]), Number(details[5]), mapSelector, panoSelector );
-            setTimeout(function () {
-                if ( typeof map.streetView.location.description !== 'undefined' ) {
-                    $('#shared-pano').after('<div class="details text-center"><h3 class="eyeshot-info"> <span class="text-muted">Location: </span>' + map.streetView.location.description + '</h3></div>');
-                    $('meta.meta-title').attr('content', map.streetView.location.description + " | Eyeshot");
-                    $('meta.meta-keywords').attr('content', map.streetView.location.description);
-                    $('meta.meta-image').attr('content', "https://maps.googleapis.com/maps/api/streetview?size=600x400&pano=" + details[2] + "&heading=" + details[3] + "&pitch=" + details[4] + "&key=AIzaSyDTJbCnWZ2ZpG9ZAkf66SNfvLb9sUchknw");
-                }
-            }, 2000);
+            
+            if ( (new URL(window.location.href)).pathname.indexOf('/shot/') > -1 ) { // User's Eyeshot
+                var eyeshot = (new URL(window.location.href)).pathname.split('/')[3];
+                $.ajax({
+                    type: 'GET',
+                    url: '/get/'+eyeshot+'/details',
+                    success: function( data ) {
+                        if( data != 0 ) {
+                            var latitude = data.latitude,
+                                longitude = data.longitude;
+                            initPanoId(data.pano_id);
+                            initMap( Number(latitude), Number(longitude), data.pano_id, Number(data.pano_heading), Number(data.pano_pitch), Number(data.pano_zoom), mapSelector, panoSelector );
+                        } else {
+                            console.log('No eyeshot found!');
+                        }
+                    }
+                });
+            } else { // Shared Eyeshot
+                var params = (new URL(window.location.href)).searchParams.get('s'),
+                    decode = atob(params),
+                    details = decode.split(':');
+                initPanoId(details[2]);
+                initMap( Number(details[0]), Number(details[1]), details[2], Number(details[3]), Number(details[4]), Number(details[5]), mapSelector, panoSelector );
+                setTimeout(function () {
+                    if ( typeof map.streetView.location.description !== 'undefined' ) {
+                        $('#shared-pano').after('<div class="details text-center"><h3 class="eyeshot-info"> <span class="text-muted">Location: </span>' + map.streetView.location.description + '</h3></div>');
+                        $('meta.meta-title').attr('content', map.streetView.location.description + " | Eyeshot");
+                        $('meta.meta-keywords').attr('content', map.streetView.location.description);
+                        $('meta.meta-image').attr('content', "https://maps.googleapis.com/maps/api/streetview?size=600x400&pano=" + details[2] + "&heading=" + details[3] + "&pitch=" + details[4] + "&key=AIzaSyDTJbCnWZ2ZpG9ZAkf66SNfvLb9sUchknw");
+                    }
+                }, 2000);
+            }
         }
         
         $("#landing-pano").on('click', function() {

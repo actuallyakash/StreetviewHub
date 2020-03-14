@@ -38,7 +38,7 @@ Route::get('/popular', 'PagesController@popular');
 Route::get('/search', 'PagesController@search');
 Route::get('/categories', 'PagesController@categories');
 Route::get('/privacy', 'PagesController@privacy');
-
+Route::get('/{username}/shot/{id}', 'PagesController@show');
 
 Route::get('/logout', 'Auth\LoginController@logout');
 
