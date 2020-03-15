@@ -9,6 +9,7 @@ use Illuminate\Queue\InteractsWithQueue;
 use Illuminate\Support\Facades\Storage;
 use App\User;
 use Twitter;
+use Helper;
 use Artisan;
 
 class TweetEyeshot implements ShouldQueue
@@ -27,24 +28,31 @@ class TweetEyeshot implements ShouldQueue
         $eyeshot = $this->eyeshot;
         if ( $eyeshot ) {
 
-            if ( $eyeshot->title !== NULL && $eyeshot->title !== "" ) {
-                $status = $eyeshot->title;
+            $user = User::find($eyeshot->user_id)->nickname;
+            $eyeshotId = Helper::encode_id($eyeshot->id);
+            $url = url("/{$user}/eyeshot/{$eyeshotId}");
+
+            if ( $eyeshot->title != null && $eyeshot->title !== "" ) {
+                $status = '"' . $eyeshot->title . '"';
             } else if ( $eyeshot->location_name !== NULL && $eyeshot->location_name !== "" ) {
-                $status = $eyeshot->location_name;
+                $status = '"'.$eyeshot->location_name.'"';
             } else {
-                $status = "Eyeshot by @" . User::find($eyeshot->user_id)->nickname;
+                $status = "Eyeshot";
             }
+            $status .= " by " . $user . "\n\n" . $url;
 
             $contents = file_get_contents(Storage::disk('s3')->url($eyeshot->media));
             $uploaded_media = Twitter::uploadMedia(['media' => $contents]);
 
             // Tweet 🕊
-            Twitter::postTweet(['status' => $status, 'media_ids' => $uploaded_media->media_id_string]);
+            Twitter::postTweet([
+                'status' => $status,
+                'media_ids' => $uploaded_media->media_id_string
+            ]);
 
             // Now get this work
             Artisan::call('queue:work', [
                 '--tries' => 3,
-                '--once' => true,
                 '--stop-when-empty' => true
             ]);
         }
