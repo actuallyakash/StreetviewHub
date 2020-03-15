@@ -66,4 +66,12 @@ Get in touch at my low budget email eyeshot.xyz@gmail.com 😅
   <small> A rare cat discovered on Google Street View</small>
   <br><br>
   <strong>Keep Exploring</strong> 🚶‍♂️
+  <div align="center">
+    <a href="https://twitter.com/intent/follow?screen_name=eyeshothq">
+      <img src="https://img.shields.io/twitter/follow/eyeshothq?label=Follow&style=social" alt="More random eyeshots">
+    </a>
+    <a href="https://github.com/actuallyakash/eyeshot">
+      <img src="https://img.shields.io/github/stars/actuallyakash/eyeshot?style=social" alt="I Need Stars ⭐">
+    </a>
+  </div>
 </p>

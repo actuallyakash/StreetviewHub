@@ -209,10 +209,10 @@
                 </button>
             </div>
             <div class="modal-body text-center">
-                <a target="_blank" class="share-facebook" href="https://www.facebook.com/sharer/sharer.php?u=http://eyeshot.xyz/">
+                <a target="_blank" rel="nofollow" class="share-facebook" href="https://www.facebook.com/sharer/sharer.php?u=http://eyeshot.xyz/">
                     <i class="fab fa-facebook-f"></i>
                 </a>
-                <a target="_blank" class="share-twitter" href="https://twitter.com/share?url=http://eyeshot.xyz/&via=eyeshot.xyz&text=Exploring%20Random%20Place">
+                <a target="_blank" rel="nofollow" class="share-twitter" href="https://twitter.com/share?url=http://eyeshot.xyz/&via=eyeshot.xyz&text=Exploring%20Random%20Place">
                     <i class="fab fa-twitter"></i>
                 </a>
 

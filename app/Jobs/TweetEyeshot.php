@@ -30,7 +30,7 @@ class TweetEyeshot implements ShouldQueue
 
             $user = User::find($eyeshot->user_id)->nickname;
             $eyeshotId = Helper::encode_id($eyeshot->id);
-            $url = url("/{$user}/eyeshot/{$eyeshotId}");
+            $url = url("/{$user}/shot/{$eyeshotId}");
 
             if ( $eyeshot->title != null && $eyeshot->title !== "" ) {
                 $status = '"' . $eyeshot->title . '"';
@@ -48,12 +48,6 @@ class TweetEyeshot implements ShouldQueue
             Twitter::postTweet([
                 'status' => $status,
                 'media_ids' => $uploaded_media->media_id_string
-            ]);
-
-            // Now get this work
-            Artisan::call('queue:work', [
-                '--tries' => 3,
-                '--stop-when-empty' => true
             ]);
         }
     }

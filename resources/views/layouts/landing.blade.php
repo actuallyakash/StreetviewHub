@@ -54,5 +54,14 @@
         <li class="list-inline-item"><a class="text-muted" href="mailto:eyeshot.xyz@gmail.com">👋 Contact</a></li>
     </ul>
 
-    <small class="text-muted">👨‍💻 Eyeshot is Open Source @ <a target="_blank" href="https://github.com/actuallyakash/eyeshot">GitHub</a></small>
+    <small class="text-muted">👨‍💻 Eyeshot is Open Source @ <a target="_blank" rel="nofollow" href="https://github.com/actuallyakash/eyeshot">GitHub</a></small>
+
+    <div class="es-social-icons text-center mt-2">
+        <a target="_blank" rel="nofollow" href="https://twitter.com/eyeshothq">
+            <i class="fab fa-twitter mx-2"></i>
+        </a>
+        <a target="_blank" rel="nofollow" href="https://instagram.com/eyeshothq">
+            <i class="fab fa-instagram mx-2"></i>
+        </a>
+    </div>
 </footer>

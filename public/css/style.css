@@ -811,10 +811,16 @@ footer.home-footer .footer-brand {
   margin-right: 15px;
 }
 
-.es-social-icons li a {
+.es-social-icons a {
   color: black;
-  font-size: 23px;
-  margin-right: 8px;
+  font-size: 18px;
+  text-decoration: none;
+}
+
+.es-social-icons a:hover {
+  opacity: 0.7;
+  color: black;
+  text-decoration: none;
 }
 
 /* Button */
