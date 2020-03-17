@@ -24,7 +24,7 @@
     <meta class="meta-title" property="og:title" content="" />
     <meta class="meta-image" property="og:image" content="">
     <meta property="og:description" content="Eyeshot is a visual discovery of our surroundings, explored by people like you. Discover the World's Top Destinations and Cool Places." />
-    <meta name="twitter:site" content="@eyeshotXYZ">
+    <meta name="twitter:site" content="@eyeshotHQ">
     <meta class="meta-title" name="twitter:title" content="">
     <meta name="twitter:description" content="Eyeshot is a visual discovery of our surroundings, explored by people like you. Discover the World's Top Destinations and Cool Places.">
     <meta class="meta-image" name="twitter:image:src" content="">
@@ -39,9 +39,23 @@
     <meta property="og:description" content="{{ $user->bio }}" />
     <meta name="twitter:description" content="{{ $user->bio }}">
     @endif
-    <meta name="twitter:site" content="@eyeshotXYZ">
+    <meta name="twitter:site" content="@eyeshotHQ">
     <meta name="twitter:creator" content="{{ $user->nickname }}">
     <meta name="twitter:title" content="{{ $user->nickname . " | Eyeshot Profile" }}">
+@elseif( isset($eyeshot) )
+    <meta name="description" content="{{ $eyeshot->status !== null ? $eyeshot->status : "Eyeshot is a visual discovery of our surroundings, explored by people like you. Discover the World's Top Destinations and Cool Places." }}">
+    <meta name="keywords" content="{{ $eyeshot->tags !== null || $eyeshot->tags !== "eyeshot" ? $eyeshot->tags : "eyeshot,street view,panorama,360 view,top destinations,google street view" }}">
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="{{ Request::url() }}" />
+    <meta property="og:title" content="{{ $eyeshot->title !== null ? $eyeshot->title : "Eyeshot by " . $user->nickname }}" />
+    <meta property="og:image" content="{{ Storage::disk('s3')->url($eyeshot->media) }}" />
+    <meta property="og:description" content="{{ $eyeshot->status !== null ? $eyeshot->status : "Eyeshot is a visual discovery of our surroundings, explored by people like you. Discover the World's Top Destinations and Cool Places." }}" />
+    <meta name="twitter:site" content="@eyeshotHQ">
+    <meta name="twitter:title" content="{{ $eyeshot->title !== null ? $eyeshot->title : "Eyeshot by " . $user->nickname }}" />
+    <meta name="twitter:description" content="{{ $eyeshot->status !== null ? $eyeshot->status : "Eyeshot is a visual discovery of our surroundings, explored by people like you. Discover the World's Top Destinations and Cool Places." }}" />
+    <meta name="twitter:image:src" content="{{ Storage::disk('s3')->url($eyeshot->media) }}" />
+    <meta name="twitter:card" content="summary_large_image">
+    <link rel="alternate" type="application/rss+xml" title="{{ "Eyeshot by @" . $user->nickname  }}" href="{{ Request::url() }}" />
 @else
     <meta name="description" content="Eyeshot is a visual discovery of our surroundings, explored by people like you. Discover the World's Top Destinations and Cool Places.">
     <meta name="keywords" content="eyeshot,street view,panorama,360 view,top destinations,google street view">
@@ -50,7 +64,7 @@
     <meta property="og:title" content="" />
     <meta property="og:image" content="">
     <meta property="og:description" content="Eyeshot is a visual discovery of our surroundings, explored by people like you. Discover the World's Top Destinations and Cool Places." />
-    <meta name="twitter:site" content="@eyeshotXYZ">
+    <meta name="twitter:site" content="@eyeshotHQ">
     <meta name="twitter:title" content="">
     <meta name="twitter:description" content="Eyeshot is a visual discovery of our surroundings, explored by people like you. Discover the World's Top Destinations and Cool Places.">
     <meta name="twitter:image:src" content="">
