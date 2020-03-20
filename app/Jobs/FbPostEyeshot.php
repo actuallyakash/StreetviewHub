@@ -6,14 +6,14 @@ use Illuminate\Bus\Queueable;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Foundation\Bus\Dispatchable;
 use Illuminate\Queue\InteractsWithQueue;
+use Illuminate\Queue\SerializesModels;
 use Illuminate\Support\Facades\Storage;
 use App\User;
-use Twitter;
 use Helper;
 
-class TweetEyeshot implements ShouldQueue
+class FbPostEyeshot implements ShouldQueue
 {
-    use Dispatchable, InteractsWithQueue, Queueable;
+    use Dispatchable, InteractsWithQueue, Queueable, SerializesModels;
 
     protected $eyeshot;
     
@@ -21,10 +21,13 @@ class TweetEyeshot implements ShouldQueue
     {
         $this->eyeshot = $eyeshot;
     }
-    
+
     public function handle()
     {
         $eyeshot = $this->eyeshot;
+
+        $client = new \GuzzleHttp\Client();
+
         if ( $eyeshot ) {
 
             $user = User::find($eyeshot->user_id)->nickname;
@@ -40,14 +43,21 @@ class TweetEyeshot implements ShouldQueue
             }
             $status .= " by " . $user . "\n\n" . $url;
 
-            $contents = file_get_contents(Storage::disk('s3')->url($eyeshot->media));
-            $uploaded_media = Twitter::uploadMedia(['media' => $contents]);
+            // Post 📰
+            $params = [
+                'message' => $status,
+                'url' => Storage::disk('s3')->url($eyeshot->media),
+                'access_token' => config('services.facebook.access_token')
+            ];
 
-            // Tweet 🕊
-            Twitter::postTweet([
-                'status' => $status,
-                'media_ids' => $uploaded_media->media_id_string
-            ]);
+            $response = $client->request('POST', "https://graph.facebook.com/" . config('services.facebook.page_id') . "/photos", ['query' => $params]);
+
+            $status = $response->getStatusCode();
+
+            if ($status !== 200) {
+                throw new \Exception($response->getBody(), $status);
+            }
+
         }
     }
 }
