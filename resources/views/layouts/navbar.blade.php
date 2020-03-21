@@ -27,6 +27,16 @@
                         </span>
                     </form>
                 </li>
+
+                @auth
+                <li class="nav-item" id="app-install">
+                @if ( Request::is('/') )
+                    <button class="button-es btn mt-1 pwa-install"><i class="fas fa-plus"></i> Get the App</button>
+                @else
+                    <a href="/" class="button-es btn mt-1">Explore Now</a>
+                @endif
+                </li>
+                @endauth
                 
                 <li class="nav-item eyeshot-user">
                     @auth
@@ -41,21 +51,23 @@
                     <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
                         <a class="dropdown-item" href="/{{ Auth::user()->nickname }}">Profile</a>
                         <a class="dropdown-item text-danger" href="{{ url('/logout') }}">Logout</a>
+                        <div class="dropdown-divider"></div>
+                        <div class="es-social-icons text-center mt-2">
+                            <a target="_blank" rel="nofollow" href="https://twitter.com/eyeshothq">
+                                <i class="fab fa-twitter mx-2"></i>
+                            </a>
+                            <a target="_blank" rel="nofollow" href="https://facebook.com/eyeshothq">
+                                <i class="fab fa-facebook"></i>
+                            </a>
+                            <a target="_blank" rel="nofollow" href="https://github.com/actuallyakash/eyeshot">
+                                <i class="fab fa-github mx-2"></i>
+                            </a>
+                        </div>
                     </div>
                     @else
                     <button class="btn btn-success mt-1" type="submit" data-toggle="modal" data-target="#loginSignupTv">Start Exploring</button>
                     @endauth
                 </li>
-                
-                @auth
-                <li class="nav-item" id="app-install">
-                @if ( Request::is('/') )
-                    <button class="button-es btn mt-1 pwa-install"><i class="fas fa-plus"></i> Get the App</button>
-                @else
-                    <a href="/" class="button-es btn mt-1">Explore Now</a>
-                @endif
-                </li>
-                @endauth
             </ul>
         </div>
     </nav>
