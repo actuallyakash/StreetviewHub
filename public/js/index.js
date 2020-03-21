@@ -95,6 +95,7 @@
             zoomControl: false,
             mapTypeControl: false,
             streetViewControl: true,
+            gestureHandling: 'greedy'
         });
 
         panorama = new google.maps.StreetViewPanorama(
@@ -171,6 +172,7 @@
             zoomControl: false,
             mapTypeControl: false,
             streetViewControl: true,
+            gestureHandling: 'greedy'
         });
 
         panorama = new google.maps.StreetViewPanorama(
@@ -261,6 +263,9 @@
             [-20.916647, 165.0628549], // New Caledonia
             [40.7579787, -73.9877313], // Times Square
             [46.4096518, 10.0222048], // Lago Bianco, Switzerland
+            [67.3523874, 169.4528755], // Ozero Tytyl, Russia
+            [68.1294444, -149.4758332], // Atigun Pass
+            [46.6688604, 8.0249095], // Bachalpsee, Switzerland
         ];
         
         var radial = radialPoints[Math.floor((Math.random() * (radialPoints.length-1)) + 1)];
