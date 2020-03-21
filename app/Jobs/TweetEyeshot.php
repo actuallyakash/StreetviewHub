@@ -7,7 +7,6 @@ use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Foundation\Bus\Dispatchable;
 use Illuminate\Queue\InteractsWithQueue;
 use Illuminate\Support\Facades\Storage;
-use App\User;
 use Twitter;
 use Helper;
 
@@ -27,27 +26,16 @@ class TweetEyeshot implements ShouldQueue
         $eyeshot = $this->eyeshot;
         if ( $eyeshot ) {
 
-            $user = User::find($eyeshot->user_id)->nickname;
-            $eyeshotId = Helper::encode_id($eyeshot->id);
-            $url = url("/{$user}/shot/{$eyeshotId}");
-
-            if ( $eyeshot->title != null && $eyeshot->title !== "" ) {
-                $status = '"' . $eyeshot->title . '"';
-            } else if ( $eyeshot->location_name !== NULL && $eyeshot->location_name !== "" ) {
-                $status = '"'.$eyeshot->location_name.'"';
-            } else {
-                $status = "Eyeshot";
-            }
-            $status .= " by " . $user . "\n\n" . $url;
-
+            $post = Helper::createPost( $eyeshot );
             $contents = file_get_contents(Storage::disk('s3')->url($eyeshot->media));
             $uploaded_media = Twitter::uploadMedia(['media' => $contents]);
 
             // Tweet 🕊
             Twitter::postTweet([
-                'status' => $status,
+                'status' => $post,
                 'media_ids' => $uploaded_media->media_id_string
             ]);
+            
         }
     }
 }

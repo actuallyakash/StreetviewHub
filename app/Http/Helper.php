@@ -41,4 +41,22 @@ class Helper
 
         return $tags;
     }
+
+    public static function createPost( $eyeshot )
+    {
+        $user = \App\User::find($eyeshot->user_id)->nickname;
+        $eyeshotId = Helper::encode_id($eyeshot->id);
+        $url = "See 360° View: " . url("/{$user}/shot/{$eyeshotId}");
+
+        if ( $eyeshot->title != null && $eyeshot->title !== "" ) {
+            $status = '"' . $eyeshot->title . '"';
+        } else if ( $eyeshot->location_name !== NULL && $eyeshot->location_name !== "" ) {
+            $status = '"'.$eyeshot->location_name.'"';
+        } else {
+            $status = "Eyeshot";
+        }
+        $status .= " by " . $user . "\n\n" . $url;
+
+        return $status;
+    }
 }

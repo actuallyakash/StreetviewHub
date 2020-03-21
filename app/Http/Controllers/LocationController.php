@@ -11,7 +11,6 @@ use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Str;
 use Carbon\Carbon;
-use App\Jobs\TweetEyeshot;
 
 class LocationController extends Controller
 {
@@ -120,8 +119,9 @@ class LocationController extends Controller
         $location = Location::where('pano_id', $response['panoId'])->where('user_id', auth()->id());
         $location->update(['title' => $response['title'], 'status' => $response['status'], 'tags' => $response['tags']]);
 
-        // Queueing Job
-        TweetEyeshot::dispatch( $location->first() )->delay(now()->addMinutes(10));
+        // Queueing Jobs
+        \App\Jobs\TweetEyeshot::dispatch( $location->first() )->delay( now()->addMinutes(10) ); // Tweet
+        \App\Jobs\FbPostEyeshot::dispatch( $location->first() )->delay (now()->addMinutes(10) ); // Publish
         
         return 1;
     }

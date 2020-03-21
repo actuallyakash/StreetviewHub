@@ -49,4 +49,11 @@ return [
         'redirect' => env('GOOGLE_URL'),
     ],
 
+    'facebook' => [
+        'page_id' => env('FACEBOOK_PAGE_ID'),
+        'client_id' => env('FACEBOOK_APP_ID'),
+        'client_secret' => env('FACEBOOK_APP_SECRET'),
+        'access_token' => env('FACEBOOK_ACCESS_TOKEN'),
+    ],
+
 ];
