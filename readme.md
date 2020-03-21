@@ -67,11 +67,14 @@ Get in touch at my low budget email eyeshot.xyz@gmail.com 😅
   <br><br>
   <strong>Keep Exploring</strong> 🚶‍♂️
   <div align="center">
+    <a href="https://github.com/actuallyakash/eyeshot">
+      <img src="https://img.shields.io/github/stars/actuallyakash/eyeshot?style=social" alt="I Need Stars ⭐">
+    </a>
     <a href="https://twitter.com/intent/follow?screen_name=eyeshothq">
       <img src="https://img.shields.io/twitter/follow/eyeshothq?label=Follow&style=social" alt="More random eyeshots">
     </a>
-    <a href="https://github.com/actuallyakash/eyeshot">
-      <img src="https://img.shields.io/github/stars/actuallyakash/eyeshot?style=social" alt="I Need Stars ⭐">
+    <a target="_blank" href="https://facebook.com/eyeshothq">
+      <img src="https://img.shields.io/badge/%F0%9F%91%8D-Facebook-blue" alt="More random eyeshots">
     </a>
   </div>
 </p>

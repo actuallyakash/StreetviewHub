@@ -60,8 +60,8 @@
         <a target="_blank" rel="nofollow" href="https://twitter.com/eyeshothq">
             <i class="fab fa-twitter mx-2"></i>
         </a>
-        <a target="_blank" rel="nofollow" href="https://instagram.com/eyeshothq">
-            <i class="fab fa-instagram mx-2"></i>
+        <a target="_blank" rel="nofollow" href="https://facebook.com/eyeshothq">
+            <i class="fab fa-facebook"></i>
         </a>
     </div>
 </footer>
