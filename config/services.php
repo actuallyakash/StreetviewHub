@@ -49,6 +49,13 @@ return [
         'redirect' => env('GOOGLE_URL'),
     ],
 
+    'gmaps_key' => env('GMAPS_KEY'),
+
+    'ga' => [
+        'id' => env('GA_ID'),
+        'google_id' => env('GOOGLE_ID')
+    ],
+
     'facebook' => [
         'page_id' => env('FACEBOOK_PAGE_ID'),
         'client_id' => env('FACEBOOK_APP_ID'),

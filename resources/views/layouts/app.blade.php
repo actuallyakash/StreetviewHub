@@ -1,8 +1,8 @@
 <!DOCTYPE html>
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
 <head>
-    <script async src="https://www.googletagmanager.com/gtag/js?id={{ env('GA_ID') }}"></script>
-    <script>window.dataLayer = window.dataLayer || [];function gtag(){dataLayer.push(arguments);}gtag('js', new Date());gtag('config', '{{ env('GA_ID') }}');</script>
+    <script async src="https://www.googletagmanager.com/gtag/js?id={{ config('services.ga.id') }}"></script>
+    <script>window.dataLayer = window.dataLayer || [];function gtag(){dataLayer.push(arguments);}gtag('js', new Date());gtag("config", "{{ config('services.ga.id') }}");</script>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
@@ -73,8 +73,8 @@
 @endif
     {{-- CSRF Token --}}
     <meta name="csrf-token" content="{{ csrf_token() }}">
-    {{-- env('GOOGLE_ID') --}}
-    <meta name="google-signin-client_id" content="962729632216-407dsmg76fhpt93g5e26qkm8m626csac.apps.googleusercontent.com">
+    
+    <meta name="google-signin-client_id" content="{{ config('services.ga.google_id') }}">
     {{-- Favicon --}}
     <link rel="apple-touch-icon" sizes="180x180" href="{{ asset('images/favicon/apple-touch-icon.png') }}">
     <link rel="icon" type="image/png" sizes="32x32" href="{{ asset('images/favicon/favicon-32x32.png') }}">
@@ -103,8 +103,9 @@
     <script src="https://unpkg.com/popper.js@1.16.1/dist/umd/popper.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
     <script src="{{ asset('js/tagify.min.js') }}"></script>
+    <script> var key = "{!! config('services.gmaps_key') !!}"; </script>
     <script src="{{ asset('js/index.min.js') }}" async defer></script>
     <script src="{{ asset('js/jscroll.min.js') }}"></script>
-    <script src="https://maps.googleapis.com/maps/api/js?key={{ env('GMAPS_KEY') }}"></script>
+    <script src="https://maps.googleapis.com/maps/api/js?key={{ config('services.gmaps_key') }}"></script>
 </body>
 </html>

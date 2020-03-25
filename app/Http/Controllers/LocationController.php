@@ -43,7 +43,7 @@ class LocationController extends Controller
         if ($favourite->count() == 0) {
 
             // Downloading Image
-            $filepath = 'https://maps.googleapis.com/maps/api/streetview?size=400x300&pano=' . $panoId . '&fov=' . $zoomLevel . '&heading=' . $panoHeading . '&pitch=' . $panoPitch . '&key=' . env('GMAPS_KEY');
+            $filepath = 'https://maps.googleapis.com/maps/api/streetview?size=400x300&pano=' . $panoId . '&fov=' . $zoomLevel . '&heading=' . $panoHeading . '&pitch=' . $panoPitch . '&key=' . config('services.gmaps_key');
             $eyeshotName = Str::random(20) . '.jpg';
             $contents = file_get_contents($filepath);
             // Saving the location image
