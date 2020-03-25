@@ -398,7 +398,7 @@
                         $('#shared-pano').after('<div class="details text-center"><h3 class="eyeshot-info"> <span class="text-muted">Location: </span>' + map.streetView.location.description + '</h3></div>');
                         $('meta.meta-title').attr('content', map.streetView.location.description + " | Eyeshot");
                         $('meta.meta-keywords').attr('content', map.streetView.location.description);
-                        $('meta.meta-image').attr('content', "https://maps.googleapis.com/maps/api/streetview?size=600x400&pano=" + details[2] + "&heading=" + details[3] + "&pitch=" + details[4] + "&key=AIzaSyDTJbCnWZ2ZpG9ZAkf66SNfvLb9sUchknw");
+                        $('meta.meta-image').attr('content', "https://maps.googleapis.com/maps/api/streetview?size=600x400&pano=" + details[2] + "&heading=" + details[3] + "&pitch=" + details[4] + "&key=" + key);
                     }
                 }, 2000);
             }
