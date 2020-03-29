@@ -137,20 +137,71 @@
 
     var randomLoc = function( latitude, longitude ) {
 
+        var loc = {
+            lat: latitude,
+            lng: longitude
+        };
+
+        var setupMap = function() {
+            
+            map = new google.maps.Map(document.getElementById('sv-map'), { // Map selector
+                center: loc,
+                zoom: 16,
+                zoomControl: false,
+                mapTypeControl: false,
+                streetViewControl: true,
+                gestureHandling: 'greedy'
+            });
+
+            map.setStreetView(panorama);
+
+            // Look for a nearby Street View panorama when the map is clicked.
+            // getPanorama will return the nearest pano when the given
+            // radius is 200 meters or less.
+            map.addListener('click', function (event) {
+                sv.getPanorama({
+                    location: event.latLng,
+                    radius: 200
+                }, function( data, status ) {
+                    if( status === 'OK' ) {
+                        panorama.setPano(data.location.pano);
+                        panorama.setPov({
+                            heading: 270,
+                            pitch: 0,
+                            zoom: 0
+                        });
+                        panorama.setVisible(true);
+                    }
+                });
+            });
+        }
+
         var processEyeshot = function(data, status) {
 
             if (status === 'OK') {
-    
+                
+                panorama = new google.maps.StreetViewPanorama(
+                    document.getElementById('sv-pano'), // Pano Selector
+                    {
+                        pano: data.location.pano,
+                        panControl: true,
+                        fullscreenControl: true,
+                        linksControl: false,
+                        zoomControl: false,
+                        addressControl: false,
+                        enableCloseButton: false
+                    }
+                );
+
+                panorama.addListener('pano_changed', function() {
+                    var panoId = panorama.getPano();
+                    initPanoId(panoId);
+                });
+
+                setupMap();
+
                 $('.loader').css('display', 'none');
                 $('#sv-pano').css('display', 'block');
-          
-                panorama.setPano(data.location.pano);
-                panorama.setPov({
-                    heading: 270,
-                    pitch: 0,
-                    zoom: 0
-                });
-                panorama.setVisible(true);
           
             } else {
                 // Keep searching, you'll surely end up somewhere!
@@ -158,58 +209,13 @@
             }
         }
         
-        var loc = {
-            lat: latitude,
-            lng: longitude
-        };
-        
         var sv = new google.maps.StreetViewService();
-
-        // Set up the map.
-        map = new google.maps.Map(document.getElementById('sv-map'), { // Map selector
-            center: loc,
-            zoom: 16,
-            zoomControl: false,
-            mapTypeControl: false,
-            streetViewControl: true,
-            gestureHandling: 'greedy'
-        });
-
-        panorama = new google.maps.StreetViewPanorama(
-            document.getElementById('sv-pano'), // Pano Selector
-            {
-                position: loc,
-                panControl: true,
-                fullscreenControl: true,
-                linksControl: false,
-                zoomControl: false,
-                addressControl: false,
-                enableCloseButton: false
-            }
-        );
-        
-        map.setStreetView(panorama);
 
         // Set the initial Street View camera to the center of the map
         sv.getPanorama({
             location: loc,
             radius: 50
         }, processEyeshot);
-
-        // Look for a nearby Street View panorama when the map is clicked.
-        // getPanorama will return the nearest pano when the given
-        // radius is 100 meters or less.
-        map.addListener('click', function (event) {
-            sv.getPanorama({
-                location: event.latLng,
-                radius: 100
-            }, processEyeshot);
-        });
-
-        panorama.addListener('pano_changed', function() {
-            var panoId = panorama.getPano();
-            initPanoId(panoId);
-        });
     }
     
     function generateRandomPoint(center, radius) {
