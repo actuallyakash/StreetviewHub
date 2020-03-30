@@ -8,11 +8,6 @@
     //
     // Methods
     //
-    /* Waking up tooltips */
-    $(function () {
-        $('[data-tooltip="tooltip"]').tooltip()
-    });
-
     var initPanoId = function( panoId ) {
         var element = $('#sv-pano .cta-street-view');
         
@@ -193,6 +188,8 @@
                     }
                 );
 
+                initPanoId(panorama.getPano());
+
                 panorama.addListener('pano_changed', function() {
                     var panoId = panorama.getPano();
                     initPanoId(panoId);
@@ -272,6 +269,13 @@
             [67.3523874, 169.4528755], // Ozero Tytyl, Russia
             [68.1294444, -149.4758332], // Atigun Pass
             [46.6688604, 8.0249095], // Bachalpsee, Switzerland
+            [-17.5011982, -149.7642994], // moorea island
+            [32.2570967, -64.8308583], // Southampton Parish
+            [-25.3451959, 131.0306191], // Uluru, Australia
+            [11.9769203, 121.9287507], // Boracay
+            [10.9779765, 76.7360268], // Isha Yoga Centre, Coimbatore
+            [35.7127983, 139.7718079], // Taito City, Tokyo
+            [22.3045392, 114.1899551] // Hong Kong
         ];
         
         var radial = radialPoints[Math.floor((Math.random() * (radialPoints.length-1)) + 1)];
@@ -368,6 +372,10 @@
     // Inits & Event Listeners
     //
     $(document).ready(function() {
+        
+        /* Waking up tooltips */
+        $('[data-tooltip="tooltip"]').tooltip();
+
         if($( "#landing-pano" ).length) {
             takeMeSomewhereIDontBelong();
         }
