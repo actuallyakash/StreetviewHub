@@ -188,6 +188,12 @@
                     }
                 );
 
+                panorama.setPov({
+                    heading: 270,
+                    pitch: 0,
+                    zoom: 0
+                });
+
                 initPanoId(panorama.getPano());
 
                 panorama.addListener('pano_changed', function() {
