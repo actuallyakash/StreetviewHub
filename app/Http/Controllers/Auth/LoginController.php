@@ -108,6 +108,26 @@ class LoginController extends Controller
         return redirect('/');
     }
 
+    /**
+     * Obtain the user information from Facebook.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function handleFacebookCallback()
+    {
+        try {
+            $user = Socialite::driver('facebook')->user();
+        } catch (Exception $e) {
+            return redirect('auth/facebook');
+        }
+        
+        $authUser = $this->findOrCreateUser($user, 'facebook');
+
+        Auth::login($authUser, true);
+
+        return redirect('/');
+    }
+
     public function randomUsername( $username )
     {
         $newname = $username.mt_rand(0,10000);
@@ -166,6 +186,16 @@ class LoginController extends Controller
                 'location' => $user->user['location'],
                 'website' => $user->user['url'],
                 'bio' => $user->user['description'],
+            ]);
+        }
+
+        if ( "facebook" === $channel ) {
+            return User::create([
+                'auth_id' => $channel . '-' . $user->id,
+                'name' => $user->name,
+                'nickname' => $nickname,
+                'email' => $user->email,
+                'avatar' => $user->avatar
             ]);
         }
         

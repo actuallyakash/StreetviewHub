@@ -1,7 +1,7 @@
 @if ( !Auth::user() )
 <div class="modal" id="loginSignupTv" tabindex="-1" role="dialog" aria-labelledby="startExploringModal"
     aria-hidden="true">
-    <div class="modal-dialog modal-md modal-dialog-centered" role="document">
+    <div class="modal-dialog modal-lg modal-dialog-centered" role="document">
         <div class="modal-content">
             <div class="modal-body text-center">
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
@@ -24,6 +24,11 @@
                     <div class="col auth-social">
                         <a class="btn btn-lg btn-outline-dark" href="/auth/github/">
                             <i class="fab fa-github mr-2"></i> GitHub
+                        </a>
+                    </div>
+                    <div class="col auth-social">
+                        <a class="btn btn-lg btn-outline-facebook" href="/auth/facebook/">
+                            <i class="fab fa-facebook mr-2"></i> Facebook
                         </a>
                     </div>
                 </div>

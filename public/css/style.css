@@ -682,12 +682,18 @@ header .navbar .eyeshot-user img {
   color: #1da1f2;
 }
 
-.modal .btn-outline-twitter {
+.modal .btn-outline-facebook i {
+  color: #3b5998;
+}
+
+.modal .btn-outline-twitter,
+.modal .btn-outline-facebook {
   color: #343a40;
   border-color: #343a40;
 }
 
-.modal .btn-outline-twitter:hover i {
+.modal .btn-outline-twitter:hover i,
+.modal .btn-outline-facebook:hover i {
   color: white;
 }
 
@@ -695,6 +701,12 @@ header .navbar .eyeshot-user img {
   color: #fff;
   background-color: #1da1f2;
   border-color: #1da1f2;
+}
+
+.modal .btn-outline-facebook:hover {
+  color: #fff;
+  background-color: #3b5998;
+  border-color: #3b5998;
 }
 
 /* User Card */
