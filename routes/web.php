@@ -19,6 +19,8 @@ Route::get('auth/google/callback', 'Auth\LoginController@handleGoogleCallback');
 Route::get('auth/twitter/callback', 'Auth\LoginController@handleTwitterCallback');
 # Github
 Route::get('auth/github/callback', 'Auth\LoginController@handleGithubCallback');
+# Facebook
+Route::get('auth/facebook/callback', 'Auth\LoginController@handleFacebookCallback');
 
 Route::get('/location/{panoId}/status/', 'LocationController@hasLikedLocation');
 Route::get('/location/favourite/{locationName}/{latitude}/{longitude}/{panoId}/{panoHeading}/{panoPitch}/{panoZoom}', 'LocationController@storeFavourite');
