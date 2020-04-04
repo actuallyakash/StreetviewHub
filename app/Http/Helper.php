@@ -1,5 +1,7 @@
 <?php
 
+namespace App\Http;
+
 use Illuminate\Support\Facades\DB;
 use Vinkla\Hashids\Facades\Hashids;
 

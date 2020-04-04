@@ -229,6 +229,7 @@ return [
         'Socialite' => Laravel\Socialite\Facades\Socialite::class,
         'Hashids' => Vinkla\Hashids\Facades\Hashids::class,
         'Twitter' => Thujohn\Twitter\Facades\Twitter::class,
+        'Helper' => App\Http\Helper::class,
     ],
 
 ];
