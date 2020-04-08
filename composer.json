@@ -16,6 +16,7 @@
         "laravel/tinker": "^2.0",
         "league/flysystem-aws-s3-v3": "~1.0",
         "thujohn/twitter": "^2.2",
+        "tumblr/tumblr": "^0.4.0",
         "vinkla/hashids": "^8.0"
     },
     "require-dev": {

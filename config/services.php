@@ -64,4 +64,11 @@ return [
         'access_token' => env('FACEBOOK_ACCESS_TOKEN')
     ],
 
+    'tumblr' => [
+        'client_id' => env('TUMBLR_CONSUMER_KEY'),
+        'client_secret' => env('TUMBLR_CONSUMER_SECRET'),
+        'access_token' => env('TUMBLR_ACCESS_TOKEN'),
+        'access_token_secret' => env('TUMBLR_ACCESS_TOKEN_SECRET'),
+    ],
+
 ];

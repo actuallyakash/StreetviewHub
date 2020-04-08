@@ -122,6 +122,7 @@ class LocationController extends Controller
         // Queueing Jobs
         \App\Jobs\TweetEyeshot::dispatch( $location->first() )->delay( now()->addMinutes(10) ); // Tweet
         \App\Jobs\FbPostEyeshot::dispatch( $location->first() )->delay( now()->addMinutes(10) ); // Publish
+        \App\Jobs\TumblrPostEyeshot::dispatch( $location->first() ); // Publish
         
         return 1;
     }
