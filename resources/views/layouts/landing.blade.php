@@ -61,7 +61,10 @@
             <i class="fab fa-twitter mx-2"></i>
         </a>
         <a target="_blank" rel="nofollow" href="https://facebook.com/eyeshothq">
-            <i class="fab fa-facebook"></i>
+            <i class="fab fa-facebook mx-2"></i>
+        </a>
+        <a target="_blank" rel="nofollow" href="https://eyeshothq.tumblr.com/">
+            <i class="fab fa-tumblr-square mx-2"></i>
         </a>
     </div>
 </footer>

@@ -76,5 +76,8 @@ Get in touch at my low budget email eyeshot.xyz@gmail.com 😅
     <a target="_blank" href="https://facebook.com/eyeshothq">
       <img src="https://img.shields.io/badge/%F0%9F%91%8D-Facebook-blue" alt="More random eyeshots">
     </a>
+    <a target="_blank" href="https://eyeshothq.tumblr.com/">
+      <img src="https://img.shields.io/badge/%F0%9F%91%8B-Tumblr-lightgrey" alt="More random eyeshots">
+    </a>
   </div>
 </p>
