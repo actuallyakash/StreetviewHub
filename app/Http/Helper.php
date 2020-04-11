@@ -44,20 +44,38 @@ class Helper
         return $tags;
     }
 
-    public static function createPost( $eyeshot )
+    public static function createPost( $eyeshot, $platform = "default" )
     {
         $user = \App\User::find($eyeshot->user_id)->nickname;
         $eyeshotId = Helper::encode_id($eyeshot->id);
-        $url = "See 360° View: " . url("/{$user}/shot/{$eyeshotId}");
 
-        if ( $eyeshot->title != null && $eyeshot->title !== "" ) {
-            $status = '"' . $eyeshot->title . '"';
-        } else if ( $eyeshot->location_name !== NULL && $eyeshot->location_name !== "" ) {
-            $status = '"'.$eyeshot->location_name.'"';
+        if ( $platform == "tumblr" ) {
+            $url = "<b><a href='" . url("/{$user}/shot/{$eyeshotId}") . "'>See 360° View</a></b>";
+
+            if ( $eyeshot->title != null && $eyeshot->title !== "" ) {
+                $status = "<b>$eyeshot->title</b>";
+            } else if ( $eyeshot->location_name !== NULL && $eyeshot->location_name !== "" ) {
+                $status = "<b>$eyeshot->location_name</b>";
+            } else {
+                $status = "Eyeshot";
+            }
+            $status .= " by <b>$user</b><br><br>" . $url;
+
+            if ( $eyeshot->status ) {
+                $status .= "<br><br><i>$eyeshot->status</i>";
+            }
         } else {
-            $status = "Eyeshot";
+            $url = "See 360° View: " . url("/{$user}/shot/{$eyeshotId}");
+
+            if ( $eyeshot->title != null && $eyeshot->title !== "" ) {
+                $status = '"' . $eyeshot->title . '"';
+            } else if ( $eyeshot->location_name !== NULL && $eyeshot->location_name !== "" ) {
+                $status = '"'.$eyeshot->location_name.'"';
+            } else {
+                $status = "Eyeshot";
+            }
+            $status .= " by " . $user . "\n\n" . $url;
         }
-        $status .= " by " . $user . "\n\n" . $url;
 
         return $status;
     }

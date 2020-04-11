@@ -6,8 +6,10 @@ use Illuminate\Bus\Queueable;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Foundation\Bus\Dispatchable;
 use Illuminate\Queue\InteractsWithQueue;
+use Illuminate\Support\Facades\Storage;
+use Helper;
 
-class FbPostEyeshot implements ShouldQueue
+class TumblrPostEyeshot implements ShouldQueue
 {
     use Dispatchable, InteractsWithQueue, Queueable;
 
@@ -23,7 +25,6 @@ class FbPostEyeshot implements ShouldQueue
         $eyeshot = $this->eyeshot;
         if ( $eyeshot ) {
 
-    
             // Authenticate via OAuth
             $client = new \Tumblr\API\Client(
                 config('services.tumblr.client_id'),
@@ -31,23 +32,23 @@ class FbPostEyeshot implements ShouldQueue
                 config('services.tumblr.access_token'),
                 config('services.tumblr.access_token_secret')
             );
-    
+
             // Make the request
             $client->getUserInfo();
-    
-            // Post 📰    
-            $data = [
-                'title' => "test",
-                'tags' => "one,two,three",
-                'thumbnail' => "https://eyeshot.s3.amazonaws.com/z0nitJSe1XItkWJCJgZc.jpg",
-                'url' => "https://eyeshot.xyz?ref=tumblr",
-                'type' => 'link'
-            ];
-    
-            $client->createPost("eyeshothq.tumblr.com", $data);
-            
-            
 
+            $status = Helper::createPost( $eyeshot, 'tumblr' );
+            
+            // Post 📰    
+            $post = [
+                'type' => 'photo',
+                'caption' => $status,
+                'link' => "https://eyeshot.xyz",
+                'tags' => $eyeshot->tags !== null ? $eyeshot->tags : 'eyeshot',
+                'source' => Storage::disk('s3')->url($eyeshot->media)
+            ];
+
+            $client->createPost("eyeshothq.tumblr.com", $post);
+        
         }
     }
 }
