@@ -2,6 +2,8 @@
 
 namespace App\Jobs;
 
+require_once( base_path() . '/vendor/tumblr/tumblr/lib/Tumblr/API/Client.php' );
+
 use Illuminate\Bus\Queueable;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Foundation\Bus\Dispatchable;
