@@ -139,8 +139,14 @@ h1, h2, h3, h4, h5, h6 {
   overflow: hidden;
 }
 
+.eyeshot-image .eyeshot-media {
+  width: 400px;
+  height: 300px;
+}
+
 .eyeshot-image img {
   width: 100%;
+  max-width:100%;
   border-radius: 6px 6px 0 0;
 }
 

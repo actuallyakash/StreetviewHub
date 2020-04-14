@@ -42,7 +42,7 @@
     <meta name="twitter:site" content="@eyeshotHQ">
     <meta name="twitter:creator" content="{{ $user->nickname }}">
     <meta name="twitter:title" content="{{ $user->nickname . " | Eyeshot Profile" }}">
-@elseif( isset($eyeshot) )
+@elseif( isset($user) && isset($eyeshot) )
     <meta name="description" content="{{ $eyeshot->status !== null ? $eyeshot->status : "Eyeshot is a visual discovery of our surroundings, explored by people like you. Discover the World's Top Destinations and Cool Places." }}">
     <meta name="keywords" content="{{ $eyeshot->tags !== null || $eyeshot->tags !== "eyeshot" ? $eyeshot->tags : "eyeshot,street view,panorama,360 view,top destinations,google street view" }}">
     <meta property="og:type" content="website" />
@@ -104,7 +104,7 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
     <script src="{{ asset('js/tagify.min.js') }}"></script>
     <script> var key = "{!! config('services.gmaps_key') !!}"; </script>
-    <script src="{{ asset('js/index.min.js') }}" async defer></script>
+    <script src="{{ asset('js/index.js') }}" async defer></script>
     <script src="{{ asset('js/jscroll.min.js') }}"></script>
     <script src="https://maps.googleapis.com/maps/api/js?key={{ config('services.gmaps_key') }}"></script>
 </body>
