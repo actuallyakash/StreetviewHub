@@ -1,6 +1,6 @@
 <div class="eyeshot mb-4 shadow-sm">
     <div class="eyeshot-image">
-        <div class="eyeshot-media" data-eyeshot="eyeshot-{{ Helper::encode_id($eyeshot->id) }}">
+        <div class="eyeshot-media" data-user={{ $eyeshot->owner->nickname }} data-eyeshot="eyeshot-{{ Helper::encode_id($eyeshot->id) }}">
             @if ( $eyeshot->user_id == $eyeshot->pioneer)
             <span class="pioneer-tag"><i class="fas fa-medal"></i></span>
             @endif

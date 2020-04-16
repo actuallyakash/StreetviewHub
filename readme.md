@@ -34,6 +34,7 @@ The thing is, it helps you in TELEPORTING, not physically but virtually at any r
 - [What is eyeshot.xyz?](#what-is-eyeshot)
 - [Why?](#why)
 - [Table of Contents](#table-of-contents)
+- [How Randomizer Works?](#how-randomizer-works)
 - [Contributing](#contributing)
 - [Tech Stack](#tech-stack)
 - [License](#license)

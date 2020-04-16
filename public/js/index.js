@@ -466,8 +466,12 @@
     // View Eyeshot
     $("div.eyeshot-container-fluid").on('click', '.eyeshot .eyeshot-media', function() {
         var eyeshot = $(this).data('eyeshot').replace('eyeshot-','');
+        var user = $(this).data('user');
         $('#viewEyeshot #sv-pano .gm-style').remove(); // Clean old pano's instance
         $('#viewEyeshot').modal('show');
+
+        // Updating Page URL for Modal
+        history.pushState({pageID: 'Eyeshot'}, 'Eyeshot', '/' + user + '/shot/' + eyeshot);
 
         $("#viewEyeshot .eyeshot-location").text('');
         $("#viewEyeshot .eyeshot-status").text('');
@@ -517,6 +521,10 @@
                 }
             }
         });
+    });
+
+    $("#viewEyeshot").on("hidden.bs.modal", function () {
+        history.pushState({pageID: 'Home'}, 'Eyeshot - Homepage', '/');
     });
 
     // Randomizer
