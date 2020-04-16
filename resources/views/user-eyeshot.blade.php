@@ -2,7 +2,6 @@
 @section('content')
 
 @section('title', "Eyeshot by $user->nickname")
-
 <div id="shared-pano" class="map-box">
     <div style="display:none;" class="loader text-center"><span class="eyeshot-loader">🌏</span></div>
     <div style="display:none;" id="sv-pano">
@@ -21,5 +20,9 @@
 </div>
 
 @include('profile/user-card')
+
+<div class="container">
+    <div id="disqus_thread"></div>
+</div>
 
 @endsection
