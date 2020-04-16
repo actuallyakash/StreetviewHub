@@ -173,6 +173,7 @@
             <div class="row eyeshot-details">
                 <div class="col-md-7">
                     <div class="eyeshot-status"></div>
+                    <div id="disqus_thread"></div>
                 </div>
                 <div class="col-md-5 eyeshot-meta">
                     {{-- <div class="d-flex justify-content-around social-share">

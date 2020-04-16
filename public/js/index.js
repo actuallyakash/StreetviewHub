@@ -382,6 +382,15 @@
         /* Waking up tooltips */
         $('[data-tooltip="tooltip"]').tooltip();
 
+        /* Waking up Disqus */
+        (function () { // DON'T EDIT BELOW THIS LINE
+            var d = document,
+                s = d.createElement('script');
+            s.src = 'https://eyeshot.disqus.com/embed.js';
+            s.setAttribute('data-timestamp', +new Date());
+            (d.head || d.body).appendChild(s);
+        })();
+
         if($( "#landing-pano" ).length) {
             takeMeSomewhereIDontBelong();
         }
@@ -472,6 +481,17 @@
 
         // Updating Page URL for Modal
         history.pushState({pageID: 'Eyeshot'}, 'Eyeshot', '/' + user + '/shot/' + eyeshot);
+
+        // Disqus for Discussion
+        var PAGE_URL = "http://eyeshot.xyz/" + user + "/shot/" + eyeshot;
+        var PAGE_IDENTIFIER = eyeshot;
+        DISQUS.reset({
+            reload: true,
+            config: function () {
+                this.page.identifier = PAGE_IDENTIFIER;  
+                this.page.url = PAGE_URL;
+            }
+        });
 
         $("#viewEyeshot .eyeshot-location").text('');
         $("#viewEyeshot .eyeshot-status").text('');
