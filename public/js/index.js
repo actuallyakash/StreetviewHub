@@ -251,41 +251,43 @@
 
         // TODO: Add more NOICE radials
         var radialPoints = [
-            [43.0822473, -79.0635906], // Niagara Falls, New York
-            [37.869085, -122.254775], // Berkeley, California
-            [51.5286416, -0.1015987], // London, England
-            [47.3721915, 8.5425051], // Zürich, Zurich
-            [46.7972162, 9.8334775], // Davos, Switzerland
-            [55.6993533, 12.5423634], // Superkilen Park
-            [38.470495, -78.7748714], // Shenandoah National Park, Virginia
-            [37.42197, -122.084373], // GooglePlex
-            [-4.3538688, 55.8300366], // La Digue Island, Seychelles 
-            [18.7939203, 98.9564772], // Chiang Mai, Thailand
-            [22.1086481, -159.3970979], // Makaleha Stream
-            [64.056076, -19.8672619], // Iceland
-            [36.0612757, -112.0867052], // Grand Canyon
-            [25.1972018, 55.2721877], // Burj Khalifa, Dubai
-            [32.628183, 129.7385157], // Hashima Islands
-            [44.132559, 9.7011111], // CINQUE TERRE, Italy
-            [45.4328051, 12.3405832], // Venice, Italy
-            [51.394989, 0.526075], // HMS Cavalier (submarine)
-            [-20.916647, 165.0628549], // New Caledonia
-            [40.7579787, -73.9877313], // Times Square
-            [46.4096518, 10.0222048], // Lago Bianco, Switzerland
-            [67.3523874, 169.4528755], // Ozero Tytyl, Russia
-            [68.1294444, -149.4758332], // Atigun Pass
-            [46.6688604, 8.0249095], // Bachalpsee, Switzerland
-            [-17.5011982, -149.7642994], // moorea island
-            [32.2570967, -64.8308583], // Southampton Parish
-            [-25.3451959, 131.0306191], // Uluru, Australia
-            [11.9769203, 121.9287507], // Boracay
-            [10.9779765, 76.7360268], // Isha Yoga Centre, Coimbatore
-            [35.7127983, 139.7718079], // Taito City, Tokyo
-            [22.3045392, 114.1899551] // Hong Kong
+            [], // Empty
+            [43.0772733, -79.0659442, 2500], // Niagara Falls, New York
+            [37.869085, -122.254775, 2000], // Berkeley, California
+            [51.5286416, -0.1015987, 2000], // London, England
+            [47.3721915, 8.5425051, 2000], // Zürich, Zurich
+            [46.7972162, 9.8334775, 2000], // Davos, Switzerland
+            [55.6993533, 12.5423634, 2000], // Superkilen Park
+            [38.470495, -78.7748714, 2000], // Shenandoah National Park, Virginia
+            [37.42197, -122.084373, 2000], // GooglePlex
+            [-4.3538688, 55.8300366, 2000], // La Digue Island, Seychelles 
+            [18.7939203, 98.9564772, 2000], // Chiang Mai, Thailand
+            [22.1086481, -159.3970979, 2000], // Makaleha Stream
+            [64.056076, -19.8672619, 2000], // Iceland
+            [36.0612757, -112.0867052, 2000], // Grand Canyon
+            [25.1972018, 55.2721877, 2000], // Burj Khalifa, Dubai
+            [32.628183, 129.7385157, 2000], // Hashima Islands
+            [44.132559, 9.7011111, 2000], // CINQUE TERRE, Italy
+            [45.4328051, 12.3405832, 2000], // Venice, Italy
+            [51.394989, 0.526075, 2000], // HMS Cavalier (submarine)
+            [-20.916647, 165.0628549, 2000], // New Caledonia
+            [40.7579787, -73.9877313, 2000], // Times Square
+            [46.4096518, 10.0222048, 2000], // Lago Bianco, Switzerland
+            [67.3523874, 169.4528755, 2000], // Ozero Tytyl, Russia
+            [68.1294444, -149.4758332, 2000], // Atigun Pass
+            [46.6688604, 8.0249095, 2000], // Bachalpsee, Switzerland
+            [-17.5011982, -149.7642994, 2000], // moorea island
+            [32.2570967, -64.8308583, 2000], // Southampton Parish
+            [-25.3451959, 131.0306191, 2000], // Uluru, Australia
+            [11.9769203, 121.9287507, 2000], // Boracay
+            [10.9779765, 76.7360268, 2000], // Isha Yoga Centre, Coimbatore
+            [35.7127983, 139.7718079, 2000], // Taito City, Tokyo
+            [22.3045392, 114.1899551, 2000], // Hong Kong
+            [], // Empty
         ];
         
         var radial = radialPoints[Math.floor((Math.random() * (radialPoints.length-1)) + 1)];
-        var randomGeoPoints = generateRandomPoint({'lat':radial[0], 'lng':radial[1]}, 2000);
+        var randomGeoPoints = generateRandomPoint({'lat':radial[0], 'lng':radial[1]}, radial[2]);
         
         var latitude = Number(randomGeoPoints['lat']);
         var longitude = Number(randomGeoPoints['lng']);
