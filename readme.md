@@ -42,7 +42,7 @@ The thing is, it helps you in TELEPORTING, not physically but virtually at any r
 ## How randomizer works?
 The randomizer is the vital part of Eyeshot and a lot of time has been invested in making it... random. You must be thinking that "<i>It's just a loop picking values randomly from an array full of locations, through rand() function</i>", yes, you're partially right.
 
-It's an [array filled with awesome coordinates](https://github.com/actuallyakash/Eyeshot/blob/master/public/js/index.js#L253) from which a random coordinate is picked up and sent through a [function](https://github.com/actuallyakash/Eyeshot/blob/master/public/js/index.js#L224) that generates more random coordinates within a specific radius from the given coordinate.
+It's an [array filled with awesome coordinates](https://github.com/actuallyakash/Eyeshot/blob/master/public/js/index.js#L253) from which a random coordinate is picked up and sent through a [function](https://github.com/actuallyakash/Eyeshot/blob/master/public/js/index.js#L224) that generates more random coordinates within a [specific radius](https://jsfiddle.net/actuallyakash/putxLv39/latest/) from the given coordinate.
 
 Finally, the newly generated coordinate from the algorithm is sent to the Street View API to check if a panorama exists on the given coordinates, if true, it shows a 360° view. If false, it repeats the whole process until the panorama is found.
 
