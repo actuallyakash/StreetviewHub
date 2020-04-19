@@ -590,6 +590,7 @@
 
      /* Pagination || Infinite Scroll */
      $(function() {
+        var count = 0;
         $('.eyeshot-container-fluid').jscroll({
             autoTrigger: true,
             loadingHtml: '<div class="text-center"><span class="eyeshot-loader">🌏</span></div>',
@@ -599,6 +600,9 @@
             callback: function() {
                 $(this).prev().append($(this).children('.eyeshot'));
                 $(this).remove();
+                if ( ++count == 2 ) {
+                    $('.eyeshot-container-fluid').append('<div class="text-center"><a class="button-es btn mt-1" href="/feed">See more 😍</a></div>');
+                }
             }
         });
     });

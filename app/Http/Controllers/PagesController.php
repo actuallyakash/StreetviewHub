@@ -17,7 +17,8 @@ class PagesController extends Controller
 
     public function welcome()
     {
-        $eyeshots = Location::latest('created_at')->paginate(6);
+        $ids = Location::latest('created_at')->take(18)->pluck('id');
+        $eyeshots = Location::wherein('id', $ids)->paginate(6);
         
         return view('welcome', compact('eyeshots'));
     }
