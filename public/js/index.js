@@ -251,6 +251,7 @@
 
         // TODO: Add more NOICE radials
         var radialPoints = [
+            // it's not what it looks like. Here: https://github.com/actuallyakash/eyeshot#how-randomizer-works
             [], // Empty
             [43.0772733, -79.0659442, 2500], // Niagara Falls, New York
             [37.869085, -122.254775, 2500], // Berkeley, California -
@@ -275,6 +276,12 @@
             [11.966825, 121.926576, 2000], // Boracay
             [10.975765, 76.736885, 900], // Isha Yoga Centre, Coimbatore
             [35.7127983, 139.7718079, 2000], // Taito City, Tokyo -
+            [-13.898551, -71.282604, 20000], // Vinicunca Rainbow Mountain
+            [49.1957991, 20.0653766, 20000], // Rysy, Slovaki
+            [45.8145547, 15.9786655, 20000], // Zagreb, Slovenia
+            [29.057055, 110.467770, 2200], // Tianmen Mountain cave, China
+            [-22.951311, -43.211112, 500], // Christ the Redeemer, Rio de Janerio
+            [48.859953, 2.292047, 1000], // Eiffel Tower Nearby
             [], // Empty
         ];
         
