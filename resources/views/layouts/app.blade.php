@@ -18,16 +18,16 @@
     <meta property="og:site_name" content="Eyeshot" />
 @if ( \Request::input('s') )
     <meta name="description" content="Eyeshot is a visual discovery of our surroundings, explored by people like you. Discover the World's Top Destinations and Cool Places.">
-    <meta class="meta-keywords" name="keywords" content="">
+    <meta class="meta-keywords" name="keywords" content="eyeshot,photography,streetview,photosphere,landscape,locations">
     <meta property="og:type" content="website" />
     <meta property="og:url" content="{{ Request::url() }}" />
-    <meta class="meta-title" property="og:title" content="" />
-    <meta class="meta-image" property="og:image" content="">
+    <meta class="meta-title" property="og:title" content="Eyeshot" />
+    <meta class="meta-image" property="og:image" content="https://eyeshot.s3.amazonaws.com/cover.png">
     <meta property="og:description" content="Eyeshot is a visual discovery of our surroundings, explored by people like you. Discover the World's Top Destinations and Cool Places." />
     <meta name="twitter:site" content="@eyeshotHQ">
-    <meta class="meta-title" name="twitter:title" content="">
+    <meta class="meta-title" name="twitter:title" content="Eyeshot">
     <meta name="twitter:description" content="Eyeshot is a visual discovery of our surroundings, explored by people like you. Discover the World's Top Destinations and Cool Places.">
-    <meta class="meta-image" name="twitter:image:src" content="">
+    <meta class="meta-image" name="twitter:image:src" content="https://eyeshot.s3.amazonaws.com/cover.png">
     <meta name="twitter:card" content="summary_large_image">
 @elseif( isset($user) && Request::url() == url($user->nickname) )
     <meta property="og:type" content="profile" />
