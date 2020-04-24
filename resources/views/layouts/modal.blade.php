@@ -226,6 +226,9 @@
                 <a target="_blank" rel="nofollow" class="share-twitter" href="https://twitter.com/share?url=http://eyeshot.xyz/&via=eyeshot.xyz&text=Exploring%20Random%20Place">
                     <i class="fab fa-twitter"></i>
                 </a>
+                <a target="_blank" rel="nofollow" class="share-whatsapp" href="https://web.whatsapp.com/send?text=https://eyeshot.xyz">
+                    <i class="fab fa-whatsapp"></i>
+                </a>
 
                 <div class="share-url mt-4">
                     <input onclick="this.select();" type="text" value="http://eyeshot.xyz/hahaha" class="form-control eyeshot-url" placeholder="URL" readonly>

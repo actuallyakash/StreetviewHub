@@ -468,7 +468,8 @@ button:focus {
 }
 
 #shareEyeshot .modal-body .share-facebook i,
-#shareEyeshot .modal-body .share-twitter i {
+#shareEyeshot .modal-body .share-twitter i,
+#shareEyeshot .modal-body .share-whatsapp i {
   width: 60px;
   height: 60px;
   line-height: 60px;
@@ -485,8 +486,13 @@ button:focus {
   background: #1da1f2;
 }
 
+#shareEyeshot .modal-body .share-whatsapp i {
+  background: #4dee6a;
+  font-size: 30px;
+}
+
 #shareEyeshot .modal-body a {
-  margin: 0 25px;
+  margin: 0 15px;
   text-decoration: none;
 }
 

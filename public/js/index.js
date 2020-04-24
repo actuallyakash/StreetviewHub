@@ -579,10 +579,12 @@
         var url = "http://eyeshot.xyz?s="+encode;
         var facebook = "https://www.facebook.com/sharer/sharer.php?u="+url;
         var twitter = "https://twitter.com/share?url="+url+"&via=eyeshotHQ&text=Exploring%20Random%20Place";
+        var whatsapp = "https://web.whatsapp.com/send?text=Look at this... 👀 "+url;
 
         $("#shareEyeshot .share-url input").val(url);
         $("#shareEyeshot a.share-facebook").attr('href', facebook);
         $("#shareEyeshot a.share-twitter").attr('href', twitter);
+        $("#shareEyeshot a.share-whatsapp").attr('href', whatsapp);
     });
 
     $(".sort-eyeshots select").on('change', function() {
