@@ -126,6 +126,7 @@
 
         panorama.addListener('pano_changed', function() {
             var panoId = panorama.getPano();
+            map.panTo(panorama.getPosition());
             initPanoId(panoId);
         });
     }
@@ -198,6 +199,7 @@
 
                 panorama.addListener('pano_changed', function() {
                     var panoId = panorama.getPano();
+                    map.panTo(panorama.getPosition());
                     initPanoId(panoId);
                 });
 
@@ -286,7 +288,6 @@
         ];
         
         var radial = radialPoints[Math.floor((Math.random() * (radialPoints.length-1)) + 1)];
-        console.log(radial[2]);
         var randomGeoPoints = generateRandomPoint({'lat':radial[0], 'lng':radial[1]}, radial[2]);
         
         var latitude = Number(randomGeoPoints['lat']);
