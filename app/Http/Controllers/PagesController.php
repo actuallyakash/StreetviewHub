@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Support\Facades\DB;
+use Illuminate\Http\Request;
+use Vinkla\Hashids\Facades\Hashids;
 use Helper;
 use App\User;
 use App\Location;
@@ -95,5 +97,22 @@ class PagesController extends Controller
                     ->first();
 
         return view('user-eyeshot', compact('user', 'eyeshot'));
+    }
+
+    public function sharer( Request $request )
+    {
+        $eyeshot = $request->pano;
+
+        $sharer = DB::table( 'sharer' )->insertGetId([
+            'eyeshot' => $eyeshot,
+            'created_at' => \Carbon\Carbon::now()->toDateTimeString(),
+            'updated_at' => \Carbon\Carbon::now()->toDateTimeString()
+        ]);
+        
+        $sharerId = Hashids::encode( $sharer );
+
+        DB::table( 'sharer' )->where( 'id', $sharer )->update([ 'share_id' => $sharerId ]);
+
+        return $sharerId;
     }
 }

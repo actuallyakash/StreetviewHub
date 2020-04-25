@@ -575,20 +575,33 @@
             zoom = panorama.getPov().zoom;
 
         var encode = btoa(latitude +":"+ longitude +":"+ panoId +":"+ heading +":"+ pitch +":"+ zoom);
+        
+        $.ajax({
+            type: 'POST',
+            url: '/share',
+            data: { pano: encode },
+            headers: {
+                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+            },
+            success: function( eyeshotId ) {
+                var url = "http://eyeshot.xyz?s="+eyeshotId;
+                var facebook = "https://www.facebook.com/sharer/sharer.php?u="+url;
+                var twitter = "https://twitter.com/share?url="+url+"&via=eyeshotHQ&text=Exploring%20Random%20Place";
+                var whatsapp = "https://web.whatsapp.com/send?text=Look at this... 👀 "+url;
 
-        var url = "http://eyeshot.xyz?s="+encode;
-        var facebook = "https://www.facebook.com/sharer/sharer.php?u="+url;
-        var twitter = "https://twitter.com/share?url="+url+"&via=eyeshotHQ&text=Exploring%20Random%20Place";
-        var whatsapp = "https://web.whatsapp.com/send?text=Look at this... 👀 "+url;
-
-        $("#shareEyeshot .share-url input").val(url);
-        $("#shareEyeshot a.share-facebook").attr('href', facebook);
-        $("#shareEyeshot a.share-twitter").attr('href', twitter);
-        $("#shareEyeshot a.share-whatsapp").attr('href', whatsapp);
+                $("#shareEyeshot .share-url input").val(url);
+                $("#shareEyeshot a.share-facebook").attr('href', facebook);
+                $("#shareEyeshot a.share-twitter").attr('href', twitter);
+                $("#shareEyeshot a.share-whatsapp").attr('href', whatsapp);
+            },
+            error: function() {
+                alert('Failed to generate Share URL. Try Again.');
+            }
+        });
     });
 
     $(".sort-eyeshots select").on('change', function() {
-        window.location = "/"+$(this).val();        
+        window.location = "/"+$(this).val();
     });
 
      /* Pagination || Infinite Scroll */
