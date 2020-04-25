@@ -420,19 +420,28 @@
                     }
                 });
             } else { // Shared Eyeshot
-                var params = (new URL(window.location.href)).searchParams.get('s'),
-                    decode = atob(params),
-                    details = decode.split(':');
-                initPanoId(details[2]);
-                initMap( Number(details[0]), Number(details[1]), details[2], Number(details[3]), Number(details[4]), Number(details[5]), mapSelector, panoSelector );
-                setTimeout(function () {
-                    if ( typeof map.streetView.location.description !== 'undefined' ) {
-                        $('#shared-pano').after('<div class="details text-center"><h3 class="eyeshot-info"> <span class="text-muted">Location: </span>' + map.streetView.location.description + '</h3></div>');
-                        $('meta.meta-title').attr('content', map.streetView.location.description + " | Eyeshot");
-                        $('meta.meta-keywords').attr('content', map.streetView.location.description);
-                        $('meta.meta-image').attr('content', "https://maps.googleapis.com/maps/api/streetview?size=600x400&pano=" + details[2] + "&heading=" + details[3] + "&pitch=" + details[4] + "&key=" + key);
+                var sharer = (new URL(window.location.href)).searchParams.get('s');
+                $.ajax({
+                    type: 'GET',
+                    url: '/get/share/'+sharer,
+                    success: function( eyeshot ) {
+                        var decode = atob( eyeshot );
+                        var details = decode.split(':');
+                        initPanoId( details[2] );
+                        initMap( Number(details[0]), Number(details[1]), details[2], Number(details[3]), Number(details[4]), Number(details[5]), mapSelector, panoSelector );
+                        setTimeout(function () {
+                            if ( typeof map.streetView.location.description !== 'undefined' ) {
+                                $('#shared-pano').after('<div class="details text-center"><h3 class="eyeshot-info"> <span class="text-muted">Location: </span>' + map.streetView.location.description + '</h3></div>');
+                                $('meta.meta-title').attr('content', map.streetView.location.description + " | Eyeshot");
+                                $('meta.meta-keywords').attr('content', map.streetView.location.description);
+                                $('meta.meta-image').attr('content', "https://maps.googleapis.com/maps/api/streetview?size=600x400&pano=" + details[2] + "&heading=" + details[3] + "&pitch=" + details[4] + "&key=" + key);
+                            }
+                        }, 2000);
+                    },
+                    error: function() {
+                        alert('Eyeshot not Found! Redirecting you to the homepage..');
                     }
-                }, 2000);
+                });
             }
         }
         
@@ -565,8 +574,6 @@
     });
 
     $("#sv-pano .share-eyeshot").on('click', function() {
-        $("#shareEyeshot").modal('show');
-        
         var latitude = panorama.getPosition().lat(),
             longitude = panorama.getPosition().lng(),
             panoId = panorama.getPano(),
@@ -586,13 +593,14 @@
             success: function( eyeshotId ) {
                 var url = "http://eyeshot.xyz?s="+eyeshotId;
                 var facebook = "https://www.facebook.com/sharer/sharer.php?u="+url;
-                var twitter = "https://twitter.com/share?url="+url+"&via=eyeshotHQ&text=Exploring%20Random%20Place";
-                var whatsapp = "https://web.whatsapp.com/send?text=Look at this... 👀 "+url;
+                var twitter = "https://twitter.com/share?url="+url+"&via=eyeshotHQ&text=Look%20at%20this...%20%20👀";
+                var whatsapp = "https://web.whatsapp.com/send?text="+encodeURI("Look at this... 👀\n"+url);
 
                 $("#shareEyeshot .share-url input").val(url);
                 $("#shareEyeshot a.share-facebook").attr('href', facebook);
                 $("#shareEyeshot a.share-twitter").attr('href', twitter);
                 $("#shareEyeshot a.share-whatsapp").attr('href', whatsapp);
+                $("#shareEyeshot").modal('show');
             },
             error: function() {
                 alert('Failed to generate Share URL. Try Again.');

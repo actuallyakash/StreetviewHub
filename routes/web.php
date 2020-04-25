@@ -42,6 +42,7 @@ Route::get('/categories', 'PagesController@categories');
 Route::get('/privacy', 'PagesController@privacy');
 Route::get('/{username}/shot/{id}', 'PagesController@show');
 Route::post('/share', 'PagesController@sharer');
+Route::get('/get/share/{sharer}', 'PagesController@getSharer');
 
 Route::get('/logout', 'Auth\LoginController@logout');
 

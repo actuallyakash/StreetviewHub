@@ -115,4 +115,11 @@ class PagesController extends Controller
 
         return $sharerId;
     }
+
+    public function getSharer( $sharer )
+    {
+        $eyeshot = DB::table( 'sharer' )->where( 'share_id', $sharer )->value( 'eyeshot' );
+        
+        return $eyeshot;
+    }
 }
