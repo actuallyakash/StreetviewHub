@@ -30,6 +30,7 @@ Route::post('/favourite/details', 'LocationController@favouriteDetails');
 Route::get('/get/{panoId}/pioneer', 'LocationController@pioneer');
 # Eyeshot Details
 Route::get('/get/{eyeshotId}/details', 'LocationController@eyeshot');
+Route::post('/get/random', 'LocationController@random');
 
 #Pages
 Route::get('/', 'PagesController@welcome');

@@ -159,4 +159,17 @@ class LocationController extends Controller
             return 0;
         }
     }
+
+    // Returns random Lat, Lng from Existing Eyeshots
+    public function random()
+    {
+        $random = Location::inRandomOrder()->first();
+
+        $coords = [
+            'lat' => $random->latitude + 0,
+            'lng' => $random->longitude + 0
+        ];
+        
+        return $coords;
+    }
 }

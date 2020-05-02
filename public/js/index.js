@@ -286,9 +286,26 @@
             [48.859953, 2.292047, 1000], // Eiffel Tower Nearby
             [], // Empty
         ];
+
+        var randomGeoPoints;
         
-        var radial = radialPoints[Math.floor((Math.random() * (radialPoints.length-1)) + 1)];
-        var randomGeoPoints = generateRandomPoint({'lat':radial[0], 'lng':radial[1]}, radial[2]);
+        // Random Boolean to see where to get Eyeshot from (DB/Google)
+        if ( Math.random() >= 0.5 ) {
+            randomGeoPoints =  $.ajax({
+                type: 'POST',
+                url: '/get/random',
+                async: false,
+                headers: {
+                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                },
+                success: function( coords ) {
+                    return coords;
+                }
+            }).responseJSON;
+        } else {
+            var radial = radialPoints[Math.floor((Math.random() * (radialPoints.length-1)) + 1)];
+            randomGeoPoints = generateRandomPoint({'lat':radial[0], 'lng':radial[1]}, radial[2]);
+        }
         
         var latitude = Number(randomGeoPoints['lat']);
         var longitude = Number(randomGeoPoints['lng']);
