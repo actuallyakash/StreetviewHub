@@ -18,4 +18,7 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 });
 
 # Random
-Route::get('/random/', 'PlaceholderController@random');
+Route::get('/random/', 'PlaceholderController@api')->defaults('task', 'random');
+
+# Random with size
+Route::get('/random/{size}/', 'PlaceholderController@api')->defaults('task', 'randomWithSize');
