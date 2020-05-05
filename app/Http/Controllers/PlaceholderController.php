@@ -15,7 +15,8 @@ class PlaceholderController extends Controller
         if ( $request->query('q') ) {
             $query = $request->query('q');
             $match = $request->query('m');
-            $image = $match == "" ? $this->search( $query ) : $this->search( $query, $match );
+            $user = $request->query('u');
+            $image = $this->search( $query, $match, $user );
         } else {
             $image = $this->random(); // Random
         }
@@ -24,7 +25,7 @@ class PlaceholderController extends Controller
         if ( $request->size ) {
             $size = $this->getSize( $request->size );
             
-            $resized = $image->resize( $size[0], $size[1] );
+            $image->resize( $size[0], $size[1] );
         }
 
         // Blur
@@ -57,28 +58,40 @@ class PlaceholderController extends Controller
 
         return $resized;
     }
-
-    public function randomWithSize( Request $request )
-    {
-        $size = $this->getSize( $request->size );
-
-        $random = $this->random();
-
-        $resized = $random->resize( $size[0], $size[1] );
-
-        return $resized;
-    }
     
-    public function search( $query, $match = "loose" )
+    public function search( $query, $match, $nickname )
     {
+        // From Specific User
+        if( $nickname !== null ) {
+            $user = \App\User::where('nickname', $nickname)->first();
+            if ( $user === null ) {
+                dd("No user found.");
+            } else {
+                $uid = $user->id;
+                $eyeshots = Location::where( 'user_id', $uid )->get();
+            }
+        } else {
+            $eyeshots = Location::all();
+        }
+
         if ( $match == "strict" ) {
             // Only based on tags
-            $eyeshots = Location::whereRaw("if(FIND_IN_SET(?, tags) > 0, true, false)", [$query])->get();
+            $eyeshots = Location::whereRaw("if(FIND_IN_SET(?, tags) > 0, true, false)", [$query]);
+
+            if ( isset( $uid ) ) {
+                $eyeshots = $eyeshots->where( 'user_id', $uid );
+            }
+            $eyeshots = $eyeshots->get();
+            
         } else {
-            // (Loose) Based on tags and location name
+            // (Loose (default)) Based on tags and location name
             $eyeshotsByTags = Location::whereRaw("if(FIND_IN_SET(?, tags) > 0, true, false)", [$query])->get();
             $eyeshotsByLocationName = Location::where("location_name", "like", "%$query%")->get();
             $eyeshots = $eyeshotsByTags->merge($eyeshotsByLocationName);
+            
+            if ( isset( $uid ) ) {
+                $eyeshots = $eyeshots->where( 'user_id', $uid );
+            }
         }
 
         $media = Storage::disk('s3')->url( $eyeshots->random()->media );
