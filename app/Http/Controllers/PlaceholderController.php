@@ -18,7 +18,8 @@ class PlaceholderController extends Controller
             $user = $request->query('u');
             $image = $this->search( $query, $match, $user );
         } else {
-            $image = $this->random(); // Random
+            $user = $request->query('u');
+            $image = $this->random( $user ); // Random
         }
         
         // Sized
@@ -41,9 +42,20 @@ class PlaceholderController extends Controller
         return $image->response();
     }
 
-    public function random()
+    public function random( $nickname )
     {
-        $media = Storage::disk('s3')->url( Location::inRandomOrder()->first()->media );
+        if ( $nickname === null ) {
+            $media = Storage::disk('s3')->url( Location::inRandomOrder()->first()->media );
+        } else {
+            // Random Image from Specific User
+            $user = \App\User::where( 'nickname', $nickname )->first();
+            if ( $user === null ) {
+                dd("No user found.");
+            } else {
+                $uid = $user->id;
+                $media = Storage::disk('s3')->url( Location::where( 'user_id', $uid )->inRandomOrder()->first()->media );
+            }
+        }
 
         return Image::make($media);
     }
@@ -63,15 +75,12 @@ class PlaceholderController extends Controller
     {
         // From Specific User
         if( $nickname !== null ) {
-            $user = \App\User::where('nickname', $nickname)->first();
+            $user = \App\User::where( 'nickname', $nickname )->first();
             if ( $user === null ) {
                 dd("No user found.");
             } else {
                 $uid = $user->id;
-                $eyeshots = Location::where( 'user_id', $uid )->get();
             }
-        } else {
-            $eyeshots = Location::all();
         }
 
         if ( $match == "strict" ) {
