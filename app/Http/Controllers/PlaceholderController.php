@@ -11,7 +11,7 @@ class PlaceholderController extends Controller
 {
     public function api( Request $request )
     {
-        // q (query)
+        // Search
         if ( $request->query('q') ) {
             $query = $request->query('q');
             $match = $request->query('m');
@@ -23,7 +23,18 @@ class PlaceholderController extends Controller
         // Sized
         if ( $request->size ) {
             $size = $this->getSize( $request->size );
+            
             $resized = $image->resize( $size[0], $size[1] );
+        }
+
+        // Blur
+        if ( $request->query( 'blur' ) ) {
+            $image->blur(10);
+        }
+        
+        // Greyscale
+        if ( $request->query( 'grayscale' ) ) {
+            $image->greyscale();
         }
 
         return $image->response();
@@ -61,17 +72,13 @@ class PlaceholderController extends Controller
     public function search( $query, $match = "loose" )
     {
         if ( $match == "strict" ) {
-
             // Only based on tags
             $eyeshots = Location::whereRaw("if(FIND_IN_SET(?, tags) > 0, true, false)", [$query])->get();
-
         } else {
-
             // (Loose) Based on tags and location name
             $eyeshotsByTags = Location::whereRaw("if(FIND_IN_SET(?, tags) > 0, true, false)", [$query])->get();
             $eyeshotsByLocationName = Location::where("location_name", "like", "%$query%")->get();
             $eyeshots = $eyeshotsByTags->merge($eyeshotsByLocationName);
-
         }
 
         $media = Storage::disk('s3')->url( $eyeshots->random()->media );
