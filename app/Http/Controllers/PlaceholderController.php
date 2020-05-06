@@ -6,20 +6,24 @@ use Illuminate\Support\Facades\Storage;
 use Intervention\Image\Facades\Image;
 use Illuminate\Http\Request;
 use App\Location;
+use Helper;
 
 class PlaceholderController extends Controller
 {
     public function api( Request $request )
     {
-        // Search
         if ( $request->query('q') ) {
+            // Get Searched Image
             $query = $request->query('q');
             $match = $request->query('m');
             $user = $request->query('u');
             $image = $this->search( $query, $match, $user );
+        } elseif ( $request->query( 'id' ) ) {
+            // Get Image by ID
+            $image = $this->imageById( $request->query( 'id' ) );
         } else {
-            $user = $request->query('u');
-            $image = $this->random( $user ); // Random
+            // Get Random Image
+            $image = $this->random( $request->query('u') );
         }
         
         // Sized
@@ -50,7 +54,7 @@ class PlaceholderController extends Controller
             // Random Image from Specific User
             $user = \App\User::where( 'nickname', $nickname )->first();
             if ( $user === null ) {
-                dd("No user found.");
+                dd("No user found."); // TODO: Throw Exception
             } else {
                 $uid = $user->id;
                 $media = Storage::disk('s3')->url( Location::where( 'user_id', $uid )->inRandomOrder()->first()->media );
@@ -77,7 +81,7 @@ class PlaceholderController extends Controller
         if( $nickname !== null ) {
             $user = \App\User::where( 'nickname', $nickname )->first();
             if ( $user === null ) {
-                dd("No user found.");
+                dd("No user found."); // TODO: Throw Exception
             } else {
                 $uid = $user->id;
             }
@@ -105,6 +109,17 @@ class PlaceholderController extends Controller
 
         $media = Storage::disk('s3')->url( $eyeshots->random()->media );
             
-        return Image::make($media);
+        return Image::make( $media );
+    }
+
+    public function imageById( $id )
+    {
+        $imageId = Helper::decode_id( $id );
+        
+        $image = Location::where( 'id', $imageId )->first();
+        
+        $media = Storage::disk('s3')->url( $image->media );
+        
+        return Image::make( $media );
     }
 }
