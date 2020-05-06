@@ -18,19 +18,11 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 });
 
 # Random
-// Route::get('/', 'PlaceholderController@api')->defaults( 'placeholder', 'random' );
-// Route::get('/random/', 'PlaceholderController@api')->defaults( 'placeholder', 'random' );
-
-// # Random with size
-// Route::get('/random/{size}/', 'PlaceholderController@api')->defaults( 'placeholder', 'randomWithSize' );
-// Route::get('/{size}/random/', 'PlaceholderController@api')->defaults( 'placeholder', 'randomWithSize' );
-
-// # Search
-// Route::get('/{size}', 'PlaceholderController@api')->defaults( 'placeholder', 'query' );
-
-
 Route::get('/', 'PlaceholderController@api');
 
+# Sized
 Route::get('/{size}/', 'PlaceholderController@api');
+
+# Random with size
 Route::get('/random/{size}/', 'PlaceholderController@api');
 Route::get('/{size}/random/', 'PlaceholderController@api');

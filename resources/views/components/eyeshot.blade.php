@@ -1,8 +1,11 @@
 <div class="eyeshot mb-4 shadow-sm">
     <div class="eyeshot-image">
         <div class="eyeshot-media" data-user={{ $eyeshot->owner->nickname }} data-eyeshot="eyeshot-{{ Helper::encode_id($eyeshot->id) }}">
-            @if ( $eyeshot->user_id == $eyeshot->pioneer)
+            @if ( $eyeshot->user_id == $eyeshot->pioneer )
             <span class="pioneer-tag"><i class="fas fa-medal"></i></span>
+            @endif
+            @if ( Request::input('id') == "true" )
+            <span class="id-tag">{{ Helper::encode_id( $eyeshot->id ) }}</span>
             @endif
             <picture>
                 <source srcset="{{ Storage::disk('s3')->url($eyeshot->media) }}" media="(-webkit-min-device-pixel-ratio: 1.5), (min--moz-device-pixel-ratio: 1.5), (-o-min-device-pixel-ratio: 3/2), (min-device-pixel-ratio: 1.5), (min-resolution: 1.5dppx)">
