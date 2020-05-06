@@ -54,7 +54,7 @@ class PlaceholderController extends Controller
             // Random Image from Specific User
             $user = \App\User::where( 'nickname', $nickname )->first();
             if ( $user === null ) {
-                dd("No user found."); // TODO: Throw Exception
+                abort( 403, "User {$nickname} not found." );
             } else {
                 $uid = $user->id;
                 $media = Storage::disk('s3')->url( Location::where( 'user_id', $uid )->inRandomOrder()->first()->media );
@@ -81,7 +81,7 @@ class PlaceholderController extends Controller
         if( $nickname !== null ) {
             $user = \App\User::where( 'nickname', $nickname )->first();
             if ( $user === null ) {
-                dd("No user found."); // TODO: Throw Exception
+                abort( 403, "User {$nickname} not found." );
             } else {
                 $uid = $user->id;
             }
@@ -107,6 +107,10 @@ class PlaceholderController extends Controller
             }
         }
 
+        if ( $eyeshots->count() < 1 ) {
+            abort( 403, 'No images found');
+        }
+
         $media = Storage::disk('s3')->url( $eyeshots->random()->media );
             
         return Image::make( $media );
@@ -115,11 +119,11 @@ class PlaceholderController extends Controller
     public function imageById( $id )
     {
         $imageId = Helper::decode_id( $id );
-        
+
         $image = Location::where( 'id', $imageId )->first();
-        
+
         $media = Storage::disk('s3')->url( $image->media );
-        
+
         return Image::make( $media );
     }
 }
