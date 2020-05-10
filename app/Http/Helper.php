@@ -79,4 +79,15 @@ class Helper
 
         return $status;
     }
+
+    public static function plog( $request, $response )
+    {
+        DB::table('plogs')->insert([
+            'url' => $request->fullUrl(),
+            'client_ip' => $request->ip(),
+            'response_code' => $response['code'],
+            'response_status' => $response['status'],
+            'response_message' => $response['message']
+        ]);
+    }
 }

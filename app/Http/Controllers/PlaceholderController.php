@@ -12,38 +12,63 @@ class PlaceholderController extends Controller
 {
     public function api( Request $request )
     {
-        if ( $request->query('q') ) {
-            // Get Searched Image
-            $query = $request->query('q');
-            $match = $request->query('m');
-            $user = $request->query('u');
-            $image = $this->search( $query, $match, $user );
-        } elseif ( $request->query( 'id' ) ) {
-            // Get Image by ID
-            $image = $this->imageById( $request->query( 'id' ) );
-        } else {
-            // Get Random Image
-            $image = $this->random( $request->query('u') );
-        }
-        
-        // Sized
-        if ( $request->size ) {
-            $size = $this->getSize( $request->size );
+        try {
+            if ( $request->query('q') ) {
+                // Get Searched Image
+                $query = $request->query('q');
+                $match = $request->query('m');
+                $user = $request->query('u');
+                $image = $this->search( $query, $match, $user );
+            } elseif ( $request->query( 'id' ) ) {
+                // Get Image by ID
+                $image = $this->imageById( $request->query( 'id' ) );
+            } else {
+                // Get Random Image
+                $image = $this->random( $request->query('u') );
+            }
             
-            $image->resize( $size[0], $size[1] );
+            // Sized
+            if ( $request->size ) {
+                $size = $this->getSize( $request->size );
+                
+                $image->resize( $size[0], $size[1] );
+            }
+
+            // Blur
+            if ( $request->query( 'blur' ) ) {
+                $image->blur(10);
+            }
+            
+            // Greyscale
+            if ( $request->query( 'grayscale' ) ) {
+                $image->greyscale();
+            }
+
+            $response = [
+                'code' => 200,
+                'status' => 'success',
+                'message' => 'Image Transferred Successfully.',
+                'image' => $image,
+            ];
+            
+        } catch( \Exception $e ) {
+            // Error Image
+            $image = Image::make('https://eyeshot.s3.amazonaws.com/bgblack404.jpg')->text( $e->getMessage(), 200, 300, function($font) {
+                $font->file(public_path('/fonts/Karla/karla-regular.ttf'));
+                $font->size(30);
+                $font->color('#fff');
+            });
+
+            $response = [
+                'code' => $e->getCode(),
+                'status' => 'error',
+                'message' => $e->getMessage(),
+                'image' => $image,
+            ];
         }
 
-        // Blur
-        if ( $request->query( 'blur' ) ) {
-            $image->blur(10);
-        }
-        
-        // Greyscale
-        if ( $request->query( 'grayscale' ) ) {
-            $image->greyscale();
-        }
-
-        return $image->response();
+        Helper::plog( $request, $response );
+        return $response['image']->response();
     }
 
     public function random( $nickname )
@@ -54,7 +79,7 @@ class PlaceholderController extends Controller
             // Random Image from Specific User
             $user = \App\User::where( 'nickname', $nickname )->first();
             if ( $user === null ) {
-                abort( 403, "User {$nickname} not found." );
+                throw new \Exception( "User {$nickname} not found.", 404 );
             } else {
                 $uid = $user->id;
                 $media = Storage::disk('s3')->url( Location::where( 'user_id', $uid )->inRandomOrder()->first()->media );
@@ -81,7 +106,7 @@ class PlaceholderController extends Controller
         if( $nickname !== null ) {
             $user = \App\User::where( 'nickname', $nickname )->first();
             if ( $user === null ) {
-                abort( 403, "User {$nickname} not found." );
+                throw new \Exception( "User {$nickname} not found.", 404 );
             } else {
                 $uid = $user->id;
             }
@@ -108,7 +133,7 @@ class PlaceholderController extends Controller
         }
 
         if ( $eyeshots->count() < 1 ) {
-            abort( 403, 'No images found');
+            throw new \Exception( "No image found. Try other parameters.", 404 );
         }
 
         $media = Storage::disk('s3')->url( $eyeshots->random()->media );
