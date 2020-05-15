@@ -312,6 +312,10 @@ h1, h2, h3, h4, h5, h6 {
   }
 }
 
+#disqus_thread {
+  margin-top: 30px;
+}
+
 .eyeshot-tags .eyeshot-tag {
   background-color: rgb(104, 144, 230);
   color: white;

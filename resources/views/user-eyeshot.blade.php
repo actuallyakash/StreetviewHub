@@ -3,7 +3,7 @@
 
 @section('title', "Eyeshot by $user->nickname")
 <div id="shared-pano" class="map-box">
-    <div style="display:none;" class="loader text-center"><span class="eyeshot-loader">🌏</span></div>
+    <div style="display:none;" class="loader text-center m-5"><span class="eyeshot-loader">🌏</span></div>
     <div style="display:none;" id="sv-pano">
         <div id="sv-map"></div>
         <div class="action-buttons">
@@ -17,12 +17,10 @@
             <button class="share-eyeshot btn btn-link" data-tooltip="tooltip" data-placement="right" title="Share"><i class="fas fa-share-alt"></i></button>
         </div>
     </div>
-</div>
 
-@include('profile/user-card')
-
-<div class="container">
-    <div id="disqus_thread"></div>
+    @include('profile/user-card')
+    
+    @include('layouts/eyeshot-info')
 </div>
 
 @endsection

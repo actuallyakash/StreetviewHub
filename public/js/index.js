@@ -427,10 +427,31 @@
                     url: '/get/'+eyeshot+'/details',
                     success: function( data ) {
                         if( data != 0 ) {
+
                             var latitude = data.latitude,
                                 longitude = data.longitude;
+                            
+                            // Load the pano
                             initPanoId(data.pano_id);
                             initMap( Number(latitude), Number(longitude), data.pano_id, Number(data.pano_heading), Number(data.pano_pitch), Number(data.pano_zoom), mapSelector, panoSelector );
+                            
+                            // Fill up the info
+                            $("#shared-pano .eyeshot-location").text(data.location_name);
+                            if ( data.tags !== null ) {
+                                $("#shared-pano .eyeshot-title").text(data.title);
+                            } else {
+                                $("#shared-pano .eyeshot-title").text("Eyeshot by "+data.eyeshot_by);
+                            }
+                            $("#shared-pano .eyeshot-status").text(data.status);
+                            if ( data.tags !== null ) {
+                                var tags = data.tags.split(",");
+                                tags.map(tag => $("#shared-pano .eyeshot-tags").append("<a href='/search?q="+tag+"' class='eyeshot-tag badge'>"+tag+"</a>"));
+                            } else {
+                                $("#shared-pano .eyeshot-tags").append("<a href='/search?q=eyeshot' class='eyeshot-tag badge'>Eyeshot</a>")
+                            }
+                            $("#shared-pano .eyeshot-location").text(data.location_name);
+                            $("#shared-pano .eyeshot-published").text(data.created_at);
+                            $("#shared-pano .eyeshot-saves").text(data.eyeshot_saves+" saves");
                         } else {
                             console.log('No eyeshot found!');
                         }
@@ -537,6 +558,14 @@
                     var latitude = data.latitude,
                         longitude = data.longitude;
 
+                    // Load the pano
+                    initPanoId(data.pano_id);
+                    let mapSelector = document.querySelector('#viewEyeshot #sv-map'),
+                        panoSelector = document.querySelector('#viewEyeshot #sv-pano');
+
+                    initMap( Number(latitude), Number(longitude), data.pano_id, Number(data.pano_heading), Number(data.pano_pitch), Number(data.pano_zoom), mapSelector, panoSelector );
+
+                    // Fill up the info
                     $("#viewEyeshot .eyeshot-avatar img").attr('src', data.user_avatar.replace('http://', 'https://'));
                     $("#viewEyeshot .eyeshot-user .eyeshot-username").html("by <a href='"+data.user_nickname+"'>"+data.eyeshot_by+"</a>");
                     $("#viewEyeshot .eyeshot-location").text(data.location_name);
@@ -554,14 +583,7 @@
                     }
                     $("#viewEyeshot .eyeshot-location").text(data.location_name);
                     $("#viewEyeshot .eyeshot-published").text(data.created_at);
-                    $("#viewEyeshot .eyeshot-saves").text(data.eyeshot_saves+" saves");
-
-                    initPanoId(data.pano_id);
-                    let mapSelector = document.querySelector('#viewEyeshot #sv-map'),
-                        panoSelector = document.querySelector('#viewEyeshot #sv-pano');
-
-                    initMap( Number(latitude), Number(longitude), data.pano_id, Number(data.pano_heading), Number(data.pano_pitch), Number(data.pano_zoom), mapSelector, panoSelector );
-
+                    $("#viewEyeshot .eyeshot-saves").text(data.eyeshot_saves+" saves");                    
                     $('#viewEyeshot .loader').css('display', 'none');
                     $('#viewEyeshot .modal-content').css('display', 'block');
 
