@@ -1036,3 +1036,15 @@ nav ul.pagination {
     font-size: 30px;
   }
 }
+
+.categories-index {
+  display:flex;
+  justify-content: space-between;
+  margin-bottom: 3em;
+}
+
+.categories-index a {
+  font-size: 30px;
+  text-decoration: none;
+  text-transform: uppercase;
+}

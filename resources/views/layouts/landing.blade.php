@@ -15,7 +15,7 @@
     </div>
 </div>
 {{-- <span class="first-explorer">Discovered by: <span class="pioneer"></span></span> --}}
-
+@guest
 <div class="text-center wtf-eyeshot">
     <h1>What is Eyeshot?</h1>
     <div class="d-flex justify-content-around align-items-center description">
@@ -41,7 +41,11 @@
         <p class="text-muted">Share directly with your friends in a click of a button.</p>
     </div>
 </div>
+@endguest
 
+<div class="text-center">
+    <h3>Some Cool Eyeshots 😎</h3>
+</div>
 @include('feed/latest-shots')
 
 <footer class="home-footer mt-3 bg-white text-center p-3">
