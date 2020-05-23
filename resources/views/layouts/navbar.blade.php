@@ -16,6 +16,9 @@
                 <li class="nav-item">
                     <a class="nav-link" href="/categories">Categories</a>
                 </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/placeholder">Placeholder API</a>
+                </li>
             </ul>
             
             <ul class="navbar-nav ml-auto">

@@ -1148,6 +1148,7 @@ nav ul.pagination {
 .eyeshot-placeholder .docs-links .nav-pills .show > .nav-link {
   color: #fff;
   background-color: #5e5e5e;
+  box-shadow: 0 .125rem .25rem rgba(0,0,0,.075);
 }
 
 .eyeshot-placeholder .documentation .row {
