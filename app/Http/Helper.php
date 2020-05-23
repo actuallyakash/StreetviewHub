@@ -18,7 +18,11 @@ class Helper
     {
         $rehash = Hashids::decode($hashId);
         
-        return $rehash[0];
+        if ( empty( $rehash ) ) {
+            return null;
+        } else {
+            return $rehash[0];
+        }
     }
 
     public static function tagSerialize($tagsString = null)

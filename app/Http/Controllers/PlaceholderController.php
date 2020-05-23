@@ -19,9 +19,9 @@ class PlaceholderController extends Controller
                 $match = $request->query('m');
                 $user = $request->query('u');
                 $image = $this->search( $query, $match, $user );
-            } elseif ( $request->query( 'id' ) ) {
+            } elseif ( $request->query( 'image' ) ) {
                 // Get Image by ID
-                $image = $this->imageById( $request->query( 'id' ) );
+                $image = $this->imageById( $request->query( 'image' ) );
             } else {
                 // Get Random Image
                 $image = $this->random( $request->query('u') );
@@ -144,6 +144,10 @@ class PlaceholderController extends Controller
     public function imageById( $id )
     {
         $imageId = Helper::decode_id( $id );
+
+        if ( $imageId == null ) {
+            throw new \Exception( "Invalid image ID. Try another one.", 404 );
+        }
 
         $image = Location::where( 'id', $imageId )->first();
 
