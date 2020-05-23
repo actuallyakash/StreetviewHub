@@ -1,5 +1,8 @@
 @extends('layouts.app')
 @section('content')
+
+@section('title', "Placeholder Images from Google Street View | Eyeshot")
+
 <div class="eyeshot-placeholder">
     <section class="pt-4 pt-md-11 eyeshot-banner">
         <div class="container">

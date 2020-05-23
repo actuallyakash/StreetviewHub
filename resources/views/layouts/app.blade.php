@@ -56,6 +56,18 @@
     <meta name="twitter:image:src" content="{{ Storage::disk('s3')->url($eyeshot->media) }}" />
     <meta name="twitter:card" content="summary_large_image">
     <link rel="alternate" type="application/rss+xml" title="{{ "Eyeshot by @" . $user->nickname  }}" href="{{ Request::url() }}" />
+@elseif ( \Request::url('placeholder') )
+    <meta name="description" content="Eyeshot Placeholder are the random, beautiful, and cool images from Google Street View explored by people on Eyeshot.">
+    <meta class="meta-keywords" name="keywords" content="placeholder,lorem ipsum,api,eyeshot,photography,streetview">
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="{{ Request::url() }}" />
+    <meta class="meta-title" property="og:title" content="Eyeshot" />
+    <meta class="meta-image" property="og:image" content="https://eyeshot.s3.amazonaws.com/cover.png">
+    <meta property="og:description" content="Eyeshot Placeholder are the random, beautiful, and cool images from Google Street View explored by people on Eyeshot." />
+    <meta name="twitter:site" content="@eyeshotHQ">
+    <meta class="meta-title" name="twitter:title" content="Eyeshot Placeholder API">
+    <meta name="twitter:description" content="Eyeshot Placeholder are the random, beautiful, and cool images from Google Street View explored by people on Eyeshot.">
+    <meta class="meta-image" name="twitter:image:src" content="https://eyeshot.s3.amazonaws.com/cover.png">
 @else
     <meta name="description" content="Eyeshot is a visual discovery of our surroundings, explored by people like you. Discover the World's Top Destinations and Cool Places.">
     <meta name="keywords" content="eyeshot,street view,panorama,360 view,top destinations,google street view">
