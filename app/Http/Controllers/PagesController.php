@@ -122,4 +122,9 @@ class PagesController extends Controller
         
         return $eyeshot;
     }
+
+    public static function placeholder()
+    {
+        return view('placeholder');
+    }
 }

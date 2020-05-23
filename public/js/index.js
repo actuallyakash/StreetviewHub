@@ -402,6 +402,9 @@
         /* Waking up tooltips */
         $('[data-tooltip="tooltip"]').tooltip();
 
+        /* Waking up BS scrollspy */
+        $('body').scrollspy({ target: '#placeholderScrollspy' });
+
         /* Waking up Disqus */
         (function () { // DON'T EDIT BELOW THIS LINE
             var d = document,

@@ -1059,3 +1059,97 @@ nav ul.pagination {
   text-decoration: none;
   text-transform: uppercase;
 }
+
+/* Placeholder */
+.eyeshot-placeholder .banner-text {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+}
+
+.eyeshot-placeholder .banner-text h2 {
+  line-height: 1;
+  font-size: 2rem;
+  margin: 1rem 0;
+}
+
+.eyeshot-placeholder .eyeshot-banner {
+  padding: 10px 30px;
+  border-bottom: 5px solid;
+  border-bottom-color: #5e5e5e;
+  background-color: #f4f7fc;
+  color: black;
+}
+
+.eyeshot-placeholder .banner-image {
+  margin: 15px 0;
+  user-select: none;
+}
+
+.eyeshot-placeholder .docs {
+  padding: 0 50px;
+  background: white
+}
+
+.eyeshot-placeholder .docs-links {
+  background: #F4F6FA;
+  padding: 20px;
+  padding: 0 40px;
+}
+
+.eyeshot-placeholder .docs-links .nav-pills a {
+  color: black;
+}
+
+.eyeshot-placeholder .docs-links .nav-pills {
+  top: 20px;
+  position: sticky;
+}
+
+.eyeshot-placeholder .docs .docs-section {
+  margin-bottom: 90px;
+}
+
+.eyeshot-placeholder .docs .docs-section .docs-title {
+  padding: 0px 0 20px;
+  border-bottom: 1px solid #eee;
+  margin-bottom: 20px;
+  color: #384248;
+  font-size: 30px;
+}
+
+.eyeshot-placeholder pre {
+  background: black;
+  border: 1px solid #ddd;
+  border-left: 3px solid #007bff;
+  page-break-inside: avoid;
+  font-family: monospace;
+  font-size: 15px;
+  line-height: 1.6;
+  margin-bottom: 1.6em;
+  max-width: 100%;
+  overflow: auto;
+  padding: 1em 1.5em;
+  display: block;
+  word-wrap: break-word;
+  text-align: center;
+}
+
+.eyeshot-placeholder pre code a {
+  color: white;
+}
+
+.eyeshot-placeholder pre code a:hover {
+  color: rgb(230, 224, 224);
+  text-decoration: none;
+}
+
+.eyeshot-placeholder .docs-links .nav-pills .nav-link.active,
+.eyeshot-placeholder .docs-links .nav-pills .show > .nav-link {
+  color: #fff;
+  background-color: #5e5e5e;
+}
+
+.eyeshot-placeholder .documentation .row {
+  margin: 0;
+}
