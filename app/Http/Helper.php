@@ -63,7 +63,7 @@ class Helper
             } else {
                 $status = "Eyeshot";
             }
-            $status .= " by <b>$user</b><br><br>" . $url;
+            $status .= "<br><br>" . $url;
 
             if ( $eyeshot->status ) {
                 $status .= "<br><br><i>$eyeshot->status</i>";
@@ -72,13 +72,13 @@ class Helper
             $url = "See 360° View: " . url("/{$user}/shot/{$eyeshotId}");
 
             if ( $eyeshot->title != null && $eyeshot->title !== "" ) {
-                $status = '"' . $eyeshot->title . '"';
+                $status = $eyeshot->title;
             } else if ( $eyeshot->location_name !== NULL && $eyeshot->location_name !== "" ) {
-                $status = '"'.$eyeshot->location_name.'"';
+                $status = $eyeshot->location_name;
             } else {
                 $status = "Eyeshot";
             }
-            $status .= " by " . $user . "\n\n" . $url;
+            $status .= "\n\n" . $url;
         }
 
         return $status;
