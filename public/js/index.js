@@ -269,6 +269,15 @@
                 }
             });
 
+        } else if( searchParams.has('reverse') ) {
+            
+            var coords = searchParams.get('reverse').split(',');
+            
+            latitude = Number( coords[0] );
+            longitude = Number( coords[1] );
+
+            randomLoc( latitude, longitude );
+
         } else {
             // TODO: Add more NOICE radials
             var radialPoints = [
