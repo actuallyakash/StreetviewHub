@@ -23,6 +23,6 @@
         </a>
     </div>
 
-    <p class="mt-4"><small class="text-muted">Eyeshot is not affiliated with or endorsed by <b>Google</b> or the <b>Google Street View</b>. Any images or photospheres are not owned by</small></p>
+    <p class="mt-4"><small class="text-muted">Eyeshot is not affiliated with or endorsed by <b>Google</b> or the <b>Google Street View</b>. Any images or photospheres are not owned by Eyeshot.</small></p>
 
 </footer>

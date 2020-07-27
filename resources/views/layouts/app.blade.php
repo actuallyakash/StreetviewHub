@@ -110,6 +110,10 @@
 
     @include('layouts.modal')
 
+    @if ( ! Request::url('/') )
+        @include('components.newsletter')
+    @endif
+
     <script src="https://apis.google.com/js/platform.js" async defer></script>
     <script src="https://code.jquery.com/jquery-3.4.1.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
     <script src="https://unpkg.com/popper.js@1.16.1/dist/umd/popper.min.js"></script>

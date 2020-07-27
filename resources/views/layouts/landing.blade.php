@@ -48,4 +48,6 @@
 </div>
 @include('feed/latest-shots')
 
+@include('components.newsletter')
+
 @include('layouts/footer')
