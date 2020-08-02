@@ -1154,3 +1154,46 @@ nav ul.pagination {
 .eyeshot-placeholder .documentation .row {
   margin: 0;
 }
+
+.newsletter {
+  border-radius: .5rem;
+  border: 1px solid #e5e7eb;
+  background-color: #252F3F;
+  color: white;
+}
+
+.newsletter .btn {
+  color: white;
+  background-color: #6875F5;
+}
+
+.newsletter .btn:hover {
+  color: white;
+  background-color: #5b69e9;
+}
+
+.newsletter .email {
+  padding: .75rem 1rem;
+  line-height: 1.5rem;
+  border-radius: .375rem;
+  border-color: #d2d6dc;
+  background-color: #fff;
+  width: 100%;
+  font-family: var(--font-secondary-semi-bold);
+}
+
+.newsletter .email:focus {
+  box-shadow: 0 0 0 3px rgba(164,202,254,.45);
+  outline: 0;
+  border-color: #a4cafe;
+}
+
+.newsletter .sub-text {
+  font-family: var(--font-secondary-semi-bold);
+}
+
+@media (max-width: 768px) {
+  .newsletter .btn {
+    margin-top: 10px;
+  }
+}
