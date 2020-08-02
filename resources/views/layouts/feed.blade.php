@@ -6,4 +6,6 @@
 
 @include('feed/latest-shots')
 
+@include('components.newsletter')
+
 @endsection

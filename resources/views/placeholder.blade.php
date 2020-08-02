@@ -131,12 +131,10 @@
                     <p>More options coming soon. Until then keep <a href="https://eyeshot.xyz">exploring</a> 🌏</p>
                     <p>Found a typo? Have ideas? Wanna contribute? Eyeshot and it's API is <a href="https://github.com/actuallyakash/eyeshot">Open Source</a>.</p>
                     <pre><code><a href="https://eyeshot.xyz">https://eyeshot.xyz</a></code></pre>
+                    @include('components.newsletter')
                 </div>
             </div>
         </div>
-
-        @include('components.newsletter')
-        
     </div>
 </div>
 @endsection

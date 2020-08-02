@@ -26,4 +26,7 @@
         @endforeach
     </div>
 </div>
+
+@include('components.newsletter')
+
 @endsection
