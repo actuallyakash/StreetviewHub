@@ -31,6 +31,8 @@ Route::get('/get/{panoId}/pioneer', 'LocationController@pioneer');
 # Eyeshot Details
 Route::get('/get/{eyeshotId}/details', 'LocationController@eyeshot');
 Route::post('/get/random', 'LocationController@random');
+# Newsletter Sub
+Route::post('/newsletter', 'NewsletterController@add');
 
 #Pages
 Route::get('/', 'PagesController@welcome');

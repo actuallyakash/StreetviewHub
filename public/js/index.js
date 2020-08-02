@@ -424,6 +424,28 @@
         });
     }
 
+    // Subscribe User to Newsletter
+    var subscribeUser = function( email, source ) {
+        $('#newsletter .subscribe-btn').html('<div class="spinner-border text-light spinner-border-sm" role="status"><span class="sr-only">Loading...</span></div>');
+        $.ajax({
+            type: 'POST',
+            url: '/newsletter',
+            data:{email:email, source:source},
+            headers: {
+                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+            },
+            success: function( data ) {
+                if( data == 1 ) {
+                    $('#newsletter').append('<div class="subscribed text-center"><p>You\'re in! 🎉 Check spam :)</p></div>');
+                    $('#newsletter .subscribe-btn').text('Done');
+                } else {
+                    $('#newsletter').append('<div class="subscribed"><p class="text-danger">#213 Something went wrong!</p></div>');
+                    console.log('#213 Something went wrong!');
+                }
+            }
+        });
+    }
+
     //
     // Inits & Event Listeners
     //
@@ -550,11 +572,20 @@
         saveFavouriteInfo(panoId, title, status, tags);
     });
 
+    // Newsletter
+    $( 'div#newsletter' ).on('click', 'button.subscribe-btn', function(e) {
+        e.preventDefault();
+        
+        var email = $( 'input[name=email]' ).val();
+        var source = $( 'input[name=source]' ).val();
+
+        subscribeUser( email, source );
+    });
+
     // Tagify
     var input = document.querySelector('#favouriteBox input[name="tags"]');
     (input !== null) ? tagify = new Tagify(input) : '';
     
-
     // View Eyeshot
     $("div.eyeshot-container-fluid").on('click', '.eyeshot .eyeshot-media', function() {
         var eyeshot = $(this).data('eyeshot').replace('eyeshot-','');

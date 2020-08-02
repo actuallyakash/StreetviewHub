@@ -1197,3 +1197,11 @@ nav ul.pagination {
     margin-top: 10px;
   }
 }
+
+.newsletter .subscribed {
+  width: 100%;
+}
+
+.newsletter .subscribed p {
+  margin: 10px 0 0 0;
+}
