@@ -1205,3 +1205,14 @@ nav ul.pagination {
 .newsletter .subscribed p {
   margin: 10px 0 0 0;
 }
+
+#newsletterModal .close {
+  color: white;
+  font-size: 3em;
+  margin: 2rem 1rem;
+}
+
+#newsletterModal .newsletter-modal {
+  max-width: 500px;
+  margin: 1.75rem auto;
+}

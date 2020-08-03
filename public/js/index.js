@@ -436,10 +436,10 @@
             },
             success: function( data ) {
                 if( data == 1 ) {
-                    $('#newsletter').append('<div class="subscribed text-center"><p>You\'re in! 🎉 Check spam :)</p></div>');
-                    $('#newsletter .subscribe-btn').text('Done');
+                    $('.newsletter').append('<div class="subscribed text-center"><p>You\'re in! 🎉 Check spam :)</p></div>');
+                    $('.newsletter .subscribe-btn').text('Done');
                 } else {
-                    $('#newsletter').append('<div class="subscribed"><p class="text-danger">#213 Something went wrong!</p></div>');
+                    $('.newsletter').append('<div class="subscribed"><p class="text-danger">#213 Something went wrong!</p></div>');
                     console.log('#213 Something went wrong!');
                 }
             }
@@ -466,6 +466,19 @@
             (d.head || d.body).appendChild(s);
         })();
 
+        // Newsletter Modal when Out of Scope
+        var pointer = 0;
+        var popupCounter = 0;
+        $( document ).mouseleave(function () {
+            if ( pointer < 100 ) {
+                if ( popupCounter < 1 ) {
+                    $( '#newsletterModal' ).modal( 'show' );
+                }
+                popupCounter ++;
+            }
+        });
+
+        // Random Place
         if($( "#landing-pano" ).length) {
             takeMeSomewhereIDontBelong();
         }

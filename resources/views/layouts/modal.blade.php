@@ -221,3 +221,14 @@
         <span class="pwa-msg mr-2">Get the app and explore coolest locations 🌍 </span>
     </div>
 </div>
+
+{{-- Newsletter --}}
+@php $source = "modal"; @endphp
+<div class="modal" id="newsletterModal" tabindex="-1" role="dialog" aria-labelledby="eyeshot-newsletter" aria-hidden="true">
+    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+        <span aria-hidden="true">&times;</span>
+    </button>
+    <div class="newsletter-modal modal-dialog-centered" role="document">
+        @include('components.newsletter')
+    </div>
+</div>
