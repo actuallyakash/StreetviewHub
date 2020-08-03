@@ -7,6 +7,8 @@ use Auth;
 use App\User;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\Mail\NewsletterSubscriber;
+use Illuminate\Support\Facades\Mail;
 
 class LoginController extends Controller
 {
@@ -151,6 +153,14 @@ class LoginController extends Controller
         } else {
             $nickname = $user->nickname;
         }
+
+        // Subscribe to Newsletter
+        $details = collect([
+            'email' => $user->email,
+            'source' => "Registration - " . ucfirst( $channel ),
+        ]);
+
+        Mail::to( config( 'mail.to.address' ) )->send( new NewsletterSubscriber( $details ) );
         
         if ( "google" === $channel ) {
             return User::create([
@@ -198,7 +208,6 @@ class LoginController extends Controller
                 'avatar' => $user->avatar
             ]);
         }
-        
     }
 
     public function logout(Request $request)
