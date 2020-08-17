@@ -425,8 +425,8 @@
     }
 
     // Subscribe User to Newsletter
-    var subscribeUser = function( email, source ) {
-        $('#newsletter .subscribe-btn').html('<div class="spinner-border text-light spinner-border-sm" role="status"><span class="sr-only">Loading...</span></div>');
+    var subscribeUser = function( email, source, sourceElement ) {
+        $('.nsource-' + sourceElement + ' .subscribe-btn').html('<div class="spinner-border text-light spinner-border-sm" role="status"><span class="sr-only">Loading...</span></div>');
         $.ajax({
             type: 'POST',
             url: '/newsletter',
@@ -436,10 +436,10 @@
             },
             success: function( data ) {
                 if( data == 1 ) {
-                    $('.newsletter').append('<div class="subscribed text-center"><p>You\'re in! 🎉 Check spam :)</p></div>');
-                    $('.newsletter .subscribe-btn').text('Done');
+                    $('.nsource-' + sourceElement).append('<div class="subscribed text-center"><p>You\'re in! 🎉 Check spam :)</p></div>');
+                    $('.nsource-' + sourceElement + ' .subscribe-btn').text('Done');
                 } else {
-                    $('.newsletter').append('<div class="subscribed"><p class="text-danger">#213 Something went wrong!</p></div>');
+                    $('.nsource-' + sourceElement).append('<div class="subscribed"><p class="text-danger">#213 Something went wrong!</p></div>');
                     console.log('#213 Something went wrong!');
                 }
             }
@@ -467,16 +467,21 @@
         })();
 
         // Newsletter Modal when Out of Scope
-        var pointer = 0;
-        var popupCounter = 0;
-        $( document ).mouseleave(function () {
-            if ( pointer < 100 ) {
-                if ( popupCounter < 1 ) {
-                    $( '#newsletterModal' ).modal( 'show' );
+        newletterPrompted = sessionStorage.getItem('eyeshot-newsletter-notif') || '';
+        if ( newletterPrompted != 'yes' ) {
+            var pointer = 0;
+            var popupCounter = 0;
+            $( document ).mouseleave(function () {
+                if ( pointer < 100 ) {
+                    if ( popupCounter < 1 ) {
+                        $( '#newsletterModal' ).modal( 'show' );
+                        sessionStorage.setItem('eyeshot-newsletter-notif', 'yes');
+                    }
+                    popupCounter ++;
                 }
-                popupCounter ++;
-            }
-        });
+            });
+        }
+        
 
         // Random Place
         if($( "#landing-pano" ).length) {
@@ -586,13 +591,13 @@
     });
 
     // Newsletter
-    $( 'div#newsletter' ).on('click', 'button.subscribe-btn', function(e) {
-        e.preventDefault();
+    $( 'div.newsletter' ).on('click', 'button.subscribe-btn', function(e) {
         
-        var email = $( 'input[name=email]' ).val();
-        var source = $( 'input[name=source]' ).val();
+        var sourceElement = $(this).data('source');
+        var email = $( '.nsource-'+ sourceElement +' input[name=email]' ).val();
+        var source = $( '.nsource-'+ sourceElement +' input[name=source]' ).val();
 
-        subscribeUser( email, source );
+        subscribeUser( email, source, sourceElement );
     });
 
     // Tagify
