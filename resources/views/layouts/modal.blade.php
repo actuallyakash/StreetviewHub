@@ -223,6 +223,7 @@
 </div>
 
 {{-- Newsletter --}}
+@guest
 @php $source = "modal"; @endphp
 <div class="modal" id="newsletterModal" tabindex="-1" role="dialog" aria-labelledby="eyeshot-newsletter" aria-hidden="true">
     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
@@ -232,3 +233,4 @@
         @include('components.newsletter')
     </div>
 </div>
+@endguest

@@ -469,20 +469,16 @@
         // Newsletter Modal when Out of Scope
         newletterPrompted = sessionStorage.getItem('eyeshot-newsletter-notif') || '';
         if ( newletterPrompted != 'yes' ) {
-            var pointer = 0;
             var popupCounter = 0;
             $( document ).mouseleave(function () {
-                if ( pointer < 100 ) {
-                    if ( popupCounter < 1 ) {
-                        $( '#newsletterModal' ).modal( 'show' );
-                        sessionStorage.setItem('eyeshot-newsletter-notif', 'yes');
-                    }
+                if ( popupCounter < 1 && $( 'body' ).hasClass( 'modal-open' ) !== true ) {
+                    $( '#newsletterModal' ).modal( 'show' );
+                    sessionStorage.setItem('eyeshot-newsletter-notif', 'yes');
                     popupCounter ++;
                 }
             });
         }
         
-
         // Random Place
         if($( "#landing-pano" ).length) {
             takeMeSomewhereIDontBelong();
