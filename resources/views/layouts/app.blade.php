@@ -108,7 +108,7 @@
             </div>
         </main>
 
-    @include('layouts.modal')
+        @include('layouts.modal')
 
     @if ( ! Request::url('/') )
         @include('components.newsletter')

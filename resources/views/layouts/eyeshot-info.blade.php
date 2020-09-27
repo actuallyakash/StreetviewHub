@@ -28,5 +28,21 @@
             </div>
         </div>
     </div>
+    
+    {{-- Related Posts --}}
+    @isset($eyeshot)
+        @php $relatedEyeshots = Helper::getRelatedPosts( $eyeshot->id, explode( ',', $eyeshot->tags ), 3 ); @endphp
+        @if ( count( $relatedEyeshots ) > 0 )
+            <h4 class="text-center my-4">Related Eyeshots</h4>
+            <div class="related-posts my-4">
+                @foreach ( $relatedEyeshots as $eyeshot )
+
+                    @include('components/related-eyeshot')
+
+                @endforeach
+            </div>
+        @endif
+    @endisset
+    
     <div id="disqus_thread"></div>
 </div>

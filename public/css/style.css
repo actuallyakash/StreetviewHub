@@ -1216,3 +1216,8 @@ nav ul.pagination {
   max-width: 500px;
   margin: 1.75rem auto;
 }
+
+.related-posts {
+  display: flex;
+  justify-content: center;
+}

@@ -94,4 +94,23 @@ class Helper
             'response_message' => $response['message']
         ]);
     }
+
+    // Get related posts based on tags in a single post
+    public static function getRelatedPosts( $eyeshotId, $tags, $postCount )
+    {
+        $eyeshots = [];
+
+        // Fetch related eyeshots excluding the [$eyeshotId]
+        foreach ( $tags as $tag ) {
+            $eyeshots[] = \App\Location::where([
+                                [ "tags", "like", "%$tag%" ],
+                                [ "id", '<>', $eyeshotId ]
+                            ])->get();
+        }
+
+        // Removing null & duplicate values and collapsing the array
+        $relatedPosts = collect($eyeshots)->collapse()->unique();
+        
+        return $relatedPosts->take( $postCount );
+    }
 }
