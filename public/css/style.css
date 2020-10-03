@@ -1,22 +1,8 @@
 @font-face {
-	font-family: Karla;
-	src:
-    url('/fonts/Karla/karla-regular.woff2') format('woff2'),
-    url('/fonts/Karla/karla-regular.woff') format('woff');
-}
-
-@font-face {
 	font-family: Rubik;
 	src:
     url('/fonts/Rubik/rubik-light-webfont.woff2') format('woff2'),
     url('/fonts/Rubik/rubik-light-webfont.woff') format('woff');
-}
-
-@font-face {
-	font-family: Rubik-Bold;
-	src:
-    url('/fonts/Rubik/rubik-bold-webfont.woff2') format('woff2'),
-    url('/fonts/Rubik/rubik-bold-webfont.woff') format('woff');
 }
 
 @font-face {
@@ -31,7 +17,6 @@
     --primary-color: #6697FE;
     --body-color: #F4F4F4;
     --font-primary-regular: Rubik, sans-serif;
-    --font-primary-bold: Rubik-Bold, sans-serif;
     --font-secondary-semi-bold: Nunito, sans-serif;
 }
 
