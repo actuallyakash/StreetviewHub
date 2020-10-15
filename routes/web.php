@@ -47,6 +47,7 @@ Route::get('/{username}/shot/{id}', 'PagesController@show');
 Route::post('/share', 'PagesController@sharer');
 Route::get('/get/share/{sharer}', 'PagesController@getSharer');
 Route::get('/placeholder', 'PagesController@placeholder');
+Route::get('/placeholders', 'PagesController@placeholder');
 
 Route::get('/logout', 'Auth\LoginController@logout');
 

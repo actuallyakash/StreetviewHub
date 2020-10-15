@@ -125,6 +125,9 @@ class PagesController extends Controller
 
     public static function placeholder()
     {
-        return view('placeholder');
+        $totalCalls = number_format( DB::table( 'plogs' )->get()->count() );
+        $todayCalls = number_format( DB::table( 'plogs' )->whereDay('created_at', now()->day)->get()->count() );
+
+        return view('placeholder', compact('totalCalls', 'todayCalls'));
     }
 }

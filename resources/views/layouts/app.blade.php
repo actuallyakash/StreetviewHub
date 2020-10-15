@@ -56,15 +56,15 @@
     <link rel="alternate" type="application/rss+xml" title="{{ "Eyeshot by @" . $user->nickname  }}" href="{{ Request::url() }}" />
 @elseif ( \Request::getRequestUri() == '/placeholder' )
     <meta name="description" content="Eyeshot Placeholder are the random, beautiful, and cool images from Google Street View explored by people on Eyeshot.">
+    <meta property="og:title" content="Eyeshot Placeholder are the random, beautiful, and cool images from Google Street View explored by people on Eyeshot." />
     <meta property="og:type" content="website" />
     <meta property="og:url" content="{{ Request::url() }}" />
-    <meta class="meta-title" property="og:title" content="Eyeshot - Random Street View on Steroids 🚀" />
-    <meta class="meta-image" property="og:image" content="https://eyeshot.s3.amazonaws.com/cover.png">
+    <meta property="og:image" content="https://eyeshot.s3.amazonaws.com/cover.png">
     <meta property="og:description" content="Eyeshot Placeholder are the random, beautiful, and cool images from Google Street View explored by people on Eyeshot." />
     <meta name="twitter:site" content="@eyeshotHQ">
     <meta class="meta-title" name="twitter:title" content="Eyeshot Placeholder API">
     <meta name="twitter:description" content="Eyeshot Placeholder are the random, beautiful, and cool images from Google Street View explored by people on Eyeshot.">
-    <meta class="meta-image" name="twitter:image:src" content="https://eyeshot.s3.amazonaws.com/cover.png">
+    <meta name="twitter:image:src" content="https://eyeshot.s3.amazonaws.com/cover.png">
 @else
     <meta name="description" content="Random Street View on Steroids. Discover the World's Top Destinations and Cool Places.">
     <meta property="og:type" content="website" />

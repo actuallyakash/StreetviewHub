@@ -91,7 +91,9 @@ class Helper
             'client_ip' => $request->ip(),
             'response_code' => $response['code'],
             'response_status' => $response['status'],
-            'response_message' => $response['message']
+            'response_message' => $response['message'],
+            'created_at' => NOW(),
+            'updated_at' => NOW()
         ]);
     }
 

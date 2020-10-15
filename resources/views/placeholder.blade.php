@@ -6,24 +6,36 @@
 <div class="eyeshot-placeholder">
     <section class="pt-4 pt-md-11 eyeshot-banner">
         <div class="container">
-        <div class="row align-items-center">
-            <div class="col-12 col-md-7 col-lg-6 text-md-left banner-text">
-                <h2 class="text-center text-md-left">
-                    Placeholders from Google Street View.
-                </h2>
-                <p class="lead text-md-left text-center mb-6 mb-lg-8">
-                    Random and beautiful placeholders from Google Street View
-                </p>
+            <div class="row align-items-center">
+                <div class="col-12 col-md-7 col-lg-6 text-md-left banner-text">
+                    <h1 class="text-center text-md-left">
+                        Placeholders from Google Street View.
+                    </h1>
+                    <p class="lead text-md-left text-center mb-6 mb-lg-8">
+                        Random and beautiful placeholders from Google Street View
+                    </p>
 
-                <div class="text-center text-md-left mb-4">
-                    <a href="#documentation" class="button-es btn mt-1">Documentation</a>
+                    <div class="text-center text-md-left mb-4">
+                        <a href="#documentation" class="button-es btn mt-1">Documentation</a>
+                    </div>
+
+                </div>
+                <div class="col-12 col-md-5 col-lg-6 banner-image text-center">
+                    <img class="banner-image img-fluid shadow rounded-lg" src="https://eyeshot.xyz/shots" alt="eyeshot-placeholder">
+                </div>
+            </div>
+
+            <div class="d-flex justify-content-around">
+                <div class="my-3 py-3">
+                    <h2 class="display-5">{{ $totalCalls}}</h2>
+                    <p class="lead">Images delivered all-time</p>
                 </div>
 
+                <div class="my-3 py-3">
+                    <h2 class="display-5">{{ $todayCalls}}</h2>
+                    <p class="lead">Images delivered today</p>
+                </div>
             </div>
-            <div class="col-12 col-md-5 col-lg-6 banner-image text-center">
-                <img class="banner-image img-fluid shadow rounded-lg" src="https://eyeshot.xyz/shots" alt="eyeshot-placeholder">
-            </div>
-        </div>
         </div>
     </section>
 
