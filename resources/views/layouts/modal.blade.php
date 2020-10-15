@@ -8,7 +8,7 @@
                     <span aria-hidden="true">&times;</span>
                 </button>
                 <h5 class="modal-title" id="startExploringModal">Welcome to Eyeshot 🌏</h5>
-                <p class="font-weight-light"> Discover the world’s top Destinations & Cities </p>
+                <p class="font-weight-light"> Random Street View on Steroids </p>
                 <h3>Sign in with</h3>
                 <div class="row mt-4 social-login">
                     <div class="col auth-social">

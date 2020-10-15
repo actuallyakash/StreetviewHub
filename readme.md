@@ -2,7 +2,7 @@
   <br>
   <img alt="eyeshot" src="https://eyeshot.s3.amazonaws.com/98sdNXBexqJnt0HqEuAP.png" width="400px">
   
-  <strong>Discover random places from Google Street View. 👀</strong>
+  <strong>Random Street View on Steroids 👀</strong>
 </div>
 <br>
 <p align="center">
