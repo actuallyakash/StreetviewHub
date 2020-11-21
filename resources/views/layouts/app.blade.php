@@ -23,7 +23,7 @@
     <meta class="meta-title" property="og:title" content="Eyeshot - Random Street View on Steroids 🚀" />
     <meta class="meta-image" property="og:image" content="https://eyeshot.s3.amazonaws.com/cover.png">
     <meta property="og:description" content="Random Street View on Steroids. Discover the World's Top Destinations and Cool Places." />
-    <meta name="twitter:site" content="@eyeshotHQ">
+    <meta name="twitter:site" content="@streetviewhub">
     <meta class="meta-title" name="twitter:title" content="Eyeshot">
     <meta name="twitter:description" content="Random Street View on Steroids. Discover the World's Top Destinations and Cool Places.">
     <meta class="meta-image" name="twitter:image:src" content="https://eyeshot.s3.amazonaws.com/cover.png">
@@ -38,7 +38,7 @@
     <meta property="og:description" content="{{ $user->bio }}" />
     <meta name="twitter:description" content="{{ $user->bio }}">
     @endif
-    <meta name="twitter:site" content="@eyeshotHQ">
+    <meta name="twitter:site" content="@streetviewhub">
     <meta name="twitter:creator" content="{{ $user->nickname }}">
     <meta name="twitter:title" content="{{ $user->nickname . " | Eyeshot Profile" }}">
 @elseif( isset($user) && isset($eyeshot) )
@@ -48,7 +48,7 @@
     <meta property="og:title" content="{{ $eyeshot->title !== null ? $eyeshot->title : "Eyeshot by " . $user->nickname }}" />
     <meta property="og:image" content="{{ Storage::disk('s3')->url($eyeshot->media) }}" />
     <meta property="og:description" content="{{ $eyeshot->status !== null ? $eyeshot->status : "Random Street View on Steroids. Discover the World's Top Destinations and Cool Places." }}" />
-    <meta name="twitter:site" content="@eyeshotHQ">
+    <meta name="twitter:site" content="@streetviewhub">
     <meta name="twitter:title" content="{{ $eyeshot->title !== null ? $eyeshot->title : "Eyeshot by " . $user->nickname }}" />
     <meta name="twitter:description" content="{{ $eyeshot->status !== null ? $eyeshot->status : "Random Street View on Steroids. Discover the World's Top Destinations and Cool Places." }}" />
     <meta name="twitter:image:src" content="{{ Storage::disk('s3')->url($eyeshot->media) }}" />
@@ -61,7 +61,7 @@
     <meta property="og:url" content="{{ Request::url() }}" />
     <meta property="og:image" content="https://eyeshot.s3.amazonaws.com/cover.png">
     <meta property="og:description" content="Eyeshot Placeholder are the random, beautiful, and cool images from Google Street View explored by people on Eyeshot." />
-    <meta name="twitter:site" content="@eyeshotHQ">
+    <meta name="twitter:site" content="@streetviewhub">
     <meta class="meta-title" name="twitter:title" content="Eyeshot Placeholder API">
     <meta name="twitter:description" content="Eyeshot Placeholder are the random, beautiful, and cool images from Google Street View explored by people on Eyeshot.">
     <meta name="twitter:image:src" content="https://eyeshot.s3.amazonaws.com/cover.png">
@@ -72,7 +72,7 @@
     <meta property="og:title" content="Eyeshot - Random Street View on Steroids 🚀" />
     <meta property="og:image" content="https://eyeshot.s3.amazonaws.com/cover.png">
     <meta property="og:description" content="Random Street View on Steroids. Discover the World's Top Destinations and Cool Places." />
-    <meta name="twitter:site" content="@eyeshotHQ">
+    <meta name="twitter:site" content="@streetviewhub">
     <meta name="twitter:title" content="Eyeshot - Random Street View on Steroids 🚀">
     <meta name="twitter:description" content="Random Street View on Steroids. Discover the World's Top Destinations and Cool Places.">
     <meta name="twitter:image:src" content="https://eyeshot.s3.amazonaws.com/cover.png">

@@ -49,7 +49,7 @@ class TumblrPostEyeshot implements ShouldQueue
                 'source' => Storage::disk('s3')->url($eyeshot->media)
             ];
 
-            $client->createPost("eyeshothq.tumblr.com", $post);
+            $client->createPost("streetviewhub.tumblr.com", $post);
         
         }
     }

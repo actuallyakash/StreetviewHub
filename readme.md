@@ -80,13 +80,13 @@ Get in touch at my low budget email eyeshot.xyz@gmail.com 😅
     <a href="https://github.com/actuallyakash/eyeshot">
       <img src="https://img.shields.io/github/stars/actuallyakash/eyeshot?style=social" alt="I Need Stars ⭐">
     </a>
-    <a href="https://twitter.com/intent/follow?screen_name=eyeshothq">
-      <img src="https://img.shields.io/twitter/follow/eyeshothq?label=Follow&style=social" alt="More random eyeshots">
+    <a href="https://twitter.com/intent/follow?screen_name=streetviewhub">
+      <img src="https://img.shields.io/twitter/follow/streetviewhub?label=Follow&style=social" alt="More random eyeshots">
     </a>
-    <a target="_blank" href="https://facebook.com/eyeshothq">
+    <a target="_blank" href="https://facebook.com/streetviewhub">
       <img src="https://img.shields.io/badge/%F0%9F%91%8D-Facebook-blue" alt="More random eyeshots">
     </a>
-    <a target="_blank" href="https://eyeshothq.tumblr.com/">
+    <a target="_blank" href="https://streetviewhub.tumblr.com/">
       <img src="https://img.shields.io/badge/%F0%9F%91%8B-Tumblr-lightgrey" alt="More random eyeshots">
     </a>
   </div>

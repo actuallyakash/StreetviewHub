@@ -56,16 +56,16 @@
                         <a class="dropdown-item text-danger" href="{{ url('/logout') }}">Logout</a>
                         <div class="dropdown-divider"></div>
                         <div class="es-social-icons text-center mt-2">
-                            <a target="_blank" rel="nofollow" href="https://twitter.com/eyeshothq">
+                            <a target="_blank" rel="nofollow" href="https://twitter.com/streetviewhub">
                                 <i class="fab fa-twitter mx-1"></i>
                             </a>
-                            <a target="_blank" rel="nofollow" href="https://facebook.com/eyeshothq">
+                            <a target="_blank" rel="nofollow" href="https://facebook.com/streetviewhub">
                                 <i class="fab fa-facebook mx-1"></i>
                             </a>
                             <a target="_blank" rel="nofollow" href="https://github.com/actuallyakash/eyeshot">
                                 <i class="fab fa-github mx-1"></i>
                             </a>
-                            <a target="_blank" rel="nofollow" href="https://eyeshothq.tumblr.com/">
+                            <a target="_blank" rel="nofollow" href="https://streetviewhub.tumblr.com/">
                                 <i class="fab fa-tumblr-square mx-1"></i>
                             </a>
                         </div>

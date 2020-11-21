@@ -710,7 +710,7 @@
             success: function( eyeshotId ) {
                 var url = "http://eyeshot.xyz?s="+eyeshotId;
                 var facebook = "https://www.facebook.com/sharer/sharer.php?u="+url;
-                var twitter = "https://twitter.com/share?url="+url+"&via=eyeshotHQ&text=Look%20at%20this...%20%20👀";
+                var twitter = "https://twitter.com/share?url="+url+"&via=streetviewhub&text=Look%20at%20this...%20%20👀";
                 var whatsapp = ( /Mobi/.test(navigator.userAgent ) ? "whatsapp://send?text=" : "https://web.whatsapp.com/send?text=" ) + encodeURI("Look at this... 👀\n"+url);
 
                 $("#shareEyeshot .share-url input").val(url);

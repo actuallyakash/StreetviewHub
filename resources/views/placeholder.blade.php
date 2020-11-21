@@ -135,7 +135,7 @@
                 <div class="docs-section" id="imageByProfile">
                     <h2 class="docs-title">Image From Particular Profile</h2>
                     <p>Get a random image from a particular profile by adding the <kbd>?u={USERNAME}</kbd> parameter</p>
-                    <pre><code><a href="https://eyeshot.xyz/shots?u=eyeshotHQ">https://eyeshot.xyz/shots?u=eyeshotHQ</a></code></pre>
+                    <pre><code><a href="https://eyeshot.xyz/shots?u=streetviewhub">https://eyeshot.xyz/shots?u=streetviewhub</a></code></pre>
                 </div>
 
                 <div class="docs-section" id="more-options">
