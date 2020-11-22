@@ -1,5 +1,6 @@
 <footer class="home-footer mt-3 bg-white text-center p-3">
-    <a class="footer-brand" href="http://streetviewhub.com">Eyesh<span class="logo-globe">🌍</span>t</a>
+    {{-- <a class="footer-brand" href="http://streetviewhub.com">Eyesh<span class="logo-globe">🌍</span>t</a> --}}
+    <a class="footer-brand" href="http://streetviewhub.com"><span class="logo-globe">🌍</span> StreetviewHub</a>
     <ul class="list-inline nav-list mt-1">
         <li class="list-inline-item"><a class="text-muted" href="/feed">📜 Feed</a></li>
         <li class="list-inline-item"><a class="text-muted" href="/placeholder">🎭 Placeholder API</a></li>

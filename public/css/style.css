@@ -366,7 +366,6 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .logo-globe {
-  font-size: 15px;
   display: inline-block;
   animation: spin-cir 2.6s linear infinite;
 }
@@ -663,7 +662,7 @@ button:focus {
 }
 
 header .navbar .navbar-brand {
-  font-size: 22px;
+  font-size: 20px;
   transition: color 0.4s ease;
 }
 
@@ -819,16 +818,10 @@ header .navbar .eyeshot-user img {
 
 /* Footer */
 footer.home-footer .footer-brand {
-  font-size: 22px;
+  font-size: 20px;
   color: black;
   text-decoration: none;
   font-weight: 800;
-}
-
-.home-footer .footer-brand .logo-globe {
-  font-size: 13px;
-  position: relative;
-  top: -1.8px;
 }
 
 .home-footer .nav-list li:not(:last-child) {

@@ -44,7 +44,7 @@
             <button style="position: absolute;right: 15px;top: 6px;" type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
             <div class="modal-body text-center">
                 <h5 class="modal-title" id="startExploringModal">We like your curiosity!</h5>
-                <p class="font-weight-light"> Create an account to receive great eyeshots in your inbox and find locations that you will love 💕. </p>
+                <p class="font-weight-light"> Create an account to receive great streetviews in your inbox and find locations that you will love 💕. </p>
                 <div class="row mt-4 social-login">
                     <div class="col auth-social">
                         <a class="btn btn-lg btn-outline-dark" href="/auth/google/">
