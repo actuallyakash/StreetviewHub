@@ -1,7 +1,7 @@
 @extends('layouts.app')
 @section('content')
 
-@section('title', "Categories | Eyeshot")
+@section('title', "Categories | StreetviewHub")
 
 @include('feed/topbar')
 

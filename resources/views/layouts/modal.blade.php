@@ -7,7 +7,7 @@
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
-                <h5 class="modal-title" id="startExploringModal">Welcome to Eyeshot 🌏</h5>
+                <h5 class="modal-title" id="startExploringModal">Welcome to StreetviewHub 🌏</h5>
                 <p class="font-weight-light"> Random Street View on Steroids </p>
                 <h3>Sign in with</h3>
                 <div class="row mt-4 social-login">
@@ -92,7 +92,7 @@
                             <h6 class="user-nickname">{{ Auth::user()->nickname }}</h6>
                         </div>
                         <div class="col-md-10 eyeshot-section">
-                            <input class="form-control eyeshot-title" name="title" type="text" placeholder="Eyeshot Title (Optional)">
+                            <input class="form-control eyeshot-title" name="title" type="text" placeholder="Streetview Title (Optional)">
                             <div class="divider"></div>
                             <textarea name="status" class="form-control status descriptionInput" placeholder="Wanna describe? (Optional)" rows="5" autofocus></textarea>
                             <div class="divider"></div>
@@ -191,18 +191,18 @@
                 </button>
             </div>
             <div class="modal-body text-center">
-                <a target="_blank" rel="nofollow" class="share-facebook" href="https://www.facebook.com/sharer/sharer.php?u=http://eyeshot.xyz/">
+                <a target="_blank" rel="nofollow" class="share-facebook" href="https://www.facebook.com/sharer/sharer.php?u=http://streetviewhub.com/">
                     <i class="fab fa-facebook-f"></i>
                 </a>
-                <a target="_blank" rel="nofollow" class="share-twitter" href="https://twitter.com/share?url=http://eyeshot.xyz/&via=eyeshot.xyz&text=Exploring%20Random%20Place">
+                <a target="_blank" rel="nofollow" class="share-twitter" href="https://twitter.com/share?url=http://streetviewhub.com/&via=streetviewhub.com&text=Exploring%20Random%20Place">
                     <i class="fab fa-twitter"></i>
                 </a>
-                <a target="_blank" rel="nofollow" class="share-whatsapp" href="https://web.whatsapp.com/send?text=https://eyeshot.xyz">
+                <a target="_blank" rel="nofollow" class="share-whatsapp" href="https://web.whatsapp.com/send?text=https://streetviewhub.com">
                     <i class="fab fa-whatsapp"></i>
                 </a>
 
                 <div class="share-url mt-4">
-                    <input onclick="this.select();" type="text" value="http://eyeshot.xyz/hahaha" class="form-control eyeshot-url" placeholder="URL" readonly>
+                    <input onclick="this.select();" type="text" value="http://streetviewhub.com/hahaha" class="form-control eyeshot-url" placeholder="URL" readonly>
                     
                     <button class="btn btn-link copy-eyeshot-url"><i class="far fa-copy"></i></button>
                 </div>

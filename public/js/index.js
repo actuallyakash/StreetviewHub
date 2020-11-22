@@ -281,7 +281,7 @@
         } else {
             // TODO: Add more NOICE radials
             var radialPoints = [
-                // it's not what it looks like. Here: https://github.com/actuallyakash/eyeshot#how-randomizer-works
+                // it's not what it looks like. Here: https://github.com/actuallyakash/streetviewhub#how-randomizer-works
                 [], // Empty
                 [43.0772733, -79.0659442, 2500], // Niagara Falls, New York
                 [37.869085, -122.254775, 2500], // Berkeley, California -
@@ -509,24 +509,24 @@
                             if ( data.tags !== null ) {
                                 $("#shared-pano .eyeshot-title").text(data.title);
                             } else {
-                                $("#shared-pano .eyeshot-title").text("Eyeshot by "+data.eyeshot_by);
+                                $("#shared-pano .eyeshot-title").text("Explored by " + data.eyeshot_by);
                             }
                             $("#shared-pano .eyeshot-status").text(data.status);
                             if ( data.tags !== null ) {
                                 var tags = data.tags.split(",");
                                 tags.map(tag => $("#shared-pano .eyeshot-tags").append("<a href='/search?q="+tag+"' class='eyeshot-tag badge'>"+tag+"</a>"));
                             } else {
-                                $("#shared-pano .eyeshot-tags").append("<a href='/search?q=eyeshot' class='eyeshot-tag badge'>Eyeshot</a>")
+                                $("#shared-pano .eyeshot-tags").append("<a href='/search?q=eyeshot' class='eyeshot-tag badge'>Streetview</a>")
                             }
                             $("#shared-pano .eyeshot-location").text(data.location_name);
                             $("#shared-pano .eyeshot-published").text(data.created_at);
                             $("#shared-pano .eyeshot-saves").text(data.eyeshot_saves+" saves");
                         } else {
-                            console.log('No eyeshot found!');
+                            console.log('No streetveiw found!');
                         }
                     }
                 });
-            } else { // Shared Eyeshot
+            } else { // Shared Streetview
                 var sharer = (new URL(window.location.href)).searchParams.get('s');
                 $.ajax({
                     type: 'GET',
@@ -539,14 +539,14 @@
                         setTimeout(function () {
                             if ( typeof map.streetView.location.description !== 'undefined' ) {
                                 $('#shared-pano').after('<div class="details text-center"><h3 class="eyeshot-info"> <span class="text-muted">Location: </span>' + map.streetView.location.description + '</h3></div>');
-                                $('meta.meta-title').attr('content', map.streetView.location.description + " | Eyeshot");
+                                $('meta.meta-title').attr('content', map.streetView.location.description + " | StreetviewHub");
                                 $('meta.meta-keywords').attr('content', map.streetView.location.description);
                                 $('meta.meta-image').attr('content', "https://maps.googleapis.com/maps/api/streetview?size=600x400&pano=" + details[2] + "&heading=" + details[3] + "&pitch=" + details[4] + "&key=" + key);
                             }
                         }, 2000);
                     },
                     error: function() {
-                        alert('Eyeshot not Found! Redirecting you to the homepage..');
+                        alert('Streetview not Found! Redirecting you to the homepage..');
                     }
                 });
             }
@@ -559,7 +559,7 @@
         });
 
         console.log("%c🌏", "font-size:20px;");
-        console.log("%cHaving fun using Eyeshot? Wanna contribute or maybe give a star 😁. Join us:\nhttp://github.com/actuallyakash/eyeshot", "color: #6697FE; font-size: 12px;");
+        console.log("%cHaving fun using StreetviewHub? Wanna contribute or maybe give a star 😁. Join us:\nhttp://github.com/actuallyakash/streetviewhub", "color: #6697FE; font-size: 12px;");
     });
 
     // Favourite/Unfavourite ops
@@ -575,7 +575,7 @@
         favouriteOps(panoId, 'unfavourite', element);
     });
 
-    // favourite eyeshot details
+    // favourite streetview details
     $("div#favouriteBox").on('click', 'button.btn-fav-info', function(e) {
         e.preventDefault();
 
@@ -608,10 +608,10 @@
         $('#viewEyeshot').modal('show');
 
         // Updating Page URL for Modal
-        history.pushState({pageID: 'Eyeshot'}, 'Eyeshot', '/' + user + '/shot/' + eyeshot);
+        history.pushState({pageID: 'StreetviewHub'}, 'StreetviewHub', '/' + user + '/shot/' + eyeshot);
 
         // Disqus for Discussion
-        var PAGE_URL = "http://eyeshot.xyz/" + user + "/shot/" + eyeshot;
+        var PAGE_URL = "http://streetviewhub.com/" + user + "/shot/" + eyeshot;
         var PAGE_IDENTIFIER = eyeshot;
         DISQUS.reset({
             reload: true,
@@ -650,14 +650,14 @@
                     if ( data.tags !== null ) {
                         $("#viewEyeshot .eyeshot-title").text(data.title);
                     } else {
-                        $("#viewEyeshot .eyeshot-title").text("Eyeshot by "+data.eyeshot_by);
+                        $("#viewEyeshot .eyeshot-title").text("Explored by "+data.eyeshot_by);
                     }
                     $("#viewEyeshot .eyeshot-status").text(data.status);
                     if ( data.tags !== null ) {
                         var tags = data.tags.split(",");
                         tags.map(tag => $("#viewEyeshot .eyeshot-tags").append("<a href='/search?q="+tag+"' class='eyeshot-tag badge'>"+tag+"</a>"));
                     } else {
-                        $("#viewEyeshot .eyeshot-tags").append("<a href='/search?q=eyeshot' class='eyeshot-tag badge'>Eyeshot</a>")
+                        $("#viewEyeshot .eyeshot-tags").append("<a href='/search?q=eyeshot' class='eyeshot-tag badge'>Streetview</a>")
                     }
                     $("#viewEyeshot .eyeshot-location").text(data.location_name);
                     $("#viewEyeshot .eyeshot-published").text(data.created_at);
@@ -666,14 +666,14 @@
                     $('#viewEyeshot .modal-content').css('display', 'block');
 
                 } else {
-                    console.log('No eyeshot found!');
+                    console.log('No streetview found!');
                 }
             }
         });
     });
 
     $("#viewEyeshot").on("hidden.bs.modal", function () {
-        history.pushState({pageID: 'Home'}, 'Eyeshot - Homepage', '/');
+        history.pushState({pageID: 'Home'}, 'StreetviewHub - Homepage', '/');
     });
 
     // Randomizer
@@ -708,7 +708,7 @@
                 'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
             },
             success: function( eyeshotId ) {
-                var url = "http://eyeshot.xyz?s="+eyeshotId;
+                var url = "http://streetviewhub.com?s="+eyeshotId;
                 var facebook = "https://www.facebook.com/sharer/sharer.php?u="+url;
                 var twitter = "https://twitter.com/share?url="+url+"&via=streetviewhub&text=Look%20at%20this...%20%20👀";
                 var whatsapp = ( /Mobi/.test(navigator.userAgent ) ? "whatsapp://send?text=" : "https://web.whatsapp.com/send?text=" ) + encodeURI("Look at this... 👀\n"+url);

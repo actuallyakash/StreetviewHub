@@ -1,7 +1,7 @@
 {
-    "short_name": "Eyeshot",
-    "name": "Eyeshot - Explore place you never been before!",
-    "description": "Eyeshot is a visual discovery of the world around us, explored by people like you. Explore place you never been before. Who knows where you'll end up next 🤩",
+    "short_name": "StreetviewHub",
+    "name": "StreetviewHub - Explore place you never been before!",
+    "description": "StreetviewHub is a visual discovery of the world around us, explored by people like you. Explore place you never been before. Who knows where you'll end up next 🤩",
     "icons": [
       {
         "src": "https://eyeshot.s3.amazonaws.com/icon-192x192.png",
@@ -14,7 +14,7 @@
         "sizes": "512x512"
       }
     ],
-    "start_url": "https://eyeshot.xyz",
+    "start_url": "https://streetviewhub.com",
     "background_color": "#ffffff",
     "display": "standalone",
     "scope": "/",

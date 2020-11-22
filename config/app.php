@@ -13,7 +13,7 @@ return [
     |
     */
 
-    'name' => env('APP_NAME', 'Eyeshot'),
+    'name' => env('APP_NAME', 'StreetviewHub'),
 
     /*
     |--------------------------------------------------------------------------

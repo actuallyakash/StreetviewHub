@@ -61,7 +61,7 @@ class Helper
             } else if ( $eyeshot->location_name !== NULL && $eyeshot->location_name !== "" ) {
                 $status = "<b>$eyeshot->location_name</b>";
             } else {
-                $status = "Eyeshot";
+                $status = "StreetviewHub";
             }
             $status .= "<br><br>" . $url;
 
@@ -76,7 +76,7 @@ class Helper
             } else if ( $eyeshot->location_name !== NULL && $eyeshot->location_name !== "" ) {
                 $status = $eyeshot->location_name;
             } else {
-                $status = "Eyeshot";
+                $status = "StreetviewHub";
             }
             $status .= "\n\n" . $url;
         }
@@ -102,7 +102,7 @@ class Helper
     {
         $eyeshots = [];
 
-        // Fetch related eyeshots excluding the [$eyeshotId]
+        // Fetch related streetviews excluding the [$eyeshotId]
         foreach ( $tags as $tag ) {
             $eyeshots[] = \App\Location::where([
                                 [ "tags", "like", "%$tag%" ],

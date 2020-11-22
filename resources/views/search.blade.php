@@ -4,7 +4,7 @@
 @endphp
 @section('content')
 
-@section('title', "$searchTerm - Search | Eyeshot ")
+@section('title', "$searchTerm - Search | StreetviewHub ")
 
 @include('feed/topbar')
 

@@ -28,7 +28,7 @@ Route::delete('/location/{panoId}/unfavourite/', 'LocationController@deleteFavou
 Route::post('/favourite/details', 'LocationController@favouriteDetails');
 # Pioneer
 Route::get('/get/{panoId}/pioneer', 'LocationController@pioneer');
-# Eyeshot Details
+# Streetview Details
 Route::get('/get/{eyeshotId}/details', 'LocationController@eyeshot');
 Route::post('/get/random', 'LocationController@random');
 # Newsletter Sub

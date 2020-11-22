@@ -15,7 +15,7 @@
             <a class="active" href="#">
                 <li class="list-inline-item">
                     {{ count($user->eyeshots) }}<br>
-                    <span class="text-muted">Eyeshots</span>                     
+                    <span class="text-muted">Streetviews</span>                     
                 </li>
             </a>
         </ul>

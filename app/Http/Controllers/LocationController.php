@@ -160,7 +160,7 @@ class LocationController extends Controller
         }
     }
 
-    // Returns random Lat, Lng from Existing Eyeshots
+    // Returns random Lat, Lng from Existing StreetViews
     public function random()
     {
         $random = Location::inRandomOrder()->first();

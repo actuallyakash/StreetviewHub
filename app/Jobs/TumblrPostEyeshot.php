@@ -44,7 +44,7 @@ class TumblrPostEyeshot implements ShouldQueue
             $post = [
                 'type' => 'photo',
                 'caption' => $status,
-                'link' => "https://eyeshot.xyz",
+                'link' => "https://streetviewhub.com",
                 'tags' => $eyeshot->tags !== null ? $eyeshot->tags : 'eyeshot',
                 'source' => Storage::disk('s3')->url($eyeshot->media)
             ];

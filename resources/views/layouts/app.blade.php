@@ -15,24 +15,24 @@
     <meta name="msapplication-starturl" content="/">
     <meta name="theme-color" content="#6697FE">
 
-    <meta property="og:site_name" content="Eyeshot" />
+    <meta property="og:site_name" content="StreetviewHub" />
 @if ( \Request::input('s') )
-    <meta name="description" content="Random Street View on Steroids. Discover the World's Top Destinations and Cool Places.">
+    <meta name="description" content="Random Streetviews on Steroids. Discover the World's Top Destinations and Cool Places.">
     <meta property="og:type" content="website" />
     <meta property="og:url" content="{{ Request::url() }}" />
-    <meta class="meta-title" property="og:title" content="Eyeshot - Random Street View on Steroids 🚀" />
+    <meta class="meta-title" property="og:title" content="StreetviewHub - Random Streetviews on Steroids 🚀" />
     <meta class="meta-image" property="og:image" content="https://eyeshot.s3.amazonaws.com/cover.png">
-    <meta property="og:description" content="Random Street View on Steroids. Discover the World's Top Destinations and Cool Places." />
+    <meta property="og:description" content="Random Streetviews on Steroids. Discover the World's Top Destinations and Cool Places." />
     <meta name="twitter:site" content="@streetviewhub">
-    <meta class="meta-title" name="twitter:title" content="Eyeshot">
-    <meta name="twitter:description" content="Random Street View on Steroids. Discover the World's Top Destinations and Cool Places.">
+    <meta class="meta-title" name="twitter:title" content="StreetviewHub">
+    <meta name="twitter:description" content="Random Streetviews on Steroids. Discover the World's Top Destinations and Cool Places.">
     <meta class="meta-image" name="twitter:image:src" content="https://eyeshot.s3.amazonaws.com/cover.png">
     <meta name="twitter:card" content="summary_large_image">
 @elseif( isset($user) && Request::url() == url($user->nickname) )
     <meta property="og:type" content="profile" />
     <meta property="og:url" content="{{ Request::url() }}" />
     <meta property="profile:username" content="{{ $user->nickname }}" />
-    <meta property="og:title" content="{{ $user->nickname . " | Eyeshot Profile" }}" />
+    <meta property="og:title" content="{{ $user->nickname . " | StreetviewHub Profile" }}" />
     @if ( $user->bio )
     <meta name="description" content="{{ $user->bio }}">
     <meta property="og:description" content="{{ $user->bio }}" />
@@ -40,44 +40,44 @@
     @endif
     <meta name="twitter:site" content="@streetviewhub">
     <meta name="twitter:creator" content="{{ $user->nickname }}">
-    <meta name="twitter:title" content="{{ $user->nickname . " | Eyeshot Profile" }}">
+    <meta name="twitter:title" content="{{ $user->nickname . " | StreetviewHub Profile" }}">
 @elseif( isset($user) && isset($eyeshot) )
-    <meta name="description" content="{{ $eyeshot->status !== null ? $eyeshot->status : "Random Street View on Steroids. Discover the World's Top Destinations and Cool Places." }}">
+    <meta name="description" content="{{ $eyeshot->status !== null ? $eyeshot->status : "Random Streetviews on Steroids. Discover the World's Top Destinations and Cool Places." }}">
     <meta property="og:type" content="website" />
     <meta property="og:url" content="{{ Request::url() }}" />
-    <meta property="og:title" content="{{ $eyeshot->title !== null ? $eyeshot->title : "Eyeshot by " . $user->nickname }}" />
+    <meta property="og:title" content="{{ $eyeshot->title !== null ? $eyeshot->title : "Explored by " . $user->nickname }}" />
     <meta property="og:image" content="{{ Storage::disk('s3')->url($eyeshot->media) }}" />
-    <meta property="og:description" content="{{ $eyeshot->status !== null ? $eyeshot->status : "Random Street View on Steroids. Discover the World's Top Destinations and Cool Places." }}" />
+    <meta property="og:description" content="{{ $eyeshot->status !== null ? $eyeshot->status : "Random Streetviews on Steroids. Discover the World's Top Destinations and Cool Places." }}" />
     <meta name="twitter:site" content="@streetviewhub">
-    <meta name="twitter:title" content="{{ $eyeshot->title !== null ? $eyeshot->title : "Eyeshot by " . $user->nickname }}" />
-    <meta name="twitter:description" content="{{ $eyeshot->status !== null ? $eyeshot->status : "Random Street View on Steroids. Discover the World's Top Destinations and Cool Places." }}" />
+    <meta name="twitter:title" content="{{ $eyeshot->title !== null ? $eyeshot->title : "Explored by " . $user->nickname }}" />
+    <meta name="twitter:description" content="{{ $eyeshot->status !== null ? $eyeshot->status : "Random Streetviews on Steroids. Discover the World's Top Destinations and Cool Places." }}" />
     <meta name="twitter:image:src" content="{{ Storage::disk('s3')->url($eyeshot->media) }}" />
     <meta name="twitter:card" content="summary_large_image">
-    <link rel="alternate" type="application/rss+xml" title="{{ "Eyeshot by @" . $user->nickname  }}" href="{{ Request::url() }}" />
+    <link rel="alternate" type="application/rss+xml" title="{{ "Explored by @" . $user->nickname  }}" href="{{ Request::url() }}" />
 @elseif ( \Request::getRequestUri() == '/placeholder' )
-    <meta name="description" content="Eyeshot Placeholder are the random, beautiful, and cool images from Google Street View explored by people on Eyeshot.">
-    <meta property="og:title" content="Eyeshot Placeholder are the random, beautiful, and cool images from Google Street View explored by people on Eyeshot." />
+    <meta name="description" content="StreetviewHub's Placeholder are the random, beautiful, and cool images from Google Street View explored by people on StreetviewHub.">
+    <meta property="og:title" content="StreetviewHub's Placeholder are the random, beautiful, and cool images from Google Street View explored by people on StreetviewHub." />
     <meta property="og:type" content="website" />
     <meta property="og:url" content="{{ Request::url() }}" />
     <meta property="og:image" content="https://eyeshot.s3.amazonaws.com/cover.png">
-    <meta property="og:description" content="Eyeshot Placeholder are the random, beautiful, and cool images from Google Street View explored by people on Eyeshot." />
+    <meta property="og:description" content="StreetviewHub's Placeholder are the random, beautiful, and cool images from Google Street View explored by people on StreetviewHub." />
     <meta name="twitter:site" content="@streetviewhub">
-    <meta class="meta-title" name="twitter:title" content="Eyeshot Placeholder API">
-    <meta name="twitter:description" content="Eyeshot Placeholder are the random, beautiful, and cool images from Google Street View explored by people on Eyeshot.">
+    <meta class="meta-title" name="twitter:title" content="StreetviewHub Placeholder API">
+    <meta name="twitter:description" content="StreetviewHub Placeholder are the random, beautiful, and cool images from Google Street View explored by people on StreetviewHub.">
     <meta name="twitter:image:src" content="https://eyeshot.s3.amazonaws.com/cover.png">
 @else
-    <meta name="description" content="Random Street View on Steroids. Discover the World's Top Destinations and Cool Places.">
+    <meta name="description" content="Random Streetviews on Steroids. Discover the World's Top Destinations and Cool Places.">
     <meta property="og:type" content="website" />
     <meta property="og:url" content="{{ Request::url() }}" />
-    <meta property="og:title" content="Eyeshot - Random Street View on Steroids 🚀" />
+    <meta property="og:title" content="StreetviewHub - Random Streetviews on Steroids 🚀" />
     <meta property="og:image" content="https://eyeshot.s3.amazonaws.com/cover.png">
-    <meta property="og:description" content="Random Street View on Steroids. Discover the World's Top Destinations and Cool Places." />
+    <meta property="og:description" content="Random Streetviews on Steroids. Discover the World's Top Destinations and Cool Places." />
     <meta name="twitter:site" content="@streetviewhub">
-    <meta name="twitter:title" content="Eyeshot - Random Street View on Steroids 🚀">
-    <meta name="twitter:description" content="Random Street View on Steroids. Discover the World's Top Destinations and Cool Places.">
+    <meta name="twitter:title" content="StreetviewHub - Random Streetviews on Steroids 🚀">
+    <meta name="twitter:description" content="Random Streetviews on Steroids. Discover the World's Top Destinations and Cool Places.">
     <meta name="twitter:image:src" content="https://eyeshot.s3.amazonaws.com/cover.png">
     <meta name="twitter:card" content="summary_large_image">
-    <link rel="alternate" type="application/rss+xml" title="Eyeshot Feed" href="https://eyeshot.xyz/feed" />
+    <link rel="alternate" type="application/rss+xml" title="StreetviewHub Feed" href="https://streetviewhub.com/feed" />
 @endif
     {{-- CSRF Token --}}
     <meta name="csrf-token" content="{{ csrf_token() }}">
@@ -88,7 +88,7 @@
     <link rel="icon" type="image/png" sizes="32x32" href="{{ asset('images/favicon/favicon-32x32.png') }}">
     <link rel="icon" type="image/png" sizes="16x16" href="{{ asset('images/favicon/favicon-16x16.png') }}">
     <link rel="manifest" href="{{ asset('images/favicon/site.webmanifest') }}"">
-    <title>@yield( "title", "Eyeshot - Random Street View on Steroids 🚀" )</title>
+    <title>@yield( "title", "StreetviewHub - Random Streetviews on Steroids 🚀" )</title>
     <link href="{{ asset('css/style.min.css') }}" rel="stylesheet"/>
     <link href="{{ asset('css/tagify.min.css') }}" rel="stylesheet"/>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">

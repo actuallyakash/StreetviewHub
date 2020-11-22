@@ -1,7 +1,7 @@
 <div class="container">
     <div id="newsletter" class="newsletter nsource-{{ $source ?? 'footer' }} m-5 p-5 d-flex align-items-center justify-content-center justify-content-xl-between flex-wrap text-center text-xl-left">
         <div class="newsletter-content">
-            <h2>Each week I share new eyeshots <br>in the Newsletter.</h2>
+            <h2>Each week I share awesome streetviews <br>in the Newsletter.</h2>
             <p class="sub-text text-white-50"> With beautiful, cool and awesome locations. I'd love you to join. </p>
         </div>
         <div class="newsletter-cta d-flex flex-wrap flex-md-nowrap">

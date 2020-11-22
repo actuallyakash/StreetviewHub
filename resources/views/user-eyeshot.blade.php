@@ -1,7 +1,7 @@
 @extends('layouts.app')
 @section('content')
 
-@section('title', "Eyeshot by $user->nickname")
+@section('title', "StreetviewHub by $user->nickname")
 <div id="shared-pano" class="map-box">
     <div style="display:none;" class="loader text-center m-5"><span class="eyeshot-loader">🌏</span></div>
     <div style="display:none;" id="sv-pano">

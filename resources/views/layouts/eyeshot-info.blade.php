@@ -33,7 +33,7 @@
     @isset($eyeshot)
         @php $relatedEyeshots = Helper::getRelatedPosts( $eyeshot->id, explode( ',', $eyeshot->tags ), 3 ); @endphp
         @if ( count( $relatedEyeshots ) > 0 )
-            <h4 class="text-center my-4">Related Eyeshots</h4>
+            <h4 class="text-center my-4">Related Streetviews</h4>
             <div class="related-posts my-4">
                 @foreach ( $relatedEyeshots as $eyeshot )
 

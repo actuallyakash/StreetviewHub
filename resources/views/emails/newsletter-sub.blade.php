@@ -8,7 +8,7 @@ Add them to the list
 <p><b>Source:</b> {{ $source }}</p>
 @endcomponent
 
-@component('mail::button', ['url' => 'https://eyeshot.substack.com'])
+@component('mail::button', ['url' => 'https://streetviewhub.substack.com'])
 Add them
 @endcomponent
 

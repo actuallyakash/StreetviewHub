@@ -24,7 +24,7 @@
             <ul class="navbar-nav ml-auto">
                 <li class="nav-item d-flex justify-content-center">
                     <form class="form-search" action="/search" method="get">
-                        <input type="text" class="search-input" name="q" placeholder="Search for Eyeshot or Location">
+                        <input type="text" class="search-input" name="q" placeholder="Search for Streetview or Location">
                         <span class="search-icon">
                             <button class="button-icon">🔍</button>
                         </span>
@@ -62,7 +62,7 @@
                             <a target="_blank" rel="nofollow" href="https://facebook.com/streetviewhub">
                                 <i class="fab fa-facebook mx-1"></i>
                             </a>
-                            <a target="_blank" rel="nofollow" href="https://github.com/actuallyakash/eyeshot">
+                            <a target="_blank" rel="nofollow" href="https://github.com/actuallyakash/streetviewhub">
                                 <i class="fab fa-github mx-1"></i>
                             </a>
                             <a target="_blank" rel="nofollow" href="https://streetviewhub.tumblr.com/">

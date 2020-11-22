@@ -17,10 +17,10 @@
 {{-- <span class="first-explorer">Discovered by: <span class="pioneer"></span></span> --}}
 @guest
 <div class="text-center wtf-eyeshot">
-    <h1>What is Eyeshot?</h1>
+    <h1>What is StreetviewHub?</h1>
     <div class="d-flex justify-content-around align-items-center description">
         <div class="globe-eyeshot display-3 mr-3">🌏</div>
-        <div class="explain-eyeshot text-justify">Eyeshot is a visual discovery of the world around us, explored by people like you. It's Random Street View on Steroids.</div>
+        <div class="explain-eyeshot text-justify">StreetviewHub is a visual discovery of the world around us, explored by people like you. It's Random Street View on Steroids.</div>
     </div>
 </div>
 
@@ -44,7 +44,7 @@
 @endguest
 
 <div class="text-center">
-    <h1>Some Cool Eyeshots 😎</h1>
+    <h1>Some Cool Streetviews 😎</h1>
 </div>
 @include('feed/latest-shots')
 
