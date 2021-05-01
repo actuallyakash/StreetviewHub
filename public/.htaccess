@@ -4,6 +4,14 @@
     </IfModule>
 
     RewriteEngine On
+    
+    # remove public/ from URLs using a redirect rule (https://stackoverflow.com/a/47216679/5127736)
+    RewriteCond %{THE_REQUEST} \s/+(.+/)?public/(\S*) [NC]
+    RewriteRule ^ /%1%2? [R=301,L,NE]
+
+    # Force HTTPS
+    RewriteCond %{HTTPS} off 
+    RewriteRule ^(.*)$ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
 
     # Handle Authorization Header
     RewriteCond %{HTTP:Authorization} .
