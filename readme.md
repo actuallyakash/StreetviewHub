@@ -66,7 +66,7 @@ Just fork away and do what you wanna do or submit a issue if you found a bug. De
 
 The StreetviewHub is open-source website licensed under the [GNU AGPLv3 license](https://opensource.org/licenses/AGPL-3.0).
 
-Get in touch at my low budget email eyeshot.xyz@gmail.com 😅
+Get in touch at my low budget email akash_gupta@hotmail.com 😅
 
 <br>
 

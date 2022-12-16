@@ -9,7 +9,7 @@
 
         <p>At StreetviewHub, accessible from streetviewhub.com, one of the main priorities is the privacy of the visitors. This Privacy Policy document contains types of information that is collected and recorded by StreetviewHub and how it is used.</p>
 
-        <p>If you have additional questions or require more information about the Privacy Policy, do not hesitate to contact through email at eyeshot.xyz@gmail.com</p>
+        <p>If you have additional questions or require more information about the Privacy Policy, do not hesitate to contact through email at akash_gupta@hotmail.com</p>
 
         
         <h2>Privacy Policies</h2>
@@ -39,7 +39,7 @@
         <p>By using our website, you hereby consent to our Privacy Policy and agree to its Terms and Conditions.</p>
 
         <h2>Questions</h2>
-        <p>Connect with us at eyeshot.xyz@gmail.com and stay connected.</p>
+        <p>Connect with us at akash_gupta@hotmail.com and stay connected.</p>
     </div>
 </div>
 @endsection

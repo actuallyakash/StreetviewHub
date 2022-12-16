@@ -7,7 +7,7 @@
         <li class="list-inline-item"><a class="text-muted" href="/popular">🔥 On fire</a></li>
         <li class="list-inline-item"><a class="text-muted" href="/privacy">🔏 Privacy</a></li>
         {{-- Can't afford business email right now, in future maybe 🤷‍♂️ --}}
-        <li class="list-inline-item"><a class="text-muted" href="mailto:eyeshot.xyz@gmail.com">👋 Contact</a></li>
+        <li class="list-inline-item"><a class="text-muted" href="mailto:akash_gupta@hotmail.com">👋 Contact</a></li>
     </ul>
 
     <small class="text-muted">👨‍💻 StreetviewHub is Open Source @ <a target="_blank" rel="nofollow" href="https://github.com/actuallyakash/streetviewhub">GitHub</a></small>
