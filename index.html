@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Street View Hub</title>
+    <link rel="stylesheet" href="styles.css">
+    <script defer src="index.js"></script>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <script src="https://kit.fontawesome.com/5ac1289fea.js" crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
+    <script src="https://maps.googleapis.com/maps/api/js?key={{ config('services.gmaps_key') }}"></script>
+</head>
+<body>
+    <header class="shadow">
+        <nav class="navbar navbar-expand-lg navbar-dark">
+            <a class="navbar-brand" href="/"><span class="logo-globe">🌍</span> StreetviewHub</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#openXsNav"
+                aria-controls="openXsNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <div class="collapse navbar-collapse text-center" id="openXsNav">
+                <ul class="navbar-nav mr-auto">
+                    <li class="nav-item"><a class="nav-link" href="/feed">Feed</a></li>
+                    <li class="nav-item"><a class="nav-link" href="/categories">Categories</a></li>
+                    <li class="nav-item"><a class="nav-link" href="/placeholder">Placeholder API</a></li>
+                </ul>
+                
+                <ul class="navbar-nav ml-auto">
+                    <li class="nav-item d-flex justify-content-center">
+                        <form class="form-search" action="/search" method="get">
+                            <input type="text" class="search-input" name="q" placeholder="Search for Streetview or Location">
+                            <span class="search-icon">
+                                <button class="button-icon">🔍</button>
+                            </span>
+                        </form>
+                    </li>
+                    <li class="nav-item eyeshot-user">
+                        <button class="btn btn-success mt-1" type="submit" data-toggle="modal" data-target="#loginSignupTv">Start Exploring</button>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+    </header>
+
+    <main class="sv-app">
+        <div id="content">
+            <div id="landing-pano" class="map-box">
+                <div style="display:none;" class="loader text-center"><span class="eyeshot-loader">🌏</span></div>
+                <div style="display:none;" id="sv-pano">
+                    <div id="sv-map"></div>
+                    <div class="action-buttons">
+                        <button class="randomize-eyeshot btn btn-link" title="Randomizer"><i class="fas fa-random"></i></button>
+                        <button data-toggle="modal" data-target="#loginSignupTv" title="Favourite" class="btn btn-link"><i class="far fa-heart"></i></button>
+                        <button class="share-eyeshot btn btn-link" title="Share"><i class="fas fa-share-alt"></i></button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="text-center wtf-eyeshot">
+                <h1>What is StreetviewHub?</h1>
+                <div class="d-flex justify-content-around align-items-center description">
+                    <div class="globe-eyeshot display-3 mr-3">🌏</div>
+                    <div class="explain-eyeshot text-justify">StreetviewHub is a visual discovery of the world around us, explored by people like you. It's Random Street View on Steroids.</div>
+                </div>
+            </div>
+
+            <div class="row eyeshot-controls text-center bg-white p-3 px-5">
+                <div class="col-sm control-box">
+                    <i class="fas fa-random"></i>
+                    <h4>Randomizer</h4>
+                    <p class="text-muted">Explore some place randomly and let your curious brain wander.</p>
+                </div>
+                <div class="col-sm control-box">
+                    <i class="far fa-heart"></i>
+                    <h4>Favourite</h4>
+                    <p class="text-muted">Found something awesome? Don't lose the place, favourite it and it'll be shared with the community.</p>
+                </div>
+                <div class="col-sm control-box">
+                    <i class="fas fa-share-alt"></i>
+                    <h4>Share</h4>
+                    <p class="text-muted">Share directly with your friends in a click of a button.</p>
+                </div>
+            </div>
+
+            <div class="text-center">
+                <h1>Some Cool Streetviews 😎</h1>
+            </div>
+        </div>
+    </main>
+
+</body>
+</html>
