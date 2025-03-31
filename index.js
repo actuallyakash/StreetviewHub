@@ -316,25 +316,9 @@
                 [], // Empty
             ];
 
-            var randomGeoPoints;
-
             // Random Boolean to see where to get Eyeshot from (DB/Google)
-            if ( Math.random() >= 0.5 ) {
-                randomGeoPoints =  $.ajax({
-                    type: 'POST',
-                    url: '/get/random',
-                    async: false,
-                    headers: {
-                        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-                    },
-                    success: function( coords ) {
-                        return coords;
-                    }
-                }).responseJSON;
-            } else {
-                var radial = radialPoints[Math.floor((Math.random() * (radialPoints.length-1)) + 1)];
-                randomGeoPoints = generateRandomPoint({'lat':radial[0], 'lng':radial[1]}, radial[2]);
-            }
+            var radial = radialPoints[Math.floor((Math.random() * (radialPoints.length-1)) + 1)];
+            var randomGeoPoints = generateRandomPoint({'lat':radial[0], 'lng':radial[1]}, radial[2]);
             
             latitude = Number(randomGeoPoints['lat']);
             longitude = Number(randomGeoPoints['lng']);
@@ -727,25 +711,6 @@
 
     $(".sort-eyeshots select").on('change', function() {
         window.location = "/"+$(this).val();
-    });
-
-     /* Pagination || Infinite Scroll */
-     $(function() {
-        var count = 0;
-        $('.eyeshot-container-fluid').jscroll({
-            autoTrigger: true,
-            loadingHtml: '<div class="text-center"><span class="eyeshot-loader">🌏</span></div>',
-            nextSelector: 'ul.pagination li.active + li a',
-            contentSelector: 'div.eyeshot',
-            pagingSelector: 'ul.pagination',
-            callback: function() {
-                $(this).prev().append($(this).children('.eyeshot'));
-                $(this).remove();
-                if ( ++count == 2 ) {
-                    $('.eyeshot-container-fluid').append('<div class="text-center"><a class="button-es btn mt-1" href="/feed">See more 😍</a></div>');
-                }
-            }
-        });
     });
 
     /* PWA */
