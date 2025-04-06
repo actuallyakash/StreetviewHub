@@ -651,6 +651,7 @@ button:focus {
 .navbar {
   font-family: var(--font-secondary-semi-bold);
   font-size: 16px;
+  justify-content: center;
 }
 
 .navbar-nav .nav-item {
