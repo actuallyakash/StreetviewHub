@@ -15,6 +15,7 @@
     <script src="https://code.jquery.com/jquery-3.4.1.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDTJbCnWZ2ZpG9ZAkf66SNfvLb9sUchknw" loading="async"></script>
+    <script src="https://www.google.com/recaptcha/api.js?render=6LcKFQwrAAAAAJ-vEnG3zH7QBAolEUE1wJqOSH4O"></script>
 </head>
 <body>
     <header class="shadow">
@@ -49,7 +50,7 @@
         </nav>
     </header>
 
-    <main class="sv-app">
+    <main id="protected-content" class="sv-app" style="display:none;">
         <div id="content">
             <div id="landing-pano" class="map-box">
                 <div style="display:none;" class="loader text-center"><span class="eyeshot-loader">🌏</span></div>
@@ -94,6 +95,18 @@
             </div>
         </div>
     </main>
+
+    <script>
+        // Execute reCAPTCHA when the page loads.
+        grecaptcha.ready(function() {
+          grecaptcha.execute('6LcKFQwrAAAAAJ-vEnG3zH7QBAolEUE1wJqOSH4O', { action: 'show_content' })
+            .then(function(token) {
+              // Token generated, assume user passed unless challenged.
+              document.getElementById('protected-content').style.display = 'block';
+              console.log('Not a bot, let the user enjoy!');
+            });
+        });
+    </script>
 
 </body>
 </html>
