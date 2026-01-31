@@ -408,28 +408,6 @@
         });
     }
 
-    // Subscribe User to Newsletter
-    var subscribeUser = function( email, source, sourceElement ) {
-        $('.nsource-' + sourceElement + ' .subscribe-btn').html('<div class="spinner-border text-light spinner-border-sm" role="status"><span class="sr-only">Loading...</span></div>');
-        $.ajax({
-            type: 'POST',
-            url: '/newsletter',
-            data:{email:email, source:source},
-            headers: {
-                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-            },
-            success: function( data ) {
-                if( data == 1 ) {
-                    $('.nsource-' + sourceElement).append('<div class="subscribed text-center"><p>You\'re in! 🎉 Check spam :)</p></div>');
-                    $('.nsource-' + sourceElement + ' .subscribe-btn').text('Done');
-                } else {
-                    $('.nsource-' + sourceElement).append('<div class="subscribed"><p class="text-danger">#213 Something went wrong!</p></div>');
-                    console.log('#213 Something went wrong!');
-                }
-            }
-        });
-    }
-
     //
     // Inits & Event Listeners
     //
