@@ -19,38 +19,6 @@
                 element.removeClass(oldPano);
             }
             element.addClass('fav-'+panoId);
-            // Checking likes
-            $.ajax({
-                type: 'GET',
-                url: '/location/'+panoId+'/status',
-                success: function(data) {
-                    if( data == 1 ) {
-                        element.attr('title', 'Unlike');
-                        element.attr('data-original-title', 'Unlike');
-                        element.removeClass('unfavourite-sv').addClass('favourite-sv');
-                        element.children('i').removeClass('far').addClass('fas');
-                    } else {
-                        element.attr('title', 'Favourite');
-                        element.attr('data-original-title', 'Favourite');
-                        element.removeClass('favourite-sv').addClass('unfavourite-sv');
-                        element.children('i').removeClass('fas').addClass('far');
-                    }
-                }
-            });
-
-            // Checking pioneer
-            // $.ajax({
-            //     type: 'GET',
-            //     url: '/get/'+panoId+'/pioneer',
-            //     success: function( data ) {
-            //         if( data != 0 ) {
-            //             $("#content .first-explorer").show();
-            //             $("#content span.pioneer").text(data.name);
-            //         } else {
-            //             $("#content .first-explorer").hide();
-            //         }
-            //     }
-            // });
         }
     }
 
