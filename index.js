@@ -296,85 +296,6 @@
 
         $('#landing-pano #sv-pano .gm-style').remove(); // Clean old pano's instance
     }
-    
-    // Fav/Unfav Ops
-    var favouriteOps = function(panoId, ops, element) {
-
-        $("#favouriteBox .eyeshot-title").val('');
-        var locationName = map.streetView.location.description;
-        var latitude = map.center.lat();
-        var longitude = map.center.lng();
-        var panoHeading = panorama.getPov().heading;
-        var panoPitch = panorama.getPov().pitch;
-        var panoZoom = panorama.zoom;
-        if( typeof locationName !== 'undefined' && locationName !== "") {
-            $("#favouriteBox .location-name").html('Exploring: <b>' + locationName + '</b>');
-        } else {
-            locationName = null;
-        }
-        
-        switch(ops) {
-            case 'favourite':
-                $.ajax({
-                    type: 'GET',
-                    url: '/location/favourite/'+locationName+'/'+latitude+'/'+longitude+'/'+panoId+'/'+panoHeading+'/'+panoPitch+'/'+panoZoom,
-                    success: function(data) {
-                        if( data == 1 ) {
-                            element.attr('title', 'Unlike');
-                            element.attr('data-original-title', 'Unlike');
-                            element.removeClass('unfavourite-sv').addClass('favourite-sv');
-                            element.children('i').removeClass('far').addClass('fas');
-                        } else {
-                            console.log('#12 Something went wrong! Can\'t favourite location.');
-                        }
-                    }
-                });
-            break;
-
-            case 'unfavourite':
-                $.ajax({
-                    type: 'DELETE',
-                    url: '/location/'+panoId+'/unfavourite/',
-                    headers: {
-                        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-                    },
-                    success:function(data) {
-                        if(data == 1) {
-                            element.attr('title', 'Like');
-                            element.attr('data-original-title', 'Like');
-                            element.removeClass('favourite-sv').addClass('unfavourite-sv');
-                            element.children('i').removeClass('fas').addClass('far');
-                        } else {
-                            console.log('#13 Something went wrong! Can\'t unfavourite location.');
-                        }
-                    }
-                });
-            break;
-        }
-    }
-
-    // Save fav info
-    var saveFavouriteInfo = function( panoId, title, status, tags ) {
-        $.ajax({
-            type: 'POST',
-            url: '/favourite/details',
-            data:{panoId:panoId, title:title, status:status, tags:tags},
-            headers: {
-                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-            },
-            success: function(data) {
-                if(data == 1) {
-                    $('#favouriteBox').modal('hide');
-                    $('#favouriteBox textarea.status').val('');
-                    tagify.removeAllTags();
-                    $('.toast-location-share').toast({delay: 2000});
-                    $('.toast-location-share').toast('show');
-                } else {
-                    console.log('#212 Something went wrong! Can\'t save details.');
-                }
-            }
-        });
-    }
 
     //
     // Inits & Event Listeners
@@ -491,44 +412,6 @@
         console.log("%c🌏", "font-size:20px;");
         console.log("%cHaving fun using StreetviewHub? Wanna contribute or maybe give a star 😁. Join us:\nhttp://github.com/actuallyakash/streetviewhub", "color: #6697FE; font-size: 12px;");
     });
-
-    // Favourite/Unfavourite ops
-    $("div#sv-pano").on('click', 'button.unfavourite-sv', function() {
-        var panoId = $(this).attr('data-id').replace('fav-', '');
-        var element = $('button.fav-'+panoId);
-        $('#favouriteBox').modal();
-        favouriteOps(panoId, 'favourite', element);
-    });
-    $("div#sv-pano").on('click', 'button.favourite-sv', function() {
-        var panoId = $(this).attr('data-id').replace('fav-', '');
-        var element = $('button.fav-'+panoId);
-        favouriteOps(panoId, 'unfavourite', element);
-    });
-
-    // favourite streetview details
-    $("div#favouriteBox").on('click', 'button.btn-fav-info', function(e) {
-        e.preventDefault();
-
-        var panoId = $("div#sv-pano button.cta-street-view").attr('data-id').replace('fav-', '');
-        var title = $("input[name=title]").val();
-        var status = $('textarea.status').val();
-        var tags = $("input[name=tags]").val();
-        saveFavouriteInfo(panoId, title, status, tags);
-    });
-
-    // Newsletter
-    $( 'div.newsletter' ).on('click', 'button.subscribe-btn', function(e) {
-        
-        var sourceElement = $(this).data('source');
-        var email = $( '.nsource-'+ sourceElement +' input[name=email]' ).val();
-        var source = $( '.nsource-'+ sourceElement +' input[name=source]' ).val();
-
-        subscribeUser( email, source, sourceElement );
-    });
-
-    // Tagify
-    var input = document.querySelector('#favouriteBox input[name="tags"]');
-    (input !== null) ? tagify = new Tagify(input) : '';
     
     // View Eyeshot
     $("div.eyeshot-container-fluid").on('click', '.eyeshot .eyeshot-media', function() {
