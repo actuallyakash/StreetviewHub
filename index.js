@@ -302,34 +302,6 @@
     //
     $(document).ready(function() {
         
-        /* Waking up tooltips */
-        $('[data-tooltip="tooltip"]').tooltip();
-
-        /* Waking up BS scrollspy */
-        $('body').scrollspy({ target: '#placeholderScrollspy' });
-
-        /* Waking up Disqus */
-        (function () { // DON'T EDIT BELOW THIS LINE
-            var d = document,
-                s = d.createElement('script');
-            s.src = 'https://eyeshot.disqus.com/embed.js';
-            s.setAttribute('data-timestamp', +new Date());
-            (d.head || d.body).appendChild(s);
-        })();
-
-        // Newsletter Modal when Out of Scope
-        newletterPrompted = sessionStorage.getItem('eyeshot-newsletter-notif') || '';
-        if ( newletterPrompted != 'yes' ) {
-            var popupCounter = 0;
-            $( document ).mouseleave(function () {
-                if ( popupCounter < 1 && $( 'body' ).hasClass( 'modal-open' ) !== true ) {
-                    $( '#newsletterModal' ).modal( 'show' );
-                    sessionStorage.setItem('eyeshot-newsletter-notif', 'yes');
-                    popupCounter ++;
-                }
-            });
-        }
-        
         // Random Place
         if($( "#landing-pano" ).length) {
             takeMeSomewhereIDontBelong();
@@ -512,71 +484,45 @@
             zoom = panorama.getPov().zoom;
 
         var encode = btoa(latitude +":"+ longitude +":"+ panoId +":"+ heading +":"+ pitch +":"+ zoom);
-        
-        $.ajax({
-            type: 'POST',
-            url: '/share',
-            data: { pano: encode },
-            headers: {
-                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-            },
-            success: function( eyeshotId ) {
-                var url = "http://streetviewhub.com?s="+eyeshotId;
-                var facebook = "https://www.facebook.com/sharer/sharer.php?u="+url;
-                var twitter = "https://twitter.com/share?url="+url+"&via=streetviewhub&text=Look%20at%20this...%20%20👀";
-                var whatsapp = ( /Mobi/.test(navigator.userAgent ) ? "whatsapp://send?text=" : "https://web.whatsapp.com/send?text=" ) + encodeURI("Look at this... 👀\n"+url);
 
-                $("#shareEyeshot .share-url input").val(url);
-                $("#shareEyeshot a.share-facebook").attr('href', facebook);
-                $("#shareEyeshot a.share-twitter").attr('href', twitter);
-                $("#shareEyeshot a.share-whatsapp").attr('href', whatsapp);
-                $("#shareEyeshot").modal('show');
-            },
-            error: function() {
-                alert('Failed to generate Share URL. Try Again.');
-            }
-        });
+        // @todo: Add new sharing functionality.
     });
 
-    $(".sort-eyeshots select").on('change', function() {
-        window.location = "/"+$(this).val();
-    });
-
-    /* PWA */
-    if ('serviceWorker' in navigator) {
-        window.addEventListener('load', function () {
-            navigator.serviceWorker.register('/sw.js');
-        });
-    }
+    /* @todo: PWA */
+    // if ('serviceWorker' in navigator) {
+    //     window.addEventListener('load', function () {
+    //         navigator.serviceWorker.register('/sw.js');
+    //     });
+    // }
     
-    if (! window.matchMedia('(display-mode: standalone)').matches) {
-        let deferredPrompt,
-            alerted,
-            pwaNotif = $("#pwa-snackbar");
+    // if (! window.matchMedia('(display-mode: standalone)').matches) {
+    //     let deferredPrompt,
+    //         alerted,
+    //         pwaNotif = $("#pwa-snackbar");
 
-        window.addEventListener('beforeinstallprompt', (e) => {
-            deferredPrompt = e;
-        });
+    //     window.addEventListener('beforeinstallprompt', (e) => {
+    //         deferredPrompt = e;
+    //     });
 
-        alerted = sessionStorage.getItem('eyeshot-pwa-notif') || '';
-        if (alerted != 'yes') {
-            setTimeout(function () {
-                pwaNotif.addClass('show');
-            }, 60000);
-            sessionStorage.setItem('eyeshot-pwa-notif', 'yes');
-        }
+    //     alerted = sessionStorage.getItem('eyeshot-pwa-notif') || '';
+    //     if (alerted != 'yes') {
+    //         setTimeout(function () {
+    //             pwaNotif.addClass('show');
+    //         }, 60000);
+    //         sessionStorage.setItem('eyeshot-pwa-notif', 'yes');
+    //     }
 
-        $(pwaNotif).on('click', '.close', function(e) {
-            pwaNotif.removeClass('show');
-        });
+    //     $(pwaNotif).on('click', '.close', function(e) {
+    //         pwaNotif.removeClass('show');
+    //     });
 
-        $('#pwa-snackbar').on('click', '.pwa-body', function() {
-            deferredPrompt.prompt();
-            pwaNotif.removeClass('show');
-        });
-        $('#app-install .pwa-install').on('click', function() {
-            deferredPrompt.prompt();
-        });
-    }
+    //     $('#pwa-snackbar').on('click', '.pwa-body', function() {
+    //         deferredPrompt.prompt();
+    //         pwaNotif.removeClass('show');
+    //     });
+    //     $('#app-install .pwa-install').on('click', function() {
+    //         deferredPrompt.prompt();
+    //     });
+    // }
         
 })(jQuery);
